@@ -59,6 +59,17 @@ public class CreateRuleWindow : WindowBase
 
     public void OnEnterBtnButtonClick()
     {
+        Main.Instance.LoadSceneAsync(OnSceneLoadComplete,OnLoadProgress);
+    }
+
+    private void OnLoadProgress(float obj)
+    {
+        uiCompt.Slider.value = obj;
+    }
+
+    private void OnSceneLoadComplete()
+    {
+        UIModule.Instance.DestroyAllWindow();
     }
 
     public void OnRole1ButtonClick()
