@@ -6,8 +6,7 @@
  *注意:以下文件是自动生成的，再次生成不会覆盖原有的代码，会在原有的代码上进行新增，可放心使用
 ---------------------------------*/
 
-using UnityEngine.UI;
-using UnityEngine;
+using ZMGC.Hall;
 using ZMUIFrameWork;
 
 public class CreateRuleWindow : WindowBase
@@ -55,21 +54,13 @@ public class CreateRuleWindow : WindowBase
 
     public void OnInputNameInputEnd(string text)
     {
+        HallWorld.GetExitsDataMgr<UserDataMgr>().UserName = text;
     }
 
     public void OnEnterBtnButtonClick()
     {
-        Main.Instance.LoadSceneAsync(OnSceneLoadComplete,OnLoadProgress);
-    }
-
-    private void OnLoadProgress(float obj)
-    {
-        uiCompt.Slider.value = obj;
-    }
-
-    private void OnSceneLoadComplete()
-    {
-        UIModule.Instance.DestroyAllWindow();
+        Main.Instance.LoadSceneAsync();
+        UIModule.Instance.HideWindow<CreateRuleWindow>();
     }
 
     public void OnRole1ButtonClick()
