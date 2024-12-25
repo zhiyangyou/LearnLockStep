@@ -19,4 +19,4 @@ MonoBehaviour:
   FindComponentGeneratorPath: Assets/GameScripts/UI
   WindowGeneratorPath: Assets/GameScripts/UI
   WindowPrefabFolderPathArr:
-  - Assets/Resources/Prefabs
+  - Assets/GameData/Hall/Prefabs

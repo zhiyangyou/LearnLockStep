@@ -2,12 +2,16 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using ZM.ZMAsset;
+using ZMGC.Battle;
 using ZMGC.Hall;
+using ZM.ZMAsset;
 
 public class Main : MonoBehaviour
 {
     private static Main _instance = null;
+
     public static Main Instance => _instance;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +19,6 @@ public class Main : MonoBehaviour
         // init framework
         UIModule.Instance.Initialize();
         ZMAsset.InitFrameWork();
-        
         WorldManager.CreateWorld<HallWorld>();
 
         // 
@@ -52,7 +55,7 @@ public class Main : MonoBehaviour
         asyncOperation.allowSceneActivation = true;
         yield return null;
         UIEventControl.DispensEvent(UIEventEnum.SceneLoadComplete);
-        
-        Debug.LogError($"UserName {HallWorld.GetExitsDataMgr<UserDataMgr>().UserName}");
+
+        WorldManager.CreateWorld<BattleWorld>();
     }
 }

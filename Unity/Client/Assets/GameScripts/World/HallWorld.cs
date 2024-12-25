@@ -22,8 +22,7 @@ namespace ZMGC.Hall
 
         public override void OnCreate()
         {
-            base.OnCreate();
-            Debug.LogError("HallWorld OnCreate");
+            base.OnCreate(); 
 
             // pop first winow
             UIModule.Instance.PopUpWindow<CreateRuleWindow>();

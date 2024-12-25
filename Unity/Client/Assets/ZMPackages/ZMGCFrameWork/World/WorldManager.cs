@@ -4,11 +4,9 @@ using UnityEngine;
 
 public enum WorldEnum
 {
-    Default,
-    LoginWorld,
+    Default, 
     HallWorld,
-    BattleWorld,
-    SKWorld,
+    BattleWorld, 
 }
 
 /// <summary>

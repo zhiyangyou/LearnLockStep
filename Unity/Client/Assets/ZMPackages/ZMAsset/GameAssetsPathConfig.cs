@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
-public class AssetsPathConfig  
+public class GameAssetsPathConfig  
 {
    
     public const string GAME_DATA_PATH="Assets/GameData/";

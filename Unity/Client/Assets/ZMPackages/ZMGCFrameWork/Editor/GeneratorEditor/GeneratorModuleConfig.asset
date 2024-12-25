@@ -16,3 +16,5 @@ MonoBehaviour:
   modules:
   - moduleName: HallWorld
     moduleNamespace: ZMGC.Hall
+  - moduleName: BattleWorld
+    moduleNamespace: ZMGC.Battle
