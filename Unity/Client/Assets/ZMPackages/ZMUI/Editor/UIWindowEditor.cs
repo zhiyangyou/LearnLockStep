@@ -96,8 +96,7 @@ public class UIWindowEditor : EditorWindow
 
         if (File.Exists(filePath))
             File.Delete(filePath);
-        
-        Debug.LogError(filePath);
+         
         StreamWriter writer = File.CreateText(filePath);
         writer.Write(scriptContent);
         writer.Close();

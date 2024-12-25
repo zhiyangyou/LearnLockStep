@@ -4,20 +4,21 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
-public class TypeManager 
+public class TypeManager
 {
     private static IBehaviourExecution mBehaviourExecution;
-    public static void InitlizateWorldAssemblies(World world, IBehaviourExecution  behaviourExecution)
+
+    public static void InitlizateWorldAssemblies(World world)
     {
-        mBehaviourExecution = behaviourExecution;
+        mBehaviourExecution = world;
         //获取Unity和我们创建的脚本所在的程序集
-        Assembly[] assemblyArr= AppDomain.CurrentDomain.GetAssemblies();
+        Assembly[] assemblyArr = AppDomain.CurrentDomain.GetAssemblies();
         Assembly worldAssembly = null;
 
         //获取当前脚本运行的程序集 这种方式能自动识别任何自定义程序集的World脚本
         worldAssembly = world.GetType().Assembly;
-     
-        if (worldAssembly==null)
+
+        if (worldAssembly == null)
         {
             Debug.LogError("worldAssembly is Null Plase check Create Assembly!");
             return;
@@ -30,14 +31,14 @@ public class TypeManager
         Type dataType = typeof(IDataBehaviour);
         Type msgType = typeof(IMsgBehaviour);
         //获取当前程序集下的所有的类
-        Type[] typeArr= worldAssembly.GetTypes();
+        Type[] typeArr = worldAssembly.GetTypes();
         List<TypeOrder> logicBehaviourList = new List<TypeOrder>();
         List<TypeOrder> dataBehaviourList = new List<TypeOrder>();
         List<TypeOrder> msgBehaviourList = new List<TypeOrder>();
         foreach (var type in typeArr)
         {
             string space = type.Namespace;
-            if (type.Namespace==NameSpace)
+            if (type.Namespace == NameSpace)
             {
                 if (type.IsAbstract)
                     continue;
@@ -45,9 +46,8 @@ public class TypeManager
                 {
                     //获取当前类的初始化顺序
                     int order = GetLogicBehaviourOrderIndex(type);
-                    TypeOrder typeOrder = new TypeOrder(order,type);
+                    TypeOrder typeOrder = new TypeOrder(order, type);
                     logicBehaviourList.Add(typeOrder);
-
                 }
                 else if (dataType.IsAssignableFrom(type))
                 {
@@ -64,14 +64,14 @@ public class TypeManager
             }
         }
         //最的小的排在前面
-        logicBehaviourList.Sort((a,b)=>a.order.CompareTo(b.order));
+        logicBehaviourList.Sort((a, b) => a.order.CompareTo(b.order));
         dataBehaviourList.Sort((a, b) => a.order.CompareTo(b.order));
         msgBehaviourList.Sort((a, b) => a.order.CompareTo(b.order));
 
         //初始化数据层脚本、消息层脚本、逻辑层脚本
         for (int i = 0; i < dataBehaviourList.Count; i++)
         {
-           IDataBehaviour data= Activator.CreateInstance(dataBehaviourList[i].type) as IDataBehaviour;
+            IDataBehaviour data = Activator.CreateInstance(dataBehaviourList[i].type) as IDataBehaviour;
             world.AddDataMgr(data);
         }
         for (int i = 0; i < msgBehaviourList.Count; i++)
@@ -93,17 +93,18 @@ public class TypeManager
 
     private static int GetLogicBehaviourOrderIndex(Type type)
     {
-        if (mBehaviourExecution==null)
+        if (mBehaviourExecution == null)
             return 999;
 
         Type[] logicTypes = mBehaviourExecution.GetLogicBehaviourExecution();
         for (int i = 0; i < logicTypes.Length; i++)
         {
-            if (logicTypes[i]==type)
+            if (logicTypes[i] == type)
                 return i;
         }
         return 999;
     }
+
     private static int GetDataBehaviourOrderIndex(Type dataType)
     {
         if (mBehaviourExecution == null)
@@ -116,6 +117,7 @@ public class TypeManager
         }
         return 999;
     }
+
     private static int GetMsgBehaviourOrderIndex(Type msgType)
     {
         if (mBehaviourExecution == null)

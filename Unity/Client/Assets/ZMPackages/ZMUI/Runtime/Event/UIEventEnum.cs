@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum UIEventEnum 
+public enum UIEventEnum
 {
     LoginSuccess,
+    SceneLoadingProgress,
+    SceneLoadComplete
 }

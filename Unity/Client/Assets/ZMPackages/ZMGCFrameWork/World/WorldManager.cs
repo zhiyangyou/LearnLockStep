@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+
 public enum WorldEnum
 {
+    Default,
     LoginWorld,
     HallWorld,
     BattleWorld,
     SKWorld,
 }
+
 /// <summary>
 /// 世界管理器
 /// </summary>
@@ -17,39 +20,34 @@ public class WorldManager
     /// 构建状态
     /// </summary>
     public static bool Builder { get; private set; }
+
     /// <summary>
     /// 所有已构建出的世界列表
     /// </summary>
     private static List<World> mWorldList = new List<World>();
+
     /// <summary>
     /// 世界更新程序
     /// </summary>
     public static WorldUpdater WorldUpdater { get; private set; }
+
     /// <summary>
     /// 默认游戏世界
     /// </summary>
     public static World DefaultGameWorld { get; private set; }
+
     /// <summary>
     /// 当前游戏世界
     /// </summary>
     public static WorldEnum CurWorldEnum { get; private set; }
-    /// <summary>
-    /// 是否大厅世界
-    /// </summary>
-    public static bool IsHallWorld { get { return CurWorldEnum == WorldEnum.HallWorld; } }
-    /// <summary>
-    /// 是否游戏世界
-    /// </summary>
-    public static bool IsBattleWorld { get { return CurWorldEnum == WorldEnum.BattleWorld; } }
-    /// <summary>
-    /// 是否双扣游戏世界
-    /// </summary>
-    public static bool IsSKWorld { get { return CurWorldEnum == WorldEnum.SKWorld; } }
+
 
     /// <summary>
     /// 构建世界成功回调
     /// </summary>
     public static Action<WorldEnum> OnCreateWorldSuccessListener;
+
+
     /// <summary>
     /// 构建一个游戏世界
     /// </summary>
@@ -68,8 +66,9 @@ public class WorldManager
             DefaultGameWorld = world;
         }
         //初始化当前游戏世界的程序集脚本
-        TypeManager.InitlizateWorldAssemblies(world, GetBehaviourExecution(world));
-        world.OnCreate ();
+        TypeManager.InitlizateWorldAssemblies(world);
+        CurWorldEnum = world.WorldEnum;
+        world.OnCreate();
         mWorldList.Add(world);
         OnCreateWorldSuccessListener?.Invoke(CurWorldEnum);
 
@@ -77,30 +76,8 @@ public class WorldManager
             InitWorldUpdater();
         Builder = true;
     }
-    /// <summary>
-    /// 获取对应世界下指定的脚本创建优先级
-    /// </summary>
-    /// <param name="world"></param>
-    /// <returns></returns>
-    public static IBehaviourExecution GetBehaviourExecution(World world)
-    {
-        if (world.GetType().Name == "HallWorld")
-        {
-            CurWorldEnum = WorldEnum.HallWorld;
-            return new HallWorldScriptExecutionOrder();
-        }
-        if (world.GetType().Name == "BattleWorld")
-        {
-            CurWorldEnum = WorldEnum.BattleWorld;
-            return new HallWorldScriptExecutionOrder();
-        }
-        if (world.GetType().Name == "SKWorld")
-        {
-            CurWorldEnum = WorldEnum.SKWorld;
-            return new HallWorldScriptExecutionOrder();
-        }
-        return null;
-    }
+
+
     /// <summary>
     /// 渲染帧更新,尽量少使用Update接口提升性能。但必要时，可以在对应World的Update中调用指定脚本的Update
     /// </summary>
@@ -114,6 +91,7 @@ public class WorldManager
             mWorldList[i].OnUpdate();
         }
     }
+
     /// <summary>
     /// 初始化世界更新程序
     /// 
@@ -135,18 +113,16 @@ public class WorldManager
     {
         for (int i = 0; i < mWorldList.Count; i++)
         {
-            World world= mWorldList[i];
+            World world = mWorldList[i];
             if (world.GetType().Name == typeof(T).Name)
             {
                 world.DestroyWorld(typeof(T).Namespace, args);
                 mWorldList.Remove(mWorldList[i]);
-                //重设当前所处世界
-                GetBehaviourExecution(DefaultGameWorld);
+                CurWorldEnum = WorldEnum.Default;
                 //触发销毁后处理，可在对应接口中返回其他世界
                 world.OnDestroyPostProcess(args);
                 break;
             }
         }
     }
-    
 }
