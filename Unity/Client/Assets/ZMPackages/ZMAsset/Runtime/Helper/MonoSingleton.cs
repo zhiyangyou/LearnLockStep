@@ -8,14 +8,17 @@
 *
 * Date: 2023.4.13
 *
-* Modify: 
+* Modify:
 ------------------------------------------------------------------------------------------------------------------------------------------------*/
+
 using UnityEngine;
+
 namespace ZM.ZMAsset
 {
     public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
     {
         protected static T mInstance = null;
+
         public static T Instance
         {
             get
@@ -34,10 +37,11 @@ namespace ZM.ZMAsset
                 return mInstance;
             }
         }
+
         protected virtual void OnAwake()
         {
-
         }
+
         public virtual void Dispose()
         {
             Destroy(mInstance.gameObject);

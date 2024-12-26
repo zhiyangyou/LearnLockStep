@@ -6,6 +6,9 @@
  *注意:以下文件是自动生成的，再次生成不会覆盖原有的代码，会在原有的代码上进行新增，可放心使用
 ---------------------------------*/
 
+using GameScripts;
+using UnityEngine.Rendering;
+using ZMGC.Battle;
 using ZMGC.Hall;
 using ZMUIFrameWork;
 
@@ -59,9 +62,10 @@ public class CreateRuleWindow : WindowBase
 
     public void OnEnterBtnButtonClick()
     {
-        Main.Instance.LoadSceneAsync();
         UIModule.Instance.HideWindow<CreateRuleWindow>();
+        HallWorld.EnterBattleWorld();
     }
+
 
     public void OnRole1ButtonClick()
     {

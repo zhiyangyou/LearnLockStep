@@ -1,10 +1,14 @@
 ﻿using System;
+using GameScripts;
 using UnityEngine;
+using ZMGC.Battle;
 
 namespace ZMGC.Hall
 {
     public class HallWorld : World
     {
+        #region override
+
         private static Type[] CtrlTypes = new Type[]
         {
             typeof(UserLogicCtrl),
@@ -22,7 +26,7 @@ namespace ZMGC.Hall
 
         public override void OnCreate()
         {
-            base.OnCreate(); 
+            base.OnCreate();
 
             // pop first winow
             UIModule.Instance.PopUpWindow<CreateRuleWindow>();
@@ -60,5 +64,20 @@ namespace ZMGC.Hall
         }
 
         public override WorldEnum WorldEnum => WorldEnum.HallWorld;
+
+        #endregion
+
+        #region public
+
+        public static void EnterBattleWorld()
+        {
+            LoadSceneManager.Instance.LoadSceneAsync("Battle", () =>
+            {
+                // UIModule.Instance.DestroyAllWindow();
+                WorldManager.CreateWorld<BattleWorld>();
+            });
+        }
+
+        #endregion
     }
 }

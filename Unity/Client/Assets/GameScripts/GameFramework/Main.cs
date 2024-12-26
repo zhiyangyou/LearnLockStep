@@ -25,37 +25,5 @@ public class Main : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void LoadSceneAsync()
-    {
-        UIModule.Instance.PopUpWindow<LoadingWindow>();
 
-        StartCoroutine(AsyncLoadScene());
-    }
-
-    IEnumerator AsyncLoadScene()
-    {
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("Battle");
-        asyncOperation.allowSceneActivation = false;
-
-        float curProgress = 0f;
-        float maxProgress = 100f;
-        while (curProgress < 90)
-        {
-            curProgress = asyncOperation.progress * 100f;
-            UIEventControl.DispensEvent(UIEventEnum.SceneLoadingProgress, curProgress / 100f);
-            yield return null;
-        }
-
-        while (curProgress < maxProgress)
-        {
-            curProgress++;
-            UIEventControl.DispensEvent(UIEventEnum.SceneLoadingProgress, curProgress / 100f);
-            yield return null;
-        }
-        asyncOperation.allowSceneActivation = true;
-        yield return null;
-        UIEventControl.DispensEvent(UIEventEnum.SceneLoadComplete);
-
-        WorldManager.CreateWorld<BattleWorld>();
-    }
 }

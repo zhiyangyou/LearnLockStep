@@ -5,6 +5,5 @@ using UnityEngine;
 public enum UIEventEnum
 {
     LoginSuccess,
-    SceneLoadingProgress,
-    SceneLoadComplete
+    SceneLoadingProgress
 }
