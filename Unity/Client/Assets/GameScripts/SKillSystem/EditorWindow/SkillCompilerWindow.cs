@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
@@ -14,5 +15,29 @@ public class SkillCompilerWindow : OdinEditorWindow
     public static SkillCompilerWindow ShowWindow()
     {
         return GetWindowWithRect<SkillCompilerWindow>(new Rect(100, 100, 1000, 600));
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        EditorApplication.update += OnEditorUpdate;
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        EditorApplication.update -= OnEditorUpdate;
+    }
+
+    private void OnEditorUpdate()
+    {
+        try
+        {
+            CharacterConfig.OnUpdate(Focus);
+        }
+        catch (Exception e)
+        {
+            Debug.LogException(e);
+        }
     }
 }
