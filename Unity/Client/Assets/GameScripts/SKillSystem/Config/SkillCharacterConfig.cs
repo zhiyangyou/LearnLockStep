@@ -13,6 +13,8 @@ public class SkillCharacterConfig
 
     private const string kStr操作按钮组 = "操作按钮组";
 
+    private const string kStr动画数据 = "动画数据";
+
     #endregion
 
     #region 程序字段和属性
@@ -46,30 +48,30 @@ public class SkillCharacterConfig
     [LabelText("技能动画")]
     public AnimationClip skillAnim;
 
-    [BoxGroup("动画数据")]
+    [BoxGroup("kStr动画数据")]
     [ProgressBar(0f, 100f, r: 0, g: 255, b: 0, Height = 30)]
     [HideLabel]
     [OnValueChanged(nameof(OnValueChanged_AnimProgress), InvokeOnUndoRedo = true)]
     public short animProgress = 0;
 
-    [BoxGroup("动画数据")]
+    [BoxGroup("kStr动画数据")]
     [LabelText("是否循环动画")]
     public bool isLoopAnim;
 
-    [BoxGroup("动画数据")]
+    [BoxGroup("kStr动画数据")]
     [LabelText("动画循环次数")]
     [ShowIf(nameof(isLoopAnim))]
     public int animLoopCount;
 
-    [BoxGroup("动画数据")]
+    [BoxGroup("kStr动画数据")]
     [LabelText("逻辑帧数")]
     public int logicFrame = 0;
 
-    [BoxGroup("动画数据")]
+    [BoxGroup("kStr动画数据")]
     [LabelText("动画长度")]
     public float animLength = 0f;
 
-    [BoxGroup("动画数据")]
+    [BoxGroup("kStr动画数据")]
     [LabelText("技能推荐时长(毫秒ms)")]
     public float skillDurationMS = 0f;
 
@@ -109,6 +111,7 @@ public class SkillCharacterConfig
     [Button("暂停", ButtonSizes.Large)]
     public void Pause()
     {
+        _isPlayAnimation = false;
     }
 
 

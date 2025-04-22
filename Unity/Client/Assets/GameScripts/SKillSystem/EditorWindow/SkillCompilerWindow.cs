@@ -11,6 +11,9 @@ public class SkillCompilerWindow : OdinEditorWindow
     [TabGroup("Skill", "Character", SdfIconType.Person, TextColor = "green")]
     public SkillCharacterConfig CharacterConfig = new();
 
+    [TabGroup("SkillCompiler", "Skill", SdfIconType.Robot, TextColor = "lightmagenta")]
+    public SkillConfig skill = new();
+    
     [MenuItem("Window/Skill/技能编译器 &`")]
     public static SkillCompilerWindow ShowWindow()
     {
