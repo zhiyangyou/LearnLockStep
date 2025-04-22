@@ -103,6 +103,9 @@ public class SkillCharacterConfig
             _lastRntime = 0;
             _isPlayAnimation = true;
             _curPlayAnimation.Play();
+
+            var win = SkillCompilerWindow.GetWindow();
+            win?.StartPlaySkill();
         }
     }
 
@@ -190,6 +193,7 @@ public class SkillCharacterConfig
     private void PlaySkillEnd()
     {
         _isPlayAnimation = false;
+        SkillCompilerWindow.GetWindow()?.PlaySkillEnd();
     }
 
     private void OnValueChanged_AnimProgress(float value)

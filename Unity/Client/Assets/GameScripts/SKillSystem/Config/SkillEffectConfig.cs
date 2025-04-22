@@ -1,6 +1,5 @@
 ﻿using System;
 using Sirenix.OdinInspector;
-
 using UnityEngine;
 
 [Serializable]
@@ -23,13 +22,76 @@ public class SkillEffectConfig
     [LabelText("特效位置类型你")]
     public EffectPosType effectPosType; // 特效位置类型你
 
-    [ToggleGroup(nameof(isSetTransParent),"是否设置特效父节点")]
+    [ToggleGroup(nameof(isSetTransParent), "是否设置特效父节点")]
     public bool isSetTransParent = false; // 是否设置特效父节点
 
-    [ToggleGroup(nameof(isSetTransParent),"是否设置特效父节点")]
+    [ToggleGroup(nameof(isSetTransParent), "是否设置特效父节点")]
     [LabelText("父节点配置")]
     public TransParentType TransParentType; // 父节点配置
+
+#if UNITY_EDITOR
+
+    [NonSerialized]
+    private GameObject _goCloneSkillEffect = null;
+
+    [NonSerialized]
+    private int _curLogicFrame = 0;
+
+    /// <summary>
+    /// 开始播放技能
+    /// </summary>
+    public void StartPlaySkill()
+    {
+        DestoryEffect();
+        _curLogicFrame = 0;
+    }
+
+    /// <summary>
+    /// 播放技能结束
+    /// </summary>
+    public void PlaySkillEnd()
+    {
+    }
+
+    public void OnLogicFrameUpdate()
+    {
+        _curLogicFrame++;
+        if (_curLogicFrame == triggerFrame)
+        {
+            CreateEffect();
+        }
+        else if (_curLogicFrame == endFrame)
+        {
+            DestoryEffect();
+        }
+    }
+
+    /// <summary>
+    /// 创建特效
+    /// </summary>
+    public void CreateEffect()
+    {
+        if (skillEffect == null)
+        {
+            Debug.LogError($"{nameof(SkillEffectConfig)}.{nameof(skillEffect)} 是空,无法创建实例");
+            return;
+        }
+        _goCloneSkillEffect = GameObject.Instantiate(skillEffect);
+        _goCloneSkillEffect.transform.position = SkillCompilerWindow.GetCharacterPos();
+        //TODO Editor下播放animation和粒子
+    }
+
+    /// <summary>
+    /// 销毁特效
+    /// </summary>
+    public void DestoryEffect()
+    {
+        if (_goCloneSkillEffect == null) return;
+        GameObject.DestroyImmediate(_goCloneSkillEffect);
+    }
+#endif
 }
+
 
 public enum TransParentType
 {
