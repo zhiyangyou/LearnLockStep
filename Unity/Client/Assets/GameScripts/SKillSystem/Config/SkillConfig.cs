@@ -10,8 +10,7 @@ public class SkillConfig
     private const string kStrTitleGroup_技能渲染相关 = "技能渲染相关";
     private const string kStrSubTitleGroup_技能渲染相关 = "所有英雄渲染数据会在开始释放技能是触发";
 
-    [HideInInspector]
-    public bool showStockPileData = false; // 是否显示蓄力技能数据
+    [HideInInspector] public bool showStockPileData = false; // 是否显示蓄力技能数据
 
     // [HideInInspector]
     public bool showSkillGuide = false; // 是否显示引导技能
@@ -22,26 +21,19 @@ public class SkillConfig
      SuffixLabel("技能图标")]
     public Sprite skillIcon;
 
-    [LabelText("技能id")]
-    public int skillID;
+    [LabelText("技能id")] public int skillID;
 
-    [LabelText("名称")]
-    public string skillName;
+    [LabelText("名称")] public string skillName;
 
-    [LabelText("消耗蓝量")]
-    public int needMagicValue;
+    [LabelText("消耗蓝量")] public int needMagicValue;
 
-    [LabelText("前摇时间")]
-    public int skillShakeBeforeTimeMs;
+    [LabelText("前摇时间")] public int skillShakeBeforeTimeMs;
 
-    [LabelText("持续时间")]
-    public int skillAttackDurationMs;
+    [LabelText("持续时间")] public int skillAttackDurationMs;
 
-    [LabelText("后摇时间")]
-    public int skillShakeAfterTimeMs;
+    [LabelText("后摇时间")] public int skillShakeAfterTimeMs;
 
-    [LabelText("CD")]
-    public int skillCDTimeMS;
+    [LabelText("CD")] public int skillCDTimeMS;
 
     [LabelText("技能类型"), OnValueChanged(nameof(OnSkillTypeChanged))]
     public SkillType SkillType;
@@ -94,20 +86,15 @@ public class SkillConfig
 
 public enum SkillType
 {
-    [LabelText("瞬发技能")]
-    None,
+    [LabelText("瞬发技能")] None,
 
-    [LabelText("吟唱技能")]
-    Chat,
+    [LabelText("吟唱技能")] Chat,
 
-    [LabelText("弹道技能")]
-    Ballistic,
+    [LabelText("弹道技能")] Ballistic,
 
-    [LabelText("蓄力技能")]
-    StockPile,
+    [LabelText("蓄力技能")] StockPile,
 
-    [LabelText("位置引导技能")]
-    PosGuide,
+    [LabelText("位置引导技能")] PosGuide,
 }
 
 
@@ -117,15 +104,11 @@ public enum SkillType
 [Serializable]
 public class StockPIleStageData
 {
-    [LabelText("蓄力阶段id")]
-    public int stage;
+    [LabelText("蓄力阶段id")] public int stage;
 
-    [LabelText("当前蓄力阶段触发的技能id")]
-    public int skillId;
+    [LabelText("当前蓄力阶段触发的技能id")] public int skillId;
 
-    [LabelText("当前阶段触发开始时间")]
-    public int startTimeMs;
+    [LabelText("当前阶段触发开始时间")] public int startTimeMs;
 
-    [LabelText("当前阶段结束时间")]
-    public int endTimeMs;
+    [LabelText("当前阶段结束时间")] public int endTimeMs;
 }

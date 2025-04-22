@@ -1,0 +1,4 @@
+[*.cs]
+# Attributes 格式化设置
+csharp_space_around_attribute_square_brackets = false
+csharp_preserve_single_line_attributes = true

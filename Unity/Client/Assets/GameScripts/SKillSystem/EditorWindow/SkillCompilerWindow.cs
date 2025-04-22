@@ -13,7 +13,7 @@ public class SkillCompilerWindow : OdinEditorWindow
 
     [TabGroup("SkillCompiler", "Skill", SdfIconType.Robot, TextColor = "lightmagenta")]
     public SkillConfig skill = new();
-    
+
     [TabGroup("SkillCompiler", "Damage", SdfIconType.At, TextColor = "lightmagenta")]
     public List<SkillDamageConfig> damageList = new();
 
@@ -90,7 +90,7 @@ public class SkillCompilerWindow : OdinEditorWindow
         _accLogicRuntime = 0f;
         _nextLogicTime = 0f;
         _lastUpdateTime = 0f;
-        
+
         _isStartPlaySkill = true;
     }
 

@@ -30,16 +30,16 @@ public class SkillDamageConfig
     [OnValueChanged(nameof(OnDetectionModeChanged))]
     public DamageDetectionMode DetectionMode;
 
-    [LabelText("Box大小"), ShowIf(nameof(_showBox3D))]
+    [LabelText("Box大小"), ShowIf(nameof(_showBox3D)), OnValueChanged(nameof(OnValueChanged_BoxSize))]
     public Vector3 boxSize = Vector3.one;
 
-    [LabelText("Box偏移"), ShowIf(nameof(_showBox3D))]
+    [LabelText("Box偏移"), ShowIf(nameof(_showBox3D)), OnValueChanged(nameof(OnValueChanged_ColliderOffset))]
     public Vector3 boxOffset = Vector3.zero;
 
-    [LabelText("圆球偏移"), ShowIf(nameof(_showSphere3D))]
+    [LabelText("圆球偏移"), ShowIf(nameof(_showSphere3D)), OnValueChanged(nameof(OnValueChanged_ColliderOffset))]
     public Vector3 sphereOffset = new Vector3(0, 0.9f, 0f);
 
-    [LabelText("圆球检测半径"), ShowIf(nameof(_showSphere3D))]
+    [LabelText("圆球检测半径"), ShowIf(nameof(_showSphere3D)), OnValueChanged(nameof(OnValueChanged_Radius))]
     public float radius = 1f;
 
     [LabelText("圆球检测半径高度"), ShowIf(nameof(_showSphere3D))]
@@ -68,6 +68,41 @@ public class SkillDamageConfig
         _showBox3D = mode == DamageDetectionMode.Box3D;
         _showSphere3D = mode == DamageDetectionMode.Sphere3D;
         CreateCollider();
+    }
+
+    private void OnValueChanged_Radius(float newRadius)
+    {
+        if (_fixIntSphereCollider != null)
+            _fixIntSphereCollider.SetBoxData(newRadius, GetCollierOffsetPos(), ColliderPosType == ColliderPosType.FollowPos);
+        else
+            Debug.LogError($"{nameof(_fixIntSphereCollider)} is null");
+    }
+
+
+    private void OnValueChanged_ColliderOffset(Vector3 newOffset)
+    {
+        if (DetectionMode == DamageDetectionMode.Box3D)
+        {
+            if (_fixIntBoxCollider != null)
+                _fixIntBoxCollider.SetBoxData(GetCollierOffsetPos(), boxSize, ColliderPosType == ColliderPosType.FollowPos);
+            else
+                Debug.LogError($"{nameof(_fixIntBoxCollider)} is null");
+        }
+        else if (DetectionMode == DamageDetectionMode.Sphere3D)
+        {
+            if (_fixIntSphereCollider != null)
+                _fixIntSphereCollider.SetBoxData(radius, GetCollierOffsetPos(), ColliderPosType == ColliderPosType.FollowPos);
+            else
+                Debug.LogError($"{nameof(_fixIntSphereCollider)} is null");
+        }
+    }
+
+    private void OnValueChanged_BoxSize(Vector3 newSize)
+    {
+        if (_fixIntBoxCollider != null)
+            _fixIntBoxCollider.SetBoxData(GetCollierOffsetPos(), newSize, ColliderPosType == ColliderPosType.FollowPos);
+        else
+            Debug.LogError($"{nameof(_fixIntBoxCollider)} is null");
     }
 
     /// <summary>
