@@ -115,6 +115,8 @@ public class SkillCharacterConfig
     public void Pause()
     {
         _isPlayAnimation = false;
+        var win = SkillCompilerWindow.GetWindow();
+        win?.SkillPause();
     }
 
 

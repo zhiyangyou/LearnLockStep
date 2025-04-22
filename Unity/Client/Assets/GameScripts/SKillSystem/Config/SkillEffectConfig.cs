@@ -46,11 +46,17 @@ public class SkillEffectConfig
         _curLogicFrame = 0;
     }
 
+    public void SkillPause()
+    {
+        DestoryEffect();
+    }
+
     /// <summary>
     /// 播放技能结束
     /// </summary>
     public void PlaySkillEnd()
     {
+        DestoryEffect();
     }
 
     public void OnLogicFrameUpdate()

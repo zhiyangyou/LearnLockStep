@@ -84,6 +84,19 @@ public class SkillCompilerWindow : OdinEditorWindow
         {
             effectConfig.StartPlaySkill();
         }
+        _accLogicRuntime = 0f;
+        _nextLogicTime = 0f;
+        _lastUpdateTime = 0f;
+        
+        _isStartPlaySkill = true;
+    }
+
+    public void SkillPause()
+    {
+        foreach (var effectConfig in effectList)
+        {
+            effectConfig.SkillPause();
+        }
     }
 
     public void PlaySkillEnd()
@@ -92,6 +105,7 @@ public class SkillCompilerWindow : OdinEditorWindow
         {
             effectConfig.PlaySkillEnd();
         }
+        _isStartPlaySkill = false;
     }
 
     private void OnEditorUpdate()
