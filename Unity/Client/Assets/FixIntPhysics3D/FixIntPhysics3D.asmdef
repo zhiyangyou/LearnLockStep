@@ -1,9 +1,7 @@
 {
-    "name": "Game",
+    "name": "FixIntPhysics3D",
     "rootNamespace": "",
     "references": [
-        "GUID:36b5074fd59f24a46982aecd63e6d900",
-        "GUID:9569b8c02b67efd4b9bb1230e91a1b6a",
         "GUID:73ba640071962d74ebf646e8da815452"
     ],
     "includePlatforms": [],

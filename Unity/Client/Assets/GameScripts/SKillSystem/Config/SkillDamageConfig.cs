@@ -1,4 +1,6 @@
 ﻿using System;
+using FixIntPhysics;
+using FixMath;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -40,7 +42,7 @@ public class SkillDamageConfig
     [LabelText("圆球检测半径"), ShowIf(nameof(_showSphere3D))]
     public float radius = 1f;
 
-    [LabelText("圆球检测半径高度"),ShowIf(nameof(_showSphere3D))]
+    [LabelText("圆球检测半径高度"), ShowIf(nameof(_showSphere3D))]
     public float radiusHeight = 0f;
 
     [LabelText("碰撞检测规则")]
@@ -58,10 +60,63 @@ public class SkillDamageConfig
     private bool _showBox3D;
     private bool _showSphere3D;
 
+    private FixIntBoxCollider _fixIntBoxCollider;
+    private FixIntSphereCollider _fixIntSphereCollider;
+
     private void OnDetectionModeChanged(DamageDetectionMode mode)
     {
         _showBox3D = mode == DamageDetectionMode.Box3D;
         _showSphere3D = mode == DamageDetectionMode.Sphere3D;
+        CreateCollider();
+    }
+
+    /// <summary>
+    /// 获取碰撞体偏移值
+    /// </summary>
+    /// <returns></returns>
+    public Vector3 GetCollierOffsetPos()
+    {
+        var characterPos = SkillCompilerWindow.GetCharacterPos();
+        if (DetectionMode == DamageDetectionMode.Box3D)
+        {
+            return characterPos + boxOffset;
+        }
+        else if (DetectionMode == DamageDetectionMode.Sphere3D)
+        {
+            return characterPos + sphereOffset;
+        }
+        return Vector3.zero;
+    }
+
+    public void CreateCollider()
+    {
+        DestoryCollider();
+        if (DetectionMode == DamageDetectionMode.Box3D)
+        {
+            var offsetPos = GetCollierOffsetPos();
+            _fixIntBoxCollider = new FixIntBoxCollider(boxSize, offsetPos);
+            _fixIntBoxCollider.SetBoxData(offsetPos, boxSize, ColliderPosType == ColliderPosType.FollowPos);
+        }
+        else if (DetectionMode == DamageDetectionMode.Sphere3D)
+        {
+            var offsetPos = GetCollierOffsetPos();
+            _fixIntSphereCollider = new FixIntSphereCollider(new FixInt(this.radius), offsetPos);
+            _fixIntSphereCollider.SetBoxData(radius, offsetPos, ColliderPosType == ColliderPosType.FollowPos);
+        }
+    }
+
+    public void DestoryCollider()
+    {
+        if (_fixIntBoxCollider != null)
+        {
+            _fixIntBoxCollider.OnRelease();
+            _fixIntBoxCollider = null;
+        }
+        if (_fixIntSphereCollider != null)
+        {
+            _fixIntSphereCollider.OnRelease();
+            _fixIntSphereCollider = null;
+        }
     }
 }
 
