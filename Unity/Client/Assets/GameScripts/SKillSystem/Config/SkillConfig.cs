@@ -1,4 +1,5 @@
-﻿using Palmmedia.ReportGenerator.Core.Reporting.Builders;
+﻿using System;
+using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -8,6 +9,12 @@ public class SkillConfig
 {
     private const string kStrTitleGroup_技能渲染相关 = "技能渲染相关";
     private const string kStrSubTitleGroup_技能渲染相关 = "所有英雄渲染数据会在开始释放技能是触发";
+
+    [HideInInspector]
+    public bool showStockPileData = false; // 是否显示蓄力技能数据
+
+    // [HideInInspector]
+    public bool showSkillGuide = false; // 是否显示引导技能
 
     [LabelText("技能图标"),
      LabelWidth(0.1f),
@@ -36,8 +43,18 @@ public class SkillConfig
     [LabelText("CD")]
     public int skillCDTimeMS;
 
-    [LabelText("技能类型")]
+    [LabelText("技能类型"), OnValueChanged(nameof(OnSkillTypeChanged))]
     public SkillType SkillType;
+
+
+    [LabelText("蓄力阶段配置数据(若第一阶段触发时间不是0,则空挡时间为动画表现时间)"), ShowIf(nameof(showStockPileData))]
+    public List<StockPIleStageData> stockPIleStageDatas;
+
+    [LabelText("技能引导特效"), ShowIf(nameof(showSkillGuide))]
+    public GameObject skillGuideObj;
+
+    [LabelText("技能引导范围"), ShowIf(nameof(showSkillGuide))]
+    public float skillGuideRange;
 
     [LabelText("组合技能id(衔接下一个的技能Id)"), Tooltip("比如技能A:由B C 组成")]
     public int CombinationSkillId;
@@ -55,13 +72,26 @@ public class SkillConfig
     [LabelText("是否显示技能立绘"), TitleGroup(kStrTitleGroup_技能渲染相关, kStrSubTitleGroup_技能渲染相关)]
     public bool showSkillPortrait;
 
-    [LabelText("技能立绘"), TitleGroup(kStrTitleGroup_技能渲染相关, kStrSubTitleGroup_技能渲染相关)]
+    [LabelText("技能立绘"),
+     TitleGroup(kStrTitleGroup_技能渲染相关, kStrSubTitleGroup_技能渲染相关),
+     ShowIf(nameof(showSkillPortrait))
+    ]
     public GameObject skillPortraitObj;
 
     [LabelText("技能描述"), TitleGroup(kStrTitleGroup_技能渲染相关, kStrSubTitleGroup_技能渲染相关)]
     public string skillDes;
+
+
+    /// <summary>
+    /// 技能类型改变回调
+    /// </summary>
+    public void OnSkillTypeChanged(SkillType skillType)
+    {
+        showStockPileData = skillType == SkillType.StockPile;
+        showSkillGuide = skillType == SkillType.PosGuide;
+    }
 }
- 
+
 public enum SkillType
 {
     [LabelText("瞬发技能")]
@@ -78,4 +108,24 @@ public enum SkillType
 
     [LabelText("位置引导技能")]
     PosGuide,
+}
+
+
+/// <summary>
+/// 蓄力阶段数据
+/// </summary>
+[Serializable]
+public class StockPIleStageData
+{
+    [LabelText("蓄力阶段id")]
+    public int stage;
+
+    [LabelText("当前蓄力阶段触发的技能id")]
+    public int skillId;
+
+    [LabelText("当前阶段触发开始时间")]
+    public int startTimeMs;
+
+    [LabelText("当前阶段结束时间")]
+    public int endTimeMs;
 }
