@@ -13,7 +13,10 @@ public class SkillCompilerWindow : OdinEditorWindow
 
     [TabGroup("SkillCompiler", "Skill", SdfIconType.Robot, TextColor = "lightmagenta")]
     public SkillConfig skill = new();
-    
+
+    [TabGroup("SkillCompiler", "Effect", SdfIconType.OpticalAudio, TextColor = "blue")]
+    public List<SkillEffectConfig> effectList = new();
+
     [MenuItem("Window/Skill/技能编译器 &`")]
     public static SkillCompilerWindow ShowWindow()
     {
