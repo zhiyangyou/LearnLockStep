@@ -30,7 +30,7 @@ public class SkillCharacterConfig
     /// <summary>
     /// 上次运行的时间
     /// </summary>
-    private double _lastRntime = 0;
+    private double _lastRuntime = 0;
 
     private Animation _curPlayAnimation = null;
 
@@ -100,7 +100,7 @@ public class SkillCharacterConfig
             skillDurationMS = (int)(animLength * 1000f);
 
             // 开始播放角色动画
-            _lastRntime = 0;
+            _lastRuntime = 0;
             _isPlayAnimation = true;
             _curPlayAnimation.Play();
 
@@ -143,12 +143,12 @@ public class SkillCharacterConfig
     {
         if (_isPlayAnimation)
         {
-            if (_lastRntime == 0)
+            if (_lastRuntime == 0)
             {
-                _lastRntime = EditorApplication.timeSinceStartup;
+                _lastRuntime = EditorApplication.timeSinceStartup;
             }
             // 当前运行时间
-            double curRuntime = EditorApplication.timeSinceStartup - _lastRntime;
+            double curRuntime = EditorApplication.timeSinceStartup - _lastRuntime;
 
             // 动画播放进度
             float curAniNormalizationValue = (float)curRuntime / animLength;

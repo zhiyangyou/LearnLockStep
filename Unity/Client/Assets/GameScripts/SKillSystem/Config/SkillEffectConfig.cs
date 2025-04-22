@@ -37,6 +37,9 @@ public class SkillEffectConfig
     [NonSerialized]
     private int _curLogicFrame = 0;
 
+    private AnimationAgent _animationAgent;
+    private ParticleAgent _particleAgent;
+
     /// <summary>
     /// 开始播放技能
     /// </summary>
@@ -84,7 +87,10 @@ public class SkillEffectConfig
         }
         _goCloneSkillEffect = GameObject.Instantiate(skillEffect);
         _goCloneSkillEffect.transform.position = SkillCompilerWindow.GetCharacterPos();
-        //TODO Editor下播放animation和粒子
+        _animationAgent = new();
+        _animationAgent.Init(_goCloneSkillEffect.transform);
+        _particleAgent = new();
+        _particleAgent.Init(_goCloneSkillEffect.transform);
     }
 
     /// <summary>
@@ -94,6 +100,16 @@ public class SkillEffectConfig
     {
         if (_goCloneSkillEffect == null) return;
         GameObject.DestroyImmediate(_goCloneSkillEffect);
+        if (_animationAgent != null)
+        {
+            _animationAgent.OnDestory();
+            _animationAgent = null;
+        }
+        if (_particleAgent != null)
+        {
+            _particleAgent.OnDestory();
+            _particleAgent = null;
+        }
     }
 #endif
 }
