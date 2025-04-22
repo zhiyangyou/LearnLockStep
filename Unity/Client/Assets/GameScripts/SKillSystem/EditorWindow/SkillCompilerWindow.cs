@@ -13,6 +13,9 @@ public class SkillCompilerWindow : OdinEditorWindow
 
     [TabGroup("SkillCompiler", "Skill", SdfIconType.Robot, TextColor = "lightmagenta")]
     public SkillConfig skill = new();
+    
+    [TabGroup("SkillCompiler", "Damage", SdfIconType.At, TextColor = "lightmagenta")]
+    public List<SkillDamageConfig> damageList = new();
 
     [TabGroup("SkillCompiler", "Effect", SdfIconType.OpticalAudio, TextColor = "blue")]
     public List<SkillEffectConfig> effectList = new();
