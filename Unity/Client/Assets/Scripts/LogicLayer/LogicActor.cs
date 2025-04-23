@@ -14,6 +14,9 @@ public partial class LogicActor : LogicObject
     public override void OnLogicFrameUpdate()
     {
         base.OnLogicFrameUpdate();
+        OnLogicFrameUpdate_Move();
+        OnLogicFrameUpdate_Skill();
+        OnLogicFrameUpdate_Gravity();
     }
 
     public override void OnDestory()
