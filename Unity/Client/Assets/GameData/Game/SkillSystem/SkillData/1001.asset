@@ -27,11 +27,11 @@ MonoBehaviour:
     skillIcon: {fileID: 0}
     skillID: 1001
     skillName: 
-    needMagicValue: 0
-    skillShakeBeforeTimeMs: 0
-    skillAttackDurationMs: 0
-    skillShakeAfterTimeMs: 0
-    skillCDTimeMS: 0
+    needMagicValue: 1
+    skillShakeBeforeTimeMs: 2
+    skillAttackDurationMs: 3
+    skillShakeAfterTimeMs: 4
+    skillCDTimeMS: 5
     SkillType: 1
     stockPIleStageDatas:
     - stage: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
     skillPortraitObj: {fileID: 0}
     skillDes: 
   damageCfgList:
-  - triggerFrame: 0
+  - triggerFrame: 1
     endFrame: 3
     triggerIntervalMs: 0
     isFollowEffect: 0

@@ -36,6 +36,14 @@ public class SkillCompilerWindow : OdinEditorWindow
         );
     }
 
+    public void LoadSkillData(SkillDataSO so)
+    {
+        this.CharacterConfig = so.character;
+        this.skill = so.SkillCfg;
+        this.effectList = so.effectCfgList;
+        this.damageList = so.damageCfgList;
+    }
+
     public static SkillCompilerWindow GetWindow()
     {
         return GetWindow<SkillCompilerWindow>();

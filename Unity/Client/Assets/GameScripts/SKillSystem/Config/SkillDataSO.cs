@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
+using Sirenix.OdinInspector;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 [CreateAssetMenu(fileName = "SkillConfig", menuName = "SkillConfig", order = 0)]
 public class SkillDataSO : ScriptableObject
@@ -28,4 +32,15 @@ public class SkillDataSO : ScriptableObject
         AssetDatabase.DeleteAsset(assetPath);
         AssetDatabase.CreateAsset(so, assetPath);
     }
+
+#if UNITY_EDITOR
+
+
+    [Button("配置技能窗口", ButtonSizes.Large), GUIColor("green")]
+    public void ShowSkillWindowButtonClick()
+    {
+        var window = SkillCompilerWindow.ShowWindow();
+        window.LoadSkillData(this);
+    }
+#endif
 }
