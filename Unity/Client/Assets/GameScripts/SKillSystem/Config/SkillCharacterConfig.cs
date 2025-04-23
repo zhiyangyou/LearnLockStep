@@ -105,7 +105,7 @@ public class SkillCharacterConfig
             _curPlayAnimation.Play();
 
             var win = SkillCompilerWindow.GetWindow();
-            win?.StartPlaySkill();
+            win?.PlaySkillStart();
         }
     }
 

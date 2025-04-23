@@ -43,7 +43,7 @@ public class SkillEffectConfig
     /// <summary>
     /// 开始播放技能
     /// </summary>
-    public void StartPlaySkill()
+    public void PlaySkillStart()
     {
         DestoryEffect();
         _curLogicFrame = 0;

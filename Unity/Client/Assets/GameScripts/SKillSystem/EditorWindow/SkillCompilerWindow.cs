@@ -37,8 +37,7 @@ public class SkillCompilerWindow : OdinEditorWindow
     /// <summary>
     /// 
     /// </summary>
-    [NonSerialized]
-    private bool _isStartPlaySkill = false;
+    [NonSerialized] private bool _isStartPlaySkill = false;
 
     /// 逻辑帧累计运行的时间
     private float _accLogicRuntime = 0f;
@@ -72,20 +71,32 @@ public class SkillCompilerWindow : OdinEditorWindow
     protected override void OnEnable()
     {
         base.OnEnable();
+        foreach (var damageConfig in damageList)
+        {
+            damageConfig.OnInit();
+        }
         EditorApplication.update += OnEditorUpdate;
     }
 
     protected override void OnDisable()
     {
         base.OnDisable();
+        foreach (var damageConfig in damageList)
+        {
+            damageConfig.OnRelease();
+        }
         EditorApplication.update -= OnEditorUpdate;
     }
 
-    public void StartPlaySkill()
+    public void PlaySkillStart()
     {
         foreach (var effectConfig in effectList)
         {
-            effectConfig.StartPlaySkill();
+            effectConfig.PlaySkillStart();
+        }
+        foreach (var damageConfig in damageList)
+        {
+            damageConfig.PlaySkillStart();
         }
         _accLogicRuntime = 0f;
         _nextLogicTime = 0f;
@@ -100,6 +111,10 @@ public class SkillCompilerWindow : OdinEditorWindow
         {
             effectConfig.SkillPause();
         }
+        foreach (var damageConfig in damageList)
+        {
+            damageConfig.PlaySkillEnd();
+        }
     }
 
     public void PlaySkillEnd()
@@ -107,6 +122,10 @@ public class SkillCompilerWindow : OdinEditorWindow
         foreach (var effectConfig in effectList)
         {
             effectConfig.PlaySkillEnd();
+        }
+        foreach (var damageConfig in damageList)
+        {
+            damageConfig.PlaySkillEnd();
         }
         _isStartPlaySkill = false;
     }
@@ -152,6 +171,10 @@ public class SkillCompilerWindow : OdinEditorWindow
         foreach (var effectConfig in effectList)
         {
             effectConfig.OnLogicFrameUpdate();
+        }
+        foreach (var damageConfig in damageList)
+        {
+            damageConfig.OnLogicFrameUpdate();
         }
     }
 }
