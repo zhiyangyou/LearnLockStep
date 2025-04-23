@@ -1,4 +1,5 @@
 ﻿using System;
+using ZMGC.Battle;
 using UnityEngine;
 using ZM.ZMAsset;
 
@@ -6,6 +7,9 @@ namespace ZMGC.Battle
 {
     public class BattleWorld : World
     {
+        public HeroLogicCtrl HeroLogicCtrl { get; private set; }
+        public MonsterLogicCtrl MonsterLogicCtrl { get; private set; }
+
         private static Type[] CtrlTypes = new Type[]
         {
         };
@@ -38,8 +42,10 @@ namespace ZMGC.Battle
         public override void OnCreate()
         {
             base.OnCreate();
-            Debug.LogError("BattleWorld.OnCreate");
-            ZMAsset.Instantiate($"{AssetsPathConfig.Game_Hero_Prefabs}/1000.prefab", null);
+            HeroLogicCtrl = BattleWorld.GetExitsLogicCtrl<HeroLogicCtrl>();
+            MonsterLogicCtrl = BattleWorld.GetExitsLogicCtrl<MonsterLogicCtrl>();
+            HeroLogicCtrl.InitHero();
+            MonsterLogicCtrl.InitMonster();
         }
 
         public override void OnUpdate()
