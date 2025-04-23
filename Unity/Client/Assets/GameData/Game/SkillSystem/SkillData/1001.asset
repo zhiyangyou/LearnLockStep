@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce2f7b12dee4a96ad4c38bc00dd2983, type: 3}
+  m_Name: 1001
+  m_EditorClassIdentifier: 
+  character:
+    sKillCharacterPrefab: {fileID: 7439582587569004764, guid: 961b52318dc24c242b7f2ddc2f1a2a37, type: 3}
+    skillAnim: {fileID: 7400000, guid: 4a3916918c4bfd942af61149ea64ab91, type: 2}
+    animProgress: 100
+    isLoopAnim: 0
+    animLoopCount: 0
+    logicFrame: 8
+    animLength: 0.53333336
+    skillDurationMS: 533
+  SkillCfg:
+    showStockPileData: 0
+    showSkillGuide: 0
+    skillIcon: {fileID: 0}
+    skillID: 1001
+    skillName: 
+    needMagicValue: 0
+    skillShakeBeforeTimeMs: 0
+    skillAttackDurationMs: 0
+    skillShakeAfterTimeMs: 0
+    skillCDTimeMS: 0
+    SkillType: 1
+    stockPIleStageDatas:
+    - stage: 0
+      skillId: 0
+      startTimeMs: 0
+      endTimeMs: 0
+    skillGuideObj: {fileID: 0}
+    skillGuideRange: 0
+    CombinationSkillId: 0
+    skillHitEffect: {fileID: 0}
+    hitEffectSurvialTimeMs: 0
+    SkillHitAudio: {fileID: 0}
+    showSkillPortrait: 0
+    skillPortraitObj: {fileID: 0}
+    skillDes: 
+  damageCfgList:
+  - triggerFrame: 0
+    endFrame: 3
+    triggerIntervalMs: 0
+    isFollowEffect: 0
+    damageType: 0
+    damageRate: 0
+    DetectionMode: 1
+    boxSize: {x: 1, y: 1.85, z: 1}
+    boxOffset: {x: 1.51, y: 1.43, z: -1.42}
+    sphereOffset: {x: 0, y: 0, z: 0}
+    radius: 2.01
+    radiusHeight: 0
+    ColliderPosType: 0
+    TargetType: 0
+    addBuffs: 
+    triggerSkillId: 0
+  effectCfgList:
+  - skillEffect: {fileID: 1845321840847504, guid: 44a74021eecfb9146a56c08aaf437597, type: 3}
+    triggerFrame: 1
+    endFrame: 8
+    effectOffsetPos: {x: 0, y: 0, z: 0}
+    effectPosType: 0
+    isSetTransParent: 0
+    TransParentType: 0

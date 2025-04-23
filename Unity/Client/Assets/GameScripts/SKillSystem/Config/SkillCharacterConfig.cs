@@ -125,6 +125,7 @@ public class SkillCharacterConfig
     [Button("保存", ButtonSizes.Large)]
     public void SafeAssets()
     {
+        SkillCompilerWindow.GetWindow().SaveSkillData();
     }
 
     [GUIColor(0.7f, 0.7f, 0.7f)]

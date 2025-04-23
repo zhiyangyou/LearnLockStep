@@ -26,6 +26,16 @@ public class SkillCompilerWindow : OdinEditorWindow
         return GetWindowWithRect<SkillCompilerWindow>(new Rect(100, 100, 1000, 600));
     }
 
+    public void SaveSkillData()
+    {
+        SkillDataSO.SaveSkillData(
+            CharacterConfig,
+            skill,
+            damageList,
+            effectList
+        );
+    }
+
     public static SkillCompilerWindow GetWindow()
     {
         return GetWindow<SkillCompilerWindow>();
