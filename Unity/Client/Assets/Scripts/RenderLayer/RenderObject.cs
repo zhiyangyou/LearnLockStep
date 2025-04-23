@@ -1,3 +1,59 @@
-﻿public class RenderObject
+﻿using System;
+using UnityEngine;
+
+/// <summary>
+/// 渲染对象基础:位置, 旋转...
+/// </summary>
+public class RenderObject : MonoBehaviour
 {
+    #region 属性和字段
+
+    public LogicObject LogicObject { get; private set; }
+
+    /// <summary>
+    /// 位置插值速度?
+    /// </summary>
+    protected float _smoothPosSpeed;
+
+    #endregion
+
+    #region life-cycle
+
+    protected virtual void Update()
+    {
+        UpdatePosition();
+        UpdateDir();
+    }
+
+    #endregion
+
+    public void SetLogicObject(LogicObject logicObject)
+    {
+        this.LogicObject = logicObject;
+
+        // 初始化位置
+        transform.position = logicObject.LogicPos.ToVector3();
+    }
+
+    #region private
+
+    /// <summary>
+    /// 通用逻辑:更新方向
+    /// </summary>
+    private void UpdateDir()
+    {
+        transform.rotation = Quaternion.Euler(LogicObject.LogicDir.ToVector3());
+    }
+
+    /// <summary>
+    /// 通用逻辑:更新位置
+    /// </summary>
+    private void UpdatePosition()
+    {
+        // 对逻辑位置做插值动画, 使其渲染对象移动看起来比较流畅 
+        // TODO 不理解... 2025年4月23日17:07:36
+        transform.position = Vector3.Lerp(transform.position, LogicObject.LogicPos.ToVector3(), Time.deltaTime * _smoothPosSpeed);
+    }
+
+    #endregion
 }

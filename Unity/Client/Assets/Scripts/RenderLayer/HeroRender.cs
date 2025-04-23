@@ -1,3 +1,21 @@
-﻿public class HeroRender
+﻿using System;
+
+public class HeroRender : RenderObject
 {
+    #region life-cycle
+
+    private void Start()
+    {
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+    }
+
+    private void OnDestroy()
+    {
+    }
+
+    #endregion
 }
