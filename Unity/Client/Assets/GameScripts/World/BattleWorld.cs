@@ -46,6 +46,7 @@ namespace ZMGC.Battle
             MonsterLogicCtrl = BattleWorld.GetExitsLogicCtrl<MonsterLogicCtrl>();
             HeroLogicCtrl.InitHero();
             MonsterLogicCtrl.InitMonster();
+            UIModule.PopUpWindow<BattleWindow>();
         }
 
         public override void OnUpdate()

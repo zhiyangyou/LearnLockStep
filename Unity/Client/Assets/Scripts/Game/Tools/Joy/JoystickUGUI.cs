@@ -139,7 +139,7 @@ public class JoystickUGUI : MonoBehaviour
 
         UIEventListener uiEventListener = transform.GetComponentInChildren<UIEventListener>();
   
-        Debug.Log("绑定委托");
+        // Debug.Log("绑定委托");
         uiEventListener.OnDrag = onDrag;
         uiEventListener.OnPress = onPress;
         uiEventListener.OnUp = OnUP;
