@@ -7,6 +7,7 @@
 ---------------------------------*/
 
 using GameScripts;
+using UnityEngine;
 using UnityEngine.Rendering;
 using ZMGC.Battle;
 using ZMGC.Hall;
@@ -62,8 +63,8 @@ public class CreateRuleWindow : WindowBase
 
     public void OnEnterBtnButtonClick()
     {
-        UIModule.Instance.HideWindow<CreateRuleWindow>();
         HallWorld.EnterBattleWorld();
+        UIModule.Instance.HideWindow<CreateRuleWindow>();
     }
 
 

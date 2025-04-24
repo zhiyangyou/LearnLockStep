@@ -22,14 +22,20 @@ public class LoadingWindow : WindowBase
         uiCompt.InitComponent(this);
         base.OnAwake();
         mDisableAnim = true;
-        UIEventControl.AddEvent(UIEventEnum.SceneLoadingProgress, OnEvent_OnSceneLoadingProgress); 
+        UIEventControl.AddEvent(UIEventEnum.SceneLoadingProgress, OnEvent_OnSceneLoadingProgress);
+        UIEventControl.AddEvent(UIEventEnum.SceneLoadingLoadComplete, OnEvent_OnSceneLoadingComplete);
     }
 
-    
+
+    private void OnEvent_OnSceneLoadingComplete(object data)
+    {
+        UIModule.Instance.HideWindow<LoadingWindow>();
+    }
 
     private void OnEvent_OnSceneLoadingProgress(object data)
     {
-        uiCompt.SliderImage.fillAmount = (float)data; 
+        var progress = (float)data;
+        uiCompt.SliderImage.fillAmount = progress;
     }
 
     //物体显示时执行
@@ -48,7 +54,8 @@ public class LoadingWindow : WindowBase
     public override void OnDestroy()
     {
         base.OnDestroy();
-        UIEventControl.RemoveEvent(UIEventEnum.SceneLoadingProgress, OnEvent_OnSceneLoadingProgress); 
+        UIEventControl.RemoveEvent(UIEventEnum.SceneLoadingProgress, OnEvent_OnSceneLoadingProgress);
+        UIEventControl.RemoveEvent(UIEventEnum.SceneLoadingLoadComplete, OnEvent_OnSceneLoadingComplete);
     }
 
     #endregion

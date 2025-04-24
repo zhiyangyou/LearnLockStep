@@ -40,6 +40,7 @@ namespace GameScripts
             asyncOperation.allowSceneActivation = true;
             yield return null; // asyncOperation.allowSceneActivation =true,先激活当前场景, 然后等待一阵,再调用complete回调方可. 不然当前当前激活的场景依旧是上一个
             onLoadComplete?.Invoke();
+            UIEventControl.DispensEvent(UIEventEnum.SceneLoadingLoadComplete);
         }
     }
 }
