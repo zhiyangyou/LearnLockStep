@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using FixIntPhysics;
+using FixMath;
 using UnityEngine;
 using ZM.ZMAsset;
 
@@ -20,11 +21,13 @@ namespace ZMGC.Battle
         private List<Vector3> _listMonsterPos = new List<Vector3>()
         {
             Vector3.zero,
+            new Vector3(-2f, 0f, 0f)
         };
 
         private List<int> _listMonsterIDs = new List<int>()
         {
             20001,
+            20005,
         };
 
         #endregion
@@ -49,19 +52,19 @@ namespace ZMGC.Battle
             var index = 0;
             foreach (var pos in _listMonsterPos)
             {
+                FixIntVector3 logicPos = new FixIntVector3(pos);
                 var monsterID = _listMonsterIDs[index];
                 var goMonster = ZMAsset.Instantiate($"{AssetsPathConfig.Game_Monster_Prefabs}/{monsterID}.prefab", null);
                 // 初始化
-                goMonster.transform.position = pos;
-                //
                 BoxColliderGizmo boxInfo = goMonster.GetComponent<BoxColliderGizmo>();
                 boxInfo.enabled = false;
                 FixIntBoxCollider fixIntBoxCollider = new FixIntBoxCollider(boxInfo.mSize, boxInfo.mConter);
                 fixIntBoxCollider.SetBoxData(boxInfo.mConter, boxInfo.mSize);
-                fixIntBoxCollider.UpdateColliderInfo(goMonster.transform.position, boxInfo.mSize);
+                fixIntBoxCollider.UpdateColliderInfo(pos, boxInfo.mSize);
                 //
                 MonsterRender monsterRender = goMonster.GetComponent<MonsterRender>();
-                MonsterLogic monsterLogic = new MonsterLogic(monsterID, monsterRender, fixIntBoxCollider);
+                MonsterLogic monsterLogic = new MonsterLogic(monsterID, monsterRender, fixIntBoxCollider,logicPos);
+                monsterRender.SetLogicObject(monsterLogic);
                 monsterLogic.OnCreate();
                 monsterRender.OnCreate();
 

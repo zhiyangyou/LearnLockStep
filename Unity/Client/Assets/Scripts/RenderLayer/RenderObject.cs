@@ -3,9 +3,11 @@ using UnityEngine;
 
 /// <summary>
 /// 渲染对象基础:位置, 旋转...
+/// RenderObject会持有LogicObject ,
+/// 同样的: LogicObject也会持有RenderObject ,二者会互相持有
 /// </summary>
 public class RenderObject : MonoBehaviour
-{
+{   
     #region 属性和字段
 
     public LogicObject LogicObject { get; private set; }

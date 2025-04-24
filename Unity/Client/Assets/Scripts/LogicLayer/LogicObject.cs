@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using FixIntPhysics;
-using UnityEngine;
 using FixMath;
 
 /// <summary>
+/// RenderObject会持有LogicObject ,
+/// 同样的: LogicObject也会持有RenderObject ,二者会互相持有
 /// 同时具有的基础属性
 /// </summary>
 public abstract class LogicObject
@@ -19,37 +18,37 @@ public abstract class LogicObject
     public FixIntVector3 LogicPos
     {
         get { return logicPos; }
-        private set { logicPos = value; }
+        protected set { logicPos = value; }
     }
 
     public FixIntVector3 LogicDir
     {
         get { return logicDir; }
-        private set { logicDir = value; }
+        protected set { logicDir = value; }
     }
 
     public FixIntVector3 LogiclogicAngle
     {
         get { return logiclogicAngle; }
-        private set { logiclogicAngle = value; }
+        protected set { logiclogicAngle = value; }
     }
 
     public FixInt LogicMoveSpeed
     {
         get { return logicMoveSpeed; }
-        private set { logicMoveSpeed = value; }
+        protected set { logicMoveSpeed = value; }
     }
 
     public FixInt LogicAxis
     {
         get { return logicAxis; }
-        private set { logicAxis = value; }
+        protected set { logicAxis = value; }
     }
 
     public bool LsActive
     {
         get { return isActive; }
-        private set { isActive = value; }
+        protected set { isActive = value; }
     }
 
     /// <summary>
