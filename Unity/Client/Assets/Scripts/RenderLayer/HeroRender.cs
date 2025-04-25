@@ -52,7 +52,7 @@ public class HeroRender : RenderObject
         base.Update();
 
         // 判断摇杆是否有输入值, 如果没有,播放待机动画, 如果有播放跑步动画
-        PlayAni(_curInputDir == Vector3.zero ? kStrAniName_Idle2 : kStrAniName_Run);
+        PlayAni(_curInputDir is { x: 0f, z: 0f } ? kStrAniName_Idle2 : kStrAniName_Run);
     }
 
     private void OnDestroy()
