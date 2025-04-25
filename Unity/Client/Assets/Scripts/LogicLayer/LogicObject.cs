@@ -12,7 +12,7 @@ public abstract class LogicObject
     private FixIntVector3 logicDir; // 朝向
     private FixIntVector3 logiclogicAngle; // 旋转角度
     private FixInt logicMoveSpeed; // 移动速度
-    private FixInt logicAxis; // 轴向
+    private FixInt _logicAxis_X; // 轴向
     private bool isActive; // 是否激活
 
     public FixIntVector3 LogicPos
@@ -39,10 +39,10 @@ public abstract class LogicObject
         protected set { logicMoveSpeed = value; }
     }
 
-    public FixInt LogicAxis
+    public FixInt LogicAxis_X
     {
-        get { return logicAxis; }
-        protected set { logicAxis = value; }
+        get { return _logicAxis_X; }
+        protected set { _logicAxis_X = value; }
     }
 
     public bool LsActive

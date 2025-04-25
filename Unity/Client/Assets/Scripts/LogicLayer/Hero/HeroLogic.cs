@@ -15,8 +15,5 @@ public class HeroLogic : LogicActor
         this.ObjectType = LogicObjectType.Hero;
     }
 
-    public void LogicFrameEvent_Input(FixIntVector3 inputDir)
-    {
-        
-    }
+
 }
