@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 public class JoystickUGUI : MonoBehaviour
 {
-
 #if UNITY_EDITOR
     /// <summary>
     /// 在scene视图绘制线 方便查看可点击区域
@@ -16,21 +16,21 @@ public class JoystickUGUI : MonoBehaviour
         {
             return;
         }
-        Gizmos.color = Color.red;
+        // Gizmos.color = Color.red;
 
         //本地坐标
-        Vector3 max = new Vector3(transform.localPosition.x + showRangeMax.x + 119, transform.localPosition.y + 119 + showRangeMax.y, 0);
-        Vector3 min = new Vector3(transform.localPosition.x + showRangeMin.x - 119, transform.localPosition.y - 119 + showRangeMin.y, 0);
+        // Vector3 max = new Vector3(transform.localPosition.x + showRangeMax.x + 119, transform.localPosition.y + 119 + showRangeMax.y, 0);
+        // Vector3 min = new Vector3(transform.localPosition.x + showRangeMin.x - 119, transform.localPosition.y - 119 + showRangeMin.y, 0);
 
         //世界坐标
-        max = transform.parent.TransformPoint(max);
-        min = transform.parent.TransformPoint(min);
+        // max = transform.parent.TransformPoint(max);
+        // min = transform.parent.TransformPoint(min);
 
 
-        Gizmos.DrawLine(new Vector3(min.x, min.y, 0f), new Vector3(max.x, min.y, 0f));
-        Gizmos.DrawLine(new Vector3(max.x, min.y, 0f), new Vector3(max.x, max.y, 0f));
-        Gizmos.DrawLine(new Vector3(max.x, max.y, 0f), new Vector3(min.x, max.y, 0f));
-        Gizmos.DrawLine(new Vector3(min.x, max.y, 0f), new Vector3(min.x, min.y, 0f));
+        // Gizmos.DrawLine(new Vector3(min.x, min.y, 0f), new Vector3(max.x, min.y, 0f));
+        // Gizmos.DrawLine(new Vector3(max.x, min.y, 0f), new Vector3(max.x, max.y, 0f));
+        // Gizmos.DrawLine(new Vector3(max.x, max.y, 0f), new Vector3(min.x, max.y, 0f));
+        // Gizmos.DrawLine(new Vector3(min.x, max.y, 0f), new Vector3(min.x, min.y, 0f));
     }
 #endif
 
@@ -41,18 +41,22 @@ public class JoystickUGUI : MonoBehaviour
         /// 闲置
         /// </summary>
         ldle,
+
         /// <summary>
         /// 抬起
         /// </summary>
         TouchUp,
+
         /// <summary>
         /// 按下
         /// </summary>
         TouchDown,
+
         /// <summary>
         /// 准备
         /// </summary>
         Ready,
+
         /// <summary>
         /// 拖动
         /// </summary>
@@ -60,18 +64,11 @@ public class JoystickUGUI : MonoBehaviour
     }
 
     public Canvas canvas;
-    [Header("摇杆触发点击区域")]
-    public Transform triggereAreaTrans;
-    [Header("摇杆总节点")]
-    public Transform joystickRootTrans;
-    [Header("摇杆背景")]
-    public Transform backgroundTrans;
-    [Header("中心")]
-    public Transform stickTrans;
-    [Header("摇杆方向箭头")]
-    public Transform directionTrans;
-
-
+    [Header("摇杆触发点击区域")] public Transform trTriggerArea;
+    [Header("摇杆总节点")] public Transform trRoot;
+    [Header("摇杆背景")] public Transform trBg;
+    [Header("中心")] public Transform trCenter;
+    [Header("摇杆方向箭头")] public Transform trDirArrow;
 
 
     Vector3 joystickDirection;
@@ -80,24 +77,11 @@ public class JoystickUGUI : MonoBehaviour
     /// <summary>
     /// 摇杆抬起位置
     /// </summary>
-    [Header("摇杆抬起位置(初始化位置)")]
-    public Vector3 joystickInitPosition = new Vector3(165f, 165f, 0f);
+    // [Header("摇杆抬起位置(初始化位置)")]
+    // public Vector3 joystickInitPosition = new Vector3(165f, 165f, 0f);
     /// <summary>
     /// 点击触发范围
     /// </summary>
-    [Header("点击触发范围")]
-    public Vector2 triggeredRange = new Vector2(500f, 400f);
-    /// <summary>
-    /// 摇杆显示最小坐标值(相对于左下角)
-    /// </summary>
-    [Header("摇杆左边显示宽高")]
-    public Vector2 showRangeMin = new Vector2(145f, 145f);
-    /// <summary>
-    /// 摇杆显示最大坐标值(相对于左下角)
-    /// </summary>
-    [Header("摇杆右边显示宽高")]
-    public Vector2 showRangeMax = new Vector2(350f, 200f);
-
     private Vector3 DefoutTriggerPos;
 
 
@@ -114,36 +98,39 @@ public class JoystickUGUI : MonoBehaviour
     /// <summary>
     /// 切换到拖动状态最小距离差
     /// </summary>
-    [Header("摇杆球最小拖动距离")]
-    public float switchMoveMin = 20f;
+    [Header("摇杆球最小拖动距离")] public float switchMoveMin = 20f;
 
     /// <summary>
     /// 杆拖动最大值
     /// </summary>
-    [Header("摇杆球最大拖动距离")]
-    public float stickMoveMax = 73f;
+    [Header("摇杆球最大拖动距离")] public float stickMoveMax = 73f;
 
     /// <summary>
     /// 显示指向 鼠标距离中心最小距离
     /// </summary>
-    [Header("鼠标距离中心最小距离(显示指向)")]
-    public float showDirection = 20f;
+    [Header("鼠标距离中心最小距离(显示指向)")] public float showDirection = 20f;
 
+
+    /// <summary>
+    /// 箭头距离中心的初始偏移值
+    /// </summary>
+    private Vector3 _OffsetPosArrowWithCenter = Vector3.zero;
 
     public static Action<Vector3> OnMoveCallBack = null;
 
     // Use this for initialization
     void Start()
     {
-        DefoutTriggerPos = triggereAreaTrans.transform.localPosition;
+        DefoutTriggerPos = trTriggerArea.transform.localPosition;
 
         UIEventListener uiEventListener = transform.GetComponentInChildren<UIEventListener>();
-  
+
         // Debug.Log("绑定委托");
         uiEventListener.OnDrag = onDrag;
         uiEventListener.OnPress = onPress;
         uiEventListener.OnUp = OnUP;
 
+        _OffsetPosArrowWithCenter = trDirArrow.position - trCenter.position;
         InitState();
     }
 
@@ -155,14 +142,16 @@ public class JoystickUGUI : MonoBehaviour
     void onPress(PointerEventData eventData)
     {
         //if (varPress == true)
-            SwitchJoyStickState(JoystickState.TouchDown);
+        SwitchJoyStickState(JoystickState.TouchDown);
         //else
         //    SwitchJoyStickState(JoystickState.TouchUp);
     }
+
     void OnUP(PointerEventData eventData)
     {
         SwitchJoyStickState(JoystickState.TouchUp);
     }
+
     void onDrag(PointerEventData eventData)
     {
         Action();
@@ -181,7 +170,7 @@ public class JoystickUGUI : MonoBehaviour
 
     void Action()
     {
-        Debug.Log("Action JoystickState:"+ joystickState);
+        // Debug.Log("Action JoystickState:"+ joystickState);
         if (joystickState == JoystickState.ldle)
         {
             return;
@@ -190,28 +179,19 @@ public class JoystickUGUI : MonoBehaviour
         switch (joystickState)
         {
             case JoystickState.TouchUp:
-
                 InitState();
-
                 SwitchJoyStickState(JoystickState.ldle);
-
                 break;
             case JoystickState.TouchDown:
-
                 TouchState();
-
-                SwitchJoyStickState(JoystickState.Ready);
-
+                SwitchJoyStickState(JoystickState.Drag); // 一按下就进入拖拽模式
+                DragState();
                 break;
             case JoystickState.Ready:
-
                 ReadyState();
-
                 break;
             case JoystickState.Drag:
-
                 DragState();
-
                 break;
         }
     }
@@ -234,11 +214,10 @@ public class JoystickUGUI : MonoBehaviour
     /// </summary>
     void InitState()
     {
-        joystickRootTrans.localPosition = joystickInitPosition;
-        stickTrans.localPosition = Vector3.zero;
-        directionTrans?.gameObject.SetActive(false);
+        trCenter.localPosition = Vector3.zero;
+        trDirArrow?.gameObject.SetActive(false);
         //设置虚拟摇杆 抬起 触发区域
-        triggereAreaTrans.transform.localPosition = DefoutTriggerPos;
+        trTriggerArea.transform.localPosition = DefoutTriggerPos;
         OnMoveCallBack?.Invoke(Vector3.zero);
     }
 
@@ -248,14 +227,6 @@ public class JoystickUGUI : MonoBehaviour
     void TouchState()
     {
         touchPosition = GetMouseLocalPosition(transform);
-
-        Vector3 position = touchPosition;
-        //如果超过显示区域则取临界值
-        position.x = Math.Min(showRangeMax.x, Math.Max(position.x, showRangeMin.x));
-        position.y = Math.Min(showRangeMax.y, Math.Max(position.y, showRangeMin.y));
-        joystickRootTrans.localPosition = position;
-        //设置虚拟摇杆 按下 触发区域
-        triggereAreaTrans.transform.localPosition = DefoutTriggerPos;
     }
 
     /// <summary>
@@ -272,8 +243,6 @@ public class JoystickUGUI : MonoBehaviour
         {
             SwitchJoyStickState(JoystickState.Drag);
         }
-        //设置虚拟摇杆 准备 触发区域
-        triggereAreaTrans.transform.localPosition = DefoutTriggerPos;
     }
 
 
@@ -282,10 +251,10 @@ public class JoystickUGUI : MonoBehaviour
     /// </summary>
     void DragState()
     {
-        Vector3 mouseLocalPosition = GetMouseLocalPosition(joystickRootTrans);
+        Vector3 mouseLocalPosition = GetMouseLocalPosition(trRoot);
 
         //鼠标与摇杆的距离
-        float distance = Vector3.Distance(mouseLocalPosition, backgroundTrans.localPosition);
+        float distance = Vector3.Distance(mouseLocalPosition, trBg.localPosition);
 
 
         //设置杆的位置
@@ -296,37 +265,36 @@ public class JoystickUGUI : MonoBehaviour
         {
             float proportion = stickMoveMax / distance;
 
-            stickLocalPosition = (mouseLocalPosition - backgroundTrans.localPosition) * proportion;
+            stickLocalPosition = (mouseLocalPosition - trBg.localPosition) * proportion;
         }
 
-        stickTrans.localPosition = stickLocalPosition;
+        trCenter.localPosition = stickLocalPosition;
 
-
+        trDirArrow.localPosition = trCenter.localPosition + _OffsetPosArrowWithCenter;
         //设置指向位置
 
         //摇杆与鼠标的距离 大于 指向显示最小距离  则显示指向 
         if (distance > showDirection)
         {
-            directionTrans?.gameObject.SetActive(true);
+            trDirArrow?.gameObject.SetActive(true);
 
             //获取鼠标位置与摇杆的角度
-            Double angle = Math.Atan2((mouseLocalPosition.y - backgroundTrans.localPosition.y), (mouseLocalPosition.x - backgroundTrans.localPosition.x)) * 180 / Math.PI;
-            if (directionTrans != null)
-                directionTrans.eulerAngles = new Vector3(0, 0, (float)angle);
+            Double angle = Math.Atan2((mouseLocalPosition.y - trBg.localPosition.y), (mouseLocalPosition.x - trBg.localPosition.x)) * 180 / Math.PI;
+            if (trDirArrow != null)
+                trDirArrow.eulerAngles = new Vector3(0, 0, (float)angle);
 
             //设置摇杆指向
-            joystickDirection = mouseLocalPosition - backgroundTrans.localPosition;
+            joystickDirection = mouseLocalPosition - trBg.localPosition;
             joystickDirection.z = 0;
         }
         else
         {
-            directionTrans?.gameObject.SetActive(false);
+            trDirArrow?.gameObject.SetActive(true);
         }
         //设置虚拟摇杆 拖动 触发区域
-        triggereAreaTrans.transform.localPosition = DefoutTriggerPos;
+        trTriggerArea.transform.localPosition = DefoutTriggerPos;
         Vector3 dir = joystickDirection.normalized;
         //OnMoveCallBack?.Invoke(new Vector3(dir.x*1000, 0, dir.y * 1000));
-        OnMoveCallBack?.Invoke(new Vector3(dir.x, 0, dir.y ));
+        OnMoveCallBack?.Invoke(new Vector3(dir.x, 0, dir.y));
     }
-
 }
