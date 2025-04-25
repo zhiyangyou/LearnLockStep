@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using FixMath;
 using UnityEngine;
 
 public class HeroLogic : LogicActor
@@ -12,5 +13,10 @@ public class HeroLogic : LogicActor
         HeroId = heroId;
         RenderObject = renderObject;
         this.ObjectType = LogicObjectType.Hero;
+    }
+
+    public void LogicFrameEvent_Input(FixIntVector3 inputDir)
+    {
+        
     }
 }
