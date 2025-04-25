@@ -47,6 +47,15 @@ namespace ZMGC.Battle
 
         #region public
 
+        public void OnLogicFrameUpdate()
+        {
+            for (int i = ListMonsterLogic.Count - 1; i >= 0; i--)
+            {
+                var monsterLogic = ListMonsterLogic[i];
+                monsterLogic.OnLogicFrameUpdate();
+            }
+        }
+
         public void InitMonster()
         {
             var index = 0;
@@ -63,7 +72,7 @@ namespace ZMGC.Battle
                 fixIntBoxCollider.UpdateColliderInfo(pos, boxInfo.mSize);
                 //
                 MonsterRender monsterRender = goMonster.GetComponent<MonsterRender>();
-                MonsterLogic monsterLogic = new MonsterLogic(monsterID, monsterRender, fixIntBoxCollider,logicPos);
+                MonsterLogic monsterLogic = new MonsterLogic(monsterID, monsterRender, fixIntBoxCollider, logicPos);
                 monsterRender.SetLogicObject(monsterLogic);
                 monsterLogic.OnCreate();
                 monsterRender.OnCreate();

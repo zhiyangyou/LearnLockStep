@@ -27,6 +27,11 @@ namespace ZMGC.Battle
 
         #region public接口
 
+        public void OnLogicFrameUpdate()
+        {
+            HeroLogic.OnLogicFrameUpdate();
+        }
+        
         public void InitHero()
         {
             var goHero = ZMAsset.Instantiate($"{AssetsPathConfig.Game_Hero_Prefabs}/1000.prefab", null);
