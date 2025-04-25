@@ -16,7 +16,7 @@ public partial class LogicActor
     /// </summary>
     public void OnLogicFrameUpdate_Move()
     {
-        if (ActionState is not (LogicObjectActionState.Idle and LogicObjectActionState.Move))
+        if (ActionState is not (LogicObjectActionState.Idle or LogicObjectActionState.Move))
         {
             return;
         }

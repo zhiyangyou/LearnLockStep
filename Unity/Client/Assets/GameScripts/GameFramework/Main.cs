@@ -12,18 +12,13 @@ public class Main : MonoBehaviour
 
     public static Main Instance => _instance;
 
-    // Start is called before the first frame update
     void Start()
     {
         _instance = this;
-        // init framework
         UIModule.Instance.Initialize();
         ZMAsset.InitFrameWork();
         WorldManager.CreateWorld<HallWorld>();
 
-        // 
         DontDestroyOnLoad(gameObject);
     }
-
-
 }

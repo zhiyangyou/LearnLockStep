@@ -8,35 +8,35 @@ using FixMath;
 /// </summary>
 public abstract class LogicObject
 {
-    private FixIntVector3 logicPos; // 逻辑位置
-    private FixIntVector3 logicDir; // 朝向
-    private FixIntVector3 logiclogicAngle; // 旋转角度
-    private FixInt logicMoveSpeed; // 移动速度
+    private FixIntVector3 _logicPos; // 逻辑位置
+    private FixIntVector3 _logicDir; // 朝向
+    private FixIntVector3 _logicAngle; // 旋转角度
+    private FixInt _logicMoveSpeed =(FixInt) 3; // 移动速度
     private FixInt _logicAxis_X; // 轴向
-    private bool isActive; // 是否激活
+    private bool _isActive; // 是否激活
 
     public FixIntVector3 LogicPos
     {
-        get { return logicPos; }
-        protected set { logicPos = value; }
+        get { return _logicPos; }
+        protected set { _logicPos = value; }
     }
 
     public FixIntVector3 LogicDir
     {
-        get { return logicDir; }
-        protected set { logicDir = value; }
+        get { return _logicDir; }
+        protected set { _logicDir = value; }
     }
 
-    public FixIntVector3 LogiclogicAngle
+    public FixIntVector3 LogicAngle
     {
-        get { return logiclogicAngle; }
-        protected set { logiclogicAngle = value; }
+        get { return _logicAngle; }
+        protected set { _logicAngle = value; }
     }
 
     public FixInt LogicMoveSpeed
     {
-        get { return logicMoveSpeed; }
-        protected set { logicMoveSpeed = value; }
+        get { return _logicMoveSpeed; }
+        protected set { _logicMoveSpeed = value; }
     }
 
     public FixInt LogicAxis_X
@@ -47,8 +47,8 @@ public abstract class LogicObject
 
     public bool LsActive
     {
-        get { return isActive; }
-        protected set { isActive = value; }
+        get { return _isActive; }
+        protected set { _isActive = value; }
     }
 
     /// <summary>

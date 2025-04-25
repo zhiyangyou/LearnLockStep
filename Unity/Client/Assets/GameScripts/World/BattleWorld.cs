@@ -66,6 +66,7 @@ namespace ZMGC.Battle
 
         public override void OnCreate()
         {
+            // Application.targetFrameRate = 60;
             base.OnCreate();
             HeroLogicCtrl = BattleWorld.GetExitsLogicCtrl<HeroLogicCtrl>();
             MonsterLogicCtrl = BattleWorld.GetExitsLogicCtrl<MonsterLogicCtrl>();
@@ -76,6 +77,10 @@ namespace ZMGC.Battle
             _nextLogicFrameTime = 0f;
         }
 
+
+        /// <summary>
+        /// Unity驱动的渲染更新
+        /// </summary>
         public override void OnUpdate()
         {
             base.OnUpdate();
@@ -91,11 +96,14 @@ namespace ZMGC.Battle
                 // 逻辑帧ID 进行自增
                 LogicFrameConfig.LogicFrameID++;
             }
-            
+
             _logicDeltaTime = (_accLogicRealTime + LogicFrameConfig.LogicFrameInterval - _nextLogicFrameTime) / LogicFrameConfig.LogicFrameInterval;
         }
 
 
+        /// <summary>
+        /// 应该通过服务端负责调用.
+        /// </summary>
         public void OnLigicFrameUpdate()
         {
             HeroLogicCtrl.OnLogicFrameUpdate();

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public enum WorldEnum
 {
-    Default, 
+    Default,
     HallWorld,
-    BattleWorld, 
+    BattleWorld,
 }
 
 /// <summary>
@@ -80,10 +80,7 @@ public class WorldManager
     /// 渲染帧更新,尽量少使用Update接口提升性能。但必要时，可以在对应World的Update中调用指定脚本的Update
     /// </summary>
     public static void Update()
-    {
-        //帧更新接口，若需要使用请在对应的xxxWorld脚本中实现OnUpdate接口，自行去调用逻辑层/数据层/消息层的帧更新接口
-        //不制作方便使用的自动化方式执行Update的原因是为了保障性能，防止对Update接口的滥用，影响性能。
-        //故不太建议在逻辑层/数据层/消息层去使用Update帧更新接口。特殊需求情况除外
+    { 
         for (int i = 0; i < mWorldList.Count; i++)
         {
             mWorldList[i].OnUpdate();

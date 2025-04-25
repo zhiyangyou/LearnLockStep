@@ -7,7 +7,7 @@ using UnityEngine;
 /// 同样的: LogicObject也会持有RenderObject ,二者会互相持有
 /// </summary>
 public class RenderObject : MonoBehaviour
-{   
+{
     #region 属性和字段
 
     public LogicObject LogicObject { get; private set; }
@@ -15,7 +15,9 @@ public class RenderObject : MonoBehaviour
     /// <summary>
     /// 位置插值速度?
     /// </summary>
-    protected float _smoothPosSpeed;
+    protected float _smoothPosSpeed => 20f;
+
+    protected Vector2 _renderDir = Vector2.zero;
 
     #endregion
 
@@ -41,13 +43,12 @@ public class RenderObject : MonoBehaviour
 
     public virtual void OnCreate()
     {
-        
     }
 
-    public virtual  void OnRelease()
+    public virtual void OnRelease()
     {
-        
     }
+
     #endregion
 
     #region private
@@ -57,7 +58,9 @@ public class RenderObject : MonoBehaviour
     /// </summary>
     private void UpdateDir()
     {
-        transform.rotation = Quaternion.Euler(LogicObject.LogicDir.ToVector3());
+        _renderDir.x = LogicObject.LogicAxis_X >= 0 ? 0 : -20;
+        _renderDir.y = LogicObject.LogicAxis_X >= 0 ? 0 : 180;
+        transform.localEulerAngles = _renderDir;
     }
 
     /// <summary>

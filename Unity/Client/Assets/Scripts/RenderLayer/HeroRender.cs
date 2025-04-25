@@ -6,7 +6,15 @@ public class HeroRender : RenderObject
 {
     #region 属性字段
 
+    private const string kStrAniName_Idle2 = "Anim_Idle02";
+    private const string kStrAniName_Run = "Anim_Run";
+
     private HeroLogic _heroLogic;
+
+    private Vector3 _curInputDir = Vector3.zero;
+
+    // 角色动画
+    private Animation _ani;
 
     private HeroLogic heroLogic
     {
@@ -27,6 +35,8 @@ public class HeroRender : RenderObject
     public override void OnCreate()
     {
         base.OnCreate();
+        _ani = GetComponent<Animation>();
+        if (_ani == null) Debug.LogError("Hero Render 没有Animation组件");
         JoystickUGUI.OnMoveCallBack += OnJoyStickMove;
     }
 
@@ -40,6 +50,9 @@ public class HeroRender : RenderObject
     protected override void Update()
     {
         base.Update();
+
+        // 判断摇杆是否有输入值, 如果没有,播放待机动画, 如果有播放跑步动画
+        PlayAni(_curInputDir == Vector3.zero ? kStrAniName_Idle2 : kStrAniName_Run);
     }
 
     private void OnDestroy()
@@ -50,6 +63,13 @@ public class HeroRender : RenderObject
 
     #region private
 
+    private void PlayAni(string aniName)
+    {
+        if (_ani == null) return;
+        if (string.IsNullOrEmpty(aniName)) return;
+        _ani.CrossFade(aniName, 0.2f);
+    }
+
     private void OnJoyStickMove(Vector3 pos)
     {
         FixIntVector3 logicDir = FixIntVector3.zero;
@@ -59,6 +79,7 @@ public class HeroRender : RenderObject
             logicDir.y = pos.y;
             logicDir.z = pos.z;
         }
+        _curInputDir = pos;
         if (heroLogic != null)
         {
             heroLogic.LogicFrameEvent_Input(logicDir);
