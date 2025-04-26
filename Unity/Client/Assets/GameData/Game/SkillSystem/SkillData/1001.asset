@@ -72,3 +72,4 @@ MonoBehaviour:
     effectPosType: 0
     isSetTransParent: 0
     TransParentType: 0
+    GoEffect: {fileID: 0}

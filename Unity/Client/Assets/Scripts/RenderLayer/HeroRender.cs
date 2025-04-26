@@ -66,8 +66,12 @@ public class HeroRender : RenderObject
     {
         base.Update();
 
-        // 判断摇杆是否有输入值, 如果没有,播放待机动画, 如果有播放跑步动画
-        PlayAni(_curInputDir is { x: 0f, z: 0f } ? kStrAniName_Idle2 : kStrAniName_Run);
+        // 判断有没有在技能释放, 有技能释放,播放技能动画的动画片段
+        if (!heroLogic.HasReleasingSkill)
+        {
+            // 判断摇杆是否有输入值, 如果没有,播放待机动画, 如果有播放跑步动画
+            PlayAni(_curInputDir is { x: 0f, z: 0f } ? kStrAniName_Idle2 : kStrAniName_Run);
+        } 
     }
 
     private void OnDestroy()

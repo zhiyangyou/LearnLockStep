@@ -57,7 +57,7 @@ public partial class Skill
         SkillID = skillId;
         _skillCreater = skillCreater;
         var configPath = $"{AssetsPathConfig.Skill_Data_Path}/{skillId}.asset";
-        ZMAsset.LoadScriptableObject<SkillDataSO>(configPath);
+        _skillData = ZMAsset.LoadScriptableObject<SkillDataSO>(configPath);
     }
 
     /// <summary>
@@ -109,6 +109,7 @@ public partial class Skill
     public void SkillEnd()
     {
         _skillState = SkillState.End;
+        this.SkillCallbackOnEnd?.Invoke(this ,false); // TODO 暂且都是false 2025年4月26日18:10:48 
     }
 
     #endregion
@@ -143,6 +144,11 @@ public partial class Skill
 
         // 更新子弹逻辑帧
 
+        if (_curLogicFrame == _skillData.character.logicFrame)
+        {
+            SkillEnd();   
+        }
+        
         // 计数自增
         _curLogicFrame++;
     }

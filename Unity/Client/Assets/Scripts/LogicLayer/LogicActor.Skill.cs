@@ -11,10 +11,20 @@ public partial class LogicActor
     // 普通攻击技能ID数组
     private int[] _normalSkillArr = new[] { 1001, };
 
+    private List<Skill> _listReleasingSkills = new();
+
     #endregion
 
     #region public
 
+    /// <summary>
+    /// 是否有正在释放的技能
+    /// </summary>
+    public bool HasReleasingSkill => _listReleasingSkills != null && _listReleasingSkills.Count > 0;
+
+    /// <summary>
+    ///  初始化技能
+    /// </summary>
     public void InitActorSkill()
     {
         _skillSystem = new SkillSystem(this);
@@ -23,7 +33,11 @@ public partial class LogicActor
 
     public void ReleaseSkill(int skillID)
     {
-        _skillSystem.ReleaseSkill(skillID, SkillCallback_OnAfter, SkillCallback_OnEnd);
+        var releasingSkill = _skillSystem.ReleaseSkill(skillID, SkillCallback_OnAfter, SkillCallback_OnEnd);
+        if (releasingSkill != null) // 技能释放成功
+        {
+            _listReleasingSkills.Add(releasingSkill);
+        }
     }
 
 
@@ -39,10 +53,20 @@ public partial class LogicActor
 
     #region private
 
+    /// <summary>
+    /// 回调:技能释放完成
+    /// </summary>
+    /// <param name="sk"></param>
+    /// <param name="isCombineSkill"></param>
     public void SkillCallback_OnEnd(Skill sk, bool isCombineSkill)
     {
+        _listReleasingSkills.Remove(sk);
     }
 
+    /// <summary>
+    /// 回调:技能释放开始后摇
+    /// </summary>
+    /// <param name="sk"></param>
     public void SkillCallback_OnAfter(Skill sk)
     {
     }

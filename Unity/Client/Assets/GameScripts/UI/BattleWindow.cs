@@ -19,13 +19,14 @@ public class BattleWindow : WindowBase
 
     #endregion
 
-    public BattleWindowDataComponent uiCompt = new BattleWindowDataComponent();
+    public BattleWindowDataComponent uiCompt = null;
 
     #region 声明周期函数
 
     //调用机制与Mono Awake一致
     public override void OnAwake()
     {
+        uiCompt = transform.GetComponent<BattleWindowDataComponent>();
         uiCompt.InitComponent(this);
         base.OnAwake();
     }
@@ -59,7 +60,7 @@ public class BattleWindow : WindowBase
 
     public void OnNormalAttackButtonClick()
     {
-        _heroLogic.ReleaseSkill(1001); // 普通攻击技能
+        _heroLogic.ReleaseSkill(1001); //  普通攻击技能
     }
 
     #endregion

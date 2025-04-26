@@ -147,7 +147,10 @@ public class WindowBase : WindowBehaviour
             }
             btn.onClick.RemoveAllListeners();
             btn.onClick.AddListener(action);
-
+        }
+        else
+        {
+            Debug.LogError($"btn is null {this.gameObject.name} {this.Name}");
         }
     }
     public void AddToggleClickListener(Toggle toggle, UnityAction<bool, Toggle> action)

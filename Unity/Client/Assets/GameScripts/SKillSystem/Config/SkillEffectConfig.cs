@@ -22,7 +22,6 @@ public class SkillEffectConfig
     [ToggleGroup(nameof(isSetTransParent), "是否设置特效父节点")] [LabelText("父节点配置")]
     public TransParentType TransParentType; // 父节点配置
 
-    [HideInInspector] public GameObject GoEffect; // 运行时特效GameOBject的缓存
 
 #if UNITY_EDITOR
 
