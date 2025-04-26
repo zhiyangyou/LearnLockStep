@@ -2,9 +2,9 @@
 using ZM.ZMAsset;
 
 
-public delegate void SkillAfterCallback(Skill skill);
+public delegate void SkillCallback_OnAfter(Skill skill);
 
-public delegate void SkillEndCallback(Skill skill, bool isStockPile);
+public delegate void SkillCallback_OnEnd(Skill skill, bool isStockPile);
 
 
 public enum SkillState
@@ -30,7 +30,7 @@ public partial class Skill
     #region 属性字段
 
     // 技能id
-    private int _skillId;
+    public int SkillID { get; private set; }
 
     // 释放技能者
     private LogicActor _skillCreater;
@@ -45,8 +45,8 @@ public partial class Skill
 
     private int _curLogicFrameAccTimeMS = 0;
 
-    public SkillAfterCallback _skillAfterCallback;
-    public SkillEndCallback _skillEndCallback;
+    public SkillCallback_OnAfter SkillCallbackOnAfter;
+    public SkillCallback_OnEnd SkillCallbackOnEnd;
 
     #endregion
 
@@ -54,7 +54,7 @@ public partial class Skill
 
     public Skill(int skillId, LogicActor skillCreater)
     {
-        _skillId = skillId;
+        SkillID = skillId;
         _skillCreater = skillCreater;
         var configPath = $"{AssetsPathConfig.Skill_Data_Path}/{skillId}.asset";
         ZMAsset.LoadScriptableObject<SkillDataSO>(configPath);
@@ -67,10 +67,10 @@ public partial class Skill
     /// 3. SkillAfter后摇开始
     /// 4. SkillEnd 技能结束
     /// </summary>
-    public void ReleaseSkill(SkillAfterCallback onSkillAfter, SkillEndCallback onSkillEnd)
+    public void ReleaseSkill(SkillCallback_OnAfter onSkillCallbackOnAfter, SkillCallback_OnEnd onSkillCallbackOnEnd)
     {
-        _skillAfterCallback = onSkillAfter;
-        _skillEndCallback = onSkillEnd;
+        SkillCallbackOnAfter = onSkillCallbackOnAfter;
+        SkillCallbackOnEnd = onSkillCallbackOnEnd;
         _skillState = SkillState.Before;
         SkillStart();
         PlayAni();
@@ -118,6 +118,8 @@ public partial class Skill
     /// </summary>
     public void OnLogicFrameUpdate()
     {
+        if (_skillState == SkillState.None) return;
+
         _curLogicFrameAccTimeMS = _curLogicFrame * LogicFrameConfig.LogicFrameIntervalMS;
 
         // 尝试进入技能后摇
@@ -132,7 +134,7 @@ public partial class Skill
 
         //  更新特效逻辑帧
         OnLogicFrameUpdate_Effect();
-        
+
         // 更新伤害
 
         // 更新行动逻辑帧

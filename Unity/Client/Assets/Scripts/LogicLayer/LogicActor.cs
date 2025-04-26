@@ -9,6 +9,7 @@ public partial class LogicActor : LogicObject
     public override void OnCreate()
     {
         base.OnCreate();
+        InitActorSkill();
     }
 
     public override void OnLogicFrameUpdate()
@@ -32,7 +33,7 @@ public partial class LogicActor : LogicObject
     {
         RenderObject.PlayAnim(animationClip);
     }
-    
+
     public void SetRenderData(RenderObject renderObject)
     {
         this.RenderObject = renderObject;

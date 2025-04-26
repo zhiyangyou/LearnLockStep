@@ -8,10 +8,17 @@
 
 using UnityEngine.UI;
 using UnityEngine;
+using ZMGC.Battle;
 using ZMUIFrameWork;
 
 public class BattleWindow : WindowBase
 {
+    #region 属性和字段
+
+    private HeroLogic _heroLogic = null;
+
+    #endregion
+
     public BattleWindowDataComponent uiCompt = new BattleWindowDataComponent();
 
     #region 声明周期函数
@@ -27,6 +34,7 @@ public class BattleWindow : WindowBase
     public override void OnShow()
     {
         base.OnShow();
+        _heroLogic = BattleWorld.GetExitsLogicCtrl<HeroLogicCtrl>().HeroLogic;
     }
 
     //物体隐藏时执行
@@ -48,6 +56,11 @@ public class BattleWindow : WindowBase
     #endregion
 
     #region UI组件事件
+
+    public void OnNormalAttackButtonClick()
+    {
+        _heroLogic.ReleaseSkill(1001); // 普通攻击技能
+    }
 
     #endregion
 }
