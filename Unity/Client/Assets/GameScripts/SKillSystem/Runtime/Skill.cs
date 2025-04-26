@@ -6,7 +6,26 @@ public delegate void SkillAfterCallback(Skill skill);
 
 public delegate void SkillEndCallback(Skill skill, bool isStockPile);
 
-public class Skill
+
+public enum SkillState
+{
+    None,
+
+    // 前摇
+    Before,
+
+    /// <summary>
+    /// 后摇
+    /// </summary>
+    After,
+
+    /// <summary>
+    /// 结束
+    /// </summary>
+    End,
+}
+
+public partial class Skill
 {
     #region 属性字段
 
@@ -18,6 +37,13 @@ public class Skill
 
     // 配置数据
     private SkillDataSO _skillData;
+
+    private SkillState _skillState = SkillState.None;
+
+    // 当前逻辑帧
+    private int _curLogicFrame = 0;
+
+    private int _curLogicFrameAccTimeMS = 0;
 
     public SkillAfterCallback _skillAfterCallback;
     public SkillEndCallback _skillEndCallback;
@@ -45,6 +71,7 @@ public class Skill
     {
         _skillAfterCallback = onSkillAfter;
         _skillEndCallback = onSkillEnd;
+        _skillState = SkillState.Before;
         SkillStart();
         PlayAni();
     }
@@ -55,6 +82,7 @@ public class Skill
     public void PlayAni()
     {
         // 播放角色动画
+        _skillCreater.PlayAnim(_skillData.character.skillAnim);
     }
 
     /// <summary>
@@ -63,6 +91,8 @@ public class Skill
     public void SkillStart()
     {
         // 初始化技能数据
+        _curLogicFrame = 0;
+        _curLogicFrameAccTimeMS = 0;
     }
 
     /// <summary>
@@ -70,6 +100,7 @@ public class Skill
     /// </summary>
     public void SkillAfter()
     {
+        _skillState = SkillState.After;
     }
 
     /// <summary>
@@ -77,9 +108,42 @@ public class Skill
     /// </summary>
     public void SkillEnd()
     {
+        _skillState = SkillState.End;
     }
 
     #endregion
+
+    /// <summary>
+    /// 逻辑帧更新
+    /// </summary>
+    public void OnLogicFrameUpdate()
+    {
+        _curLogicFrameAccTimeMS = _curLogicFrame * LogicFrameConfig.LogicFrameIntervalMS;
+
+        // 尝试进入技能后摇
+        if (_skillState == SkillState.Before
+            && _curLogicFrameAccTimeMS >= _skillData.SkillCfg.skillShakeBeforeTimeMs
+           )
+        {
+            SkillAfter();
+        }
+
+        // 更新不同配置的逻辑帧, 处理不同配置的逻辑
+
+        //  更新特效逻辑帧
+        OnLogicFrameUpdate_Effect();
+        
+        // 更新伤害
+
+        // 更新行动逻辑帧
+
+        // 更新音效逻辑帧
+
+        // 更新子弹逻辑帧
+
+        // 计数自增
+        _curLogicFrame++;
+    }
 
     #region private
 

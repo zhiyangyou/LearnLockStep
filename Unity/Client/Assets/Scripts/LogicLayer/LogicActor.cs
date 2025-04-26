@@ -28,6 +28,11 @@ public partial class LogicActor : LogicObject
 
     #region public
 
+    public void PlayAnim(AnimationClip animationClip)
+    {
+        RenderObject.PlayAnim(animationClip);
+    }
+    
     public void SetRenderData(RenderObject renderObject)
     {
         this.RenderObject = renderObject;

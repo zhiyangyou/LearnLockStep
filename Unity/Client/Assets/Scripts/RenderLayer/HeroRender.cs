@@ -30,6 +30,21 @@ public class HeroRender : RenderObject
 
     #endregion
 
+    #region public
+
+    public override void PlayAnim(AnimationClip animationClip)
+    {
+        base.PlayAnim(animationClip);
+        if (_ani.GetClip(animationClip.name) == null)
+        {
+            _ani.AddClip(animationClip, animationClip.name);
+        }
+        _ani.clip = animationClip;
+        PlayAni(animationClip.name);
+    }
+
+    #endregion
+
     #region life-cycle
 
     public override void OnCreate()

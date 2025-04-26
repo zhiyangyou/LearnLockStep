@@ -49,6 +49,10 @@ public class RenderObject : MonoBehaviour
     {
     }
 
+    public virtual void PlayAnim(AnimationClip animationClip)
+    {
+    }
+
     #endregion
 
     #region private
