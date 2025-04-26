@@ -128,6 +128,7 @@ public enum LogicObjectType
     Hero,
     Monster,
     Effect,
+    None,
 }
 
 public enum LogicObjectState
