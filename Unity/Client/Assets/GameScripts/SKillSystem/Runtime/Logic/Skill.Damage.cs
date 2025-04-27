@@ -4,6 +4,16 @@ using FixMath;
 using UnityEngine;
 using ZMGC.Battle;
 
+/// <summary>
+/// 伤害来源
+/// </summary>
+public enum DamageSource {
+    None,
+    Skill, // 技能伤害
+    Buff, // buff伤害
+    Bullet, // 子弹伤害
+}
+
 public partial class Skill {
     #region 属性和字段
 

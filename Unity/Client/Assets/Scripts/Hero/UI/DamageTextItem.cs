@@ -16,7 +16,7 @@ public class DamageTextItem : MonoBehaviour
         BattleWindow window = UIModule.Instance.GetWindow<BattleWindow>();
         transform.SetParent(window.transform);
         transform.localScale = Vector3.one;
-        transform.position = PosConvertUtility.World3DPosToCanvasWorldPos(target.transform.position, window.transform as RectTransform, UIModule.Instance.mUICamera);
+        transform.position = PosConvertUtility.World3DPosToCanvasWorldPos(target.transform.position, window.transform as RectTransform, UIModule.Instance.Camera);
 
         transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y+20,0);
         transform.localScale = Vector3.one * 2f;

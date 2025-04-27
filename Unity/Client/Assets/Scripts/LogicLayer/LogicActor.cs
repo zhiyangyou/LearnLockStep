@@ -19,7 +19,22 @@ public partial class LogicActor : LogicObject {
     }
 
     public virtual void SkillDamage(FixInt hp, SkillDamageConfig damageConfig) {
-        Debug.LogError($"skill damaga hp :{hp} config{damageConfig.triggerSkillId}");
+        CaculateDamage(hp, DamageSource.Skill);
+    }
+
+    /// <summary>
+    /// 计算伤害
+    /// </summary>
+    /// <param name="hp"></param>
+    /// <param name="damageSource"></param>
+    public void CaculateDamage(FixInt hp, DamageSource damageSource) {
+        if (ObjectState == LogicObjectState.Death) {
+            return;
+        }
+        // 1. 血量减少
+        // 2. 判断死亡
+        // 3. 飘字渲染
+        RenderObject.Damage(hp.RawInt, damageSource);
     }
 
     public override void OnDestory() {
