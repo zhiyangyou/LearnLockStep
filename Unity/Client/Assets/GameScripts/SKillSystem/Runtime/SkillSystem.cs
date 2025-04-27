@@ -30,7 +30,7 @@ public class SkillSystem
             Skill skill = new Skill(skillID, _skillCreater);
             _listSkills.Add(skill);
         }
-        Debug.Log($"技能初始化完成 个数: {arrSkillID.Length}");
+        // Debug.Log($"技能初始化完成 个数: {arrSkillID.Length}");
     }
 
     public Skill ReleaseSkill(int skillID, SkillCallback_OnAfter onAfter, SkillCallback_OnEnd onEnd)

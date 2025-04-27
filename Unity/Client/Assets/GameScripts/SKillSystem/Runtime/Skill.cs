@@ -7,8 +7,7 @@ public delegate void SkillCallback_OnAfter(Skill skill);
 public delegate void SkillCallback_OnEnd(Skill skill, bool isStockPile);
 
 
-public enum SkillState
-{
+public enum SkillState {
     None,
 
     // 前摇
@@ -25,8 +24,7 @@ public enum SkillState
     End,
 }
 
-public partial class Skill
-{
+public partial class Skill {
     #region 属性字段
 
     // 技能id
@@ -52,8 +50,7 @@ public partial class Skill
 
     #region public
 
-    public Skill(int skillId, LogicActor skillCreater)
-    {
+    public Skill(int skillId, LogicActor skillCreater) {
         SkillID = skillId;
         _skillCreater = skillCreater;
         var configPath = $"{AssetsPathConfig.Skill_Data_Path}/{skillId}.asset";
@@ -67,8 +64,7 @@ public partial class Skill
     /// 3. SkillAfter后摇开始
     /// 4. SkillEnd 技能结束
     /// </summary>
-    public void ReleaseSkill(SkillCallback_OnAfter onSkillCallbackOnAfter, SkillCallback_OnEnd onSkillCallbackOnEnd)
-    {
+    public void ReleaseSkill(SkillCallback_OnAfter onSkillCallbackOnAfter, SkillCallback_OnEnd onSkillCallbackOnEnd) {
         SkillCallbackOnAfter = onSkillCallbackOnAfter;
         SkillCallbackOnEnd = onSkillCallbackOnEnd;
         _skillState = SkillState.Before;
@@ -79,8 +75,7 @@ public partial class Skill
     /// <summary>
     /// 播放技能动画
     /// </summary>
-    public void PlayAni()
-    {
+    public void PlayAni() {
         // 播放角色动画
         _skillCreater.PlayAnim(_skillData.character.skillAnim);
     }
@@ -88,8 +83,7 @@ public partial class Skill
     /// <summary>
     /// 技能前摇
     /// </summary>
-    public void SkillStart()
-    {
+    public void SkillStart() {
         // 初始化技能数据
         _curLogicFrame = 0;
         _curLogicFrameAccTimeMS = 0;
@@ -98,16 +92,15 @@ public partial class Skill
     /// <summary>
     /// 技能后摇
     /// </summary>
-    public void SkillAfter()
-    {
+    public void SkillAfter() {
         _skillState = SkillState.After;
+        SkillCallbackOnAfter?.Invoke(this);
     }
 
     /// <summary>
     /// 技能释放结束
     /// </summary>
-    public void SkillEnd()
-    {
+    public void SkillEnd() {
         _skillState = SkillState.End;
         this.SkillCallbackOnEnd?.Invoke(this, false); // TODO 暂且都是false 2025年4月26日18:10:48 
     }
@@ -116,8 +109,7 @@ public partial class Skill
     /// <summary>
     /// 逻辑帧更新
     /// </summary>
-    public void OnLogicFrameUpdate()
-    {
+    public void OnLogicFrameUpdate() {
         if (_skillState == SkillState.None) return;
 
         _curLogicFrameAccTimeMS = _curLogicFrame * LogicFrameConfig.LogicFrameIntervalMS;
@@ -125,8 +117,7 @@ public partial class Skill
         // 尝试进入技能后摇
         if (_skillState == SkillState.Before
             && _curLogicFrameAccTimeMS >= _skillData.SkillCfg.skillShakeBeforeTimeMs
-           )
-        {
+           ) {
             SkillAfter();
         }
 
@@ -144,8 +135,7 @@ public partial class Skill
 
         // 更新子弹逻辑帧
 
-        if (_curLogicFrame == _skillData.character.logicFrame)
-        {
+        if (_curLogicFrame == _skillData.character.logicFrame) {
             SkillEnd();
         }
 

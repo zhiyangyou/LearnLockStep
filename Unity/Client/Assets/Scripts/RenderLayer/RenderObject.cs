@@ -24,8 +24,8 @@ public class RenderObject : MonoBehaviour {
     #region life-cycle
 
     protected virtual void Update() {
-        UpdatePosition();
         UpdateDir();
+        UpdatePosition();
     }
 
     #endregion
@@ -58,10 +58,16 @@ public class RenderObject : MonoBehaviour {
         textItem.ShowDamageText(damageValue, this);
     }
 
+    public void UpdatePosAndDir() {
+        UpdateDir();
+        UpdatePosition();
+    }
+    
     #endregion
 
     #region private
 
+    
     /// <summary>
     /// 通用逻辑:更新方向
     /// </summary>
@@ -80,6 +86,7 @@ public class RenderObject : MonoBehaviour {
         // 上述代码可能导致延迟累积。因为Lerp的起点是上一渲染帧的位置，而非最新的逻辑位置，在高延迟或高速移动场景中，物体可能始终“追赶”逻辑位置。
         // 
         transform.position = Vector3.Lerp(transform.position, LogicObject.LogicPos.ToVector3(), Time.deltaTime * _smoothPosSpeed);
+    
     }
 
     #endregion

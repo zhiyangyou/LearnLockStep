@@ -11,8 +11,7 @@ using UnityEngine;
 using ZMGC.Battle;
 using ZMUIFrameWork;
 
-public class BattleWindow : WindowBase
-{
+public class BattleWindow : WindowBase {
     #region 属性和字段
 
     private HeroLogic _heroLogic = null;
@@ -24,29 +23,25 @@ public class BattleWindow : WindowBase
     #region 声明周期函数
 
     //调用机制与Mono Awake一致
-    public override void OnAwake()
-    {
+    public override void OnAwake() {
         uiCompt = transform.GetComponent<BattleWindowDataComponent>();
         uiCompt.InitComponent(this);
         base.OnAwake();
     }
 
     //物体显示时执行
-    public override void OnShow()
-    {
+    public override void OnShow() {
         base.OnShow();
         _heroLogic = BattleWorld.GetExitsLogicCtrl<HeroLogicCtrl>().HeroLogic;
     }
 
     //物体隐藏时执行
-    public override void OnHide()
-    {
+    public override void OnHide() {
         base.OnHide();
     }
 
     //物体销毁时执行
-    public override void OnDestroy()
-    {
+    public override void OnDestroy() {
         base.OnDestroy();
     }
 
@@ -58,9 +53,8 @@ public class BattleWindow : WindowBase
 
     #region UI组件事件
 
-    public void OnNormalAttackButtonClick()
-    {
-        _heroLogic.ReleaseSkill(1001); //  普通攻击技能
+    public void OnNormalAttackButtonClick() {
+        _heroLogic.ReleaseNormalAttack(); //  普通攻击技能
     }
 
     #endregion
