@@ -3,10 +3,8 @@ using ZMGC.Battle;
 using UnityEngine;
 using ZM.ZMAsset;
 
-namespace ZMGC.Battle
-{
-    public class BattleWorld : World
-    {
+namespace ZMGC.Battle {
+    public class BattleWorld : World {
         #region 属性和字段
 
         /// <summary>
@@ -31,41 +29,37 @@ namespace ZMGC.Battle
 
         #region override
 
-        private static Type[] CtrlTypes = new Type[]
-        {
+        private static Type[] s_OrderCtrlTypes = new Type[] {
+            typeof(HeroLogicCtrl),
+            typeof(MonsterLogicCtrl),
+            typeof(BattleLogicCtrl),
         };
 
-        private static Type[] DataTypes = new Type[]
-        {
-        };
+        private static Type[] s_OrderDataTypes = new Type[]
+            { };
 
-        private static Type[] MsgTypes = new Type[]
-        {
-        };
+        private static Type[] s_OrderMsgTypes = new Type[]
+            { };
 
         public override WorldEnum WorldEnum => WorldEnum.BattleWorld;
 
-        public override Type[] GetLogicBehaviourExecution()
-        {
-            return CtrlTypes;
+        public override Type[] GetLogicBehaviourExecution() {
+            return s_OrderCtrlTypes;
         }
 
-        public override Type[] GetDataBehaviourExecution()
-        {
-            return DataTypes;
+        public override Type[] GetDataBehaviourExecution() {
+            return s_OrderDataTypes;
         }
 
-        public override Type[] GetMsgBehaviourExecution()
-        {
-            return MsgTypes;
+        public override Type[] GetMsgBehaviourExecution() {
+            return s_OrderMsgTypes;
         }
 
         #endregion
 
         #region life-cycle
 
-        public override void OnCreate()
-        {
+        public override void OnCreate() {
             // Application.targetFrameRate = 60;
             base.OnCreate();
             HeroLogicCtrl = BattleWorld.GetExitsLogicCtrl<HeroLogicCtrl>();
@@ -81,16 +75,14 @@ namespace ZMGC.Battle
         /// <summary>
         /// Unity驱动的渲染更新
         /// </summary>
-        public override void OnUpdate()
-        {
+        public override void OnUpdate() {
             base.OnUpdate();
             _accLogicRealTime += Time.deltaTime;
 
             // 当前逻辑帧时间大于下一个逻辑帧时间, 需要更新逻辑帧
             // 另外作用: 追帧 && 保证所有设备的逻辑帧的帧数的一致性
             // 
-            while (_accLogicRealTime > _nextLogicFrameTime)
-            {
+            while (_accLogicRealTime > _nextLogicFrameTime) {
                 OnLigicFrameUpdate();
                 _nextLogicFrameTime += LogicFrameConfig.LogicFrameInterval;
                 // 逻辑帧ID 进行自增
@@ -104,20 +96,17 @@ namespace ZMGC.Battle
         /// <summary>
         /// 应该通过服务端负责调用.
         /// </summary>
-        public void OnLigicFrameUpdate()
-        {
+        public void OnLigicFrameUpdate() {
             HeroLogicCtrl.OnLogicFrameUpdate();
             MonsterLogicCtrl.OnLogicFrameUpdate();
         }
 
-        public override void OnDestroy()
-        {
+        public override void OnDestroy() {
             base.OnDestroy();
             Debug.LogError("BattleWorld.OnDestroy");
         }
 
-        public override void OnDestroyPostProcess(object args)
-        {
+        public override void OnDestroyPostProcess(object args) {
             base.OnDestroyPostProcess(args);
             Debug.LogError("BattleWorld.OnDestroyPostProcess");
         }

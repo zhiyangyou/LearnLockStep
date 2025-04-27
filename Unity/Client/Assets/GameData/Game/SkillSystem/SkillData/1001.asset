@@ -49,7 +49,7 @@ MonoBehaviour:
     skillDes: 
   damageCfgList:
   - triggerFrame: 1
-    endFrame: 4
+    endFrame: 3
     triggerIntervalMs: 0
     isFollowEffect: 0
     damageType: 0

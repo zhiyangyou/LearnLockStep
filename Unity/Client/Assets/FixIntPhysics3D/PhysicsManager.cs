@@ -31,6 +31,7 @@ namespace FixIntPhysics
 
             return true;
         }
+        
         public static bool IsCollision(FixIntBoxCollider box, FixIntSphereCollider sphere)
         {
             if (box.Active == false || sphere.Active == false)
@@ -117,6 +118,11 @@ namespace FixIntPhysics
             }
         }
 
+        public static bool IsCollision(FixIntSphereCollider sphere, FixIntBoxCollider box)
+        {
+            return IsCollision(box, sphere);
+        }
+        
         public static bool IsCollision(FixIntSphereCollider collider1, FixIntSphereCollider collider2)
         {
             if (collider1.Active == false || collider2.Active == false)
