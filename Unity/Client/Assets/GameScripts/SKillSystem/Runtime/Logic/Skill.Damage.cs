@@ -91,15 +91,8 @@ public partial class Skill {
     /// 触发碰撞伤害检测
     /// </summary>
     public void TriggerColliderDamage(ColliderBehaviour collider, SkillDamageConfig damageConfig) {
-        /*
-         * 1. 获取目标
-         * 2. 碰撞检测逻辑
-         * 3. 获取到碰撞的目标之后, 对敌人造成伤害
-         */
-
         // 1. 获取目标
         var enemyList = BattleWorld.GetExitsLogicCtrl<BattleLogicCtrl>().GetEnemyList(_skillCreater.ObjectType);
-
 
         // 2.碰撞检测逻辑
         List<LogicActor> damageTargetList = new List<LogicActor>();
@@ -121,7 +114,6 @@ public partial class Skill {
 
         // 3. 获取到碰撞的目标之后, 对敌人造成伤害
         enemyList.Clear();
-
         foreach (LogicActor targetDamage in damageTargetList) {
             // 造成伤害
             targetDamage.SkillDamage(9999, damageConfig);
