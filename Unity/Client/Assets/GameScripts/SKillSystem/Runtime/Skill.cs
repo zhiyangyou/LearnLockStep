@@ -109,10 +109,9 @@ public partial class Skill
     public void SkillEnd()
     {
         _skillState = SkillState.End;
-        this.SkillCallbackOnEnd?.Invoke(this ,false); // TODO 暂且都是false 2025年4月26日18:10:48 
+        this.SkillCallbackOnEnd?.Invoke(this, false); // TODO 暂且都是false 2025年4月26日18:10:48 
     }
 
-    #endregion
 
     /// <summary>
     /// 逻辑帧更新
@@ -137,6 +136,7 @@ public partial class Skill
         OnLogicFrameUpdate_Effect();
 
         // 更新伤害
+        OnLogicFrameUpdate_Damage();
 
         // 更新行动逻辑帧
 
@@ -146,12 +146,14 @@ public partial class Skill
 
         if (_curLogicFrame == _skillData.character.logicFrame)
         {
-            SkillEnd();   
+            SkillEnd();
         }
-        
+
         // 计数自增
         _curLogicFrame++;
     }
+
+    #endregion
 
     #region private
 

@@ -49,14 +49,14 @@ MonoBehaviour:
     skillDes: 
   damageCfgList:
   - triggerFrame: 1
-    endFrame: 3
+    endFrame: 4
     triggerIntervalMs: 0
     isFollowEffect: 0
     damageType: 0
     damageRate: 0
     DetectionMode: 1
     boxSize: {x: 1, y: 1.85, z: 1}
-    boxOffset: {x: 1.51, y: 1.43, z: -1.42}
+    boxOffset: {x: 1.51, y: 1.27, z: 0}
     sphereOffset: {x: 0, y: 0, z: 0}
     radius: 2.01
     radiusHeight: 0
@@ -72,4 +72,3 @@ MonoBehaviour:
     effectPosType: 0
     isSetTransParent: 0
     TransParentType: 0
-    GoEffect: {fileID: 0}

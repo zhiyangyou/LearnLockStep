@@ -6,9 +6,9 @@ public partial class Skill
     #region 属性和字段
 
     /// <summary>
-    /// 特效物体字段,k是物体的hash值,value是GameOBject
+    /// 特效物体字段,k是SkillEffectConfig的hash值,value是SkillEffectLogic
     /// </summary>
-    private Dictionary<int, SkillEffectLogic> _dicEffectGos = new();
+    private Dictionary<int, SkillEffectLogic> _dicEffectLogics = new();
 
     #endregion
 
@@ -31,22 +31,27 @@ public partial class Skill
                 if (itemEffect.skillEffect != null && _curLogicFrame == itemEffect.triggerFrame)
                 {
                     DestoryEffectGo(itemEffect); // 避免重复释放技能导致特效对象重复出现
-                    // 技能特效生成触发
+
+                    // 创建技能特效渲染层
                     var goEffect = GameObject.Instantiate(itemEffect.skillEffect);
                     goEffect.transform.localPosition = Vector3.zero;
                     goEffect.transform.localScale = Vector3.one;
                     goEffect.transform.localRotation = Quaternion.identity;
                     var effectRender = goEffect.GetComponent<SkillEffectRender>();
                     if (effectRender == null) effectRender = goEffect.AddComponent<SkillEffectRender>();
+
+                    // 技能特效逻辑层
                     SkillEffectLogic skillEffectLogic = new SkillEffectLogic(LogicObjectType.Effect, itemEffect, effectRender, _skillCreater);
                     effectRender.SetLogicObject(skillEffectLogic);
 
-                    _dicEffectGos.Add(itemEffect.GetHashCode().GetHashCode(), skillEffectLogic);
+                    // 生命周期维护
+                    _dicEffectLogics.Add(itemEffect.GetHashCode().GetHashCode(), skillEffectLogic);
                 }
+                
+                // 结束之后,自动销毁
                 if (_curLogicFrame == itemEffect.endFrame)
                 {
                     DestoryEffectGo(itemEffect);
-                    // 技能特效结束,开始销毁
                 }
             }
         }
@@ -56,9 +61,9 @@ public partial class Skill
     public void DestoryEffectGo(SkillEffectConfig config)
     {
         var configHashCode = config.GetHashCode();
-        if (_dicEffectGos.TryGetValue(configHashCode, out var skillEffectLogic))
+        if (_dicEffectLogics.TryGetValue(configHashCode, out var skillEffectLogic))
         {
-            _dicEffectGos.Remove(configHashCode);
+            _dicEffectLogics.Remove(configHashCode);
             if (skillEffectLogic != null)
             {
                 skillEffectLogic.OnDestory();

@@ -23,9 +23,11 @@ namespace FixIntPhysics
             this.LogicPosition = pos;
         }
         public virtual void UpdateColliderInfo(Vector3 pos, Vector3 size = default, float radius = default) { }
+        public virtual void SetBoxData(FixInt raduis, FixIntVector3 conter, bool isFloowTarget = false) { }
         public virtual void SetBoxData(float raduis, Vector3 conter, bool isFloowTarget = false) { }
 
         public virtual void SetBoxData(Vector3 conter, Vector3 size, bool isFloowTarget = false) { }
+        public virtual void SetBoxData(FixIntVector3 conter, FixIntVector3 size, bool isFloowTarget = false) { }
 
         public virtual void OnRelease()
         {
