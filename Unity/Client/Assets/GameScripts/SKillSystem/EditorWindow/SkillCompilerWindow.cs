@@ -6,8 +6,7 @@ using Sirenix.OdinInspector.Editor;
 using UnityEditor;
 using UnityEngine;
 
-public class SkillCompilerWindow : OdinEditorWindow
-{
+public class SkillCompilerWindow : OdinEditorWindow {
     [TabGroup("Skill", "Character", SdfIconType.Person, TextColor = "green")]
     public SkillCharacterConfig CharacterConfig = new();
 
@@ -20,32 +19,33 @@ public class SkillCompilerWindow : OdinEditorWindow
     [TabGroup("SkillCompiler", "Effect", SdfIconType.OpticalAudio, TextColor = "blue")]
     public List<SkillEffectConfig> effectList = new();
 
+    [TabGroup("SkillCompiler", "Audio", SdfIconType.OpticalAudio, TextColor = "blue")]
+    public List<SkillAudioConfig> audioList = new();
+
     [MenuItem("Window/Skill/技能编译器 &`")]
-    public static SkillCompilerWindow ShowWindow()
-    {
+    public static SkillCompilerWindow ShowWindow() {
         return GetWindowWithRect<SkillCompilerWindow>(new Rect(100, 100, 1000, 600));
     }
 
-    public void SaveSkillData()
-    {
+    public void SaveSkillData() {
         SkillDataSO.SaveSkillData(
             CharacterConfig,
             skill,
             damageList,
-            effectList
+            effectList,
+            audioList
         );
     }
 
-    public void LoadSkillData(SkillDataSO so)
-    {
+    public void LoadSkillData(SkillDataSO so) {
         this.CharacterConfig = so.character;
         this.skill = so.SkillCfg;
         this.effectList = so.effectCfgList;
         this.damageList = so.damageCfgList;
+        this.audioList = so.audioList;
     }
 
-    public static SkillCompilerWindow GetWindow()
-    {
+    public static SkillCompilerWindow GetWindow() {
         return GetWindow<SkillCompilerWindow>();
     }
 
@@ -77,8 +77,7 @@ public class SkillCompilerWindow : OdinEditorWindow
     /// 获取角色的坐标位置
     /// </summary>
     /// <returns></returns>
-    public static Vector3 GetCharacterPos()
-    {
+    public static Vector3 GetCharacterPos() {
         var win = GetWindow<SkillCompilerWindow>();
         if (win == null) return Vector3.zero;
         return win.CharacterConfig.sKillCharacterPrefab.transform.position;
@@ -86,34 +85,27 @@ public class SkillCompilerWindow : OdinEditorWindow
 
     #endregion
 
-    protected override void OnEnable()
-    {
+    protected override void OnEnable() {
         base.OnEnable();
-        foreach (var damageConfig in damageList)
-        {
+        foreach (var damageConfig in damageList) {
             damageConfig.OnInit();
         }
         EditorApplication.update += OnEditorUpdate;
     }
 
-    protected override void OnDisable()
-    {
+    protected override void OnDisable() {
         base.OnDisable();
-        foreach (var damageConfig in damageList)
-        {
+        foreach (var damageConfig in damageList) {
             damageConfig.OnRelease();
         }
         EditorApplication.update -= OnEditorUpdate;
     }
 
-    public void PlaySkillStart()
-    {
-        foreach (var effectConfig in effectList)
-        {
+    public void PlaySkillStart() {
+        foreach (var effectConfig in effectList) {
             effectConfig.PlaySkillStart();
         }
-        foreach (var damageConfig in damageList)
-        {
+        foreach (var damageConfig in damageList) {
             damageConfig.PlaySkillStart();
         }
         _accLogicRuntime = 0f;
@@ -123,43 +115,33 @@ public class SkillCompilerWindow : OdinEditorWindow
         _isStartPlaySkill = true;
     }
 
-    public void SkillPause()
-    {
-        foreach (var effectConfig in effectList)
-        {
+    public void SkillPause() {
+        foreach (var effectConfig in effectList) {
             effectConfig.SkillPause();
         }
-        foreach (var damageConfig in damageList)
-        {
+        foreach (var damageConfig in damageList) {
             damageConfig.PlaySkillEnd();
         }
     }
 
-    public void PlaySkillEnd()
-    {
-        foreach (var effectConfig in effectList)
-        {
+    public void PlaySkillEnd() {
+        foreach (var effectConfig in effectList) {
             effectConfig.PlaySkillEnd();
         }
-        foreach (var damageConfig in damageList)
-        {
+        foreach (var damageConfig in damageList) {
             damageConfig.PlaySkillEnd();
         }
         _isStartPlaySkill = false;
     }
 
-    private void OnEditorUpdate()
-    {
-        try
-        {
+    private void OnEditorUpdate() {
+        try {
             CharacterConfig.OnUpdate(Focus);
-            if (_isStartPlaySkill)
-            {
+            if (_isStartPlaySkill) {
                 OnLogicUpdate();
             }
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             Debug.LogException(e);
         }
     }
@@ -167,16 +149,13 @@ public class SkillCompilerWindow : OdinEditorWindow
     /// <summary>
     /// 模拟帧同步的更新
     /// </summary>
-    public void OnLogicUpdate()
-    {
-        if (_lastUpdateTime == 0f)
-        {
+    public void OnLogicUpdate() {
+        if (_lastUpdateTime == 0f) {
             _lastUpdateTime = EditorApplication.timeSinceStartup;
         }
         _accLogicRuntime = (float)(EditorApplication.timeSinceStartup - _lastUpdateTime);
 
-        while (_accLogicRuntime > _nextLogicTime)
-        {
+        while (_accLogicRuntime > _nextLogicTime) {
             OnLogicFrameUpdate();
 
             // 下一个逻辑帧的时间
@@ -184,14 +163,11 @@ public class SkillCompilerWindow : OdinEditorWindow
         }
     }
 
-    public void OnLogicFrameUpdate()
-    {
-        foreach (var effectConfig in effectList)
-        {
+    public void OnLogicFrameUpdate() {
+        foreach (var effectConfig in effectList) {
             effectConfig.OnLogicFrameUpdate();
         }
-        foreach (var damageConfig in damageList)
-        {
+        foreach (var damageConfig in damageList) {
             damageConfig.OnLogicFrameUpdate();
         }
     }

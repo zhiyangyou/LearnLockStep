@@ -7,26 +7,29 @@ using UnityEditor;
 #endif
 
 [CreateAssetMenu(fileName = "SkillConfig", menuName = "SkillConfig", order = 0)]
-public class SkillDataSO : ScriptableObject
-{
+public class SkillDataSO : ScriptableObject {
     public const string SKillDataBasePath = "Assets/GameData/Game/SkillSystem/SkillData/";
+
     public SkillCharacterConfig character;
     public SkillConfig SkillCfg;
     public List<SkillDamageConfig> damageCfgList;
     public List<SkillEffectConfig> effectCfgList;
+    public List<SkillAudioConfig> audioList;
 
     public static void SaveSkillData(
         SkillCharacterConfig characterConfig,
         SkillConfig skillConfig,
         List<SkillDamageConfig> damageConfigs,
-        List<SkillEffectConfig> effectConfigs
-    )
-    {
+        List<SkillEffectConfig> effectConfigs,
+        List<SkillAudioConfig> audioConfigs
+    ) {
         var so = ScriptableObject.CreateInstance<SkillDataSO>();
         so.character = characterConfig;
         so.SkillCfg = skillConfig;
         so.damageCfgList = damageConfigs;
         so.effectCfgList = effectConfigs;
+        so.audioList = audioConfigs;
+
 
         var assetPath = $"{SKillDataBasePath}{skillConfig.skillID.ToString()}.asset";
         AssetDatabase.DeleteAsset(assetPath);
@@ -37,8 +40,7 @@ public class SkillDataSO : ScriptableObject
 
 
     [Button("配置技能窗口", ButtonSizes.Large), GUIColor("green")]
-    public void ShowSkillWindowButtonClick()
-    {
+    public void ShowSkillWindowButtonClick() {
         var window = SkillCompilerWindow.ShowWindow();
         window.LoadSkillData(this);
     }

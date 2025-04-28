@@ -132,6 +132,7 @@ public partial class Skill {
         // 更新行动逻辑帧
 
         // 更新音效逻辑帧
+        OnLogicFrameUpdate_Audio();
 
         // 更新子弹逻辑帧
 
