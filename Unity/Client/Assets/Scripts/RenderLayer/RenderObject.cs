@@ -58,16 +58,25 @@ public class RenderObject : MonoBehaviour {
         textItem.ShowDamageText(damageValue, this);
     }
 
+    public virtual void OnHit(GameObject goEffect, int survialTimeMS, LogicActor sourceActor) {
+        if (goEffect != null) {
+            var createGoEffect = GameObject.Instantiate(goEffect);
+            createGoEffect.transform.position = this.transform.position;
+            // goHitEffect.transform.position = sourceActor.RenderObject.transform.position;
+            createGoEffect.transform.localScale = sourceActor.LogicAxis_X > 0 ? Vector3.one : new Vector3(-1, 1, 1);
+            GameObject.Destroy(createGoEffect, survialTimeMS * 0.001f);
+        }
+    }
+
     private void UpdatePosAndDir() {
         UpdateDir();
         UpdatePosition();
     }
-    
+
     #endregion
 
     #region private
 
-    
     /// <summary>
     /// 通用逻辑:更新方向
     /// </summary>
@@ -86,7 +95,6 @@ public class RenderObject : MonoBehaviour {
         // 上述代码可能导致延迟累积。因为Lerp的起点是上一渲染帧的位置，而非最新的逻辑位置，在高延迟或高速移动场景中，物体可能始终“追赶”逻辑位置。
         // 
         transform.position = Vector3.Lerp(transform.position, LogicObject.LogicPos.ToVector3(), Time.deltaTime * _smoothPosSpeed);
-    
     }
 
     #endregion

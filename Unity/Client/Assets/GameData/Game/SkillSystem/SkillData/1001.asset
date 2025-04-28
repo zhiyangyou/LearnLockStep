@@ -41,8 +41,8 @@ MonoBehaviour:
     skillGuideObj: {fileID: 0}
     skillGuideRange: 0
     CombinationSkillId: 0
-    skillHitEffect: {fileID: 0}
-    hitEffectSurvialTimeMs: 0
+    skillHitEffect: {fileID: 5023627635078921320, guid: eebb9919fe1d53f4690a67203d880219, type: 3}
+    hitEffectSurvialTimeMs: 100
     SkillHitAudio: {fileID: 0}
     showSkillPortrait: 0
     skillPortraitObj: {fileID: 0}

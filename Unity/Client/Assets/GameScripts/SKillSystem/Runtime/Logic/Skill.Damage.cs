@@ -97,6 +97,12 @@ public partial class Skill {
         return collider;
     }
 
+    public void AddHitEffect(LogicActor target) {
+        if (_skillData.SkillCfg.skillHitEffect != null) {
+            target.OnHit(_skillData.SkillCfg.skillHitEffect, _skillData.SkillCfg.hitEffectSurvialTimeMs, _skillCreater);
+        }
+    }
+
     /// <summary>
     /// 触发碰撞伤害检测
     /// </summary>
@@ -124,12 +130,12 @@ public partial class Skill {
 
         // 3. 获取到碰撞的目标之后, 对敌人造成伤害
         enemyList.Clear();
-        foreach (LogicActor targetDamage in damageTargetList) {
+        foreach (LogicActor damageTargetActor in damageTargetList) {
             // 造成伤害
-            targetDamage.SkillDamage(9999, damageConfig);
+            damageTargetActor.SkillDamage(9999, damageConfig);
 
             // TODO 添加伤害特效
-
+            AddHitEffect(damageTargetActor);
             // TODO 添加伤害buff
 
             // TODO 播放击中音效
