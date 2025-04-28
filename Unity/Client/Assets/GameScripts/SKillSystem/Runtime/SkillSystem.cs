@@ -33,10 +33,10 @@ public class SkillSystem {
         foreach (Skill skill in _listSkills) {
             if (skillID == skill.SkillID) {
                 if (skill.skillState != SkillState.None && skill.skillState != SkillState.End) {
-                    Debug.LogError($"技能正在释放中{skillID} ");
+                    // Debug.LogError($"技能正在释放中{skillID} ");
                     return null;
                 }
-                Debug.LogError($"release skill {skillID}");
+                // Debug.LogError($"release skill {skillID}");
                 skill.ReleaseSkill(onAfter, (skRelease, isCombineSkill) => {
                     onEnd.Invoke(skRelease, isCombineSkill);
                     if (isCombineSkill) {

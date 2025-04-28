@@ -74,9 +74,8 @@ public partial class LogicActor {
     /// <param name="isCombineSkill"></param>
     public void SkillCallback_OnEnd(Skill sk, bool isCombineSkill) {
         _listReleasingSkills.Remove(sk);
-        if (IsNormalSkill(sk.SkillID)) {
-            // _curNormalComboIndex = 0; // 连击按钮过长,中断
-            // Debug.LogError("连击按钮过长,中断");
+        if (_listReleasingSkills != null && _listReleasingSkills.Count == 0) {
+            _curNormalComboIndex = 0;
         }
     }
 
