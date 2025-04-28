@@ -61,9 +61,9 @@ namespace FixIntPhysics
 
         public override void SetBoxData(FixIntVector3 conter, FixIntVector3 size, bool isFloowTarget = false)
         {
-            if (boxDraw == null)
-            {
-                GameObject obj = new GameObject();
+            if (boxDraw == null) {
+                var obj = CreateGo();
+                obj.name = $"boxCollider:{conter}";
                 boxDraw = obj.AddComponent<BoxColliderGizmo>();
                 boxDraw.SetBoxData(conter.ToVector3(), size.ToVector3(), mIsFloowTarget);
             }

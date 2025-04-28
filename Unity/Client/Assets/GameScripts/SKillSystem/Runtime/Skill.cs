@@ -36,7 +36,7 @@ public partial class Skill {
     // 配置数据
     private SkillDataSO _skillData;
 
-    private SkillState _skillState = SkillState.None;
+    public SkillState skillState { get; private set; } = SkillState.None;
 
     // 当前逻辑帧
     private int _curLogicFrame = 0;
@@ -67,7 +67,7 @@ public partial class Skill {
     public void ReleaseSkill(SkillCallback_OnAfter onSkillCallbackOnAfter, SkillCallback_OnEnd onSkillCallbackOnEnd) {
         SkillCallbackOnAfter = onSkillCallbackOnAfter;
         SkillCallbackOnEnd = onSkillCallbackOnEnd;
-        _skillState = SkillState.Before;
+        skillState = SkillState.Before;
         SkillStart();
         PlayAni();
     }
@@ -93,7 +93,7 @@ public partial class Skill {
     /// 技能后摇
     /// </summary>
     public void SkillAfter() {
-        _skillState = SkillState.After;
+        skillState = SkillState.After;
         SkillCallbackOnAfter?.Invoke(this);
     }
 
@@ -101,7 +101,7 @@ public partial class Skill {
     /// 技能释放结束
     /// </summary>
     public void SkillEnd() {
-        _skillState = SkillState.End;
+        skillState = SkillState.End;
         this.SkillCallbackOnEnd?.Invoke(this, false); // TODO 暂且都是false 2025年4月26日18:10:48 
     }
 
@@ -110,12 +110,12 @@ public partial class Skill {
     /// 逻辑帧更新
     /// </summary>
     public void OnLogicFrameUpdate() {
-        if (_skillState == SkillState.None) return;
+        if (skillState == SkillState.None) return;
 
         _curLogicFrameAccTimeMS = _curLogicFrame * LogicFrameConfig.LogicFrameIntervalMS;
 
         // 尝试进入技能后摇
-        if (_skillState == SkillState.Before
+        if (skillState == SkillState.Before
             && _curLogicFrameAccTimeMS >= _skillData.SkillCfg.skillShakeBeforeTimeMs
            ) {
             SkillAfter();

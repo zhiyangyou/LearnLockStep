@@ -24,13 +24,13 @@ MonoBehaviour:
   SkillCfg:
     showStockPileData: 0
     showSkillGuide: 0
-    skillIcon: {fileID: 21300000, guid: 3eee7238013703e4c8f34f2befc9dc33, type: 3}
+    skillIcon: {fileID: 21300000, guid: d9f3862f7759d7343ab3a56d9b2279c9, type: 3}
     skillID: 1003
     skillName: "\u79BB\u9B3C\u5149\u525103"
     needMagicValue: 100
-    skillShakeBeforeTimeMs: 120
+    skillShakeBeforeTimeMs: 100
     skillAttackDurationMs: 633
-    skillShakeAfterTimeMs: 420
+    skillShakeAfterTimeMs: 100
     skillCDTimeMS: 5
     SkillType: 0
     stockPIleStageDatas:

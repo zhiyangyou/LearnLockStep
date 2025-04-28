@@ -54,6 +54,7 @@ public class BattleWindow : WindowBase {
     #region UI组件事件
 
     public void OnNormalAttackButtonClick() {
+        Debug.LogError($"按钮点击");
         _heroLogic.ReleaseNormalAttack(); //  普通攻击技能
     }
 

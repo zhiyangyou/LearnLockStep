@@ -37,7 +37,6 @@ public partial class Skill {
                     // 技能特效逻辑层
                     SkillEffectLogic skillEffectLogic = new SkillEffectLogic(LogicObjectType.Effect, itemEffect, effectRender, _skillCreater);
                     effectRender.SetLogicObject(skillEffectLogic);
-                    effectRender.UpdatePosAndDir(); // 需要立即更新一次位置 
 
                     // 生命周期维护
                     _dicEffectLogics.Add(itemEffect.GetHashCode().GetHashCode(), skillEffectLogic);

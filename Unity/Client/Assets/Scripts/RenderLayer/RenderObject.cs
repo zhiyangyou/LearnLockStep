@@ -24,8 +24,7 @@ public class RenderObject : MonoBehaviour {
     #region life-cycle
 
     protected virtual void Update() {
-        UpdateDir();
-        UpdatePosition();
+        UpdatePosAndDir();
     }
 
     #endregion
@@ -37,6 +36,7 @@ public class RenderObject : MonoBehaviour {
 
         // 初始化位置
         transform.position = logicObject.LogicPos.ToVector3();
+        UpdatePosAndDir();
     }
 
     public virtual void OnCreate() { }
@@ -58,7 +58,7 @@ public class RenderObject : MonoBehaviour {
         textItem.ShowDamageText(damageValue, this);
     }
 
-    public void UpdatePosAndDir() {
+    private void UpdatePosAndDir() {
         UpdateDir();
         UpdatePosition();
     }
