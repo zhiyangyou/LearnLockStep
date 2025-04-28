@@ -2,9 +2,11 @@
 using FixMath;
 using UnityEngine;
 
-public class HeroRender : RenderObject
-{
+public class HeroRender : RenderObject {
     #region 属性字段
+
+    public Transform trLeftHand;
+    public Transform trRightHand;
 
     private const string kStrAniName_Idle2 = "Anim_Idle02";
     private const string kStrAniName_Run = "Anim_Run";
@@ -16,12 +18,9 @@ public class HeroRender : RenderObject
     // 角色动画
     private Animation _ani;
 
-    private HeroLogic heroLogic
-    {
-        get
-        {
-            if (_heroLogic == null)
-            {
+    private HeroLogic heroLogic {
+        get {
+            if (_heroLogic == null) {
                 _heroLogic = this.LogicObject as HeroLogic;
             }
             return _heroLogic;
@@ -32,11 +31,9 @@ public class HeroRender : RenderObject
 
     #region public
 
-    public override void PlayAnim(AnimationClip animationClip)
-    {
+    public override void PlayAnim(AnimationClip animationClip) {
         base.PlayAnim(animationClip);
-        if (_ani.GetClip(animationClip.name) == null)
-        {
+        if (_ani.GetClip(animationClip.name) == null) {
             _ani.AddClip(animationClip, animationClip.name);
         }
         _ani.clip = animationClip;
@@ -47,8 +44,7 @@ public class HeroRender : RenderObject
 
     #region life-cycle
 
-    public override void OnCreate()
-    {
+    public override void OnCreate() {
         base.OnCreate();
         _ani = GetComponent<Animation>();
         if (_ani == null) Debug.LogError("Hero Render 没有Animation组件");
@@ -56,55 +52,60 @@ public class HeroRender : RenderObject
     }
 
 
-    public override void OnRelease()
-    {
+    public override void OnRelease() {
         JoystickUGUI.OnMoveCallBack -= OnJoyStickMove;
         base.OnRelease();
     }
 
-    protected override void Update()
-    {
+    protected override void Update() {
         base.Update();
 
         // 判断有没有在技能释放, 有技能释放,播放技能动画的动画片段
-        if (!heroLogic.HasReleasingSkill)
-        {
+        if (!heroLogic.HasReleasingSkill) {
             // 判断摇杆是否有输入值, 如果没有,播放待机动画, 如果有播放跑步动画
             PlayAni(_curInputDir is { x: 0f, z: 0f } ? kStrAniName_Idle2 : kStrAniName_Run);
-        } 
+        }
     }
 
-    private void OnDestroy()
-    {
+
+    public override Transform GetTransParent(TransParentType transParentType) {
+        switch (transParentType) {
+            case TransParentType.None:
+                return null;
+                break;
+            case TransParentType.LeftHand:
+                return trLeftHand;
+                break;
+            case TransParentType.RightHand:
+                return trRightHand;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(transParentType), transParentType, null);
+        }
     }
 
     #endregion
 
     #region private
 
-    private void PlayAni(string aniName)
-    {
+    private void PlayAni(string aniName) {
         if (_ani == null) return;
         if (string.IsNullOrEmpty(aniName)) return;
         _ani.CrossFade(aniName, 0.2f);
     }
 
-    private void OnJoyStickMove(Vector3 pos)
-    {
+    private void OnJoyStickMove(Vector3 pos) {
         FixIntVector3 logicDir = FixIntVector3.zero;
-        if (pos != Vector3.zero)
-        {
+        if (pos != Vector3.zero) {
             logicDir.x = pos.x;
             logicDir.y = pos.y;
             logicDir.z = pos.z;
         }
         _curInputDir = pos;
-        if (heroLogic != null)
-        {
+        if (heroLogic != null) {
             heroLogic.LogicFrameEvent_Input(logicDir);
         }
-        else
-        {
+        else {
             Debug.LogError("HeroLogic is null");
         }
     }

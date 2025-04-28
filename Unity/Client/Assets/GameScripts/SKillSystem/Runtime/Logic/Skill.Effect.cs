@@ -17,34 +17,39 @@ public partial class Skill {
         var effectList = _skillData.effectCfgList;
         if (effectList != null && effectList.Count > 0) {
             foreach (SkillEffectConfig item in effectList) {
-                var itemEffect = item;
-                if (itemEffect == null) {
+                var effectConfig = item;
+                if (effectConfig == null) {
                     var id = _skillData?.SkillCfg.skillID;
                     Debug.LogError($"skillEffectConfig is null : skillID {id.ToString()}");
                     continue;
                 }
-                if (itemEffect.skillEffect != null && _curLogicFrame == itemEffect.triggerFrame) {
-                    DestoryEffectGo(itemEffect); // 避免重复释放技能导致特效对象重复出现
+                if (effectConfig.skillEffect != null && _curLogicFrame == effectConfig.triggerFrame) {
+                    DestoryEffectGo(effectConfig); // 避免重复释放技能导致特效对象重复出现
+
+                    Transform trParent = null;
+                    if (effectConfig.isSetTransParent) {
+                        trParent = _skillCreater.RenderObject.GetTransParent(effectConfig.TransParentType);
+                    }
 
                     // 创建技能特效渲染层
-                    var goEffect = GameObject.Instantiate(itemEffect.skillEffect);
+                    var goEffect = GameObject.Instantiate(effectConfig.skillEffect, trParent);
                     // goEffect.transform.localPosition = Vector3.zero;
                     // goEffect.transform.localScale = Vector3.one;
                     // goEffect.transform.localRotation = Quaternion.identity;
                     var effectRender = goEffect.GetComponent<SkillEffectRender>();
                     if (effectRender == null) effectRender = goEffect.AddComponent<SkillEffectRender>();
-                    
+
                     // 技能特效逻辑层
-                    SkillEffectLogic skillEffectLogic = new SkillEffectLogic(LogicObjectType.Effect, itemEffect, effectRender, _skillCreater);
-                    effectRender.SetLogicObject(skillEffectLogic);
+                    SkillEffectLogic skillEffectLogic = new SkillEffectLogic(LogicObjectType.Effect, effectConfig, effectRender, _skillCreater);
+                    effectRender.SetLogicObject(skillEffectLogic, effectConfig.effectPosType != EffectPosType.Zero);
 
                     // 生命周期维护
-                    _dicEffectLogics.Add(itemEffect.GetHashCode().GetHashCode(), skillEffectLogic);
+                    _dicEffectLogics.Add(effectConfig.GetHashCode().GetHashCode(), skillEffectLogic);
                 }
 
                 // 结束之后,自动销毁
-                if (_curLogicFrame == itemEffect.endFrame) {
-                    DestoryEffectGo(itemEffect);
+                if (_curLogicFrame == effectConfig.endFrame) {
+                    DestoryEffectGo(effectConfig);
                 }
             }
         }

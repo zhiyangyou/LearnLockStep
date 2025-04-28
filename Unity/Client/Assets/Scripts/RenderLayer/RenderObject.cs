@@ -18,6 +18,7 @@ public class RenderObject : MonoBehaviour {
     protected float _smoothPosSpeed => 20f;
 
     protected Vector2 _renderDir = Vector2.zero;
+    private bool _isUpdatePosAndDir = true;
 
     #endregion
 
@@ -31,11 +32,14 @@ public class RenderObject : MonoBehaviour {
 
     #region public
 
-    public void SetLogicObject(LogicObject logicObject) {
+    public void SetLogicObject(LogicObject logicObject, bool isUpdatePosAndDir = true) {
         this.LogicObject = logicObject;
-
+        this._isUpdatePosAndDir = isUpdatePosAndDir;
         // 初始化位置
         transform.position = logicObject.LogicPos.ToVector3();
+        if (!isUpdatePosAndDir) {
+            transform.localPosition = Vector3.zero;
+        }
         UpdatePosAndDir();
     }
 
@@ -68,14 +72,21 @@ public class RenderObject : MonoBehaviour {
         }
     }
 
-    private void UpdatePosAndDir() {
-        UpdateDir();
-        UpdatePosition();
+    public virtual Transform GetTransParent(TransParentType transParentType) {
+        return null;
     }
 
     #endregion
 
     #region private
+
+    private void UpdatePosAndDir() {
+        if (!_isUpdatePosAndDir) {
+            return;
+        }
+        UpdateDir();
+        UpdatePosition();
+    }
 
     /// <summary>
     /// 通用逻辑:更新方向
@@ -94,6 +105,8 @@ public class RenderObject : MonoBehaviour {
         // TODO 不理解... 2025年4月23日17:07:36
         // 上述代码可能导致延迟累积。因为Lerp的起点是上一渲染帧的位置，而非最新的逻辑位置，在高延迟或高速移动场景中，物体可能始终“追赶”逻辑位置。
         // 
+
+
         transform.position = Vector3.Lerp(transform.position, LogicObject.LogicPos.ToVector3(), Time.deltaTime * _smoothPosSpeed);
     }
 

@@ -3,8 +3,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 
 [Serializable]
-public class SkillEffectConfig
-{
+public class SkillEffectConfig {
     [AssetList] [LabelText("技能特效")] [PreviewField(70, ObjectFieldAlignment.Left)]
     public GameObject skillEffect; // 技能特效
 
@@ -14,7 +13,7 @@ public class SkillEffectConfig
 
     [LabelText("特效偏移位置上")] public Vector3 effectOffsetPos; // 特效偏移位置上
 
-    [LabelText("特效位置类型你")] public EffectPosType effectPosType; // 特效位置类型你
+    [LabelText("特效位置类型")] public EffectPosType effectPosType; // 特效位置类型你
 
     [ToggleGroup(nameof(isSetTransParent), "是否设置特效父节点")]
     public bool isSetTransParent = false; // 是否设置特效父节点
@@ -35,34 +34,28 @@ public class SkillEffectConfig
     /// <summary>
     /// 开始播放技能
     /// </summary>
-    public void PlaySkillStart()
-    {
+    public void PlaySkillStart() {
         DestoryEffect();
         _curLogicFrame = 0;
     }
 
-    public void SkillPause()
-    {
+    public void SkillPause() {
         DestoryEffect();
     }
 
     /// <summary>
     /// 播放技能结束
     /// </summary>
-    public void PlaySkillEnd()
-    {
+    public void PlaySkillEnd() {
         DestoryEffect();
     }
 
-    public void OnLogicFrameUpdate()
-    {
+    public void OnLogicFrameUpdate() {
         _curLogicFrame++;
-        if (_curLogicFrame == triggerFrame)
-        {
+        if (_curLogicFrame == triggerFrame) {
             CreateEffect();
         }
-        else if (_curLogicFrame == endFrame)
-        {
+        else if (_curLogicFrame == endFrame) {
             DestoryEffect();
         }
     }
@@ -70,10 +63,8 @@ public class SkillEffectConfig
     /// <summary>
     /// 创建特效
     /// </summary>
-    public void CreateEffect()
-    {
-        if (skillEffect == null)
-        {
+    public void CreateEffect() {
+        if (skillEffect == null) {
             Debug.LogError($"{nameof(SkillEffectConfig)}.{nameof(skillEffect)} 是空,无法创建实例");
             return;
         }
@@ -88,17 +79,14 @@ public class SkillEffectConfig
     /// <summary>
     /// 销毁特效
     /// </summary>
-    public void DestoryEffect()
-    {
+    public void DestoryEffect() {
         if (_goCloneSkillEffect == null) return;
         GameObject.DestroyImmediate(_goCloneSkillEffect);
-        if (_animationAgent != null)
-        {
+        if (_animationAgent != null) {
             _animationAgent.OnDestory();
             _animationAgent = null;
         }
-        if (_particleAgent != null)
-        {
+        if (_particleAgent != null) {
             _particleAgent.OnDestory();
             _particleAgent = null;
         }
@@ -107,24 +95,17 @@ public class SkillEffectConfig
 }
 
 
-public enum TransParentType
-{
+public enum TransParentType {
     [LabelText("无配置")] None,
-
     [LabelText("左手")] LeftHand,
-
     [LabelText("右手")] RightHand,
 }
 
-public enum EffectPosType
-{
+public enum EffectPosType {
     [LabelText("跟随角色位置和方向")] FollowPosDir, // 跟随角色位置和方向
-
     [LabelText("值跟随角色方向")] FollowDir, // 值跟随角色方向
-
     [LabelText("屏幕中心位置")] CenterPos, // 屏幕中心位置
-
     [LabelText("引导位置")] GuidePos, // 引导位置
-
     [LabelText("跟随特效移动位置")] FollowEffectMovePos, // 跟随特效移动位置
+    [LabelText("归零")] Zero, // 归零
 }
