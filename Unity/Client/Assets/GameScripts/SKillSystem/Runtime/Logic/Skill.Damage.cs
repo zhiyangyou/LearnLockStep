@@ -134,11 +134,12 @@ public partial class Skill {
             // 造成伤害
             damageTargetActor.SkillDamage(9999, damageConfig);
 
-            // TODO 添加伤害特效
+            // 添加伤害特效
             AddHitEffect(damageTargetActor);
             // TODO 添加伤害buff
 
-            // TODO 播放击中音效
+            // 播放击中音效
+            PlayHitAudio();
         }
     }
 
