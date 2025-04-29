@@ -246,6 +246,29 @@ namespace FixMath
         {
             return new  UnityEngine.Vector3(x.RawFloat,y.RawFloat,z.RawFloat);
         }
+
+        public bool IsOnlyAxis_X() {
+            return
+                x != FixInt.Zero
+                && y == FixInt.Zero
+                && z == FixInt.Zero
+                ;
+        }
+        public bool IsOnlyAxis_Y() {
+            return
+                x == FixInt.Zero
+                && y != FixInt.Zero
+                && z == FixInt.Zero
+                ;
+        }
+        public bool IsOnlyAxis_Z() {
+            return
+                x == FixInt.Zero
+                && y == FixInt.Zero
+                && z != FixInt.Zero
+                ;
+        }
+        
         public string ToStringFloat()
         {
             return string.Format("({0},{1},{2})", x.RawFloat, y.RawFloat, z.RawFloat);

@@ -33,6 +33,7 @@ public class SkillEffectLogic : LogicObject {
         RenderObject.OnRelease();
     }
 
+
     #endregion
 
     #region private

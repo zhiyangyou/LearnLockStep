@@ -100,11 +100,14 @@ namespace ZMGC.Battle {
         public void OnLigicFrameUpdate() {
             HeroLogicCtrl.OnLogicFrameUpdate();
             MonsterLogicCtrl.OnLogicFrameUpdate();
+            LogicActionController.Instance.OnLogicFrameUpdate();
         }
 
         public override void OnDestroy() {
             base.OnDestroy();
+            LogicActionController.Instance.OnDestory();
             Debug.LogError("BattleWorld.OnDestroy");
+            
         }
 
         public override void OnDestroyPostProcess(object args) {

@@ -6,47 +6,40 @@ using FixMath;
 /// 同样的: LogicObject也会持有RenderObject ,二者会互相持有
 /// 同时具有的基础属性
 /// </summary>
-public abstract class LogicObject
-{
+public abstract class LogicObject {
     private FixIntVector3 _logicPos; // 逻辑位置
     private FixIntVector3 _logicDir; // 朝向
     private FixIntVector3 _logicAngle; // 旋转角度
-    private FixInt _logicMoveSpeed =(FixInt) 3; // 移动速度
-    private FixInt _logicAxis_X; // 轴向
+    private FixInt _logicMoveSpeed = (FixInt)3; // 移动速度
+    private FixInt _logicAxis_X = FixInt.One; // 默认朝右
     private bool _isActive; // 是否激活
 
-    public FixIntVector3 LogicPos
-    {
+    public FixIntVector3 LogicPos {
         get { return _logicPos; }
-        protected set { _logicPos = value; }
+        set { _logicPos = value; }
     }
 
-    public FixIntVector3 LogicDir
-    {
+    public FixIntVector3 LogicDir {
         get { return _logicDir; }
         protected set { _logicDir = value; }
     }
 
-    public FixIntVector3 LogicAngle
-    {
+    public FixIntVector3 LogicAngle {
         get { return _logicAngle; }
         protected set { _logicAngle = value; }
     }
 
-    public FixInt LogicMoveSpeed
-    {
+    public FixInt LogicMoveSpeed {
         get { return _logicMoveSpeed; }
         protected set { _logicMoveSpeed = value; }
     }
 
-    public FixInt LogicAxis_X
-    {
+    public FixInt LogicAxis_X {
         get { return _logicAxis_X; }
         protected set { _logicAxis_X = value; }
     }
 
-    public bool LsActive
-    {
+    public bool LsActive {
         get { return _isActive; }
         protected set { _isActive = value; }
     }
@@ -77,21 +70,14 @@ public abstract class LogicObject
     /// </summary>
     public LogicObjectActionState ActionState { get; protected set; }
 
-    public virtual void OnCreate()
-    {
-    }
+    public virtual void OnCreate() { }
 
-    public virtual void OnLogicFrameUpdate()
-    {
-    }
+    public virtual void OnLogicFrameUpdate() { }
 
-    public virtual void OnDestory()
-    {
-    }
+    public virtual void OnDestory() { }
 }
 
-public enum LogicObjectActionState
-{
+public enum LogicObjectActionState {
     /// <summary>
     /// 待机
     /// </summary>
@@ -123,16 +109,14 @@ public enum LogicObjectActionState
     StockPileing,
 }
 
-public enum LogicObjectType
-{
+public enum LogicObjectType {
     Hero,
     Monster,
     Effect,
     None,
 }
 
-public enum LogicObjectState
-{
+public enum LogicObjectState {
     Survial, // 存活中
     Death, // 死亡
 }

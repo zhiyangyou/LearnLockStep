@@ -40,6 +40,13 @@ public class MoveToAction : ActionBehaviour {
     /// </summary>
     private FixIntVector3 _moveDistance;
 
+    /// <summary>
+    /// 当前累计已经运行的时间
+    /// </summary>
+    private FixInt _accRuntimeMS;
+
+    private FixInt _curTimeScale;
+
     #endregion
 
 
@@ -69,7 +76,46 @@ public class MoveToAction : ActionBehaviour {
     /// <summary>
     /// 逻辑帧更新
     /// </summary>
-    public override void OnLogicFrameUpdate() { }
+    public override void OnLogicFrameUpdate() {
+        _accRuntimeMS += LogicFrameConfig.LogicFrameIntervalMS;
+        _curTimeScale = _accRuntimeMS / _durationMS; // TODO 不理解
+
+        if (_curTimeScale >= 1) {
+            _curTimeScale = 1;
+            actionFinish = true;
+        }
+        _callBackUpdateAction?.Invoke();
+        // 计算角色应该所处的位置
+
+        FixIntVector3 addDistance = FixIntVector3.zero; // 相对于_startPos的偏移值
+
+        switch (_moveType) {
+            case MoveType.Target:
+                addDistance = _moveDistance * _curTimeScale;
+                break;
+            case MoveType.X:
+                addDistance.x = (_moveDistance * _curTimeScale).x;
+                break;
+            case MoveType.Y:
+                addDistance.y = (_moveDistance * _curTimeScale).y;
+                break;
+            case MoveType.Z:
+                addDistance.z = (_moveDistance * _curTimeScale).z;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+
+        // 移动时的操作的逻辑
+        // _actionObj.LogicPos = (_startPos + addDistance) 这种算法不会考量技能播放时进行移动
+        _actionObj.LogicPos += addDistance; // 这种算法会考量在技能释放过程中,存在移动的可能性
+    }
+
+    public override void OnActionFinish() {
+        if (actionFinish) {
+            _callBackMoveFinish?.Invoke();
+        }
+    }
 
     #endregion
 }

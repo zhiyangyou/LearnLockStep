@@ -29,7 +29,7 @@ public class SkillConfig
 
     [LabelText("前摇时间")] public int skillShakeBeforeTimeMs;
 
-    [LabelText("持续时间")] public int skillAttackDurationMs;
+    [LabelText("持续时间(毫秒)")] public int skillAttackDurationMs;
 
     [LabelText("后摇时间")] public int skillShakeAfterTimeMs;
 

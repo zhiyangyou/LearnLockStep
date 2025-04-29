@@ -51,7 +51,7 @@ public class SkillConfig_Action {
     [LabelText("移动位置")] [ShowIf(nameof(_isShowMovePos))]
     public Vector3 movePos;
 
-    [LabelText("持续时间")] public int durationMS;
+    [LabelText("持续时间(毫秒)")] public int durationMS;
 
     /// <summary>
     /// 移动完成后, 执行的动作,附加 buff,或是释放后续技能

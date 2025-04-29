@@ -3,7 +3,7 @@
 public abstract class ActionBehaviour {
     #region 属性和字段
 
-    public bool actionFinish { get; protected set; }
+    public bool actionFinish { get; set; }
 
     /// <summary>
     /// 行动完成回调
@@ -20,6 +20,11 @@ public abstract class ActionBehaviour {
     #region public
 
     public abstract void OnLogicFrameUpdate();
+
+    /// <summary>
+    /// 行动完成
+    /// </summary>
+    public abstract void OnActionFinish();
 
     #endregion
 }

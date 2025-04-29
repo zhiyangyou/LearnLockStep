@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bce2f7b12dee4a96ad4c38bc00dd2983, type: 3}
   m_Name: 1003
   m_EditorClassIdentifier: 
-  character:
+  configCharacter:
     sKillCharacterPrefab: {fileID: 7439582587569004764, guid: 961b52318dc24c242b7f2ddc2f1a2a37, type: 3}
     skillAnim: {fileID: 7400000, guid: 444cadff88f976748aa1d527e2f15a9a, type: 2}
     animProgress: 100
@@ -21,7 +21,7 @@ MonoBehaviour:
     logicFrame: 10
     animLength: 0.66666687
     skillDurationMS: 666
-  SkillCfg:
+  skill:
     showStockPileData: 0
     showSkillGuide: 0
     skillIcon: {fileID: 21300000, guid: d9f3862f7759d7343ab3a56d9b2279c9, type: 3}
@@ -85,3 +85,11 @@ MonoBehaviour:
     triggerFrame: 1
     isLoop: 0
     endFrame: 0
+  actionList:
+  - triggerFrame: 1
+    moveActionType: 0
+    heightPos: {x: 0, y: 0, z: 0}
+    movePos: {x: 0.1, y: 0, z: 0}
+    durationMS: 200
+    moveActionFinishOpation: 0
+    actionFinishIDList: 

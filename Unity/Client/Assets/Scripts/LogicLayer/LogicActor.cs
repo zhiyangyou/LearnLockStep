@@ -50,7 +50,7 @@ public partial class LogicActor : LogicObject {
     }
 
     public virtual void OnHit(GameObject goEffect, int survialTimeMS, LogicActor sourceActor) {
-        RenderObject.OnHit(goEffect, survialTimeMS,  sourceActor);
+        RenderObject.OnHit(goEffect, survialTimeMS, sourceActor);
     }
 
     public void SetRenderData(RenderObject renderObject) {
