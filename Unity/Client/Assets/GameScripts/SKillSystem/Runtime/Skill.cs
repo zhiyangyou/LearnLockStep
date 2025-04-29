@@ -38,6 +38,8 @@ public partial class Skill {
 
     public SkillState skillState { get; private set; } = SkillState.None;
 
+    public SkillConfig skillConfig => _skillConfig.skill;
+
     // 当前逻辑帧
     private int _curLogicFrame = 0;
 
@@ -131,7 +133,7 @@ public partial class Skill {
 
         // 更新行动逻辑帧
         OnLogicFrameUpdate_Action();
-        
+
         // 更新音效逻辑帧
         OnLogicFrameUpdate_Audio();
 
