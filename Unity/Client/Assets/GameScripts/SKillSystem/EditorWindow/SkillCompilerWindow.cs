@@ -5,22 +5,26 @@ using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class SkillCompilerWindow : OdinEditorWindow {
-    [TabGroup("Skill", "Character", SdfIconType.Person, TextColor = "green")]
-    public SkillCharacterConfig CharacterConfig = new();
+    [FormerlySerializedAs("CharacterConfig")] [TabGroup("Skill", "Character", SdfIconType.Person, TextColor = "green")]
+    public SkillConfig_Character configCharacter = new();
 
     [TabGroup("SkillCompiler", "Skill", SdfIconType.Robot, TextColor = "lightmagenta")]
     public SkillConfig skill = new();
 
     [TabGroup("SkillCompiler", "Damage", SdfIconType.At, TextColor = "lightmagenta")]
-    public List<SkillDamageConfig> damageList = new();
+    public List<SkillConfig_Damage> damageList = new();
 
     [TabGroup("SkillCompiler", "Effect", SdfIconType.OpticalAudio, TextColor = "blue")]
-    public List<SkillEffectConfig> effectList = new();
+    public List<SkillConfig_Effect> effectList = new();
 
     [TabGroup("SkillCompiler", "Audio", SdfIconType.OpticalAudio, TextColor = "blue")]
-    public List<SkillAudioConfig> audioList = new();
+    public List<SkillConfig_Audio> audioList = new();
+
+    [TabGroup("SkillCompiler", "Action", SdfIconType.OpticalAudio, TextColor = "cyan")]
+    public List<SkillConfig_Action> actionList = new();
 
     [MenuItem("Window/Skill/技能编译器 &`")]
     public static SkillCompilerWindow ShowWindow() {
@@ -28,21 +32,23 @@ public class SkillCompilerWindow : OdinEditorWindow {
     }
 
     public void SaveSkillData() {
-        SkillDataSO.SaveSkillData(
-            CharacterConfig,
+        SkillConfigSO.SaveSkillData(
+            configCharacter,
             skill,
             damageList,
             effectList,
-            audioList
+            audioList,
+            actionList
         );
     }
 
-    public void LoadSkillData(SkillDataSO so) {
-        this.CharacterConfig = so.character;
-        this.skill = so.SkillCfg;
+    public void LoadSkillData(SkillConfigSO so) {
+        this.configCharacter = so.configCharacter;
+        this.skill = so.skill;
         this.effectList = so.effectCfgList;
         this.damageList = so.damageCfgList;
         this.audioList = so.audioList;
+        this.actionList = so.actionList;
     }
 
     public static SkillCompilerWindow GetWindow() {
@@ -80,7 +86,7 @@ public class SkillCompilerWindow : OdinEditorWindow {
     public static Vector3 GetCharacterPos() {
         var win = GetWindow<SkillCompilerWindow>();
         if (win == null) return Vector3.zero;
-        return win.CharacterConfig.sKillCharacterPrefab.transform.position;
+        return win.configCharacter.sKillCharacterPrefab.transform.position;
     }
 
     #endregion
@@ -136,7 +142,7 @@ public class SkillCompilerWindow : OdinEditorWindow {
 
     private void OnEditorUpdate() {
         try {
-            CharacterConfig.OnUpdate(Focus);
+            configCharacter.OnUpdate(Focus);
             if (_isStartPlaySkill) {
                 OnLogicUpdate();
             }

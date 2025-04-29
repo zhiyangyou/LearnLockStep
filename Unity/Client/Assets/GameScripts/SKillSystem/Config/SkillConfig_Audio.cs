@@ -3,7 +3,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 
 [Serializable]
-public class SkillAudioConfig {
+public class SkillConfig_Audio {
     [AssetList] [BoxGroup("音效文件"), PreviewField(70, ObjectFieldAlignment.Left), OnValueChanged(nameof(OnValueChanged_SkillAudio))]
     public AudioClip skillAudio;
 

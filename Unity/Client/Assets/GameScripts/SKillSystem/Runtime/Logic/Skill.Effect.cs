@@ -14,12 +14,12 @@ public partial class Skill {
     #region public
 
     public void OnLogicFrameUpdate_Effect() {
-        var effectList = _skillData.effectCfgList;
+        var effectList = _skillConfig.effectCfgList;
         if (effectList != null && effectList.Count > 0) {
-            foreach (SkillEffectConfig item in effectList) {
+            foreach (SkillConfig_Effect item in effectList) {
                 var effectConfig = item;
                 if (effectConfig == null) {
-                    var id = _skillData?.SkillCfg.skillID;
+                    var id = _skillConfig?.skill.skillID;
                     Debug.LogError($"skillEffectConfig is null : skillID {id.ToString()}");
                     continue;
                 }
@@ -56,7 +56,7 @@ public partial class Skill {
     }
 
 
-    public void DestoryEffectGo(SkillEffectConfig config) {
+    public void DestoryEffectGo(SkillConfig_Effect config) {
         var configHashCode = config.GetHashCode();
         if (_dicEffectLogics.TryGetValue(configHashCode, out var skillEffectLogic)) {
             _dicEffectLogics.Remove(configHashCode);

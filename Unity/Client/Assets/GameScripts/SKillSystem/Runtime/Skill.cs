@@ -34,7 +34,7 @@ public partial class Skill {
     private LogicActor _skillCreater;
 
     // 配置数据
-    private SkillDataSO _skillData;
+    private SkillConfigSO _skillConfig;
 
     public SkillState skillState { get; private set; } = SkillState.None;
 
@@ -54,7 +54,7 @@ public partial class Skill {
         SkillID = skillId;
         _skillCreater = skillCreater;
         var configPath = $"{AssetsPathConfig.Skill_Data_Path}/{skillId}.asset";
-        _skillData = ZMAsset.LoadScriptableObject<SkillDataSO>(configPath);
+        _skillConfig = ZMAsset.LoadScriptableObject<SkillConfigSO>(configPath);
     }
 
     /// <summary>
@@ -77,7 +77,7 @@ public partial class Skill {
     /// </summary>
     public void PlayAni() {
         // 播放角色动画
-        _skillCreater.PlayAnim(_skillData.character.skillAnim);
+        _skillCreater.PlayAnim(_skillConfig.configCharacter.skillAnim);
     }
 
     /// <summary>
@@ -116,7 +116,7 @@ public partial class Skill {
 
         // 尝试进入技能后摇
         if (skillState == SkillState.Before
-            && _curLogicFrameAccTimeMS >= _skillData.SkillCfg.skillShakeBeforeTimeMs
+            && _curLogicFrameAccTimeMS >= _skillConfig.skill.skillShakeBeforeTimeMs
            ) {
             SkillAfter();
         }
@@ -130,13 +130,14 @@ public partial class Skill {
         OnLogicFrameUpdate_Damage();
 
         // 更新行动逻辑帧
-
+        OnLogicFrameUpdate_Action();
+        
         // 更新音效逻辑帧
         OnLogicFrameUpdate_Audio();
 
         // 更新子弹逻辑帧
 
-        if (_curLogicFrame == _skillData.character.logicFrame) {
+        if (_curLogicFrame == _skillConfig.configCharacter.logicFrame) {
             SkillEnd();
         }
 

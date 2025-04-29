@@ -1,8 +1,8 @@
 ﻿public partial class Skill {
     public void OnLogicFrameUpdate_Audio() {
-        var audioList = _skillData.audioList;
+        var audioList = _skillConfig.audioList;
         if (audioList != null && audioList.Count > 0) {
-            foreach (SkillAudioConfig audioConfig in audioList) {
+            foreach (SkillConfig_Audio audioConfig in audioList) {
                 if (audioConfig.skillAudio == null) {
                     continue;
                 }
@@ -25,6 +25,6 @@
     /// 播放击中音效
     /// </summary>
     public void PlayHitAudio() {
-        AudioController.GetInstance().PlaySoundByAudioClip(_skillData.SkillCfg.SkillHitAudio, false, AudioPriorityConfig.Skill_Hit_AudioClip);
+        AudioController.GetInstance().PlaySoundByAudioClip(_skillConfig.skill.SkillHitAudio, false, AudioPriorityConfig.Skill_Hit_AudioClip);
     }
 }

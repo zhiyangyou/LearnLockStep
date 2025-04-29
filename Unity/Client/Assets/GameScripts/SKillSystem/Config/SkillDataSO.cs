@@ -1,34 +1,38 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using UnityEngine.Serialization;
 
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
 [CreateAssetMenu(fileName = "SkillConfig", menuName = "SkillConfig", order = 0)]
-public class SkillDataSO : ScriptableObject {
+public class SkillConfigSO : ScriptableObject {
     public const string SKillDataBasePath = "Assets/GameData/Game/SkillSystem/SkillData/";
 
-    public SkillCharacterConfig character;
-    public SkillConfig SkillCfg;
-    public List<SkillDamageConfig> damageCfgList;
-    public List<SkillEffectConfig> effectCfgList;
-    public List<SkillAudioConfig> audioList;
+    [FormerlySerializedAs("character")] public SkillConfig_Character configCharacter;
+    [FormerlySerializedAs("SkillCfg")] public SkillConfig skill;
+    public List<SkillConfig_Damage> damageCfgList;
+    public List<SkillConfig_Effect> effectCfgList;
+    public List<SkillConfig_Audio> audioList;
+    [FormerlySerializedAs("actionConfigs")] public List<SkillConfig_Action> actionList;
 
     public static void SaveSkillData(
-        SkillCharacterConfig characterConfig,
+        SkillConfig_Character configCharacter,
         SkillConfig skillConfig,
-        List<SkillDamageConfig> damageConfigs,
-        List<SkillEffectConfig> effectConfigs,
-        List<SkillAudioConfig> audioConfigs
+        List<SkillConfig_Damage> damageConfigs,
+        List<SkillConfig_Effect> effectConfigs,
+        List<SkillConfig_Audio> audioConfigs,
+        List<SkillConfig_Action> actionConfigs
     ) {
-        var so = ScriptableObject.CreateInstance<SkillDataSO>();
-        so.character = characterConfig;
-        so.SkillCfg = skillConfig;
+        var so = ScriptableObject.CreateInstance<SkillConfigSO>();
+        so.configCharacter = configCharacter;
+        so.skill = skillConfig;
         so.damageCfgList = damageConfigs;
         so.effectCfgList = effectConfigs;
         so.audioList = audioConfigs;
+        so.actionList = actionConfigs;
 
 
         var assetPath = $"{SKillDataBasePath}{skillConfig.skillID.ToString()}.asset";

@@ -36,9 +36,9 @@ public partial class Skill {
     ///  
     /// </summary>
     public void OnLogicFrameUpdate_Damage() {
-        if (_skillData.damageCfgList != null
-            && _skillData.damageCfgList.Count > 0) {
-            foreach (SkillDamageConfig damageConfig in _skillData.damageCfgList) {
+        if (_skillConfig.damageCfgList != null
+            && _skillConfig.damageCfgList.Count > 0) {
+            foreach (SkillConfig_Damage damageConfig in _skillConfig.damageCfgList) {
                 var configHashCode = damageConfig.GetHashCode();
                 // 创建碰撞体
                 if (_curLogicFrame == damageConfig.triggerFrame) {
@@ -72,41 +72,41 @@ public partial class Skill {
         }
     }
 
-    public ColliderBehaviour CreateCollider(SkillDamageConfig damageConfig) {
+    public ColliderBehaviour CreateCollider(SkillConfig_Damage configDamage) {
         ColliderBehaviour collider = null;
 
-        if (damageConfig.DetectionMode == DamageDetectionMode.Box3D) {
-            FixIntVector3 boxSize = new FixIntVector3(damageConfig.boxSize);
-            FixIntVector3 offset = new FixIntVector3(damageConfig.boxOffset) * _skillCreater.LogicAxis_X;
+        if (configDamage.DetectionMode == DamageDetectionMode.Box3D) {
+            FixIntVector3 boxSize = new FixIntVector3(configDamage.boxSize);
+            FixIntVector3 offset = new FixIntVector3(configDamage.boxOffset) * _skillCreater.LogicAxis_X;
             offset.y = FixIntMath.Abs(offset.y); // 限制Y轴偏移
             collider = new FixIntBoxCollider(boxSize, offset);
             collider.SetBoxData(offset, boxSize);
             collider.UpdateColliderInfo(_skillCreater.LogicPos, boxSize);
         }
-        else if (damageConfig.DetectionMode == DamageDetectionMode.Sphere3D) {
-            FixIntVector3 offset = new FixIntVector3(damageConfig.sphereOffset) * _skillCreater.LogicAxis_X;
+        else if (configDamage.DetectionMode == DamageDetectionMode.Sphere3D) {
+            FixIntVector3 offset = new FixIntVector3(configDamage.sphereOffset) * _skillCreater.LogicAxis_X;
             offset.y = FixIntMath.Abs(offset.y);
 
-            collider = new FixIntSphereCollider(damageConfig.radius, offset);
+            collider = new FixIntSphereCollider(configDamage.radius, offset);
             collider.SetBoxData(offset, offset);
-            collider.UpdateColliderInfo(_skillCreater.LogicPos, FixIntVector3.zero, damageConfig.radius);
+            collider.UpdateColliderInfo(_skillCreater.LogicPos, FixIntVector3.zero, configDamage.radius);
         }
         else {
-            Debug.LogError($"暂时不支持{damageConfig.DetectionMode}类型的碰撞体类型");
+            Debug.LogError($"暂时不支持{configDamage.DetectionMode}类型的碰撞体类型");
         }
         return collider;
     }
 
     public void AddHitEffect(LogicActor target) {
-        if (_skillData.SkillCfg.skillHitEffect != null) {
-            target.OnHit(_skillData.SkillCfg.skillHitEffect, _skillData.SkillCfg.hitEffectSurvialTimeMs, _skillCreater);
+        if (_skillConfig.skill.skillHitEffect != null) {
+            target.OnHit(_skillConfig.skill.skillHitEffect, _skillConfig.skill.hitEffectSurvialTimeMs, _skillCreater);
         }
     }
 
     /// <summary>
     /// 触发碰撞伤害检测
     /// </summary>
-    public void TriggerColliderDamage(ColliderBehaviour collider, SkillDamageConfig damageConfig) {
+    public void TriggerColliderDamage(ColliderBehaviour collider, SkillConfig_Damage configDamage) {
         // 1. 获取目标
         var enemyList = BattleWorld.GetExitsLogicCtrl<BattleLogicCtrl>().GetEnemyList(_skillCreater.ObjectType);
 
@@ -132,7 +132,7 @@ public partial class Skill {
         enemyList.Clear();
         foreach (LogicActor damageTargetActor in damageTargetList) {
             // 造成伤害
-            damageTargetActor.SkillDamage(9999, damageConfig);
+            damageTargetActor.SkillDamage(9999, configDamage);
 
             // 添加伤害特效
             AddHitEffect(damageTargetActor);
@@ -147,7 +147,7 @@ public partial class Skill {
     /// 销毁对应配置生成的碰撞体
     /// </summary>
     /// <param name="config"></param>
-    public void DestoryCollider(SkillDamageConfig config) {
+    public void DestoryCollider(SkillConfig_Damage config) {
         var configHashCode = config.GetHashCode();
         if (_dicColliders.TryGetValue(configHashCode, out var collider)) {
             _dicColliders.Remove(configHashCode);

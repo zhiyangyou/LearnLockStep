@@ -3,7 +3,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 
 [Serializable]
-public class SkillEffectConfig {
+public class SkillConfig_Effect {
     [AssetList] [LabelText("技能特效")] [PreviewField(70, ObjectFieldAlignment.Left)]
     public GameObject skillEffect; // 技能特效
 
@@ -65,7 +65,7 @@ public class SkillEffectConfig {
     /// </summary>
     public void CreateEffect() {
         if (skillEffect == null) {
-            Debug.LogError($"{nameof(SkillEffectConfig)}.{nameof(skillEffect)} 是空,无法创建实例");
+            Debug.LogError($"{nameof(SkillConfig_Effect)}.{nameof(skillEffect)} 是空,无法创建实例");
             return;
         }
         _goCloneSkillEffect = GameObject.Instantiate(skillEffect);

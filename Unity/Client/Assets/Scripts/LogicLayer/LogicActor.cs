@@ -18,7 +18,7 @@ public partial class LogicActor : LogicObject {
         OnLogicFrameUpdate_Gravity();
     }
 
-    public virtual void SkillDamage(FixInt hp, SkillDamageConfig damageConfig) {
+    public virtual void SkillDamage(FixInt hp, SkillConfig_Damage configDamage) {
         CaculateDamage(hp, DamageSource.Skill);
     }
 

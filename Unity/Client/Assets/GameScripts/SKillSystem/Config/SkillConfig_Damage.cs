@@ -6,7 +6,7 @@ using UnityEngine;
 
 
 [Serializable]
-public class SkillDamageConfig
+public class SkillConfig_Damage
 {
     [LabelText("触发帧")] public int triggerFrame;
 
