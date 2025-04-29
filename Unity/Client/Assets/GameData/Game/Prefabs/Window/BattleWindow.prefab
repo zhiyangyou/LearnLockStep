@@ -694,7 +694,7 @@ GameObject:
   - component: {fileID: 8535334426268742101}
   - component: {fileID: 4960736401452988221}
   m_Layer: 5
-  m_Name: SkillRoot
+  m_Name: '[Transform]SkillRoot'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1296,6 +1296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NormalAttackButton: {fileID: 202152744911426441}
+  SkillRootTransform: {fileID: 5218969181144001200}
 --- !u!1 &8967942397298919530
 GameObject:
   m_ObjectHideFlags: 0

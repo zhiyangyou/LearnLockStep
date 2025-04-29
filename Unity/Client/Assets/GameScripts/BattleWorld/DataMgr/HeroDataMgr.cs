@@ -6,20 +6,49 @@
 * Modify:
 * 注意:以下文件为自动生成，强制再次生成将会覆盖
 ----------------------------------------------------------------------------------------*/
-namespace ZMGC.Battle
-{
-	public  class HeroDataMgr : IDataBehaviour
-	{
-	
-		 public  void OnCreate()
-		 {
-		
-		 }
-		
-		 public  void OnDestroy()
-		 {
-		
-		 }
-	
-	}
+
+using System.Collections.Generic;
+
+namespace ZMGC.Battle {
+    /// <summary>
+    /// 英雄相关的数据
+    /// </summary>
+    public class HeroDataMgr : IDataBehaviour {
+        /// <summary>
+        /// 普通攻击技能
+        /// </summary>
+        public Dictionary<int, int[]> heroNormalSkillCfgDic = new Dictionary<int, int[]>() {
+            { HeroIDConfig.HeroID_鬼剑士, new int[] { 1001, 1002, 1003 } }, // 鬼剑士
+        };
+
+        /// <summary>
+        /// 普通技能
+        /// </summary>
+        public Dictionary<int, int[]> heroSkillCfgDic = new() {
+            { HeroIDConfig.HeroID_鬼剑士, new int[] { 1004,  } }
+        };
+
+        public void OnCreate() { }
+
+        public void OnDestroy() { }
+
+        /// <summary>
+        /// 普通攻击技能列表
+        /// </summary>
+        /// <param name="heroID"></param>
+        /// <returns></returns>
+        public int[] GetHeroNormalSkillIDs(int heroID) {
+            return heroNormalSkillCfgDic[heroID];
+        }
+
+
+        /// <summary>
+        /// 普通技能列表
+        /// </summary>
+        /// <param name="heroID"></param>
+        /// <returns></returns>
+        public int[] GetHeroSkillIDs(int heroID) {
+            return heroSkillCfgDic[heroID];
+        }
+    }
 }

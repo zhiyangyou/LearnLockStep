@@ -29,6 +29,15 @@ public class SkillSystem {
         // Debug.Log($"技能初始化完成 个数: {arrSkillID.Length}");
     }
 
+    public Skill GetSkill(int skillID) {
+        foreach (var skill in _listSkills) {
+            if (skill.SkillID == skillID) {
+                return skill;
+            }
+        }
+        return null;
+    }
+    
     public Skill ReleaseSkill(int skillID, SkillCallback_OnAfter onAfter, SkillCallback_OnEnd onEnd) {
         foreach (Skill skill in _listSkills) {
             if (skillID == skill.SkillID) {

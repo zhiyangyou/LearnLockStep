@@ -37,6 +37,11 @@ public class SkillItem : MonoBehaviour {
         _skillItemJoyStick.InitSkillData(GetSkillGuideType(skillData.skillConfig.SkillType), skillData.SkillID, skillData.skillConfig.skillGuideRange);
         _skillItemJoyStick.OnReleaseSkill += OnTriggerSkill;
         _skillItemJoyStick.OnSkillGuide += OnSkillGuide;
+
+        // 初始化UI
+        _imgIcon.sprite = skillData.skillConfig.skillIcon;
+        _imgMaskImage.gameObject.SetActive(false);
+        _txtCD.gameObject.SetActive(false);
     }
 
 

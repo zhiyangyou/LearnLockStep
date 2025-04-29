@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using ZMGC.Battle;
 
 public partial class LogicActor {
     #region 属性和字段
@@ -9,7 +10,8 @@ public partial class LogicActor {
     private SkillSystem _skillSystem;
 
     // 普通攻击技能ID数组
-    private int[] _normalSkillArr = new[] { 1001, 1002, 1003 };
+    private int[] _normalAttackSkillArr = null;
+    private int[] _normalSkillArr = null;
 
     private List<Skill> _listReleasingSkills = new();
 
@@ -31,17 +33,20 @@ public partial class LogicActor {
     ///  初始化技能
     /// </summary>
     public void InitActorSkill() {
+        _normalAttackSkillArr = BattleWorld.GetExitsDataMgr<HeroDataMgr>().GetHeroNormalSkillIDs(HeroIDConfig.HeroID_鬼剑士);
+        _normalSkillArr = BattleWorld.GetExitsDataMgr<HeroDataMgr>().GetHeroSkillIDs(HeroIDConfig.HeroID_鬼剑士);
         _skillSystem = new SkillSystem(this);
+        _skillSystem.InitSkills(_normalAttackSkillArr);
         _skillSystem.InitSkills(_normalSkillArr);
     }
 
     public void ReleaseNormalAttack() {
-        ReleaseSkill(_normalSkillArr[_curNormalComboIndex]);
+        ReleaseSkill(_normalAttackSkillArr[_curNormalComboIndex]);
     }
 
 
     public bool IsNormalSkill(int skillID) {
-        return _normalSkillArr.Contains(skillID);
+        return _normalAttackSkillArr.Contains(skillID);
     }
 
     public void ReleaseSkill(int skillID) {
@@ -55,12 +60,8 @@ public partial class LogicActor {
         }
     }
 
-
-    /// <summary>
-    /// 逻辑帧: 技能
-    /// </summary>
-    public void OnLogicFrameUpdate_Skill() {
-        _skillSystem.OnLogicFrameUpdate();
+    public Skill GetSkill(int skillID) {
+        return _skillSystem.GetSkill(skillID);
     }
 
     #endregion
@@ -68,11 +69,18 @@ public partial class LogicActor {
     #region private
 
     /// <summary>
+    /// 逻辑帧: 技能
+    /// </summary>
+    private void OnLogicFrameUpdate_Skill() {
+        _skillSystem.OnLogicFrameUpdate();
+    }
+
+    /// <summary>
     /// 回调:技能释放完成
     /// </summary>
     /// <param name="sk"></param>
     /// <param name="isCombineSkill"></param>
-    public void SkillCallback_OnEnd(Skill sk, bool isCombineSkill) {
+    private void SkillCallback_OnEnd(Skill sk, bool isCombineSkill) {
         _listReleasingSkills.Remove(sk);
         if (_listReleasingSkills != null && _listReleasingSkills.Count == 0) {
             _curNormalComboIndex = 0;
@@ -83,14 +91,14 @@ public partial class LogicActor {
     /// 回调:技能释放开始后摇
     /// </summary>
     /// <param name="sk"></param>
-    public void SkillCallback_OnAfter(Skill sk) {
+    private void SkillCallback_OnAfter(Skill sk) {
         if (!IsNormalSkill(sk.SkillID)) {
             _curNormalComboIndex = 0;
         }
         else {
             _curNormalComboIndex++;
             // 归零
-            if (_curNormalComboIndex >= _normalSkillArr.Length) {
+            if (_curNormalComboIndex >= _normalAttackSkillArr.Length) {
                 _curNormalComboIndex = 0;
             }
         }
