@@ -23,6 +23,7 @@ public partial class Skill {
                     Debug.LogError($"skillEffectConfig is null : skillID {id.ToString()}");
                     continue;
                 }
+                var effectConfigHashCode = effectConfig.GetHashCode();
                 if (effectConfig.skillEffect != null && _curLogicFrame == effectConfig.triggerFrame) {
                     DestoryEffectGo(effectConfig); // 避免重复释放技能导致特效对象重复出现
 
@@ -44,12 +45,19 @@ public partial class Skill {
                     effectRender.SetLogicObject(skillEffectLogic, effectConfig.effectPosType != EffectPosType.Zero);
 
                     // 生命周期维护
-                    _dicEffectLogics.Add(effectConfig.GetHashCode().GetHashCode(), skillEffectLogic);
+                    _dicEffectLogics.Add(effectConfigHashCode, skillEffectLogic);
                 }
 
                 // 结束之后,自动销毁
                 if (_curLogicFrame == effectConfig.endFrame) {
                     DestoryEffectGo(effectConfig);
+                    continue;
+                }
+
+                // 更新特效逻辑帧
+                SkillEffectLogic effectLogic = null;
+                if (_dicEffectLogics.TryGetValue(effectConfigHashCode, out effectLogic) && effectLogic != null) {
+                    effectLogic.OnLogicFrameUpdate();
                 }
             }
         }

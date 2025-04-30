@@ -33,6 +33,14 @@ public class SkillEffectLogic : LogicObject {
         RenderObject.OnRelease();
     }
 
+    public override void OnLogicFrameUpdate() {
+        base.OnLogicFrameUpdate();
+        if (_skillConfigEffect.effectPosType is EffectPosType.FollowPosDir) {
+            var offsetPos = (new FixIntVector3(_skillConfigEffect.effectOffsetPos)) * LogicAxis_X;
+            offsetPos.y = FixIntMath.Abs(offsetPos.y); // 轴向不能影响Y
+            LogicPos = _skillCreater.LogicPos + offsetPos;
+        }
+    }
 
     #endregion
 

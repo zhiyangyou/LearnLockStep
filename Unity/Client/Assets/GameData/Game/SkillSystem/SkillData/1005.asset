@@ -21,7 +21,7 @@ MonoBehaviour:
     logicFrame: 6
     animLength: 0.40000004
     skillDurationMS: 400
-  skill:
+  skillCfg:
     showStockPileData: 0
     showSkillGuide: 0
     skillIcon: {fileID: 21300000, guid: 1382a79c19a63034ab76855305100359, type: 3}
