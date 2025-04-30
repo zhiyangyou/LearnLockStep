@@ -98,8 +98,8 @@ public partial class Skill {
     }
 
     public void AddHitEffect(LogicActor target) {
-        if (_skillConfig.skill.skillHitEffect != null) {
-            target.OnHit(_skillConfig.skill.skillHitEffect, _skillConfig.skill.hitEffectSurvialTimeMs, _skillCreater);
+        if (_skillConfig.skillCfg.skillHitEffect != null) {
+            target.OnHit(_skillConfig.skillCfg.skillHitEffect, _skillConfig.skillCfg.hitEffectSurvialTimeMs, _skillCreater);
         }
     }
 

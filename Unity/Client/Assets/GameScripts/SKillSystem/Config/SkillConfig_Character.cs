@@ -7,7 +7,7 @@ using UnityEngine.Serialization;
 
 [HideMonoScript]
 [System.Serializable]
-public class SkillConfig_Character
+public class  SkillConfig_Character
 {
     #region const
 

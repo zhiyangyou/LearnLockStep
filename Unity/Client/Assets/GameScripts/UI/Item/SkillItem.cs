@@ -34,12 +34,12 @@ public class SkillItem : MonoBehaviour {
     public void SetItemSkillData(Skill skillData, LogicActor skillCreater) {
         this._skillCreater = skillCreater;
         this._skillData = skillData;
-        _skillItemJoyStick.InitSkillData(GetSkillGuideType(skillData.skillConfig.SkillType), skillData.SkillID, skillData.skillConfig.skillGuideRange);
+        _skillItemJoyStick.InitSkillData(GetSkillGuideType(skillData.SkillCfgConfig.SkillType), skillData.SkillID, skillData.SkillCfgConfig.skillGuideRange);
         _skillItemJoyStick.OnReleaseSkill += OnTriggerSkill;
         _skillItemJoyStick.OnSkillGuide += OnSkillGuide;
 
         // 初始化UI
-        _imgIcon.sprite = skillData.skillConfig.skillIcon;
+        _imgIcon.sprite = skillData.SkillCfgConfig.skillIcon;
         _imgMaskImage.gameObject.SetActive(false);
         _txtCD.gameObject.SetActive(false);
     }

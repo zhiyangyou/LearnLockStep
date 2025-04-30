@@ -38,7 +38,7 @@ public partial class Skill {
 
     public SkillState skillState { get; private set; } = SkillState.None;
 
-    public SkillConfig skillConfig => _skillConfig.skill;
+    public SkillConfig SkillCfgConfig => _skillConfig.skillCfg;
 
     // 当前逻辑帧
     private int _curLogicFrame = 0;
@@ -105,6 +105,10 @@ public partial class Skill {
     public void SkillEnd() {
         skillState = SkillState.End;
         this.SkillCallbackOnEnd?.Invoke(this, false); // TODO 暂且都是false 2025年4月26日18:10:48 
+        // 组合技能
+        if (_skillConfig.skillCfg.HasCombineSkill) {
+            _skillCreater.ReleaseSkill(_skillConfig.skillCfg.CombinationSkillId);
+        }
     }
 
 
@@ -118,7 +122,7 @@ public partial class Skill {
 
         // 尝试进入技能后摇
         if (skillState == SkillState.Before
-            && _curLogicFrameAccTimeMS >= _skillConfig.skill.skillShakeBeforeTimeMs
+            && _curLogicFrameAccTimeMS >= _skillConfig.skillCfg.skillShakeBeforeTimeMs
            ) {
             SkillAfter();
         }

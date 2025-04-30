@@ -19,7 +19,7 @@ public partial class Skill {
             foreach (SkillConfig_Effect item in effectList) {
                 var effectConfig = item;
                 if (effectConfig == null) {
-                    var id = _skillConfig?.skill.skillID;
+                    var id = _skillConfig?.skillCfg.skillID;
                     Debug.LogError($"skillEffectConfig is null : skillID {id.ToString()}");
                     continue;
                 }

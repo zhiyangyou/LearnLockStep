@@ -44,7 +44,7 @@ public class SkillCompilerWindow : OdinEditorWindow {
 
     public void LoadSkillData(SkillConfigSO so) {
         this.configCharacter = so.configCharacter;
-        this.skill = so.skill;
+        this.skill = so.skillCfg;
         this.effectList = so.effectCfgList;
         this.damageList = so.damageCfgList;
         this.audioList = so.audioList;

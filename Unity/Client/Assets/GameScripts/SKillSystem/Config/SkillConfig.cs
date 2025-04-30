@@ -74,6 +74,8 @@ public class SkillConfig
     public string skillDes;
 
 
+    public bool HasCombineSkill => CombinationSkillId > 0;
+    
     /// <summary>
     /// 技能类型改变回调
     /// </summary>

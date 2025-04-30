@@ -25,7 +25,12 @@ namespace ZMGC.Battle {
         /// 普通技能
         /// </summary>
         public Dictionary<int, int[]> heroSkillCfgDic = new() {
-            { HeroIDConfig.HeroID_鬼剑士, new int[] { 1004,  } }
+            {
+                HeroIDConfig.HeroID_鬼剑士, new int[] {
+                    1004, // 上挑
+                    1005, // 破军升龙击
+                }
+            }
         };
 
         public void OnCreate() { }

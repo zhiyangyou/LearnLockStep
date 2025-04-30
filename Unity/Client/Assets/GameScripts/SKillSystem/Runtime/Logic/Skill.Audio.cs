@@ -25,6 +25,6 @@
     /// 播放击中音效
     /// </summary>
     public void PlayHitAudio() {
-        AudioController.GetInstance().PlaySoundByAudioClip(_skillConfig.skill.SkillHitAudio, false, AudioPriorityConfig.Skill_Hit_AudioClip);
+        AudioController.GetInstance().PlaySoundByAudioClip(_skillConfig.skillCfg.SkillHitAudio, false, AudioPriorityConfig.Skill_Hit_AudioClip);
     }
 }

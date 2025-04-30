@@ -12,7 +12,7 @@ public class SkillConfigSO : ScriptableObject {
     public const string SKillDataBasePath = "Assets/GameData/Game/SkillSystem/SkillData/";
 
     [FormerlySerializedAs("character")] public SkillConfig_Character configCharacter;
-    [FormerlySerializedAs("SkillCfg")] public SkillConfig skill;
+    [FormerlySerializedAs("skill")] [FormerlySerializedAs("SkillCfg")] public SkillConfig skillCfg;
     public List<SkillConfig_Damage> damageCfgList;
     public List<SkillConfig_Effect> effectCfgList;
     public List<SkillConfig_Audio> audioList;
@@ -28,7 +28,7 @@ public class SkillConfigSO : ScriptableObject {
     ) {
         var so = ScriptableObject.CreateInstance<SkillConfigSO>();
         so.configCharacter = configCharacter;
-        so.skill = skillConfig;
+        so.skillCfg = skillConfig;
         so.damageCfgList = damageConfigs;
         so.effectCfgList = effectConfigs;
         so.audioList = audioConfigs;
