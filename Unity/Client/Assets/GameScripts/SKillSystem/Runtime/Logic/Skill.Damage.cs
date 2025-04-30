@@ -40,10 +40,18 @@ public partial class Skill {
             && _skillConfig.damageCfgList.Count > 0) {
             foreach (SkillConfig_Damage damageConfig in _skillConfig.damageCfgList) {
                 var configHashCode = damageConfig.GetHashCode();
+ 
+                // 如果需要变更位置的碰撞盒类型,那么更新碰撞体位置
+                if (damageConfig.ColliderPosType == ColliderPosType.FollowPos
+                    && _dicColliders.TryGetValue(configHashCode, out var damageCollider)
+                    && damageCollider != null) {
+                    CreateOrUpdateCollider(damageConfig, damageCollider);
+                }
+
                 // 创建碰撞体
                 if (_curLogicFrame == damageConfig.triggerFrame) {
                     DestoryCollider(damageConfig);
-                    var collider = CreateCollider(damageConfig);
+                    var collider = CreateOrUpdateCollider(damageConfig, null);
                     _dicColliders.Add(configHashCode, collider);
 
                     // 如果没有配置,每帧都触发
@@ -53,17 +61,13 @@ public partial class Skill {
                 }
 
                 // 碰撞体的伤害检测
-
                 if (damageConfig.triggerIntervalMs != 0) {
                     _curDamageAccTimeMS += LogicFrameConfig.LogicFrameIntervalMS;
-                    // Debug.LogError($" {_skillConfig.skillCfg.skillID} _curDamageAccTimeMS :{_curDamageAccTimeMS} damageConfig.triggerIntervalMs:{damageConfig.triggerIntervalMs} 触发:{_curDamageAccTimeMS >= damageConfig.triggerIntervalMs}");
                     if (_curDamageAccTimeMS >= damageConfig.triggerIntervalMs) {
                         _curDamageAccTimeMS = 0;
-                        // Debug.LogError($"触发伤害: {_curDamageAccTimeMS} ");
                         if (_dicColliders.TryGetValue(configHashCode, out var collider)) {
                             TriggerColliderDamage(collider, damageConfig);
                         }
-                        // 直接触发伤害碰撞检测
                     }
                 }
 
@@ -75,14 +79,16 @@ public partial class Skill {
         }
     }
 
-    public ColliderBehaviour CreateCollider(SkillConfig_Damage configDamage) {
-        ColliderBehaviour collider = null;
+    public ColliderBehaviour CreateOrUpdateCollider(SkillConfig_Damage configDamage, ColliderBehaviour colliderBehaviour) {
+        ColliderBehaviour collider = colliderBehaviour;
 
         if (configDamage.DetectionMode == DamageDetectionMode.Box3D) {
             FixIntVector3 boxSize = new FixIntVector3(configDamage.boxSize);
             FixIntVector3 offset = new FixIntVector3(configDamage.boxOffset) * _skillCreater.LogicAxis_X;
             offset.y = FixIntMath.Abs(offset.y); // 限制Y轴偏移
-            collider = new FixIntBoxCollider(boxSize, offset);
+            if (collider == null) {
+                collider = new FixIntBoxCollider(boxSize, offset);
+            }
             collider.SetBoxData(offset, boxSize);
             collider.UpdateColliderInfo(_skillCreater.LogicPos, boxSize);
         }
@@ -90,7 +96,9 @@ public partial class Skill {
             FixIntVector3 offset = new FixIntVector3(configDamage.sphereOffset) * _skillCreater.LogicAxis_X;
             offset.y = FixIntMath.Abs(offset.y);
 
-            collider = new FixIntSphereCollider(configDamage.radius, offset);
+            if (collider == null) {
+                collider = new FixIntSphereCollider(configDamage.radius, offset);
+            }
             collider.SetBoxData(offset, offset);
             collider.UpdateColliderInfo(_skillCreater.LogicPos, FixIntVector3.zero, configDamage.radius);
         }

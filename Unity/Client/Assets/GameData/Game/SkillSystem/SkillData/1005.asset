@@ -50,7 +50,7 @@ MonoBehaviour:
   damageCfgList:
   - triggerFrame: 1
     endFrame: 6
-    triggerIntervalMs: 111
+    triggerIntervalMs: 200
     isFollowEffect: 0
     damageType: 1
     damageRate: 0
@@ -60,7 +60,7 @@ MonoBehaviour:
     sphereOffset: {x: 0, y: 0.9, z: 0}
     radius: 1
     radiusHeight: 0
-    ColliderPosType: 0
+    ColliderPosType: 1
     TargetType: 2
     addBuffs: 
     triggerSkillId: 0
