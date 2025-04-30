@@ -29,7 +29,7 @@ namespace ZMGC.Battle {
                 HeroIDConfig.HeroID_鬼剑士, new int[] {
                     1004, // 上挑
                     1005, // 破军升龙击1段
-                    1006, // 破军升龙击2段
+                    // 1006, // 破军升龙击2段
                 }
             }
         };

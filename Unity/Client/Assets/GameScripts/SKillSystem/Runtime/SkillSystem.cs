@@ -24,6 +24,9 @@ public class SkillSystem {
     public void InitSkills(int[] arrSkillID) {
         foreach (var skillID in arrSkillID) {
             Skill skill = new Skill(skillID, _skillCreater);
+            if (skill.SkillCfgConfig.HasCombineSkill) {
+                InitSkills(new int[1] { skill.SkillCfgConfig.CombinationSkillId });
+            }
             _listSkills.Add(skill);
         }
         // Debug.Log($"技能初始化完成 个数: {arrSkillID.Length}");
@@ -37,7 +40,7 @@ public class SkillSystem {
         }
         return null;
     }
-    
+
     public Skill ReleaseSkill(int skillID, SkillCallback_OnAfter onAfter, SkillCallback_OnEnd onEnd) {
         foreach (Skill skill in _listSkills) {
             if (skillID == skill.SkillID) {
