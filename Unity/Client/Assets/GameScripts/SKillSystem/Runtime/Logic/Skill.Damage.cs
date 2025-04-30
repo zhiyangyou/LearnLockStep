@@ -46,6 +46,7 @@ public partial class Skill {
                     var collider = CreateCollider(damageConfig);
                     _dicColliders.Add(configHashCode, collider);
 
+                    // 如果没有配置,每帧都触发
                     if (damageConfig.triggerIntervalMs == 0) {
                         TriggerColliderDamage(collider, damageConfig);
                     }
@@ -54,9 +55,11 @@ public partial class Skill {
                 // 碰撞体的伤害检测
 
                 if (damageConfig.triggerIntervalMs != 0) {
-                    _curDamageAccTimeMS += damageConfig.triggerIntervalMs;
+                    _curDamageAccTimeMS += LogicFrameConfig.LogicFrameIntervalMS;
+                    // Debug.LogError($" {_skillConfig.skillCfg.skillID} _curDamageAccTimeMS :{_curDamageAccTimeMS} damageConfig.triggerIntervalMs:{damageConfig.triggerIntervalMs} 触发:{_curDamageAccTimeMS >= damageConfig.triggerIntervalMs}");
                     if (_curDamageAccTimeMS >= damageConfig.triggerIntervalMs) {
                         _curDamageAccTimeMS = 0;
+                        // Debug.LogError($"触发伤害: {_curDamageAccTimeMS} ");
                         if (_dicColliders.TryGetValue(configHashCode, out var collider)) {
                             TriggerColliderDamage(collider, damageConfig);
                         }

@@ -48,9 +48,9 @@ MonoBehaviour:
     skillPortraitObj: {fileID: 0}
     skillDes: 
   damageCfgList:
-  - triggerFrame: 2
-    endFrame: 3
-    triggerIntervalMs: 0
+  - triggerFrame: 1
+    endFrame: 6
+    triggerIntervalMs: 111
     isFollowEffect: 0
     damageType: 1
     damageRate: 0
