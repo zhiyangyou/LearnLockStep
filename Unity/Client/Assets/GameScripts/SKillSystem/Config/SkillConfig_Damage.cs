@@ -6,15 +6,14 @@ using UnityEngine;
 
 
 [Serializable]
-public class SkillConfig_Damage
-{
+public class SkillConfig_Damage {
     [LabelText("触发帧")] public int triggerFrame;
 
     [LabelText("结束帧")] public int endFrame;
 
     [LabelText("触发间隔")] public int triggerIntervalMs;
 
-    [LabelText("碰撞体跟随特效移动")] public int isFollowEffect;
+    [LabelText("碰撞体跟随特效移动")] public bool isFollowEffect;
 
     [LabelText("伤害类型")] public DamageType damageType;
 
@@ -38,7 +37,7 @@ public class SkillConfig_Damage
     [LabelText("圆球检测半径高度"), ShowIf(nameof(_showSphere3D))]
     public float radiusHeight = 0f;
 
-    [LabelText("碰撞检测规则")] public ColliderPosType ColliderPosType = ColliderPosType.FollowDir;
+    [LabelText("碰撞位置规则")] public ColliderPosType ColliderPosType = ColliderPosType.FollowDir;
 
     [LabelText("伤害触发目标")] public TargetType TargetType;
 
@@ -57,15 +56,13 @@ public class SkillConfig_Damage
     private FixIntBoxCollider _fixIntBoxCollider;
     private FixIntSphereCollider _fixIntSphereCollider;
 
-    private void OnDetectionModeChanged(DamageDetectionMode mode)
-    {
+    private void OnDetectionModeChanged(DamageDetectionMode mode) {
         _showBox3D = mode == DamageDetectionMode.Box3D;
         _showSphere3D = mode == DamageDetectionMode.Sphere3D;
         CreateCollider();
     }
 
-    private void OnValueChanged_Radius(float newRadius)
-    {
+    private void OnValueChanged_Radius(float newRadius) {
         if (_fixIntSphereCollider != null)
             _fixIntSphereCollider.SetBoxData(newRadius, GetCollierOffsetPos(), ColliderPosType == ColliderPosType.FollowPos);
         else
@@ -73,34 +70,27 @@ public class SkillConfig_Damage
     }
 
 
-    private void OnValueChanged_ColliderOffset(Vector3 newOffset)
-    {
-        if (DetectionMode == DamageDetectionMode.Box3D)
-        {
+    private void OnValueChanged_ColliderOffset(Vector3 newOffset) {
+        if (DetectionMode == DamageDetectionMode.Box3D) {
             if (_fixIntBoxCollider != null)
                 _fixIntBoxCollider.SetBoxData(GetCollierOffsetPos(), boxSize, ColliderPosType == ColliderPosType.FollowPos);
-            else
-            {
+            else {
                 // Debug.LogError($"{nameof(_fixIntBoxCollider)} is null");
             }
         }
-        else if (DetectionMode == DamageDetectionMode.Sphere3D)
-        {
+        else if (DetectionMode == DamageDetectionMode.Sphere3D) {
             if (_fixIntSphereCollider != null)
                 _fixIntSphereCollider.SetBoxData(radius, GetCollierOffsetPos(), ColliderPosType == ColliderPosType.FollowPos);
-            else
-            {
+            else {
                 // Debug.LogError($"{nameof(_fixIntSphereCollider)} is null");
             }
         }
     }
 
-    private void OnValueChanged_BoxSize(Vector3 newSize)
-    {
+    private void OnValueChanged_BoxSize(Vector3 newSize) {
         if (_fixIntBoxCollider != null)
             _fixIntBoxCollider.SetBoxData(GetCollierOffsetPos(), newSize, ColliderPosType == ColliderPosType.FollowPos);
-        else
-        {
+        else {
             // Debug.LogError($"{nameof(_fixIntBoxCollider)} is null");
         }
     }
@@ -109,80 +99,64 @@ public class SkillConfig_Damage
     /// 获取碰撞体偏移值
     /// </summary>
     /// <returns></returns>
-    public Vector3 GetCollierOffsetPos()
-    {
+    public Vector3 GetCollierOffsetPos() {
         var characterPos = SkillCompilerWindow.GetCharacterPos();
-        if (DetectionMode == DamageDetectionMode.Box3D)
-        {
+        if (DetectionMode == DamageDetectionMode.Box3D) {
             return characterPos + boxOffset;
         }
-        else if (DetectionMode == DamageDetectionMode.Sphere3D)
-        {
+        else if (DetectionMode == DamageDetectionMode.Sphere3D) {
             return characterPos + sphereOffset;
         }
         return Vector3.zero;
     }
 
-    public void CreateCollider()
-    {
+    public void CreateCollider() {
         DestoryCollider();
-        if (DetectionMode == DamageDetectionMode.Box3D)
-        {
+        if (DetectionMode == DamageDetectionMode.Box3D) {
             var offsetPos = GetCollierOffsetPos();
             _fixIntBoxCollider = new FixIntBoxCollider(boxSize, offsetPos);
             _fixIntBoxCollider.SetBoxData(offsetPos, boxSize, ColliderPosType == ColliderPosType.FollowPos);
         }
-        else if (DetectionMode == DamageDetectionMode.Sphere3D)
-        {
+        else if (DetectionMode == DamageDetectionMode.Sphere3D) {
             var offsetPos = GetCollierOffsetPos();
             _fixIntSphereCollider = new FixIntSphereCollider(new FixInt(this.radius), offsetPos);
             _fixIntSphereCollider.SetBoxData(radius, offsetPos, ColliderPosType == ColliderPosType.FollowPos);
         }
     }
 
-    public void DestoryCollider()
-    {
-        if (_fixIntBoxCollider != null)
-        {
+    public void DestoryCollider() {
+        if (_fixIntBoxCollider != null) {
             _fixIntBoxCollider.OnRelease();
             _fixIntBoxCollider = null;
         }
-        if (_fixIntSphereCollider != null)
-        {
+        if (_fixIntSphereCollider != null) {
             _fixIntSphereCollider.OnRelease();
             _fixIntSphereCollider = null;
         }
     }
 
-    public void OnInit()
-    {
+    public void OnInit() {
         CreateCollider();
     }
 
-    public void OnRelease()
-    {
+    public void OnRelease() {
         DestoryCollider();
     }
 
-    public void PlaySkillStart()
-    {
+    public void PlaySkillStart() {
         _curLogicFrame = 0;
         DestoryCollider();
     }
 
-    public void PlaySkillEnd()
-    {
+    public void PlaySkillEnd() {
         DestoryCollider();
     }
 
-    public void OnLogicFrameUpdate()
-    {
-        if (_curLogicFrame == triggerFrame)
-        {
+    public void OnLogicFrameUpdate() {
+        if (_curLogicFrame == triggerFrame) {
             CreateCollider();
         }
-        else if (_curLogicFrame == endFrame)
-        {
+        else if (_curLogicFrame == endFrame) {
             DestoryCollider();
         }
         _curLogicFrame++;
@@ -194,8 +168,7 @@ public class SkillConfig_Damage
 /// <summary>
 /// 对象目标
 /// </summary>
-public enum TargetType
-{
+public enum TargetType {
     [LabelText("无配置")] None,
 
     [LabelText("队伍")] Teamate,
@@ -207,8 +180,7 @@ public enum TargetType
     [LabelText("所有对象")] AllObject
 }
 
-public enum ColliderPosType
-{
+public enum ColliderPosType {
     [LabelText("跟随角色朝向")] FollowDir,
 
     [LabelText("跟随角色位置")] FollowPos,
@@ -221,8 +193,7 @@ public enum ColliderPosType
 /// <summary>
 /// 伤害类型
 /// </summary>
-public enum DamageType
-{
+public enum DamageType {
     [LabelText("无伤害")] None,
 
     [LabelText("物理伤害")] AD,
@@ -233,8 +204,7 @@ public enum DamageType
 /// <summary>
 /// 伤害碰撞检测类型
 /// </summary>
-public enum DamageDetectionMode
-{
+public enum DamageDetectionMode {
     [LabelText("无配置")] None,
 
     [LabelText("3D盒子碰撞检测")] Box3D,

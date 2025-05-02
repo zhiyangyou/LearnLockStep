@@ -5,15 +5,12 @@ using UnityEngine;
 
 [HideMonoScript]
 [System.Serializable]
-public class SkillConfig
-{
+public class SkillConfig {
     private const string kStrTitleGroup_技能渲染相关 = "技能渲染相关";
     private const string kStrSubTitleGroup_技能渲染相关 = "所有英雄渲染数据会在开始释放技能是触发";
 
-    [HideInInspector] public bool showStockPileData = false; // 是否显示蓄力技能数据
-
-    // [HideInInspector]
-    public bool showSkillGuide = false; // 是否显示引导技能
+    private bool _showStockPileData = false; // 是否显示蓄力技能数据
+    private bool _showSkillGuide = false; // 是否显示引导技能
 
     [LabelText("技能图标"),
      LabelWidth(0.1f),
@@ -39,13 +36,13 @@ public class SkillConfig
     public SkillType SkillType;
 
 
-    [LabelText("蓄力阶段配置数据(若第一阶段触发时间不是0,则空挡时间为动画表现时间)"), ShowIf(nameof(showStockPileData))]
+    [LabelText("蓄力阶段配置数据(若第一阶段触发时间不是0,则空挡时间为动画表现时间)"), ShowIf(nameof(_showStockPileData))]
     public List<StockPIleStageData> stockPIleStageDatas;
 
-    [LabelText("技能引导特效"), ShowIf(nameof(showSkillGuide))]
+    [LabelText("技能引导特效"), ShowIf(nameof(_showSkillGuide))]
     public GameObject skillGuideObj;
 
-    [LabelText("技能引导范围"), ShowIf(nameof(showSkillGuide))]
+    [LabelText("技能引导范围"), ShowIf(nameof(_showSkillGuide))]
     public float skillGuideRange;
 
     [LabelText("组合技能id(衔接下一个的技能Id)"), Tooltip("比如技能A:由B C 组成")]
@@ -75,19 +72,17 @@ public class SkillConfig
 
 
     public bool HasCombineSkill => CombinationSkillId > 0;
-    
+
     /// <summary>
     /// 技能类型改变回调
     /// </summary>
-    public void OnSkillTypeChanged(SkillType skillType)
-    {
-        showStockPileData = skillType == SkillType.StockPile;
-        showSkillGuide = skillType == SkillType.PosGuide;
+    public void OnSkillTypeChanged(SkillType skillType) {
+        _showStockPileData = skillType == SkillType.StockPile;
+        _showSkillGuide = skillType == SkillType.PosGuide;
     }
 }
 
-public enum SkillType
-{
+public enum SkillType {
     [LabelText("瞬发技能")] None,
 
     [LabelText("吟唱技能")] Chat,
@@ -104,8 +99,7 @@ public enum SkillType
 /// 蓄力阶段数据
 /// </summary>
 [Serializable]
-public class StockPIleStageData
-{
+public class StockPIleStageData {
     [LabelText("蓄力阶段id")] public int stage;
 
     [LabelText("当前蓄力阶段触发的技能id")] public int skillId;
