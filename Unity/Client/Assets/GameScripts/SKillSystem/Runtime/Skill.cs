@@ -93,6 +93,7 @@ public partial class Skill {
     /// </summary>
     public void SkillStart() {
         // 初始化技能数据
+        _isAutoMatchStockStage = false;
         InitTimer();
     }
 
