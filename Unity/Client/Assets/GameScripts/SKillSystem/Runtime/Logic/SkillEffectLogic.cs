@@ -47,6 +47,8 @@ public class SkillEffectLogic : LogicObject {
         if (_skillConfigEffect.IsAttachAction && _skillConfigEffect.SkillConfigAction.triggerFrame == curFrame) {
             skill.AddMoveAction(_skillConfigEffect.SkillConfigAction, this, () => {
                 _collider.OnRelease();
+                skill.DestoryEffect(_skillConfigEffect);
+                // Debug.LogError($"DestoryEffectGo {Time.frameCount}");
                 _collider = null;
             });
         }
@@ -54,7 +56,7 @@ public class SkillEffectLogic : LogicObject {
         if (_skillConfigEffect.IsAttachDamage) {
             var damageConfig = _skillConfigEffect.SkillConfigDamage;
             if (damageConfig.triggerFrame == curFrame) {
-                _collider = skill.CreateOrUpdateCollider(damageConfig, _collider, this);
+                _collider = skill.CreateOrUpdateCollider(damageConfig, null, this);
             }
             // 持续伤害
             if (_collider != null && damageConfig.triggerIntervalMs == 0) {

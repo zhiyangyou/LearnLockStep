@@ -49,7 +49,7 @@ public partial class Skill {
                 }
 
                 // 创建碰撞体
-                if (_curLogicFrame == damageConfig.triggerFrame) {
+                if (_curLogicFrame == damageConfig.triggerFrame ) {
                     DestoryCollider(damageConfig);
                     var collider = CreateOrUpdateCollider(damageConfig, null, _skillCreater);
                     _dicColliders.Add(configHashCode, collider);
@@ -88,8 +88,8 @@ public partial class Skill {
             FixIntVector3 offset = new FixIntVector3(configDamage.boxOffset) * followTarget.LogicAxis_X;
             offset.y = FixIntMath.Abs(offset.y); // 限制Y轴偏移
             if (collider == null) {
-                Debug.LogError("new collider");
                 collider = new FixIntBoxCollider(boxSize, offset);
+                // Debug.LogError($"new collider {Time.frameCount} :{boxSize}");
             }
             collider.SetBoxData(offset, boxSize);
             collider.UpdateColliderInfo(followTarget.LogicPos, boxSize);

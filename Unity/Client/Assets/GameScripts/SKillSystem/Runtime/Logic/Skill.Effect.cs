@@ -13,7 +13,7 @@ public partial class Skill {
 
     #region public
 
-    public void OnLogicFrameUpdate_Effect() {
+    public void  OnLogicFrameUpdate_Effect() {
         var effectList = _skillConfig.effectCfgList;
         if (effectList != null && effectList.Count > 0) {
             foreach (SkillConfig_Effect item in effectList) {
@@ -25,7 +25,7 @@ public partial class Skill {
                 }
                 var effectConfigHashCode = effectConfig.GetHashCode();
                 if (effectConfig.skillEffect != null && _curLogicFrame == effectConfig.triggerFrame) {
-                    DestoryEffectGo(effectConfig); // 避免重复释放技能导致特效对象重复出现
+                    DestoryEffect(effectConfig); // 避免重复释放技能导致特效对象重复出现
 
                     Transform trParent = null;
                     if (effectConfig.isSetTransParent) {
@@ -34,9 +34,6 @@ public partial class Skill {
 
                     // 创建技能特效渲染层
                     var goEffect = GameObject.Instantiate(effectConfig.skillEffect, trParent);
-                    // goEffect.transform.localPosition = Vector3.zero;
-                    // goEffect.transform.localScale = Vector3.one;
-                    // goEffect.transform.localRotation = Quaternion.identity;
                     var effectRender = goEffect.GetComponent<SkillEffectRender>();
                     if (effectRender == null) effectRender = goEffect.AddComponent<SkillEffectRender>();
 
@@ -49,8 +46,8 @@ public partial class Skill {
                 }
 
                 // 结束之后,自动销毁
-                if (_curLogicFrame == effectConfig.endFrame) {
-                    DestoryEffectGo(effectConfig);
+                if (_curLogicFrame == effectConfig.endFrame && !effectConfig.IsAttachAction) {
+                    DestoryEffect(effectConfig);
                     continue;
                 }
 
@@ -64,7 +61,7 @@ public partial class Skill {
     }
 
 
-    public void DestoryEffectGo(SkillConfig_Effect config) {
+    public void DestoryEffect(SkillConfig_Effect config) {
         var configHashCode = config.GetHashCode();
         if (_dicEffectLogics.TryGetValue(configHashCode, out var skillEffectLogic)) {
             _dicEffectLogics.Remove(configHashCode);
