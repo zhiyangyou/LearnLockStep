@@ -28,7 +28,7 @@ public class AudioController : MonoBehaviour {
     /// <summary>
     /// 音效音量
     /// </summary>
-    private float mSoundVolume = 1;
+    private float mSoundVolume = .5f;
     /// <summary>
     /// 音乐音量
     /// </summary>
