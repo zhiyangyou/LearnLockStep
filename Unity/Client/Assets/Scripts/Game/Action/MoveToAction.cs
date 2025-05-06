@@ -1,5 +1,6 @@
 ﻿using System;
 using FixMath;
+using UnityEngine;
 
 
 public enum MoveType {
@@ -30,7 +31,7 @@ public enum MoveType {
 public class MoveToAction : ActionBehaviour {
     #region 属性字段
 
-    private LogicActor _actionObj;
+    private LogicObject _actionObj;
     private FixIntVector3 _startPos;
     private FixInt _durationMS;
     private MoveType _moveType;
@@ -55,7 +56,7 @@ public class MoveToAction : ActionBehaviour {
     private MoveToAction() { }
 
     public MoveToAction(
-        LogicActor actionObj,
+        LogicObject actionObj,
         FixIntVector3 startPos,
         FixIntVector3 targetPos,
         FixInt durationMS,
@@ -83,6 +84,8 @@ public class MoveToAction : ActionBehaviour {
         if (_curTimeScale >= 1) {
             _curTimeScale = 1;
             actionFinish = true;
+            OnActionFinish();
+            return;
         }
         _callBackUpdateAction?.Invoke();
         // 计算角色应该所处的位置
@@ -107,8 +110,8 @@ public class MoveToAction : ActionBehaviour {
         }
 
         // 移动时的操作的逻辑
-        // _actionObj.LogicPos = (_startPos + addDistance) 这种算法不会考量技能播放时进行移动
-        _actionObj.LogicPos += addDistance; // 这种算法会考量在技能释放过程中,存在移动的可能性
+        _actionObj.LogicPos = (_startPos + addDistance); //  这种算法不会考量技能播放时进行移动
+        // _actionObj.LogicPos += addDistance; // 这种算法会考量在技能释放过程中,存在移动的可能性
     }
 
     public override void OnActionFinish() {

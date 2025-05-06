@@ -1,4 +1,5 @@
-﻿using FixMath;
+﻿using FixIntPhysics;
+using FixMath;
 using UnityEngine;
 
 public class SkillEffectLogic : LogicObject {
@@ -6,6 +7,8 @@ public class SkillEffectLogic : LogicObject {
 
     private SkillConfig_Effect _skillConfigEffect = null;
     private LogicActor _skillCreater = null;
+    private ColliderBehaviour _collider = null;
+    private int _accRuntime = 0;
 
     #endregion
 
@@ -33,13 +36,47 @@ public class SkillEffectLogic : LogicObject {
         RenderObject.OnRelease();
     }
 
-    public override void OnLogicFrameUpdate() {
-        base.OnLogicFrameUpdate();
+    public void OnLogicFrameUpdate_Effect(Skill skill, int curFrame) {
         if (_skillConfigEffect.effectPosType is EffectPosType.FollowPosDir) {
             var offsetPos = (new FixIntVector3(_skillConfigEffect.effectOffsetPos)) * LogicAxis_X;
             offsetPos.y = FixIntMath.Abs(offsetPos.y); // 轴向不能影响Y
             LogicPos = _skillCreater.LogicPos + offsetPos;
         }
+
+        // 特效行动配置
+        if (_skillConfigEffect.IsAttachAction && _skillConfigEffect.SkillConfigAction.triggerFrame == curFrame) {
+            skill.AddMoveAction(_skillConfigEffect.SkillConfigAction, this, () => {
+                _collider.OnRelease();
+                _collider = null;
+            });
+        }
+
+        if (_skillConfigEffect.IsAttachDamage) {
+            var damageConfig = _skillConfigEffect.SkillConfigDamage;
+            if (damageConfig.triggerFrame == curFrame) {
+                _collider = skill.CreateOrUpdateCollider(damageConfig, _collider, this);
+            }
+            // 持续伤害
+            if (_collider != null && damageConfig.triggerIntervalMs == 0) {
+                skill.TriggerColliderDamage(_collider, damageConfig);
+            }
+
+            // 间隔伤害
+            if (_collider != null && damageConfig.triggerIntervalMs != 0) {
+                _accRuntime += LogicFrameConfig.LogicFrameIntervalMS;
+                if (_accRuntime >= damageConfig.triggerIntervalMs) {
+                    _accRuntime -= damageConfig.triggerIntervalMs;
+                    skill.TriggerColliderDamage(_collider, damageConfig);
+                }
+            }
+
+            // 跟新碰撞体位置
+            if (damageConfig.isFollowEffect && _collider != null) {
+                skill.CreateOrUpdateCollider(damageConfig, _collider, this);
+            }
+        }
+
+        // 特效伤害配置
     }
 
     #endregion

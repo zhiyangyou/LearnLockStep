@@ -6,18 +6,18 @@ public partial class Skill {
     public void OnLogicFrameUpdate_Action() {
         var actionList = _skillConfig.actionList;
         // if (SkillID == 1003) {
-            // Debug.LogError($"skillID:{this.SkillID} actionList:{actionList?.Count}  logicFrame : {_curLogicFrame} ");
+        // Debug.LogError($"skillID:{this.SkillID} actionList:{actionList?.Count}  logicFrame : {_curLogicFrame} ");
         // }
         if (actionList != null && actionList.Count > 0) {
             foreach (SkillConfig_Action actionConfig in actionList) {
                 if (actionConfig.triggerFrame == _curLogicFrame) {
-                    AddMoveAction(actionConfig, _skillCreater);
+                    AddMoveAction(actionConfig, _skillCreater, null);
                 }
             }
         }
     }
 
-    public void AddMoveAction(SkillConfig_Action configAction, LogicActor actionActor) {
+    public void AddMoveAction(SkillConfig_Action configAction, LogicObject actionActor, Action onMoveFinish) {
         FixIntVector3 movePos = new FixIntVector3(configAction.movePos);
         FixIntVector3 targetPos = actionActor.LogicPos + movePos * actionActor.LogicAxis_X;
         MoveType moveType = MoveType.Target;
@@ -39,6 +39,7 @@ public partial class Skill {
             targetPos,
             configAction.durationMS,
             () => {
+                onMoveFinish?.Invoke();
                 switch (configAction.moveActionFinishOpation) {
                     case MoveActionFinishOpation.None:
                         break;

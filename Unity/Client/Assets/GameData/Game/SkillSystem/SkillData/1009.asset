@@ -54,5 +54,37 @@ MonoBehaviour:
     effectPosType: 1
     isSetTransParent: 0
     TransParentType: 0
-  audioList: []
+    IsAttachDamage: 1
+    SkillConfigDamage:
+      triggerFrame: 1
+      endFrame: 10
+      triggerIntervalMs: 100
+      isFollowEffect: 1
+      damageType: 1
+      damageRate: 0
+      DetectionMode: 1
+      boxSize: {x: 1.95, y: 3, z: 1}
+      boxOffset: {x: 0.09, y: 1.31, z: 0}
+      sphereOffset: {x: 0, y: 0.9, z: 0}
+      radius: 1
+      radiusHeight: 0
+      ColliderPosType: 1
+      TargetType: 2
+      addBuffs: 
+      triggerSkillId: 0
+    IsAttachAction: 1
+    SkillConfigAction:
+      triggerFrame: 1
+      moveActionType: 0
+      heightPos: {x: 0, y: 0, z: 0}
+      movePos: {x: 2, y: 0, z: 0}
+      durationMS: 400
+      moveActionFinishOpation: 0
+      actionFinishIDList: 
+  audioList:
+  - skillAudio: {fileID: 8300000, guid: c3c147ce6d6338e40a927fcc7c69e7c8, type: 3}
+    audioName: Swordsman_hh_huanyingjw_05
+    triggerFrame: 1
+    isLoop: 0
+    endFrame: 0
   actionList: []

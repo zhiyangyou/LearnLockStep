@@ -45,13 +45,13 @@ public partial class Skill {
                 if (damageConfig.ColliderPosType == ColliderPosType.FollowPos
                     && _dicColliders.TryGetValue(configHashCode, out var damageCollider)
                     && damageCollider != null) {
-                    CreateOrUpdateCollider(damageConfig, damageCollider);
+                    CreateOrUpdateCollider(damageConfig, damageCollider, _skillCreater);
                 }
 
                 // 创建碰撞体
                 if (_curLogicFrame == damageConfig.triggerFrame) {
                     DestoryCollider(damageConfig);
-                    var collider = CreateOrUpdateCollider(damageConfig, null);
+                    var collider = CreateOrUpdateCollider(damageConfig, null, _skillCreater);
                     _dicColliders.Add(configHashCode, collider);
 
                     // 如果没有配置,每帧都触发
@@ -79,28 +79,30 @@ public partial class Skill {
         }
     }
 
-    public ColliderBehaviour CreateOrUpdateCollider(SkillConfig_Damage configDamage, ColliderBehaviour colliderBehaviour) {
+    public ColliderBehaviour CreateOrUpdateCollider(SkillConfig_Damage configDamage, ColliderBehaviour colliderBehaviour, LogicObject followObj) {
         ColliderBehaviour collider = colliderBehaviour;
 
+        LogicObject followTarget = followObj == null ? _skillCreater : followObj;
         if (configDamage.DetectionMode == DamageDetectionMode.Box3D) {
             FixIntVector3 boxSize = new FixIntVector3(configDamage.boxSize);
-            FixIntVector3 offset = new FixIntVector3(configDamage.boxOffset) * _skillCreater.LogicAxis_X;
+            FixIntVector3 offset = new FixIntVector3(configDamage.boxOffset) * followTarget.LogicAxis_X;
             offset.y = FixIntMath.Abs(offset.y); // 限制Y轴偏移
             if (collider == null) {
+                Debug.LogError("new collider");
                 collider = new FixIntBoxCollider(boxSize, offset);
             }
             collider.SetBoxData(offset, boxSize);
-            collider.UpdateColliderInfo(_skillCreater.LogicPos, boxSize);
+            collider.UpdateColliderInfo(followTarget.LogicPos, boxSize);
         }
         else if (configDamage.DetectionMode == DamageDetectionMode.Sphere3D) {
-            FixIntVector3 offset = new FixIntVector3(configDamage.sphereOffset) * _skillCreater.LogicAxis_X;
+            FixIntVector3 offset = new FixIntVector3(configDamage.sphereOffset) * followTarget.LogicAxis_X;
             offset.y = FixIntMath.Abs(offset.y);
 
             if (collider == null) {
                 collider = new FixIntSphereCollider(configDamage.radius, offset);
             }
             collider.SetBoxData(offset, offset);
-            collider.UpdateColliderInfo(_skillCreater.LogicPos, FixIntVector3.zero, configDamage.radius);
+            collider.UpdateColliderInfo(followTarget.LogicPos, FixIntVector3.zero, configDamage.radius);
         }
         else {
             Debug.LogError($"暂时不支持{configDamage.DetectionMode}类型的碰撞体类型");

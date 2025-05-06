@@ -21,6 +21,18 @@ public class SkillConfig_Effect {
     [ToggleGroup(nameof(isSetTransParent), "是否设置特效父节点")] [LabelText("父节点配置")]
     public TransParentType TransParentType; // 父节点配置
 
+    [ToggleGroup(nameof(IsAttachDamage), "是否附加伤害")]
+    public bool IsAttachDamage = false;
+
+    [ToggleGroup(nameof(IsAttachDamage), "是否附加伤害")]
+    public SkillConfig_Damage SkillConfigDamage;
+
+    [ToggleGroup(nameof(IsAttachAction), "是否附加行动 ")]
+    public bool IsAttachAction = false;
+
+    [ToggleGroup(nameof(IsAttachAction), "是否附加行动")]
+    public SkillConfig_Action SkillConfigAction;
+
 
 #if UNITY_EDITOR
 

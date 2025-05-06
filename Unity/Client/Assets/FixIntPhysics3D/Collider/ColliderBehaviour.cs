@@ -63,6 +63,6 @@ namespace FixIntPhysics {
         public virtual void SetBoxData(Vector3 conter, Vector3 size, bool isFloowTarget = false) { }
         public virtual void SetBoxData(FixIntVector3 conter, FixIntVector3 size, bool isFloowTarget = false) { }
 
-        public virtual void OnRelease() { }
+        public abstract void OnRelease();
     }
 }

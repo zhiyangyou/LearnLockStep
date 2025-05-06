@@ -72,7 +72,7 @@ public abstract class LogicObject {
 
     public virtual void OnCreate() { }
 
-    public virtual void OnLogicFrameUpdate() { }
+    public virtual void  OnLogicFrameUpdate() { }
 
     public virtual void OnDestory() { }
 }

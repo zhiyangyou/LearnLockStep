@@ -57,7 +57,7 @@ public partial class Skill {
                 // 更新特效逻辑帧
                 SkillEffectLogic effectLogic = null;
                 if (_dicEffectLogics.TryGetValue(effectConfigHashCode, out effectLogic) && effectLogic != null) {
-                    effectLogic.OnLogicFrameUpdate();
+                    effectLogic.OnLogicFrameUpdate_Effect(this, _curLogicFrame);
                 }
             }
         }
