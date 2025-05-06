@@ -37,7 +37,7 @@ public class SkillConfig {
 
 
     [LabelText("蓄力阶段配置数据(若第一阶段触发时间不是0,则空挡时间为动画表现时间)"), ShowIf(nameof(_showStockPileData))]
-    public List<StockPIleStageData> stockPIleStageDatas;
+    public List<StockPileStageData> stockPIleStageDatas;
 
     [LabelText("技能引导特效"), ShowIf(nameof(_showSkillGuide))]
     public GameObject skillGuideObj;
@@ -99,7 +99,7 @@ public enum SkillType {
 /// 蓄力阶段数据
 /// </summary>
 [Serializable]
-public class StockPIleStageData {
+public class StockPileStageData {
     [LabelText("蓄力阶段id")] public int stage;
 
     [LabelText("当前蓄力阶段触发的技能id")] public int skillId;

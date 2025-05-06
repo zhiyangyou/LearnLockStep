@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 using ZM.ZMAsset;
 
 
@@ -48,6 +49,11 @@ public partial class Skill {
     public SkillCallback_OnAfter SkillCallbackOnAfter;
     public SkillCallback_OnEnd SkillCallbackOnEnd;
 
+    /// <summary>
+    /// 是否自动匹配蓄力阶段
+    /// </summary>
+    private bool _isAutoMatchStockStage = false;
+
     #endregion
 
     #region public
@@ -87,8 +93,7 @@ public partial class Skill {
     /// </summary>
     public void SkillStart() {
         // 初始化技能数据
-        _curLogicFrame = 0;
-        _curLogicFrameAccTimeMS = 0;
+        InitTimer();
     }
 
     /// <summary>
@@ -109,6 +114,7 @@ public partial class Skill {
         if (_skillConfig.skillCfg.HasCombineSkill) {
             _skillCreater.ReleaseSkill(_skillConfig.skillCfg.CombinationSkillId);
         }
+        InitTimer();
     }
 
 
@@ -143,17 +149,74 @@ public partial class Skill {
 
         // 更新子弹逻辑帧
 
-        if (_curLogicFrame == _skillConfig.configCharacter.logicFrame) {
-            SkillEnd();
+        // 蓄力技能, 和蓄力时间相关, 所以和蓄力结束帧无关
+        if (_skillConfig.skillCfg.SkillType == SkillType.StockPile) {
+            var stockPileDataCount = _skillConfig.skillCfg.stockPIleStageDatas.Count;
+            if (stockPileDataCount > 0) {
+                // 1. 情况: 按下立马抬起
+                if (_isAutoMatchStockStage) {
+                    foreach (var stockData in _skillConfig.skillCfg.stockPIleStageDatas) {
+                        if (_curLogicFrameAccTimeMS >= stockData.startTimeMs) {
+                            StockPileFinish(stockData);
+                        }
+                    }
+                }
+                else {
+                    // 2. 情况: 蓄力超时
+                    var lastStage = _skillConfig.skillCfg.stockPIleStageDatas[stockPileDataCount - 1];
+                    if (_curLogicFrameAccTimeMS >= lastStage.endTimeMs) {
+                        StockPileFinish(lastStage);
+                    }
+                }
+            }
+        }
+        else {
+            // 非蓄力技能
+
+            if (_curLogicFrame == _skillConfig.configCharacter.logicFrame) {
+                SkillEnd();
+            }
         }
 
         // 计数自增
         _curLogicFrame++;
     }
 
+    /// <summary>
+    ///  主动触发蓄力技能
+    /// </summary>
+    public void TriggerStockPileSkill() {
+        // 蓄力时间符合某个阶段, 直接触发
+        foreach (StockPileStageData stageData in _skillConfig.skillCfg.stockPIleStageDatas) {
+            if (_curLogicFrameAccTimeMS >= stageData.startTimeMs && _curLogicFrameAccTimeMS <= stageData.endTimeMs) {
+                StockPileFinish(stageData);
+                return;
+            }
+        }
+
+        // 不符合某个阶段
+        _isAutoMatchStockStage = true;
+    }
+
     #endregion
 
     #region private
+
+    private void InitTimer() {
+        _curLogicFrame = 0;
+        _curLogicFrameAccTimeMS = 0;
+        _curDamageAccTimeMS = 0;
+    }
+    
+    private void StockPileFinish(StockPileStageData stageData) {
+        SkillEnd();
+        if (stageData.skillId <= 0) {
+            Debug.LogError($"蓄力阶段id:{stageData.stage} 配置了错误的技能id:{stageData.skillId}");
+        }
+        else {
+            _skillCreater.ReleaseSkill(stageData.skillId);
+        }
+    }
 
     #endregion
 }

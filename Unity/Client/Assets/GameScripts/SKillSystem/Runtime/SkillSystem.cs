@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -27,6 +28,15 @@ public class SkillSystem {
             if (skill.SkillCfgConfig.HasCombineSkill) {
                 InitSkills(new int[1] { skill.SkillCfgConfig.CombinationSkillId });
             }
+
+            if (skill.SkillCfgConfig.SkillType == SkillType.StockPile && skill.SkillCfgConfig.stockPIleStageDatas.Count > 0) {
+                foreach (var data in skill.SkillCfgConfig.stockPIleStageDatas) {
+                    if (data.skillId > 0) {
+                        InitSkills(new int[1] { data.skillId });
+                    }
+                }
+                // InitSkills(skill.SkillCfgConfig.stockPIleStageDatas.Where(data => data.skillId > 0).Select(data => data.skillId).ToArray());
+            }
             _listSkills.Add(skill);
         }
         // Debug.Log($"技能初始化完成 个数: {arrSkillID.Length}");
@@ -41,11 +51,18 @@ public class SkillSystem {
         return null;
     }
 
+    public void TriggerStockPileSkill(int skillID) {
+        Skill skill = GetSkill(skillID);
+        if (skill != null) {
+            skill.TriggerStockPileSkill();
+        }
+    }
+
     public Skill ReleaseSkill(int skillID, SkillCallback_OnAfter onAfter, SkillCallback_OnEnd onEnd) {
         foreach (Skill skill in _listSkills) {
             if (skillID == skill.SkillID) {
                 if (skill.skillState != SkillState.None && skill.skillState != SkillState.End) {
-                    // Debug.LogError($"技能正在释放中{skillID} ");
+                    Debug.LogError($"技能正在释放中{skillID} ");
                     return null;
                 }
                 // Debug.LogError($"release skill {skillID}");

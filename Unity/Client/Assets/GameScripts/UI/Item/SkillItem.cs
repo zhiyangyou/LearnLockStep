@@ -83,7 +83,14 @@ public class SkillItem : MonoBehaviour {
     /// <param name="skillpos">引导位置</param>
     /// <param name="skillid">技能id</param>
     /// <param name="skilldirdis">技能半径距离</param>
-    private void OnSkillGuide(SKillGuideType skillguide, bool iscancel, Vector3 skillpos, int skillid, float skilldirdis) { }
+    private void OnSkillGuide(SKillGuideType skillguide, bool iscancel, Vector3 skillpos, int skillid, float skilldirdis) {
+        if (skillguide == SKillGuideType.LongPress) {
+            _skillCreater.ReleaseSkill(skillid);
+        }
+        else if (skillguide == SKillGuideType.Position) {
+            Debug.LogError("TODO 释放 position类型的技能");
+        }
+    }
 
 
     /// <summary>
@@ -95,11 +102,13 @@ public class SkillItem : MonoBehaviour {
     private void OnTriggerSkill(SKillGuideType skillguide, Vector3 skillpos, int skillid) {
         switch (skillguide) {
             case SKillGuideType.Click: {
+                Debug.LogError($"触发 click 技能:{skillid}");
                 _skillCreater.ReleaseSkill(skillid);
             }
                 break;
             case SKillGuideType.LongPress: {
-                Debug.LogError("TODO 蓄力技能");
+                Debug.LogError($"触发 蓄力技能:{skillid}");
+                _skillCreater.TriggerStockPileSkill(skillid);
             }
                 break;
             case SKillGuideType.Position:

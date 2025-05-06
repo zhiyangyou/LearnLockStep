@@ -60,6 +60,11 @@ public partial class LogicActor {
         }
     }
 
+
+    public void TriggerStockPileSkill(int skillId) {
+        _skillSystem.TriggerStockPileSkill(skillId);
+    }
+    
     public Skill GetSkill(int skillID) {
         return _skillSystem.GetSkill(skillID);
     }
