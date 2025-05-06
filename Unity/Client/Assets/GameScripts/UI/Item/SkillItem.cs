@@ -85,7 +85,8 @@ public class SkillItem : MonoBehaviour {
     /// <param name="skilldirdis">技能半径距离</param>
     private void OnSkillGuide(SKillGuideType skillguide, bool iscancel, Vector3 skillpos, int skillid, float skilldirdis) {
         if (skillguide == SKillGuideType.LongPress) {
-            _skillCreater.ReleaseSkill(skillid);
+            Debug.LogError($"OnSkillGuide long press 触发{skillid}");
+            _skillCreater.ReleaseSkill(skillid); 
         }
         else if (skillguide == SKillGuideType.Position) {
             Debug.LogError("TODO 释放 position类型的技能");

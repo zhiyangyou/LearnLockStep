@@ -101,7 +101,7 @@ public partial class Skill {
             if (collider == null) {
                 collider = new FixIntSphereCollider(configDamage.radius, offset);
             }
-            collider.SetBoxData(offset, offset);
+            collider.SetBoxData(configDamage.radius, offset);
             collider.UpdateColliderInfo(followTarget.LogicPos, FixIntVector3.zero, configDamage.radius);
         }
         else {

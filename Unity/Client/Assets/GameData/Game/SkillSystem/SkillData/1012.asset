@@ -31,15 +31,7 @@ MonoBehaviour:
     skillShakeAfterTimeMs: 600
     skillCDTimeMS: 10000
     SkillType: 0
-    stockPIleStageDatas:
-    - stage: 1
-      skillId: 1011
-      startTimeMs: 500
-      endTimeMs: 1000
-    - stage: 2
-      skillId: 1012
-      startTimeMs: 1001
-      endTimeMs: 2000
+    stockPIleStageDatas: []
     skillGuideObj: {fileID: 0}
     skillGuideRange: 0
     CombinationSkillId: 0

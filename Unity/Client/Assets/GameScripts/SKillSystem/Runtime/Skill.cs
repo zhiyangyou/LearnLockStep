@@ -122,7 +122,7 @@ public partial class Skill {
     /// 逻辑帧更新
     /// </summary>
     public void OnLogicFrameUpdate() {
-        if (skillState == SkillState.None) return;
+        if (skillState is SkillState.None or SkillState.End) return;
 
         _curLogicFrameAccTimeMS = _curLogicFrame * LogicFrameConfig.LogicFrameIntervalMS;
 
@@ -207,7 +207,7 @@ public partial class Skill {
         _curLogicFrameAccTimeMS = 0;
         _curDamageAccTimeMS = 0;
     }
-    
+
     private void StockPileFinish(StockPileStageData stageData) {
         SkillEnd();
         if (stageData.skillId <= 0) {
