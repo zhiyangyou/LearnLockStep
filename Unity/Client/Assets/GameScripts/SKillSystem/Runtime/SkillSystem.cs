@@ -13,6 +13,8 @@ public class SkillSystem {
 
     private List<Skill> _listSkills = null;
 
+    private Skill _curReleasingSkill = null;
+
     #endregion
 
     #region public
@@ -62,6 +64,10 @@ public class SkillSystem {
     }
 
     public Skill ReleaseSkill(int skillID, SkillCallback_OnAfter onAfter, SkillCallback_OnEnd onEnd) {
+        if (_curReleasingSkill is { skillState: SkillState.Before }) {
+            Debug.LogError($"{_curReleasingSkill.SkillCfgConfig.skillName} 技能前摇中");
+            return null;
+        }
         foreach (Skill skill in _listSkills) {
             if (skillID == skill.SkillID) {
                 if (skill.skillState != SkillState.None && skill.skillState != SkillState.End) {
@@ -70,10 +76,12 @@ public class SkillSystem {
                 }
                 skill.ReleaseSkill(onAfter, (skRelease, isCombineSkill) => {
                     onEnd.Invoke(skRelease, isCombineSkill);
-                    if (isCombineSkill) {
+                    if (!isCombineSkill) {
                         // TODO 根据技能组合的情况 处理组合逻辑
+                        _curReleasingSkill = null;
                     }
                 });
+                _curReleasingSkill = skill;
                 return skill;
             }
         }

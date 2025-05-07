@@ -57,6 +57,7 @@ public partial class LogicActor {
             if (!IsNormalSkill(skillID)) {
                 _curNormalComboIndex = 0;
             }
+            ActionState = LogicObjectActionState.ReleasingSkill;
         }
     }
 
@@ -64,7 +65,7 @@ public partial class LogicActor {
     public void TriggerStockPileSkill(int skillId) {
         _skillSystem.TriggerStockPileSkill(skillId);
     }
-    
+
     public Skill GetSkill(int skillID) {
         return _skillSystem.GetSkill(skillID);
     }
@@ -90,6 +91,7 @@ public partial class LogicActor {
         if (_listReleasingSkills != null && _listReleasingSkills.Count == 0) {
             _curNormalComboIndex = 0;
         }
+        ActionState = LogicObjectActionState.Idle;
     }
 
     /// <summary>

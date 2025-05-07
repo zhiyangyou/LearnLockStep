@@ -91,7 +91,7 @@ public enum LogicObjectActionState {
     /// <summary>
     /// 技能释放中
     /// </summary>
-    SkillReleaseSkilling,
+    ReleasingSkill,
 
     /// <summary>
     /// 浮空中

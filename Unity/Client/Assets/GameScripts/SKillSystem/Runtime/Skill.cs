@@ -5,7 +5,7 @@ using ZM.ZMAsset;
 
 public delegate void SkillCallback_OnAfter(Skill skill);
 
-public delegate void SkillCallback_OnEnd(Skill skill, bool isStockPile);
+public delegate void SkillCallback_OnEnd(Skill skill, bool isCombineSkill);
 
 
 public enum SkillState {
