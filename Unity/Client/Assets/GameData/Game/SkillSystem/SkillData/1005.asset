@@ -26,9 +26,9 @@ MonoBehaviour:
     skillID: 1005
     skillName: "\u7834\u519B\u5347\u9F99\u51FB1\u6BB5"
     needMagicValue: 100
-    skillShakeBeforeTimeMs: 0
+    skillShakeBeforeTimeMs: 400
     skillAttackDurationMs: 400
-    skillShakeAfterTimeMs: 360
+    skillShakeAfterTimeMs: 0
     skillCDTimeMS: 10
     SkillType: 0
     stockPIleStageDatas:
@@ -70,6 +70,33 @@ MonoBehaviour:
     effectPosType: 0
     isSetTransParent: 0
     TransParentType: 0
+    IsAttachDamage: 0
+    SkillConfigDamage:
+      triggerFrame: 0
+      endFrame: 0
+      triggerIntervalMs: 0
+      isFollowEffect: 0
+      damageType: 0
+      damageRate: 0
+      DetectionMode: 0
+      boxSize: {x: 1, y: 1, z: 1}
+      boxOffset: {x: 0, y: 0, z: 0}
+      sphereOffset: {x: 0, y: 0.9, z: 0}
+      radius: 1
+      radiusHeight: 0
+      ColliderPosType: 0
+      TargetType: 0
+      addBuffs: 
+      triggerSkillId: 0
+    IsAttachAction: 0
+    SkillConfigAction:
+      triggerFrame: 0
+      moveActionType: 0
+      heightPos: {x: 0, y: 0, z: 0}
+      movePos: {x: 0, y: 0, z: 0}
+      durationMS: 0
+      moveActionFinishOpation: 0
+      actionFinishIDList: 
   - skillEffect: {fileID: 1473351893574214, guid: 72b650bfd693208418a488b7b97bbff0, type: 3}
     triggerFrame: 1
     endFrame: 6
@@ -77,6 +104,33 @@ MonoBehaviour:
     effectPosType: 0
     isSetTransParent: 0
     TransParentType: 0
+    IsAttachDamage: 0
+    SkillConfigDamage:
+      triggerFrame: 0
+      endFrame: 0
+      triggerIntervalMs: 0
+      isFollowEffect: 0
+      damageType: 0
+      damageRate: 0
+      DetectionMode: 0
+      boxSize: {x: 1, y: 1, z: 1}
+      boxOffset: {x: 0, y: 0, z: 0}
+      sphereOffset: {x: 0, y: 0.9, z: 0}
+      radius: 1
+      radiusHeight: 0
+      ColliderPosType: 0
+      TargetType: 0
+      addBuffs: 
+      triggerSkillId: 0
+    IsAttachAction: 0
+    SkillConfigAction:
+      triggerFrame: 0
+      moveActionType: 0
+      heightPos: {x: 0, y: 0, z: 0}
+      movePos: {x: 0, y: 0, z: 0}
+      durationMS: 0
+      moveActionFinishOpation: 0
+      actionFinishIDList: 
   audioList:
   - skillAudio: {fileID: 8300000, guid: 2aef28b95952df74ba33cd5926e2f8e7, type: 3}
     audioName: Swordsman_hh_pojunslj_01

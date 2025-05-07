@@ -26,9 +26,9 @@ MonoBehaviour:
     skillID: 1008
     skillName: "\u5E7B\u5F71\u5251\u821E1\u6BB5"
     needMagicValue: 100
-    skillShakeBeforeTimeMs: 0
+    skillShakeBeforeTimeMs: 1233
     skillAttackDurationMs: 1433
-    skillShakeAfterTimeMs: 1433
+    skillShakeAfterTimeMs: 200
     skillCDTimeMS: 18000
     SkillType: 0
     stockPIleStageDatas:
@@ -70,6 +70,33 @@ MonoBehaviour:
     effectPosType: 0
     isSetTransParent: 0
     TransParentType: 0
+    IsAttachDamage: 0
+    SkillConfigDamage:
+      triggerFrame: 0
+      endFrame: 0
+      triggerIntervalMs: 0
+      isFollowEffect: 0
+      damageType: 0
+      damageRate: 0
+      DetectionMode: 0
+      boxSize: {x: 1, y: 1, z: 1}
+      boxOffset: {x: 0, y: 0, z: 0}
+      sphereOffset: {x: 0, y: 0.9, z: 0}
+      radius: 1
+      radiusHeight: 0
+      ColliderPosType: 0
+      TargetType: 0
+      addBuffs: 
+      triggerSkillId: 0
+    IsAttachAction: 0
+    SkillConfigAction:
+      triggerFrame: 0
+      moveActionType: 0
+      heightPos: {x: 0, y: 0, z: 0}
+      movePos: {x: 0, y: 0, z: 0}
+      durationMS: 0
+      moveActionFinishOpation: 0
+      actionFinishIDList: 
   - skillEffect: {fileID: 1020876491467082, guid: c70bee0b2eb56e845a43bc8cf8082e90, type: 3}
     triggerFrame: 4
     endFrame: 18
@@ -77,6 +104,33 @@ MonoBehaviour:
     effectPosType: 0
     isSetTransParent: 0
     TransParentType: 0
+    IsAttachDamage: 0
+    SkillConfigDamage:
+      triggerFrame: 0
+      endFrame: 0
+      triggerIntervalMs: 0
+      isFollowEffect: 0
+      damageType: 0
+      damageRate: 0
+      DetectionMode: 0
+      boxSize: {x: 1, y: 1, z: 1}
+      boxOffset: {x: 0, y: 0, z: 0}
+      sphereOffset: {x: 0, y: 0.9, z: 0}
+      radius: 1
+      radiusHeight: 0
+      ColliderPosType: 0
+      TargetType: 0
+      addBuffs: 
+      triggerSkillId: 0
+    IsAttachAction: 0
+    SkillConfigAction:
+      triggerFrame: 0
+      moveActionType: 0
+      heightPos: {x: 0, y: 0, z: 0}
+      movePos: {x: 0, y: 0, z: 0}
+      durationMS: 0
+      moveActionFinishOpation: 0
+      actionFinishIDList: 
   - skillEffect: {fileID: 1020876491467082, guid: 694741c9ad5de0a40b5e4ae082f4d6d8, type: 3}
     triggerFrame: 7
     endFrame: 19
@@ -84,6 +138,33 @@ MonoBehaviour:
     effectPosType: 0
     isSetTransParent: 0
     TransParentType: 0
+    IsAttachDamage: 0
+    SkillConfigDamage:
+      triggerFrame: 0
+      endFrame: 0
+      triggerIntervalMs: 0
+      isFollowEffect: 0
+      damageType: 0
+      damageRate: 0
+      DetectionMode: 0
+      boxSize: {x: 1, y: 1, z: 1}
+      boxOffset: {x: 0, y: 0, z: 0}
+      sphereOffset: {x: 0, y: 0.9, z: 0}
+      radius: 1
+      radiusHeight: 0
+      ColliderPosType: 0
+      TargetType: 0
+      addBuffs: 
+      triggerSkillId: 0
+    IsAttachAction: 0
+    SkillConfigAction:
+      triggerFrame: 0
+      moveActionType: 0
+      heightPos: {x: 0, y: 0, z: 0}
+      movePos: {x: 0, y: 0, z: 0}
+      durationMS: 0
+      moveActionFinishOpation: 0
+      actionFinishIDList: 
   - skillEffect: {fileID: 1020876491467082, guid: cfe6f997eab2d884989fa36a34b4b8dd, type: 3}
     triggerFrame: 10
     endFrame: 21
@@ -91,6 +172,33 @@ MonoBehaviour:
     effectPosType: 0
     isSetTransParent: 0
     TransParentType: 0
+    IsAttachDamage: 0
+    SkillConfigDamage:
+      triggerFrame: 0
+      endFrame: 0
+      triggerIntervalMs: 0
+      isFollowEffect: 0
+      damageType: 0
+      damageRate: 0
+      DetectionMode: 0
+      boxSize: {x: 1, y: 1, z: 1}
+      boxOffset: {x: 0, y: 0, z: 0}
+      sphereOffset: {x: 0, y: 0.9, z: 0}
+      radius: 1
+      radiusHeight: 0
+      ColliderPosType: 0
+      TargetType: 0
+      addBuffs: 
+      triggerSkillId: 0
+    IsAttachAction: 0
+    SkillConfigAction:
+      triggerFrame: 0
+      moveActionType: 0
+      heightPos: {x: 0, y: 0, z: 0}
+      movePos: {x: 0, y: 0, z: 0}
+      durationMS: 0
+      moveActionFinishOpation: 0
+      actionFinishIDList: 
   - skillEffect: {fileID: 1020876491467082, guid: c70bee0b2eb56e845a43bc8cf8082e90, type: 3}
     triggerFrame: 13
     endFrame: 21
@@ -98,6 +206,33 @@ MonoBehaviour:
     effectPosType: 0
     isSetTransParent: 0
     TransParentType: 0
+    IsAttachDamage: 0
+    SkillConfigDamage:
+      triggerFrame: 0
+      endFrame: 0
+      triggerIntervalMs: 0
+      isFollowEffect: 0
+      damageType: 0
+      damageRate: 0
+      DetectionMode: 0
+      boxSize: {x: 1, y: 1, z: 1}
+      boxOffset: {x: 0, y: 0, z: 0}
+      sphereOffset: {x: 0, y: 0.9, z: 0}
+      radius: 1
+      radiusHeight: 0
+      ColliderPosType: 0
+      TargetType: 0
+      addBuffs: 
+      triggerSkillId: 0
+    IsAttachAction: 0
+    SkillConfigAction:
+      triggerFrame: 0
+      moveActionType: 0
+      heightPos: {x: 0, y: 0, z: 0}
+      movePos: {x: 0, y: 0, z: 0}
+      durationMS: 0
+      moveActionFinishOpation: 0
+      actionFinishIDList: 
   - skillEffect: {fileID: 1020876491467082, guid: 694741c9ad5de0a40b5e4ae082f4d6d8, type: 3}
     triggerFrame: 16
     endFrame: 21
@@ -105,6 +240,33 @@ MonoBehaviour:
     effectPosType: 0
     isSetTransParent: 0
     TransParentType: 0
+    IsAttachDamage: 0
+    SkillConfigDamage:
+      triggerFrame: 0
+      endFrame: 0
+      triggerIntervalMs: 0
+      isFollowEffect: 0
+      damageType: 0
+      damageRate: 0
+      DetectionMode: 0
+      boxSize: {x: 1, y: 1, z: 1}
+      boxOffset: {x: 0, y: 0, z: 0}
+      sphereOffset: {x: 0, y: 0.9, z: 0}
+      radius: 1
+      radiusHeight: 0
+      ColliderPosType: 0
+      TargetType: 0
+      addBuffs: 
+      triggerSkillId: 0
+    IsAttachAction: 0
+    SkillConfigAction:
+      triggerFrame: 0
+      moveActionType: 0
+      heightPos: {x: 0, y: 0, z: 0}
+      movePos: {x: 0, y: 0, z: 0}
+      durationMS: 0
+      moveActionFinishOpation: 0
+      actionFinishIDList: 
   - skillEffect: {fileID: 1020876491467082, guid: cfe6f997eab2d884989fa36a34b4b8dd, type: 3}
     triggerFrame: 19
     endFrame: 21
@@ -112,6 +274,33 @@ MonoBehaviour:
     effectPosType: 0
     isSetTransParent: 0
     TransParentType: 0
+    IsAttachDamage: 0
+    SkillConfigDamage:
+      triggerFrame: 0
+      endFrame: 0
+      triggerIntervalMs: 0
+      isFollowEffect: 0
+      damageType: 0
+      damageRate: 0
+      DetectionMode: 0
+      boxSize: {x: 1, y: 1, z: 1}
+      boxOffset: {x: 0, y: 0, z: 0}
+      sphereOffset: {x: 0, y: 0.9, z: 0}
+      radius: 1
+      radiusHeight: 0
+      ColliderPosType: 0
+      TargetType: 0
+      addBuffs: 
+      triggerSkillId: 0
+    IsAttachAction: 0
+    SkillConfigAction:
+      triggerFrame: 0
+      moveActionType: 0
+      heightPos: {x: 0, y: 0, z: 0}
+      movePos: {x: 0, y: 0, z: 0}
+      durationMS: 0
+      moveActionFinishOpation: 0
+      actionFinishIDList: 
   audioList:
   - skillAudio: {fileID: 8300000, guid: d7dcd60daa12a034eb60f287e1c07a1b, type: 3}
     audioName: Swordsman_hh_huanyingjw_02

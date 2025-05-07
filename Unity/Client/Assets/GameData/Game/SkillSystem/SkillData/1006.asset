@@ -22,15 +22,13 @@ MonoBehaviour:
     animLength: 0.40000004
     skillDurationMS: 400
   skillCfg:
-    showStockPileData: 0
-    showSkillGuide: 0
     skillIcon: {fileID: 21300000, guid: 1382a79c19a63034ab76855305100359, type: 3}
     skillID: 1006
     skillName: "\u7834\u519B\u5347\u9F99\u51FB2\u6BB5"
     needMagicValue: 100
-    skillShakeBeforeTimeMs: 0
+    skillShakeBeforeTimeMs: 200
     skillAttackDurationMs: 400
-    skillShakeAfterTimeMs: 360
+    skillShakeAfterTimeMs: 200
     skillCDTimeMS: 10
     SkillType: 0
     stockPIleStageDatas:
@@ -72,6 +70,33 @@ MonoBehaviour:
     effectPosType: 0
     isSetTransParent: 0
     TransParentType: 0
+    IsAttachDamage: 0
+    SkillConfigDamage:
+      triggerFrame: 0
+      endFrame: 0
+      triggerIntervalMs: 0
+      isFollowEffect: 0
+      damageType: 0
+      damageRate: 0
+      DetectionMode: 0
+      boxSize: {x: 1, y: 1, z: 1}
+      boxOffset: {x: 0, y: 0, z: 0}
+      sphereOffset: {x: 0, y: 0.9, z: 0}
+      radius: 1
+      radiusHeight: 0
+      ColliderPosType: 0
+      TargetType: 0
+      addBuffs: 
+      triggerSkillId: 0
+    IsAttachAction: 0
+    SkillConfigAction:
+      triggerFrame: 0
+      moveActionType: 0
+      heightPos: {x: 0, y: 0, z: 0}
+      movePos: {x: 0, y: 0, z: 0}
+      durationMS: 0
+      moveActionFinishOpation: 0
+      actionFinishIDList: 
   audioList:
   - skillAudio: {fileID: 8300000, guid: d3f223951c7f17f4dbd7bf914729e3d2, type: 3}
     audioName: Swordsman_hh_pojunslj_03

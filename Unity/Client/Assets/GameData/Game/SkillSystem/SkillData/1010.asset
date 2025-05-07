@@ -26,9 +26,9 @@ MonoBehaviour:
     skillID: 1010
     skillName: "\u62D4\u5200\u65A9(\u84C4\u529B)"
     needMagicValue: 100
-    skillShakeBeforeTimeMs: 0
+    skillShakeBeforeTimeMs: 266
     skillAttackDurationMs: 266
-    skillShakeAfterTimeMs: 266
+    skillShakeAfterTimeMs: 0
     skillCDTimeMS: 10000
     SkillType: 3
     stockPIleStageDatas:
