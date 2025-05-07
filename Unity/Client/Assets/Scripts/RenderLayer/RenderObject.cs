@@ -92,7 +92,7 @@ public class RenderObject : MonoBehaviour {
     /// 通用逻辑:更新方向
     /// </summary>
     private void UpdateDir() {
-        _renderDir.x = LogicObject.LogicAxis_X >= 0 ? 0 : -20;
+        // _renderDir.x = LogicObject.LogicAxis_X >= 0 ? 0 : -20;
         _renderDir.y = LogicObject.LogicAxis_X >= 0 ? 0 : 180;
         transform.localEulerAngles = _renderDir;
     }

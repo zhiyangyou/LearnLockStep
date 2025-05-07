@@ -85,5 +85,10 @@ MonoBehaviour:
       durationMS: 0
       moveActionFinishOpation: 0
       actionFinishIDList: 
-  audioList: []
+  audioList:
+  - skillAudio: {fileID: 0}
+    audioName: Swordsman_zidonggd_dutiaowc
+    triggerFrame: 0
+    isLoop: 0
+    endFrame: 0
   actionList: []
