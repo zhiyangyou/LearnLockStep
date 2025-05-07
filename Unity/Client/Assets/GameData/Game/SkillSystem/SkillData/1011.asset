@@ -93,5 +93,10 @@ MonoBehaviour:
       durationMS: 0
       moveActionFinishOpation: 0
       actionFinishIDList: 
-  audioList: []
+  audioList:
+  - skillAudio: {fileID: 8300000, guid: 9d580328b1230bd48b578405d637d450, type: 3}
+    audioName: Swordsman_lieboz_huidao
+    triggerFrame: 1
+    isLoop: 0
+    endFrame: 0
   actionList: []
