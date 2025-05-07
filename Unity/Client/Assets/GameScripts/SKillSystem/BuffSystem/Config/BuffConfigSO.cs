@@ -1,80 +1,114 @@
 ﻿using System;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "Buff配置", menuName = "Buff配置", order = 0)]
 [Serializable]
 public class BuffConfigSO : ScriptableObject {
+    [LabelText("buff图标"), LabelWidth(0.1f), PreviewField(70, ObjectFieldAlignment.Left), SuffixLabel("Buff图标")]
     public Sprite Icon;
-    public int ID;
-    public string Name;
-    public int Delay;
-    public int IntervalMS;
+
+    [LabelText("buffID")] public int id;
+    [LabelText("buff名字")] public string name;
+    [LabelText("buff延迟触发时间(秒)")] public int delayS;
+    [LabelText("buff触发间隔(毫秒)")] public int intervalMS;
+
+    [LabelText("buff持续(毫秒) 0代表1次, -1代表永久 >0代表持续时间")]
     public int DurationMS;
-    public BuffType BuffType;
-    public BuffAttachType AttachType;
-    public BuffPosType PosType;
-    public BuffDamageType DamageType;
-    public int DamageRate;
-    public List<BuffParam> ParamsList;
-    public TargetGrabData TargetGrabData;
-    public AudioClip AudioClip;
-    public BuffEffectConfig EffectConfig;
+
+    [LabelText("buff类型")] public BuffType buffType; // buff类型: 晕眩, 沉默 , 击退等...
+    [LabelText("buff附加目标类型")] public BuffAttachType attachType;
+    [LabelText("buff附加位置")] public BuffPosType posType;
+    [LabelText("buff伤害类型")] public BuffDamageType damageType;
+    [LabelText("buff伤害倍率")] public int damageRate;
+    [LabelText("buff数值配置")] public List<BuffParam> paramsList;
+
+    [LabelText("抓取数据"), PropertyTooltip("把怪物抓取到目标位置")]
+    public TargetGrabData targetGrabData;
+
+    [LabelText("触发音效"), TitleGroup("buff技能表现", "所有的表现数据会在buff触发和释放时触发")]
+    public AudioClip audioClip;
+
+    [LabelText("触发特效配置"), TitleGroup("buff技能表现", "所有的表现数据会在buff触发和释放时触发")]
+    public BuffEffectConfig effectConfig;
+
+    [LabelText("Buff击中特效"), TitleGroup("buff技能表现", "所有的表现数据会在buff触发和释放时触发")]
     public GameObject goBuffHitEffect;
-    public string ReplaceAnim;
+
+    [LabelText("Buff击中动画"), TitleGroup("buff技能表现", "所有的表现数据会在buff触发和释放时触发"), PropertyTooltip("buff触发的角色动画,比如眩晕, 硬直")]
+    public string buffTriggerAnim;
+
+    [LabelText("Buff描述"), HideLabel, MultiLineProperty(5)]
     public string Desc;
 }
 
+[Serializable]
+[LabelText("Buff特效配置")]
 public class BuffEffectConfig {
-    public GameObject GoEffect;
-
-    public EffectAttachType AttachType;
-    public BuffEffectPosType BuffEffectPosType;
+    [LabelText("Buff特效物体")] public GameObject GoEffect;
+    [LabelText("Buff特效附加类型")] public BuffEffectPosType posType;
+    [LabelText("Buff特效位置类型")] public BuffEffectAttachPosType effectAttachPosType;
 }
 
 [Serializable]
 public class BuffParam {
-    public float Value;
-    public string Desc;
+    [LabelText("参数"), PropertyTooltip("例如: 击退距离 | 沉默时间 | 眩晕时间 | 伤害数值")]
+    public float Value; //
+
+    [LabelText("参数描述")] public string Desc; // 描述
 }
 
 [Serializable]
 public class TargetGrabData {
-    public Vector3 GrapMovePOs;
+    [LabelText("抓取到目标位置")] public Vector3 GrabMovePos;
+    [LabelText("抓取到目标位置需要的移动时间")] public int GrabMoveTimeMS;
 }
 
+[LabelText("Buff特效位置类型")]
+public enum BuffEffectAttachPosType {
+    [LabelText("无配置")] None,
+    [LabelText("中心")] Center,
+    [LabelText("手的位置")] Hand,
+    [LabelText("脚的位置")] Foot,
+}
+
+[LabelText("Buff特效附加类型")]
 public enum BuffEffectPosType {
-    None,
-    Center,
-    Hand,
+    [LabelText("无配置")] None,
+    [LabelText("跟随目标")] TargetFollow,
+    [LabelText("目标位置")] TargetPos,
 }
 
-public enum EffectAttachType {
-    None,
-    CreatorFollow,
-    CreatorPos,
-    TargetFollow,
-    TargetPos,
+[LabelText("buff伤害类型")]
+public enum BuffDamageType {
+    [LabelText("无配置")] None,
+    [LabelText("物理伤害")] AD,
+    [LabelText("魔法伤害")] AP,
 }
 
-public enum BuffDamageType { }
-
+[LabelText("buff位置类型")]
 public enum BuffPosType {
-    None,
-    FollowTarget,
-    HitTargetPos,
-    UIInputPos,
+    [LabelText("无配置")] None,
+    [LabelText("跟随目标")] FollowTarget,
+    [LabelText("技能击中的位置")] HitTargetPos,
+    [LabelText("摇杆输入位置")] UIInputPos,
 }
 
+[LabelText("Buff附加类型")]
 public enum BuffAttachType {
-    None,
-    Creator,
-    Target,
-    Creator_Pos,
-    Target_Pos,
-    GuidePos,
+    [LabelText("无配置")] None,
+    [LabelText("施法者")] Creator, // 附加到施法者身上
+    [LabelText("施法目标")] Target, // 附加到目标上, 中毒
+    [LabelText("施法者位置")] Creator_Pos, // 施法者所处位置, 岩浆地形
+    [LabelText("目标位置")] Target_Pos, // 目标所处位置, 岩浆地形
+    [LabelText("引导目标位置")] GuidePos, // 摇杆选中的位置, 岩浆地形
 }
 
+
+[LabelText("Buff类型")]
 public enum BuffType {
-    None = 0,
+    [LabelText("无配置")] None = 0,
+    [LabelText("击退")] Repel, // 击退
 }
