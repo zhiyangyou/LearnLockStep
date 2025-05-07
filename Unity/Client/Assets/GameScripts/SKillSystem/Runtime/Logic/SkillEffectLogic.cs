@@ -48,9 +48,8 @@ public class SkillEffectLogic : LogicObject {
             skill.AddMoveAction(_skillConfigEffect.SkillConfigAction, this, () => {
                 _collider.OnRelease();
                 skill.DestoryEffect(_skillConfigEffect);
-                // Debug.LogError($"DestoryEffectGo {Time.frameCount}");
                 _collider = null;
-            });
+            }, () => { OnEffectMoveUpdate(skill); });
         }
 
         if (_skillConfigEffect.IsAttachDamage) {
@@ -58,6 +57,23 @@ public class SkillEffectLogic : LogicObject {
             if (damageConfig.triggerFrame == curFrame) {
                 _collider = skill.CreateOrUpdateCollider(damageConfig, null, this);
             }
+        }
+
+        // 特效伤害配置
+    }
+
+    #endregion
+
+    #region private
+
+    private void OnEffectMoveUpdate(Skill skill) {
+        var damageConfig = _skillConfigEffect.SkillConfigDamage;
+        // 特效移动逻辑帧回调
+        if (damageConfig.isFollowEffect && _collider != null) {
+            skill.CreateOrUpdateCollider(damageConfig, _collider, this);
+        }
+
+        if (_skillConfigEffect.IsAttachDamage) {
             // 持续伤害
             if (_collider != null && damageConfig.triggerIntervalMs == 0) {
                 skill.TriggerColliderDamage(_collider, damageConfig);
@@ -71,19 +87,8 @@ public class SkillEffectLogic : LogicObject {
                     skill.TriggerColliderDamage(_collider, damageConfig);
                 }
             }
-
-            // 跟新碰撞体位置
-            if (damageConfig.isFollowEffect && _collider != null) {
-                skill.CreateOrUpdateCollider(damageConfig, _collider, this);
-            }
         }
-
-        // 特效伤害配置
     }
-
-    #endregion
-
-    #region private
 
     private SkillEffectLogic() { }
 

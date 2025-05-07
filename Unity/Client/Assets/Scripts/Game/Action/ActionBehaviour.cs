@@ -13,7 +13,7 @@ public abstract class ActionBehaviour {
     /// <summary>
     /// 行动更新回调
     /// </summary>
-    protected Action _onUpdateAction = null;
+    protected Action _onMoveUpdate = null;
 
     #endregion
 

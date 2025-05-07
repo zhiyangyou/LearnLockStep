@@ -61,14 +61,14 @@ public class MoveToAction : ActionBehaviour {
         FixIntVector3 targetPos,
         FixInt durationMS,
         Action onMoveFinish,
-        Action onUpdate,
+        Action onMoveUpdate,
         MoveType moveType
     ) {
         _actionObj = actionObj;
         _startPos = startPos;
         _durationMS = durationMS;
         _onMoveFinish = onMoveFinish;
-        _onUpdateAction = onUpdate;
+        _onMoveUpdate = onMoveUpdate;
         _moveType = moveType;
 
         _moveDistance = targetPos - startPos;
@@ -89,7 +89,7 @@ public class MoveToAction : ActionBehaviour {
             OnActionFinish();
             return;
         }
-        _onUpdateAction?.Invoke();
+        _onMoveUpdate?.Invoke();
         // 计算角色应该所处的位置
 
         FixIntVector3 addDistance = FixIntVector3.zero; // 相对于_startPos的偏移值

@@ -8,13 +8,13 @@ public partial class Skill {
         if (actionList != null && actionList.Count > 0) {
             foreach (SkillConfig_Action actionConfig in actionList) {
                 if (actionConfig.triggerFrame == _curLogicFrame) {
-                    AddMoveAction(actionConfig, _skillCreater, null);
+                    AddMoveAction(actionConfig, _skillCreater, null, null);
                 }
             }
         }
     }
 
-    public void AddMoveAction(SkillConfig_Action configAction, LogicObject actionActor, Action onMoveFinish) {
+    public void AddMoveAction(SkillConfig_Action configAction, LogicObject actionActor, Action onMoveFinish, Action onMoveUpdate) {
         FixIntVector3 movePos = new FixIntVector3(configAction.movePos);
         FixIntVector3 targetPos = actionActor.LogicPos + movePos * actionActor.LogicAxis_X;
         // Debug.LogError($"add move action pos:{targetPos}");
@@ -56,7 +56,7 @@ public partial class Skill {
                         throw new ArgumentOutOfRangeException();
                 }
             },
-            null,
+            onMoveUpdate,
             moveType
         );
 
