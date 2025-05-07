@@ -48,7 +48,7 @@ public class SkillEffectLogic : LogicObject {
             skill.AddMoveAction(_skillConfigEffect.SkillConfigAction, this, () => {
                 _collider.OnRelease();
                 skill.DestoryEffect(_skillConfigEffect);
-                _collider = null;
+                _collider = null; 
             }, () => { OnEffectMoveUpdate(skill); });
         }
 
