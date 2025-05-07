@@ -34,7 +34,7 @@ MonoBehaviour:
     stockPIleStageDatas: []
     skillGuideObj: {fileID: 0}
     skillGuideRange: 0
-    CombinationSkillId: 0
+    CombinationSkillId: 1013
     skillHitEffect: {fileID: 5023627635078921320, guid: eebb9919fe1d53f4690a67203d880219, type: 3}
     hitEffectSurvialTimeMs: 100
     SkillHitAudio: {fileID: 8300000, guid: 4efb0f3057308b94f8a5da47f9d7c7cc, type: 3}

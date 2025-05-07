@@ -10,36 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bce2f7b12dee4a96ad4c38bc00dd2983, type: 3}
-  m_Name: 1010
+  m_Name: 1013
   m_EditorClassIdentifier: 
   configCharacter:
     sKillCharacterPrefab: {fileID: 7439582587569004764, guid: 961b52318dc24c242b7f2ddc2f1a2a37, type: 3}
-    skillAnim: {fileID: 7400000, guid: edf4fecabf4690f40baf7cbf28a4a44f, type: 2}
+    skillAnim: {fileID: 7400000, guid: 81a16f49ffef7dc43b43b678876dab75, type: 2}
     animProgress: 100
     isLoopAnim: 0
     animLoopCount: 0
-    logicFrame: 4
-    animLength: 0.2666667
-    skillDurationMS: 266
+    logicFrame: 9
+    animLength: 0.6
+    skillDurationMS: 600
   skillCfg:
     skillIcon: {fileID: 21300000, guid: 73eceae66522a4d458850c01d88e0de6, type: 3}
-    skillID: 1010
-    skillName: "\u62D4\u5200\u65A9(\u84C4\u529B)"
+    skillID: 1013
+    skillName: "\u62D4\u5200\u65A9(\u84C4\u529B)-\u4E8C\u9636\u6BB5\u7684\u7B2C\u4E8C\u6BB5\u62D4\u5200"
     needMagicValue: 100
     skillShakeBeforeTimeMs: 0
-    skillAttackDurationMs: 266
-    skillShakeAfterTimeMs: 266
+    skillAttackDurationMs: 600
+    skillShakeAfterTimeMs: 600
     skillCDTimeMS: 10000
-    SkillType: 3
-    stockPIleStageDatas:
-    - stage: 1
-      skillId: 1011
-      startTimeMs: 500
-      endTimeMs: 1000
-    - stage: 2
-      skillId: 1012
-      startTimeMs: 1001
-      endTimeMs: 2000
+    SkillType: 0
+    stockPIleStageDatas: []
     skillGuideObj: {fileID: 0}
     skillGuideRange: 0
     CombinationSkillId: 0
@@ -49,11 +41,27 @@ MonoBehaviour:
     showSkillPortrait: 0
     skillPortraitObj: {fileID: 0}
     skillDes: 
-  damageCfgList: []
+  damageCfgList:
+  - triggerFrame: 1
+    endFrame: 3
+    triggerIntervalMs: 0
+    isFollowEffect: 0
+    damageType: 1
+    damageRate: 0
+    DetectionMode: 2
+    boxSize: {x: 1, y: 1, z: 1}
+    boxOffset: {x: 0, y: 0, z: 0}
+    sphereOffset: {x: 0, y: 0.9, z: 0}
+    radius: 4.81
+    radiusHeight: 0
+    ColliderPosType: 0
+    TargetType: 2
+    addBuffs: 
+    triggerSkillId: 0
   effectCfgList:
-  - skillEffect: {fileID: 1206692485714072, guid: 1fd07134a5eb196479e2fdc2104039eb, type: 3}
+  - skillEffect: {fileID: 1729188287788238, guid: aa20af883426d2a419373f6fbf7bf291, type: 3}
     triggerFrame: 1
-    endFrame: 0
+    endFrame: 9
     effectOffsetPos: {x: 0, y: 0, z: 0}
     effectPosType: 0
     isSetTransParent: 0
