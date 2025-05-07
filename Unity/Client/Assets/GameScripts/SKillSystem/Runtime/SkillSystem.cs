@@ -56,16 +56,18 @@ public class SkillSystem {
         if (skill != null) {
             skill.TriggerStockPileSkill();
         }
+        else {
+            Debug.LogError("skill is null ");
+        }
     }
 
     public Skill ReleaseSkill(int skillID, SkillCallback_OnAfter onAfter, SkillCallback_OnEnd onEnd) {
         foreach (Skill skill in _listSkills) {
             if (skillID == skill.SkillID) {
                 if (skill.skillState != SkillState.None && skill.skillState != SkillState.End) {
-                    Debug.LogError($"技能正在释放中{skillID} ");
+                    // Debug.LogError($"技能正在释放中{skillID} ");
                     return null;
                 }
-                // Debug.LogError($"release skill {skillID}");
                 skill.ReleaseSkill(onAfter, (skRelease, isCombineSkill) => {
                     onEnd.Invoke(skRelease, isCombineSkill);
                     if (isCombineSkill) {

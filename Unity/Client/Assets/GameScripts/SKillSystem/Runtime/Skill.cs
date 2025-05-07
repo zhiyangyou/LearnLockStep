@@ -111,6 +111,7 @@ public partial class Skill {
     public void SkillEnd() {
         skillState = SkillState.End;
         this.SkillCallbackOnEnd?.Invoke(this, false); // TODO 暂且都是false 2025年4月26日18:10:48 
+        ReleaseAllEffect();
         // 组合技能
         if (_skillConfig.skillCfg.HasCombineSkill) {
             _skillCreater.ReleaseSkill(_skillConfig.skillCfg.CombinationSkillId);
@@ -123,7 +124,10 @@ public partial class Skill {
     /// 逻辑帧更新
     /// </summary>
     public void OnLogicFrameUpdate() {
-        if (skillState is SkillState.None or SkillState.End) return;
+        if (skillState is SkillState.None or SkillState.End) {
+            // Debug.LogError($"技能结束了 {skillState}");
+            return;
+        }
 
         _curLogicFrameAccTimeMS = _curLogicFrame * LogicFrameConfig.LogicFrameIntervalMS;
 
@@ -197,6 +201,7 @@ public partial class Skill {
 
         // 不符合某个阶段
         _isAutoMatchStockStage = true;
+        // Debug.LogError("蓄力:不符合任意阶段");
     }
 
     #endregion
@@ -211,10 +216,12 @@ public partial class Skill {
 
     private void StockPileFinish(StockPileStageData stageData) {
         SkillEnd();
+        // Debug.LogError("蓄力结束");
         if (stageData.skillId <= 0) {
             Debug.LogError($"蓄力阶段id:{stageData.stage} 配置了错误的技能id:{stageData.skillId}");
         }
         else {
+            // Debug.LogError($"蓄力结束: 阶段id{stageData.skillId} skillid:{stageData.skillId}");
             _skillCreater.ReleaseSkill(stageData.skillId);
         }
     }

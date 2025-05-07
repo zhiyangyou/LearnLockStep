@@ -84,8 +84,9 @@ public class SkillItem : MonoBehaviour {
     /// <param name="skillid">技能id</param>
     /// <param name="skilldirdis">技能半径距离</param>
     private void OnSkillGuide(SKillGuideType skillguide, bool iscancel, Vector3 skillpos, int skillid, float skilldirdis) {
+        // Debug.LogError($"Skill Guide ... {skillguide}");
         if (skillguide == SKillGuideType.LongPress) {
-            Debug.LogError($"OnSkillGuide long press 触发{skillid}");
+            // Debug.LogError($"OnSkillGuide long press 触发{skillid} {Time.frameCount} ");
             _skillCreater.ReleaseSkill(skillid); 
         }
         else if (skillguide == SKillGuideType.Position) {
@@ -103,12 +104,12 @@ public class SkillItem : MonoBehaviour {
     private void OnTriggerSkill(SKillGuideType skillguide, Vector3 skillpos, int skillid) {
         switch (skillguide) {
             case SKillGuideType.Click: {
-                Debug.LogError($"触发 click 技能:{skillid}");
+                // Debug.LogError($"触发 click 技能:{skillid}");
                 _skillCreater.ReleaseSkill(skillid);
             }
                 break;
             case SKillGuideType.LongPress: {
-                Debug.LogError($"触发 蓄力技能:{skillid}");
+                // Debug.LogError($"触发 蓄力技能:{skillid} {Time.frameCount} ");
                 _skillCreater.TriggerStockPileSkill(skillid);
             }
                 break;

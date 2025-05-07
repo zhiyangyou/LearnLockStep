@@ -71,5 +71,13 @@ public partial class Skill {
         }
     }
 
+    public void ReleaseAllEffect() {
+        foreach (var configEffect in _skillConfig.effectCfgList) {
+            if (!configEffect.IsAttachAction) {
+                DestoryEffect(configEffect);
+            }
+        }
+    }
+
     #endregion
 }
