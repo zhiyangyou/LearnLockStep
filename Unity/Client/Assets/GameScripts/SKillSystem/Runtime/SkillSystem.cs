@@ -15,6 +15,15 @@ public class SkillSystem {
 
     private Skill _curReleasingSkill = null;
 
+    private Skill curReleasingSkill {
+        get { return _curReleasingSkill; }
+        set {
+            var curName = value == null ? "null" : $"{value.SkillCfgConfig.skillName}";
+            // Debug.LogError($"当前正在释放的技能:{curName} frame:{Time.frameCount} ");
+            _curReleasingSkill = value;
+        }
+    }
+
     #endregion
 
     #region public
@@ -54,6 +63,9 @@ public class SkillSystem {
     }
 
     public void TriggerStockPileSkill(int skillID) {
+        if (SkillStateMutex()) {
+            return;
+        }
         Skill skill = GetSkill(skillID);
         if (skill != null) {
             skill.TriggerStockPileSkill();
@@ -64,8 +76,7 @@ public class SkillSystem {
     }
 
     public Skill ReleaseSkill(int skillID, SkillCallback_OnAfter onAfter, SkillCallback_OnEnd onEnd) {
-        if (_curReleasingSkill is { skillState: SkillState.Before }) {
-            Debug.LogError($"{_curReleasingSkill.SkillCfgConfig.skillName} 技能前摇中");
+        if (SkillStateMutex()) {
             return null;
         }
         foreach (Skill skill in _listSkills) {
@@ -74,14 +85,16 @@ public class SkillSystem {
                     // Debug.LogError($"技能正在释放中{skillID} ");
                     return null;
                 }
-                skill.ReleaseSkill(onAfter, (skRelease, isCombineSkill) => {
+                skill.ReleaseSkill((afterSkill) => {
+                    onAfter(afterSkill);
+                    curReleasingSkill = null;
+                }, (skRelease, isCombineSkill) => {
                     onEnd.Invoke(skRelease, isCombineSkill);
                     if (!isCombineSkill) {
                         // TODO 根据技能组合的情况 处理组合逻辑
-                        _curReleasingSkill = null;
                     }
                 });
-                _curReleasingSkill = skill;
+                curReleasingSkill = skill;
                 return skill;
             }
         }
@@ -93,6 +106,18 @@ public class SkillSystem {
         foreach (Skill sk in _listSkills) {
             sk.OnLogicFrameUpdate();
         }
+    }
+
+    #endregion
+
+    #region private
+
+    private bool SkillStateMutex() {
+        if (curReleasingSkill is { skillState: SkillState.Before }) {
+            // Debug.LogError($"{curReleasingSkill.SkillCfgConfig.skillName} 技能前摇中");
+            return true;
+        }
+        return false;
     }
 
     #endregion

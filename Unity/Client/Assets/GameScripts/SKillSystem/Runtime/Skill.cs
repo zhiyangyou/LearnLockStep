@@ -110,7 +110,7 @@ public partial class Skill {
     /// </summary>
     public void SkillEnd() {
         skillState = SkillState.End;
-        this.SkillCallbackOnEnd?.Invoke(this, false); // TODO 暂且都是false 2025年4月26日18:10:48 
+        this.SkillCallbackOnEnd?.Invoke(this, _skillConfig.skillCfg.HasCombineSkill); // TODO 暂且都是false 2025年4月26日18:10:48 
         ReleaseAllEffect();
         // 组合技能
         if (_skillConfig.skillCfg.HasCombineSkill) {
@@ -207,7 +207,7 @@ public partial class Skill {
     #endregion
 
     #region private
-
+    
     private void InitTimer() {
         _curLogicFrame = 0;
         _curLogicFrameAccTimeMS = 0;

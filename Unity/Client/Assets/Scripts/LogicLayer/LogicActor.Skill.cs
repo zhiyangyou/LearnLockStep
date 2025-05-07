@@ -20,6 +20,16 @@ public partial class LogicActor {
     /// </summary>
     private int _curNormalComboIndex = 0;
 
+    private int curNormalComboIndex {
+        get { return _curNormalComboIndex; }
+        set {
+            if (value == 0) {
+                // Debug.LogError("连发普攻归0");
+            }
+            _curNormalComboIndex = value;
+        }
+    }
+
     #endregion
 
     #region public
@@ -41,7 +51,7 @@ public partial class LogicActor {
     }
 
     public void ReleaseNormalAttack() {
-        ReleaseSkill(_normalAttackSkillArr[_curNormalComboIndex]);
+        ReleaseSkill(_normalAttackSkillArr[curNormalComboIndex]);
     }
 
 
@@ -55,7 +65,7 @@ public partial class LogicActor {
         {
             _listReleasingSkills.Add(releasingSkill);
             if (!IsNormalSkill(skillID)) {
-                _curNormalComboIndex = 0;
+                curNormalComboIndex = 0;
             }
             ActionState = LogicObjectActionState.ReleasingSkill;
         }
@@ -87,10 +97,10 @@ public partial class LogicActor {
     /// <param name="sk"></param>
     /// <param name="isCombineSkill"></param>
     private void SkillCallback_OnEnd(Skill sk, bool isCombineSkill) {
-        _listReleasingSkills.Remove(sk);
         if (_listReleasingSkills != null && _listReleasingSkills.Count == 0) {
-            _curNormalComboIndex = 0;
+            curNormalComboIndex = 0;
         }
+        _listReleasingSkills.Remove(sk);
         ActionState = LogicObjectActionState.Idle;
     }
 
@@ -100,13 +110,14 @@ public partial class LogicActor {
     /// <param name="sk"></param>
     private void SkillCallback_OnAfter(Skill sk) {
         if (!IsNormalSkill(sk.SkillID)) {
-            _curNormalComboIndex = 0;
+            curNormalComboIndex = 0;
         }
         else {
-            _curNormalComboIndex++;
+            curNormalComboIndex++;
+            // Debug.LogError($"curNormalComboIndex++ {curNormalComboIndex}");
             // 归零
-            if (_curNormalComboIndex >= _normalAttackSkillArr.Length) {
-                _curNormalComboIndex = 0;
+            if (curNormalComboIndex >= _normalAttackSkillArr.Length) {
+                curNormalComboIndex = 0;
             }
         }
     }
