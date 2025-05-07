@@ -63,7 +63,8 @@ public class SkillSystem {
     }
 
     public void TriggerStockPileSkill(int skillID) {
-        if (SkillStateMutex()) {
+        // Debug.LogError($"TriggerStockPileSkill SkillStateMutex:{SkillStateMutex()}");
+        if (SkillStateMutex(skillID)) {
             return;
         }
         Skill skill = GetSkill(skillID);
@@ -76,7 +77,7 @@ public class SkillSystem {
     }
 
     public Skill ReleaseSkill(int skillID, SkillCallback_OnAfter onAfter, SkillCallback_OnEnd onEnd) {
-        if (SkillStateMutex()) {
+        if (SkillStateMutex(skillID)) {
             return null;
         }
         foreach (Skill skill in _listSkills) {
@@ -112,8 +113,11 @@ public class SkillSystem {
 
     #region private
 
-    private bool SkillStateMutex() {
-        if (curReleasingSkill is { skillState: SkillState.Before }) {
+    private bool SkillStateMutex(int willPlaySkillID) {
+        if (curReleasingSkill != null
+            && curReleasingSkill.skillState == SkillState.Before
+            && curReleasingSkill.SkillID != willPlaySkillID
+           ) {
             // Debug.LogError($"{curReleasingSkill.SkillCfgConfig.skillName} 技能前摇中");
             return true;
         }

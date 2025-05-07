@@ -134,6 +134,7 @@ public partial class Skill {
         // 尝试进入技能后摇
         if (skillState == SkillState.Before
             && _curLogicFrameAccTimeMS >= _skillConfig.skillCfg.skillShakeBeforeTimeMs
+            && _skillConfig.skillCfg.SkillType != SkillType.StockPile // 蓄力技能没有后摇
            ) {
             SkillAfter();
         }
@@ -158,6 +159,7 @@ public partial class Skill {
         if (_skillConfig.skillCfg.SkillType == SkillType.StockPile) {
             var stockPileDataCount = _skillConfig.skillCfg.stockPIleStageDatas.Count;
             if (stockPileDataCount > 0) {
+                // Debug.LogError($"_isAutoMatchStockStage:{_isAutoMatchStockStage}");
                 // 1. 情况: 按下立马抬起
                 if (_isAutoMatchStockStage) {
                     foreach (var stockData in _skillConfig.skillCfg.stockPIleStageDatas) {
@@ -170,6 +172,7 @@ public partial class Skill {
                     // 2. 情况: 蓄力超时
                     var lastStage = _skillConfig.skillCfg.stockPIleStageDatas[stockPileDataCount - 1];
                     if (_curLogicFrameAccTimeMS >= lastStage.endTimeMs) {
+                        // Debug.LogError($"_isAutoMatchStockStage --- true;;; ");
                         StockPileFinish(lastStage);
                     }
                 }
