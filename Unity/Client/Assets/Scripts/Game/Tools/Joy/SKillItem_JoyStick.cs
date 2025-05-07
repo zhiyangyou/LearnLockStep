@@ -134,7 +134,9 @@ public class SKillItem_JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandl
     {
         eventData.position = MousePosToUGUIPosition(eventData.position);
         SetJoyActiveState(false);
-        OnSkillGuide?.Invoke(mSkillGuideType, false, Vector3.zero, mSkillid, mSkillDirRnage);
+        if (mSkillGuideType != SKillGuideType.LongPress) {
+            OnSkillGuide?.Invoke(mSkillGuideType, false, Vector3.zero, mSkillid, mSkillDirRnage);
+        }
 
         if (mSkillGuideType == SKillGuideType.Click || mSkillGuideType == SKillGuideType.LongPress)
         {
