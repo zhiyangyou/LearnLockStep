@@ -67,11 +67,13 @@ public class MoveToAction : ActionBehaviour {
         _actionObj = actionObj;
         _startPos = startPos;
         _durationMS = durationMS;
-        _callBackMoveFinish = onMoveFinish;
-        _callBackUpdateAction = onUpdate;
+        _onMoveFinish = onMoveFinish;
+        _onUpdateAction = onUpdate;
         _moveType = moveType;
 
         _moveDistance = targetPos - startPos;
+        _accRuntimeMS = 0;
+        _curTimeScale = 0;
     }
 
     /// <summary>
@@ -80,14 +82,14 @@ public class MoveToAction : ActionBehaviour {
     public override void OnLogicFrameUpdate() {
         _accRuntimeMS += LogicFrameConfig.LogicFrameIntervalMS;
         _curTimeScale = _accRuntimeMS / _durationMS; // TODO 不理解
-
+        
         if (_curTimeScale >= 1) {
             _curTimeScale = 1;
             actionFinish = true;
             OnActionFinish();
             return;
         }
-        _callBackUpdateAction?.Invoke();
+        _onUpdateAction?.Invoke();
         // 计算角色应该所处的位置
 
         FixIntVector3 addDistance = FixIntVector3.zero; // 相对于_startPos的偏移值
@@ -116,7 +118,7 @@ public class MoveToAction : ActionBehaviour {
 
     public override void OnActionFinish() {
         if (actionFinish) {
-            _callBackMoveFinish?.Invoke();
+            _onMoveFinish?.Invoke();
         }
     }
 

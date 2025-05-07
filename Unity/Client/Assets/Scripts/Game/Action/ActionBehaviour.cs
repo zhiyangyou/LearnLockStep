@@ -8,12 +8,12 @@ public abstract class ActionBehaviour {
     /// <summary>
     /// 行动完成回调
     /// </summary>
-    protected Action _callBackMoveFinish = null;
+    protected Action _onMoveFinish = null;
 
     /// <summary>
     /// 行动更新回调
     /// </summary>
-    protected Action _callBackUpdateAction = null;
+    protected Action _onUpdateAction = null;
 
     #endregion
 

@@ -5,9 +5,6 @@ using UnityEngine;
 public partial class Skill {
     public void OnLogicFrameUpdate_Action() {
         var actionList = _skillConfig.actionList;
-        // if (SkillID == 1003) {
-        // Debug.LogError($"skillID:{this.SkillID} actionList:{actionList?.Count}  logicFrame : {_curLogicFrame} ");
-        // }
         if (actionList != null && actionList.Count > 0) {
             foreach (SkillConfig_Action actionConfig in actionList) {
                 if (actionConfig.triggerFrame == _curLogicFrame) {
@@ -20,6 +17,7 @@ public partial class Skill {
     public void AddMoveAction(SkillConfig_Action configAction, LogicObject actionActor, Action onMoveFinish) {
         FixIntVector3 movePos = new FixIntVector3(configAction.movePos);
         FixIntVector3 targetPos = actionActor.LogicPos + movePos * actionActor.LogicAxis_X;
+        // Debug.LogError($"add move action pos:{targetPos}");
         MoveType moveType = MoveType.Target;
         if (movePos.IsOnlyAxis_X()) {
             moveType = MoveType.X;

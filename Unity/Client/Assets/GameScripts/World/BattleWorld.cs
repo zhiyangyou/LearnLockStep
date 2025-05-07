@@ -60,7 +60,7 @@ namespace ZMGC.Battle {
         #region life-cycle
 
         public override void OnCreate() {
-            Debug.LogError("节约笔记本性能, 限制帧率60");
+            Debug.Log("节约笔记本性能, 限制帧率60");
             Application.targetFrameRate = 60;
             base.OnCreate();
             HeroLogicCtrl = BattleWorld.GetExitsLogicCtrl<HeroLogicCtrl>();
