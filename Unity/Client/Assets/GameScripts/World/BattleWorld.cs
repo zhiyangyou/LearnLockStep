@@ -1,4 +1,5 @@
 ﻿using System;
+using FixMath;
 using ZMGC.Battle;
 using UnityEngine;
 using ZM.ZMAsset;
@@ -92,6 +93,16 @@ namespace ZMGC.Battle {
             }
 
             _logicDeltaTime = (_accLogicRealTime + LogicFrameConfig.LogicFrameInterval - _nextLogicFrameTime) / LogicFrameConfig.LogicFrameInterval;
+
+
+            // Debug.LogError($"{Time.frameCount}");
+            // 测试脚本
+            {
+                if (Input.GetKeyDown(KeyCode.Q)) {
+                    BattleWorld.GetExitsLogicCtrl<HeroLogicCtrl>().HeroLogic.velicity = FixIntVector3.up * 4;
+                    BattleWorld.GetExitsLogicCtrl<HeroLogicCtrl>().HeroLogic.isAddForce = true;
+                }
+            }
         }
 
 
@@ -110,7 +121,6 @@ namespace ZMGC.Battle {
             LogicActionController.Instance.OnDestory();
             BuffSystem.Instance.OnDestory();
             Debug.LogError("BattleWorld.OnDestroy");
-            
         }
 
         public override void OnDestroyPostProcess(object args) {

@@ -24,11 +24,16 @@ public partial class LogicActor {
         get { return _curNormalComboIndex; }
         set {
             if (value == 0) {
-                // Debug.LogError("连发普攻归0");
+                Debug.LogError("连发普攻归0");
             }
             _curNormalComboIndex = value;
         }
     }
+
+    // /// <summary>
+    // /// 普攻重置Timer
+    // /// </summary>
+    // private int _timerNormalAttack = 0;
 
     #endregion
 
@@ -65,7 +70,7 @@ public partial class LogicActor {
         {
             _listReleasingSkills.Add(releasingSkill);
             if (!IsNormalSkill(skillID)) {
-                curNormalComboIndex = 0;
+                curNormalComboIndex = 0; // 重置普攻combo: 其他技能释放 Start阶段
             }
             ActionState = LogicObjectActionState.ReleasingSkill;
         }
@@ -98,7 +103,7 @@ public partial class LogicActor {
     /// <param name="isCombineSkill"></param>
     private void SkillCallback_OnEnd(Skill sk, bool isCombineSkill) {
         if (_listReleasingSkills != null && _listReleasingSkills.Count == 0) {
-            curNormalComboIndex = 0;
+            curNormalComboIndex = 0; // 重置普攻combo: 技能释放 End阶段
         }
         _listReleasingSkills.Remove(sk);
         ActionState = LogicObjectActionState.Idle;
@@ -110,14 +115,14 @@ public partial class LogicActor {
     /// <param name="sk"></param>
     private void SkillCallback_OnAfter(Skill sk) {
         if (!IsNormalSkill(sk.SkillID)) {
-            curNormalComboIndex = 0;
+            curNormalComboIndex = 0; // 重置普攻combo: 其他技能释放 After阶段
         }
         else {
             curNormalComboIndex++;
             // Debug.LogError($"curNormalComboIndex++ {curNormalComboIndex}");
             // 归零
             if (curNormalComboIndex >= _normalAttackSkillArr.Length) {
-                curNormalComboIndex = 0;
+                curNormalComboIndex = 0; // 重置普攻combo: 普攻最后一段完成
             }
         }
     }

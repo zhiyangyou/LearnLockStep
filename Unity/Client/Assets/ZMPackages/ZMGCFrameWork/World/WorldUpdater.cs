@@ -6,7 +6,8 @@ public class WorldUpdater : MonoBehaviour
 {
     private void Update()
     {
-        if (WorldManager.Builder)
+        if (WorldManager.Builder) {
             WorldManager.Update();
+        }
     }
 }
