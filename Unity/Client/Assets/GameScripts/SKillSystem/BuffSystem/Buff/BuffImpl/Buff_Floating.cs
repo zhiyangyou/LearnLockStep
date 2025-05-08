@@ -16,7 +16,7 @@ public class Buff_Floating : BuffComposite {
         if (paramList != null && paramList.Count > 0) {
             FixInt floatingValue = paramList[0].Value;
             buff.attachTarget.AddRisingForce(floatingValue, buff.BuffConfigSo.DurationMS);
-        } 
+        }
         else {
             Debug.LogError("Buff_Floating buff的参数是空");
         }

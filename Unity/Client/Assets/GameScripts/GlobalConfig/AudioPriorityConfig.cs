@@ -9,4 +9,6 @@
     /// 技能命中音效
     /// </summary>
     public const int Skill_Hit_AudioClip = 200;
+
+    public const int Buff_AudioClip = 300;
 }

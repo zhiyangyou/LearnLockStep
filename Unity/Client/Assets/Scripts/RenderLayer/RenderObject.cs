@@ -50,6 +50,9 @@ public class RenderObject : MonoBehaviour {
     public virtual void PlayAnim(AnimationClip animationClip) { }
     public virtual void PlayAnim(string animClipName) { }
 
+    public virtual string GetCurAnimName() {
+        return null;
+    }
 
     /// <summary>
     /// 造成伤害

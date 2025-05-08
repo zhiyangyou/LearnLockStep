@@ -1,4 +1,4 @@
-﻿public static class AnimationNames {
+﻿public static class AnimaNames {
     public const string Anim_Idle = "Anim_Idle";
     public const string Anim_Getup = "Anim_Getup";
     public const string Anim_Dead = "Anim_Dead";

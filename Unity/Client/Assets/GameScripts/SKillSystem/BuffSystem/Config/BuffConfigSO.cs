@@ -40,7 +40,7 @@ public class BuffConfigSO : ScriptableObject {
     public GameObject goBuffHitEffect;
 
     [LabelText("Buff击中动画"), TitleGroup("buff技能表现", "所有的表现数据会在buff触发和释放时触发"), PropertyTooltip("buff触发的角色动画,比如眩晕, 硬直")]
-    public ObjectAnimationState buffTriggerAnim;
+    public ObjectAnimationState buffTriggerAnim = ObjectAnimationState.None;
 
     [LabelText("Buff描述"), HideLabel, MultiLineProperty(5)]
     public string Desc;

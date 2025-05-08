@@ -5,6 +5,8 @@ public class MonsterRender : RenderObject {
 
     private Animation _anim;
 
+    private string _curAnimName = null;
+
     #endregion
 
     #region life-cycle
@@ -29,14 +31,19 @@ public class MonsterRender : RenderObject {
         }
         // 怪物死亡只能播放死亡动画
         if (LogicObject.ObjectState == LogicObjectState.Death
-            && animClipName != AnimationNames.Anim_Dead
+            && animClipName != AnimaNames.Anim_Dead
            ) {
             Debug.LogError("怪物死亡只能播放死亡动画");
             return;
         }
         else {
+            _curAnimName = animClipName;
             _anim.Play(animClipName);
         }
+    }
+
+    public override string GetCurAnimName() {
+        return _curAnimName;
     }
 
     #endregion

@@ -15,6 +15,8 @@ public partial class LogicActor {
 
     private List<Skill> _listReleasingSkills = new();
 
+    private List<Buff> _listBuff = new();
+
     /// <summary>
     /// 普通攻击连击
     /// </summary>
@@ -74,7 +76,7 @@ public partial class LogicActor {
             }
             ActionState = LogicObjectActionState.ReleasingSkill;
         }
-    }   
+    }
 
 
     public void TriggerStockPileSkill(int skillId) {
@@ -83,6 +85,33 @@ public partial class LogicActor {
 
     public Skill GetSkill(int skillID) {
         return _skillSystem.GetSkill(skillID);
+    }
+
+    #endregion
+
+    #region buff相关
+
+    /// <summary>
+    /// 添加buff
+    /// </summary>
+    /// <param name="buff"></param>
+    public void AddBuff(Buff buff) {
+        _listBuff.Add(buff);
+    }
+
+    /// <summary>
+    /// 移除Buff
+    /// </summary>
+    /// <param name="buff"></param>
+    public void RemoveBuff(Buff buff) {
+        _listBuff.Remove(buff);
+        if (ObjectState == LogicObjectState.Death) {
+            return;
+        }
+        if (_listBuff.Count ==0 && RenderObject.GetCurAnimName() != AnimaNames.Anim_Getup ) {
+            PlayAnim(AnimaNames.Anim_Idle);
+            ActionState = LogicObjectActionState.Idle;
+        }
     }
 
     #endregion

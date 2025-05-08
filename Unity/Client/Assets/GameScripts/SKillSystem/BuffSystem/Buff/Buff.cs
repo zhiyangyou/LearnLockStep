@@ -98,11 +98,8 @@ public class Buff {
             }
                 break;
             case BuffState.Start: {
-                // 1. 调用buffStart接口
-                _buffLogic.BuffStart();
-                // 2. 调用buff触发逻辑
-                _buffLogic.BuffTrigger();
-
+                Buff_Start(); // 1. 调用buffStart接口
+                Buff_Trigger(); //2. 调用buff触发逻辑
                 // 3. 判断buff是否需要进入 Update状态, 有限时长buff, 无限buff需要进入, 一次性buff不需要
                 buffState = (BuffConfigSo.IsForeverBuff || BuffConfigSo.IsLimitTimeBuff)
                     ? BuffState.Update
@@ -127,11 +124,40 @@ public class Buff {
     public void OnDestory() {
         _buffLogic.BuffEnd();
         BuffSystem.Instance.RemoveBuff(this); // 这个写法不是很合理
+        attachTarget.RemoveBuff(this);
     }
 
     #endregion
 
     #region private
+
+    private void Buff_Start() {
+        _buffLogic.BuffStart();
+        attachTarget.AddBuff(this);
+    }
+
+    private void Buff_Trigger() {
+        // buff逻辑执行 
+        _buffLogic.BuffTrigger();
+
+        // 目标的受击动画
+        switch (BuffConfigSo.buffTriggerAnim) {
+            case ObjectAnimationState.None:
+                // 不做任何处理
+                break;
+            case ObjectAnimationState.BeHit:
+                attachTarget.PlayAnim(AnimaNames.Anim_Beiji_01);
+                break;
+            default:
+                Debug.LogError($"尚未实现的buffTriggerAnim类型:{BuffConfigSo.buffTriggerAnim}");
+                break;
+        }
+
+        // 播放音效
+        if (BuffConfigSo.audioClip != null) {
+            AudioController.GetInstance().PlaySoundByAudioClip(BuffConfigSo.audioClip, false, AudioPriorityConfig.Buff_AudioClip);
+        }
+    }
 
     /// <summary>
     /// 组合具体的buff实现逻辑
@@ -155,10 +181,10 @@ public class Buff {
         if (BuffConfigSo.intervalMS > 0) {
             _curRealRuntime += logicFrameIntervalMS;
             if (_curRealRuntime >= BuffConfigSo.intervalMS) {
-                _buffLogic.BuffTrigger();
+                Buff_Trigger();
                 _curRealRuntime -= BuffConfigSo.intervalMS;
             }
-        } 
+        }
         // 累计运行时间是否大于间隔
         UpdateBuffDurationTime();
     }
