@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 0}
   id: 10040
-  name: "\u6D6E\u7A7A"
+  name: "\u4E0A\u6311\u6D6E\u7A7A"
   delayMS: 0
   intervalMS: 0
   DurationMS: 300

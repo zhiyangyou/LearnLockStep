@@ -26,10 +26,24 @@ public partial class LogicActor {
             FixIntVector3 newPos = new FixIntVector3(LogicPos.x, newPosY, LogicPos.z);
             // 表示落地了
 
+            // 落地
             if (newPos.y <= 0) {
                 isAddForce = false;
+                State_TriggerGrounding();
             }
-    
+            else {
+                // Debug.LogError($"OnLogicFrameUpdate_Gravity :{velicity.y >= 0}");
+                // 在空中
+                // 上升阶段
+                if (velicity.y >= 0) {
+                    State_Floating(true);
+                }
+                // 下降阶段
+                else {
+                    State_Floating(false);
+                }
+            }
+
             LogicPos = newPos;
         }
     }
@@ -39,8 +53,8 @@ public partial class LogicActor {
     /// </summary>
     public void AddRisingForce(FixInt risingUpValue, FixInt risingTimeS) {
         velicity.y = risingUpValue;
-        Debug.LogError($"velicity.y:{velicity.y}");
-        _risingTimeMS = risingTimeS * 1f/1000f;
+        // Debug.LogError($"velicity.y:{velicity.y}");
+        _risingTimeMS = risingTimeS * 1f / 1000f;
         isAddForce = true;
     }
 }

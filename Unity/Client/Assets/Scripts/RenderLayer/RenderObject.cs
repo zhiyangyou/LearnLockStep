@@ -48,6 +48,7 @@ public class RenderObject : MonoBehaviour {
     public virtual void OnRelease() { }
 
     public virtual void PlayAnim(AnimationClip animationClip) { }
+    public virtual void PlayAnim(string animClipName) { }
 
 
     /// <summary>

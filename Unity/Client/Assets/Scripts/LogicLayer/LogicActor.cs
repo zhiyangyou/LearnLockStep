@@ -37,6 +37,18 @@ public partial class LogicActor : LogicObject {
         RenderObject.Damage(hp.RawInt, damageSource);
     }
 
+
+    /// <summary>
+    /// 浮空
+    /// </summary>
+    /// <param name="isUpFloating">是否是上浮空</param>
+    public virtual void State_Floating(bool isUpFloating) { }
+
+    /// <summary>
+    /// 对线触地
+    /// </summary>
+    public virtual void State_TriggerGrounding() { }
+
     public override void OnDestory() {
         base.OnDestory();
     }
@@ -44,6 +56,10 @@ public partial class LogicActor : LogicObject {
     #endregion
 
     #region public
+
+    public void PlayAnim(string clipName) {
+        RenderObject.PlayAnim(clipName);
+    }
 
     public void PlayAnim(AnimationClip animationClip) {
         RenderObject.PlayAnim(animationClip);
