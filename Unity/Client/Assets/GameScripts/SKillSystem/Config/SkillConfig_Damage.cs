@@ -7,6 +7,8 @@ using UnityEngine;
 
 [Serializable]
 public class SkillConfig_Damage {
+    #region 序列化字段
+
     [LabelText("触发帧")] public int triggerFrame;
 
     [LabelText("结束帧")] public int endFrame;
@@ -46,8 +48,18 @@ public class SkillConfig_Damage {
 
     [TitleGroup("触发后续技能", "造成伤害后且技能释放完毕后触发的技能")]
     public int triggerSkillId;
+
+    #endregion
+
+    #region public查询字段
+
+    public bool HasAddBuffs => addBuffs is { Length: > 0 };
+
+    #endregion
+
 #if UNITY_EDITOR
 
+    #region 状态字段
 
     private bool _showBox3D;
     private bool _showSphere3D;
@@ -55,6 +67,8 @@ public class SkillConfig_Damage {
     private int _curLogicFrame = 0; // 当前逻辑帧    
     private FixIntBoxCollider _fixIntBoxCollider;
     private FixIntSphereCollider _fixIntSphereCollider;
+
+    #endregion
 
     private void OnDetectionModeChanged(DamageDetectionMode mode) {
         _showBox3D = mode == DamageDetectionMode.Box3D;

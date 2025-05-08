@@ -16,6 +16,7 @@ public partial class LogicActor
     /// </summary>
     public void OnLogicFrameUpdate_Move()
     {
+        this.FixIntBoxCollider?.UpdateColliderInfo(LogicPos,FixIntBoxCollider.Size);
         if (ActionState is not (LogicObjectActionState.Idle or LogicObjectActionState.Move))
         {
             return;

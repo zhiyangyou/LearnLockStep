@@ -1,10 +1,10 @@
 ﻿public abstract class BuffComposite {
-    protected Buff _buff;
+    protected Buff buff;
 
     private BuffComposite() { }
 
     protected BuffComposite(Buff buff) {
-        _buff = buff;
+        this.buff = buff;
     }
 
     /// <summary>

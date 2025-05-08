@@ -25,27 +25,27 @@ public class Buff {
     /// <summary>
     /// 唯一id
     /// </summary>
-    private int _buffID;
+    public int buffID { get; private set; }
 
     /// <summary>
     /// 释放者
     /// </summary>
-    private LogicActor _releaser;
+    public LogicActor releaser { get; private set; }
 
     /// <summary>
     /// 附加目标
     /// </summary>
-    private LogicActor _attachTarget;
+    public LogicActor attachTarget { get; private set; }
 
     /// <summary>
     /// 所属技能
     /// </summary>
-    private Skill _skill;
+    public Skill skill { get; private set; }
 
     /// <summary>
     /// buff参数
     /// </summary>
-    private object[] _paramObjs;
+    public object[] paramObjs { get; private set; }
 
     private int _curLeftDelayMS = 0; // 当前剩余延迟时间
 
@@ -64,16 +64,17 @@ public class Buff {
         Skill skill,
         object[] paramObjs
     ) {
-        _buffID = buffID;
-        _releaser = releaser;
-        _attachTarget = attachTarget;
-        _skill = skill;
-        _paramObjs = paramObjs;
+        this.buffID = buffID;
+        this.releaser = releaser;
+        this.attachTarget = attachTarget;
+        this.skill = skill;
+        this.paramObjs = paramObjs;
     }
 
     public void OnCreate() {
-        var soAssetPath = $"{AssetsPathConfig.Buff_Data_Path}/{_buffID}.asset";
+        var soAssetPath = $"{AssetsPathConfig.Buff_Data_Path}/{buffID}.asset";
         BuffConfigSo = ZMAsset.LoadScriptableObject<BuffConfigSO>(soAssetPath);
+        CompositeBuffImpl();
         buffState = BuffConfigSo.IsDelayBuff ? BuffState.Delay : BuffState.Start;
         _curLeftDelayMS = BuffConfigSo.delayMS;
         _curRealRuntime = 0;
@@ -131,6 +132,19 @@ public class Buff {
     #endregion
 
     #region private
+
+    /// <summary>
+    /// 组合具体的buff实现逻辑
+    /// </summary>
+    private void CompositeBuffImpl() {
+        var buffType = BuffConfigSo.buffType;
+        if (buffType == BuffType.Repel) {
+            _buffLogic = new Buff_Repel(this);
+        }
+        else {
+            Debug.LogError($"尚未实现的buff类型:{buffType}");
+        }
+    }
 
     private void UpdateBuffLogic() {
         int logicFrameIntervalMS = LogicFrameConfig.LogicFrameIntervalMS;

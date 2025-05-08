@@ -40,7 +40,7 @@ public partial class Skill {
             && _skillConfig.damageCfgList.Count > 0) {
             foreach (SkillConfig_Damage damageConfig in _skillConfig.damageCfgList) {
                 var configHashCode = damageConfig.GetHashCode();
- 
+
                 // 如果需要变更位置的碰撞盒类型,那么更新碰撞体位置
                 if (damageConfig.ColliderPosType == ColliderPosType.FollowPos
                     && _dicColliders.TryGetValue(configHashCode, out var damageCollider)
@@ -49,7 +49,7 @@ public partial class Skill {
                 }
 
                 // 创建碰撞体
-                if (_curLogicFrame == damageConfig.triggerFrame ) {
+                if (_curLogicFrame == damageConfig.triggerFrame) {
                     DestoryCollider(damageConfig);
                     var collider = CreateOrUpdateCollider(damageConfig, null, _skillCreater);
                     _dicColliders.Add(configHashCode, collider);
@@ -149,7 +149,13 @@ public partial class Skill {
 
             // 添加伤害特效
             AddHitEffect(damageTargetActor);
-            // TODO 添加伤害buff
+
+            // 添加伤害buff
+            if (configDamage.HasAddBuffs) {
+                foreach (var buffID in configDamage.addBuffs) {
+                    BuffSystem.Instance.AttachBuff(buffID, _skillCreater, damageTargetActor, this, null);
+                }
+            }
 
             // 播放击中音效
             PlayHitAudio();
