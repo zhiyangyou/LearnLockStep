@@ -29,7 +29,7 @@ public class MonsterRender : RenderObject {
         }
         // 怪物死亡只能播放死亡动画
         if (LogicObject.ObjectState == LogicObjectState.Death
-            && animClipName != "Anim_Dead"
+            && animClipName != AnimationNames.Anim_Dead
            ) {
             Debug.LogError("怪物死亡只能播放死亡动画");
             return;

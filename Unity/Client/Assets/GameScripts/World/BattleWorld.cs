@@ -1,8 +1,6 @@
 ﻿using System;
 using FixMath;
-using ZMGC.Battle;
 using UnityEngine;
-using ZM.ZMAsset;
 
 namespace ZMGC.Battle {
     public class BattleWorld : World {
@@ -114,12 +112,14 @@ namespace ZMGC.Battle {
             MonsterLogicCtrl.OnLogicFrameUpdate();
             LogicActionController.Instance.OnLogicFrameUpdate();
             BuffSystem.Instance.OnLogicFrameUpdate();
+            LogicTimerManager.Instance.OnLogicFrameUpdate();
         }
 
         public override void OnDestroy() {
             base.OnDestroy();
             LogicActionController.Instance.OnDestory();
             BuffSystem.Instance.OnDestory();
+            LogicTimerManager.Instance.OnDestory();
             Debug.LogError("BattleWorld.OnDestroy");
         }
 

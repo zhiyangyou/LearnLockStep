@@ -26,7 +26,7 @@ public class MonsterLogic : LogicActor {
 
     public override void State_Floating(bool isUpFloating) {
         base.State_Floating(isUpFloating);
-        string animClipName = isUpFloating ? "Anim_Float_up" : "Anim_Float_down";
+        string animClipName = isUpFloating ? AnimationNames.Anim_Float_up : AnimationNames.Anim_Float_down;
         PlayAnim(animClipName);
         ActionState = LogicObjectActionState.Float;
     }
@@ -34,10 +34,16 @@ public class MonsterLogic : LogicActor {
     public override void State_TriggerGrounding() {
         base.State_TriggerGrounding();
         if (ObjectState != LogicObjectState.Death) {
-            PlayAnim("Anim_Getup");
+            PlayAnim(AnimationNames.Anim_Getup);
+            // 延迟动画的时间之后, 将状态改成Idle
+            // TODO 这个固定延迟不是很准确, 应该更加Getup的动画时间决定
+            LogicTimerManager.Instance.DelayCallOnce(0.7f, () => {
+                PlayAnim(AnimationNames.Anim_Idle);
+                ActionState = LogicObjectActionState.Idle;
+            });
         }
         else {
-            PlayAnim("Anim_Dead");
+            PlayAnim(AnimationNames.Anim_Dead);
             // ActionState = LogicObjectActionState.Idle; // TODO 还没验证
         }
     }

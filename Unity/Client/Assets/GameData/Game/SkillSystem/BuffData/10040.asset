@@ -24,7 +24,7 @@ MonoBehaviour:
   damageType: 0
   damageRate: 0
   paramsList:
-  - Value: 1
+  - Value: 1.2
     Desc: "\u4E0A\u5347\u9AD8\u5EA6"
   targetGrabData:
     GrabMovePos: {x: 0, y: 0, z: 0}
