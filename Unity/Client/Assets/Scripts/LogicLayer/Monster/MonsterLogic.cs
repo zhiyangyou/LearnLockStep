@@ -20,4 +20,9 @@ public class MonsterLogic : LogicActor
         LogicPos = logicPos;
         ObjectType = LogicObjectType.Monster;
     }
+
+    public override void OnHit(GameObject goEffect, int survialTimeMS, LogicActor sourceActor) {
+        base.OnHit(goEffect, survialTimeMS, sourceActor);
+        LogicAxis_X = -sourceActor.LogicAxis_X;
+    }
 }
