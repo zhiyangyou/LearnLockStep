@@ -40,7 +40,7 @@ public class BuffConfigSO : ScriptableObject {
     public GameObject goBuffHitEffect;
 
     [LabelText("Buff击中动画"), TitleGroup("buff技能表现", "所有的表现数据会在buff触发和释放时触发"), PropertyTooltip("buff触发的角色动画,比如眩晕, 硬直")]
-    public string buffTriggerAnim;
+    public ObjectAnimationState buffTriggerAnim;
 
     [LabelText("Buff描述"), HideLabel, MultiLineProperty(5)]
     public string Desc;
@@ -92,6 +92,15 @@ public class BuffParam {
 public class TargetGrabData {
     [LabelText("抓取到目标位置")] public Vector3 GrabMovePos;
     [LabelText("抓取到目标位置需要的移动时间")] public int GrabMoveTimeMS;
+}
+
+/// <summary>
+/// 表示: 当前buff触发时,需要播放的动画
+/// </summary>
+[LabelText("当前buff触发时,需要播放的动画")]
+public enum ObjectAnimationState {
+    [LabelText("无配置")] None,
+    [LabelText("受击")] BeHit,
 }
 
 [LabelText("Buff特效位置类型")]

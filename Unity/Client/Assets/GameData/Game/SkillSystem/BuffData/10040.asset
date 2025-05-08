@@ -35,5 +35,5 @@ MonoBehaviour:
     posType: 0
     effectAttachPosType: 0
   goBuffHitEffect: {fileID: 0}
-  buffTriggerAnim: 
+  buffTriggerAnim: 0
   Desc: 
