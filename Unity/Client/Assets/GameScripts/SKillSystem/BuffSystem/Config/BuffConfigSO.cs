@@ -7,12 +7,14 @@ using UnityEngine.Serialization;
 [CreateAssetMenu(fileName = "Buff配置", menuName = "Buff配置", order = 0)]
 [Serializable]
 public class BuffConfigSO : ScriptableObject {
+    #region 序列化字段
+
     [LabelText("buff图标"), LabelWidth(0.1f), PreviewField(70, ObjectFieldAlignment.Left), SuffixLabel("Buff图标")]
     public Sprite Icon;
 
     [LabelText("buffID")] public int id;
     [LabelText("buff名字")] public string name;
-    [LabelText("buff延迟触发时间(秒)")] public int delayS;
+    [LabelText("buff延迟触发时间(毫秒)")] public int delayMS;
     [LabelText("buff触发间隔(毫秒)")] public int intervalMS;
 
     [LabelText("buff持续(毫秒) 0代表1次, -1代表永久 >0代表持续时间")]
@@ -42,6 +44,32 @@ public class BuffConfigSO : ScriptableObject {
 
     [LabelText("Buff描述"), HideLabel, MultiLineProperty(5)]
     public string Desc;
+
+    #endregion
+
+    #region 查询字段
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public bool IsDelayBuff => delayMS > 0;
+
+    /// <summary>
+    /// 是不是永久性buff?
+    /// </summary>
+    public bool IsForeverBuff => DurationMS < 0;
+
+    /// <summary>
+    /// 是不是限时buff
+    /// </summary>
+    public bool IsLimitTimeBuff => DurationMS > 0;
+
+    /// <summary>
+    /// 是不是一次性buff
+    /// </summary>
+    public bool IsOnceBuff => DurationMS == 0;
+
+    #endregion
 }
 
 [Serializable]

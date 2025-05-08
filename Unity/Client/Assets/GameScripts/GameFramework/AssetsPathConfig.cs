@@ -10,4 +10,5 @@
     public static readonly string Hall = $"{GameDataBasePath}/Hall";
     public static readonly string Hall_Prefabs = $"{Hall}/Prefabs";
     public static readonly string Skill_Data_Path = $"{Game}/SkillSystem/SkillData/";
+    public static readonly string Buff_Data_Path = $"{Game}/SkillSystem/BuffData";
 }
