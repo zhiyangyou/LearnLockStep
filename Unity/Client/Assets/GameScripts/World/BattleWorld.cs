@@ -68,6 +68,7 @@ namespace ZMGC.Battle {
             HeroLogicCtrl.InitHero();
             MonsterLogicCtrl.InitMonster();
             UIModule.PopUpWindow<BattleWindow>();
+            BuffSystem.Instance.OnCreate();
             _accLogicRealTime = 0f;
             _nextLogicFrameTime = 0f;
         }
@@ -101,11 +102,13 @@ namespace ZMGC.Battle {
             HeroLogicCtrl.OnLogicFrameUpdate();
             MonsterLogicCtrl.OnLogicFrameUpdate();
             LogicActionController.Instance.OnLogicFrameUpdate();
+            BuffSystem.Instance.OnLogicFrameUpdate();
         }
 
         public override void OnDestroy() {
             base.OnDestroy();
             LogicActionController.Instance.OnDestory();
+            BuffSystem.Instance.OnDestory();
             Debug.LogError("BattleWorld.OnDestroy");
             
         }

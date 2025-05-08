@@ -108,19 +108,31 @@ public class Buff {
                     : BuffState.End;
             }
                 break;
-            case BuffState.Update:
+            case BuffState.Update: {
                 UpdateBuffLogic();
+            }
                 break;
-            case BuffState.End:
-                _buffLogic.BuffEnd();
+            case BuffState.End: {
+                // _buffLogic.BuffEnd(); // BuffEnd()放在OnDestory中去调用
                 OnDestory();
+            }
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
     }
 
-    public void UpdateBuffLogic() {
+
+    public void OnDestory() {
+        _buffLogic.BuffEnd();
+        BuffSystem.Instance.RemoveBuff(this); // 这个写法不是很合理
+    }
+
+    #endregion
+
+    #region private
+
+    private void UpdateBuffLogic() {
         int logicFrameIntervalMS = LogicFrameConfig.LogicFrameIntervalMS;
         // 1. 处理buff间隔逻辑
         if (BuffConfigSo.intervalMS > 0) {
@@ -138,14 +150,12 @@ public class Buff {
         UpdateBuffDurationTime();
     }
 
-    public void UpdateBuffDurationTime() {
+    private void UpdateBuffDurationTime() {
         _curAccRuntime += LogicFrameConfig.LogicFrameIntervalMS;
         if (_curAccRuntime >= BuffConfigSo.DurationMS) {
             buffState = BuffState.End;
         }
     }
-
-    public void OnDestory() { }
 
     #endregion
 }
