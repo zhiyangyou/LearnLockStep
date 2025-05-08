@@ -141,6 +141,9 @@ public class Buff {
         if (buffType == BuffType.Repel) {
             _buffLogic = new Buff_Repel(this);
         }
+        else if (buffType == BuffType.Floating) {
+            _buffLogic = new Buff_Floating(this);
+        }
         else {
             Debug.LogError($"尚未实现的buff类型:{buffType}");
         }
@@ -155,11 +158,7 @@ public class Buff {
                 _buffLogic.BuffTrigger();
                 _curRealRuntime -= BuffConfigSo.intervalMS;
             }
-        }
-        else {
-            // 如果没有配置间隔, 不是应该每一帧都去触发buff吗?
-            _buffLogic.BuffTrigger();
-        }
+        } 
         // 累计运行时间是否大于间隔
         UpdateBuffDurationTime();
     }

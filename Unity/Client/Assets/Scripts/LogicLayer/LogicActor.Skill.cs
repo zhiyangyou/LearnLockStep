@@ -24,7 +24,7 @@ public partial class LogicActor {
         get { return _curNormalComboIndex; }
         set {
             if (value == 0) {
-                Debug.LogError("连发普攻归0");
+                // Debug.LogError("连发普攻归0");
             }
             _curNormalComboIndex = value;
         }
@@ -74,7 +74,7 @@ public partial class LogicActor {
             }
             ActionState = LogicObjectActionState.ReleasingSkill;
         }
-    }
+    }   
 
 
     public void TriggerStockPileSkill(int skillId) {
