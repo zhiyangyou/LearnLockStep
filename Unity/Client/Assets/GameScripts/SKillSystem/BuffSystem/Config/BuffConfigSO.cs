@@ -101,6 +101,7 @@ public class TargetGrabData {
 public enum ObjectAnimationState {
     [LabelText("无配置")] None,
     [LabelText("受击")] BeHit,
+    [LabelText("硬直")] Stiff,
 }
 
 [LabelText("Buff特效位置类型")]
@@ -149,4 +150,5 @@ public enum BuffType {
     [LabelText("无配置")] None = 0,
     [LabelText("击退")] Repel, // 击退
     [LabelText("浮空")] Floating, // 浮空
+    [LabelText("硬直")] Stiff, // 硬直
 }

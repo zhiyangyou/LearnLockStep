@@ -148,6 +148,9 @@ public class Buff {
             case ObjectAnimationState.BeHit:
                 attachTarget.PlayAnim(AnimaNames.Anim_Beiji_01);
                 break;
+            case ObjectAnimationState.Stiff:
+                attachTarget.PlayAnim(AnimaNames.Anim_Beiji_02);
+                break;
             default:
                 Debug.LogError($"尚未实现的buffTriggerAnim类型:{BuffConfigSo.buffTriggerAnim}");
                 break;
@@ -169,6 +172,9 @@ public class Buff {
         }
         else if (buffType == BuffType.Floating) {
             _buffLogic = new Buff_Floating(this);
+        }
+        else if (buffType == BuffType.Stiff) {
+            _buffLogic = new Buff_Stiff(this);
         }
         else {
             Debug.LogError($"尚未实现的buff类型:{buffType}");
