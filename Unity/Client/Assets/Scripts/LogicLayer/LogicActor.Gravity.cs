@@ -23,26 +23,27 @@ public partial class LogicActor {
     public void OnLogicFrameUpdate_Gravity() {
         if (isAddForce) {
             // Debug.LogError($"velicity.y - gravity * _risingTime: {velicity.y - gravity * _risingTime}");
-            FixInt gt = gravity * LogicFrameConfig.LogicFrameInterval;
+            float logicFrameInterval = LogicFrameConfig.LogicFrameInterval;
+            FixInt gt = gravity * logicFrameInterval;
 
             //  就是 v0/g 求出上升时间
-            FixInt risingUpTime = (_V0 / gt) * LogicFrameConfig.LogicFrameInterval;
+            FixInt risingUpTime = (_V0 / gt) * logicFrameInterval;
             // 时间倍率
             FixInt timeScale = (risingUpTime * 2) / _risingTimeS; // 时间缩放倍率
 
-            velicity.y -= (gravity * LogicFrameConfig.LogicFrameInterval * timeScale);
+            velicity.y -= (gravity * logicFrameInterval * timeScale);
 
             // Debug.LogError($"gt:{gt} timeScale:{timeScale} velicity.y:{velicity.y} ");
-            
-            var newPosY = FixIntMath.Clamp(LogicPos.y + velicity.y, 0, FixInt.MaxValue); // 防止陷入到地底下去
-            FixIntVector3 newPos = new FixIntVector3(LogicPos.x, newPosY, LogicPos.z);
+
+            var newPosY = FixIntMath.Clamp(LogicPos.y + velicity.y * logicFrameInterval, 0, FixInt.MaxValue); // 防止陷入到地底下去
+            FixIntVector3 newPos = new FixIntVector3(LogicPos.x, newPosY, LogicPos.z);  
 
             // 落地
             if (newPos.y <= 0) {
                 isAddForce = false;
                 State_TriggerGrounding();
-                var allFloatingTime = Time.realtimeSinceStartup - _StartFloatingTime;
-                Debug.LogError($"浮空总时间:{allFloatingTime} 误差:{allFloatingTime / _risingTimeS}");
+                // var allFloatingTime = Time.realtimeSinceStartup - _StartFloatingTime;
+                // Debug.LogError($"浮空总时间:{allFloatingTime} 误差:{allFloatingTime / _risingTimeS}");
             }
             else {
                 // 上升阶段
