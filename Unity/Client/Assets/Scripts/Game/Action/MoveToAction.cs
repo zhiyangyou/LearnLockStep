@@ -94,10 +94,12 @@ public class MoveToAction : ActionBehaviour {
 
         FixIntVector3 addDistance = FixIntVector3.zero; // 相对于_startPos的偏移值
 
+        // TODO 这里不能使用startPos 会影响其他修改坐标位置的系统的逻辑
         switch (_moveType) {
             case MoveType.Target: {
                 addDistance = _moveDistance * _curTimeScale;
                 _actionObj.LogicPos = (_startPos + addDistance);
+                Debug.LogError($"{Time.frameCount} move 赋值XYZ轴 位置数值");
             }
                 break;
             case MoveType.X: {
@@ -107,6 +109,7 @@ public class MoveToAction : ActionBehaviour {
                     _actionObj.LogicPos.y,
                     _actionObj.LogicPos.z
                 );
+                // Debug.LogError($"{Time.frameCount} move 赋值X轴 位置数值");
             }
                 break;
             case MoveType.Y: {
@@ -116,6 +119,7 @@ public class MoveToAction : ActionBehaviour {
                     _actionObj.LogicPos.y + addDistance.y,
                     _actionObj.LogicPos.z
                 );
+                // Debug.LogError($"{Time.frameCount} move 赋值Y轴 位置数值");
             }
                 break;
             case MoveType.Z: {
@@ -125,6 +129,7 @@ public class MoveToAction : ActionBehaviour {
                     _actionObj.LogicPos.y,
                     _actionObj.LogicPos.z + addDistance.z
                 );
+                // Debug.LogError($"{Time.frameCount} move 赋值Z轴 位置数值");
             }
                 break;
             default:

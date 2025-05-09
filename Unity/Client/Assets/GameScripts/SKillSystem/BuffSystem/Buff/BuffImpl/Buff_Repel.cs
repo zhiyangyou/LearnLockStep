@@ -33,7 +33,7 @@ public class Buff_Repel : BuffComposite {
                 buff.BuffConfigSo.DurationMS,
                 null,
                 null,
-                MoveType.Target);
+                MoveType.X);
             LogicActionController.Instance.RunAction(moveToAction);
         }
         else {

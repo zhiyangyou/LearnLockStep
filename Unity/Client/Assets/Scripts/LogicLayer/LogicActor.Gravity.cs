@@ -37,7 +37,7 @@ public partial class LogicActor {
 
             var newPosY = FixIntMath.Clamp(LogicPos.y + velicity.y * logicFrameInterval, 0, FixInt.MaxValue); // 防止陷入到地底下去
             FixIntVector3 newPos = new FixIntVector3(LogicPos.x, newPosY, LogicPos.z);  
-
+            // Debug.LogError($"{Time.frameCount} 复制浮空位置数值");
             // 落地
             if (newPos.y <= 0) {
                 isAddForce = false;

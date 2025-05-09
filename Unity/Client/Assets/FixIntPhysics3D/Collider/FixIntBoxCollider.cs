@@ -34,6 +34,7 @@ namespace FixIntPhysics
         /// <param name="radius"></param>
         public override void UpdateColliderInfo(FixIntVector3 pos, FixIntVector3 size = default, FixInt radius = default)
         {
+            // Debug.LogError($"{Time.frameCount}: 更新碰撞盒子位置");
             base.UpdateColliderInfo(pos, size, radius);
             this.Size = size;
 

@@ -72,6 +72,7 @@ public class BuffSystem : Singleton<BuffSystem> {
         var buff = new Buff(buffID, releaser, attachTarget, skill, paramObjs);
         buff.OnCreate();
         _listBuff.Add(buff);
+        // Debug.LogError($"add buff {buffID}");
         return buff;
     }
 

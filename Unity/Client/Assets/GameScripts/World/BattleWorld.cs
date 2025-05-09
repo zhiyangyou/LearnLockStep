@@ -110,6 +110,11 @@ namespace ZMGC.Battle {
         public void OnLigicFrameUpdate() {
             HeroLogicCtrl.OnLogicFrameUpdate();
             MonsterLogicCtrl.OnLogicFrameUpdate();
+            // TODO 这边的逻辑有问题, 伤害判定丢帧:
+            // MonsterLogicCtrl.OnLogicFrameUpdate 驱动了怪物的位置更新
+            // HeroLogicCtrl.OnLogicFrameUpdate()  驱动了玩家伤害的判定
+            // 位置更新在后会导致伤害判定丢失, 导致丢伤害.  
+            // 正确的做法应该是 先统一更新全部位置, 然后再统一进行伤害判定
             LogicActionController.Instance.OnLogicFrameUpdate();
             BuffSystem.Instance.OnLogicFrameUpdate();
             LogicTimerManager.Instance.OnLogicFrameUpdate();
