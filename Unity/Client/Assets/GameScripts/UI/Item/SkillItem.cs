@@ -16,6 +16,11 @@ public class SkillItem : MonoBehaviour {
     private Skill _skillData;
     private LogicActor _skillCreater;
 
+
+    private bool _isCD = false;
+    private long _enterCDLogicFrame = 0;
+    private float _cdTimeS = 0f;
+
     #endregion
 
     #region life-cycle
@@ -87,7 +92,7 @@ public class SkillItem : MonoBehaviour {
         // Debug.LogError($"Skill Guide ... {skillguide}");
         if (skillguide == SKillGuideType.LongPress) {
             // Debug.LogError($"OnSkillGuide long press 触发{skillid} {Time.frameCount} ");
-            _skillCreater.ReleaseSkill(skillid); 
+            _skillCreater.ReleaseSkill(skillid, OnReleaseSkillResult);
         }
         else if (skillguide == SKillGuideType.Position) {
             Debug.LogError("TODO 释放 position类型的技能");
@@ -105,7 +110,7 @@ public class SkillItem : MonoBehaviour {
         switch (skillguide) {
             case SKillGuideType.Click: {
                 // Debug.LogError($"触发 click 技能:{skillid}");
-                _skillCreater.ReleaseSkill(skillid);
+                _skillCreater.ReleaseSkill(skillid, OnReleaseSkillResult);
             }
                 break;
             case SKillGuideType.LongPress: {
@@ -123,6 +128,48 @@ public class SkillItem : MonoBehaviour {
             case SKillGuideType.None:
                 throw new ArgumentOutOfRangeException(nameof(skillguide), skillguide, null);
         }
+    }
+
+
+    private void OnReleaseSkillResult(bool isSuccess) {
+        if (isSuccess) {
+            EnterSkillCD();
+        }
+    }
+
+    private void EnterSkillCD() {
+        _enterCDLogicFrame = LogicFrameConfig.LogicFrameID;
+
+        float _alreadyCDTimeS = (LogicFrameConfig.LogicFrameID - _enterCDLogicFrame) * LogicFrameConfig.LogicFrameInterval;
+        float leftCDTimeS = _skillData.SkillCfgConfig.CDTimeS - _alreadyCDTimeS;
+
+        _txtCD.gameObject.SetActive(true);
+        _imgMaskImage.gameObject.SetActive(true);
+        _cdTimeS = _skillData.SkillCfgConfig.skillCDTimeMS / 1000f;
+
+        _txtCD.text = $"{leftCDTimeS:F1}";
+
+        float updateTime = 0.01f; // 每隔0.1秒更新UI
+        LogicTimer timerCD = null;
+        timerCD = LogicTimerManager.Instance.DelayCall(LogicFrameConfig.LogicFrameInterval, () => {
+            // Debug.LogError($"timer finish");
+            float _alreadyCDTimeS = (LogicFrameConfig.LogicFrameID - _enterCDLogicFrame) * LogicFrameConfig.LogicFrameInterval;
+            float leftCDTimeS = _skillData.SkillCfgConfig.CDTimeS - _alreadyCDTimeS;
+            _txtCD.text = $"{leftCDTimeS:F1}";
+            // Debug.LogError($"_alreadyCDTimeS:{_alreadyCDTimeS}");
+            var isComplete = _alreadyCDTimeS >= _skillData.SkillCfgConfig.CDTimeS;
+            var completeProgress = Mathf.Clamp01(_alreadyCDTimeS / _skillData.SkillCfgConfig.CDTimeS);
+            _txtCD.gameObject.SetActive(!isComplete);
+            _imgMaskImage.gameObject.SetActive(!isComplete);
+            if (!isComplete) {
+                _imgMaskImage.fillAmount = 1f - completeProgress;
+            }
+            if (isComplete) {
+                // Debug.LogError("移除timer");
+                timerCD.Complete();
+            }
+        }, -1);
+        // Debug.LogError($"timer启动:{timerCD!=null}");
     }
 
     #endregion

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,7 +59,7 @@ public partial class LogicActor {
     }
 
     public void ReleaseNormalAttack() {
-        ReleaseSkill(_normalAttackSkillArr[curNormalComboIndex]);
+        ReleaseSkill(_normalAttackSkillArr[curNormalComboIndex], null);
     }
 
 
@@ -66,7 +67,7 @@ public partial class LogicActor {
         return _normalAttackSkillArr.Contains(skillID);
     }
 
-    public void ReleaseSkill(int skillID) {
+    public void ReleaseSkill(int skillID, Action<bool> onReleaseSkillResult) {
         var releasingSkill = _skillSystem.ReleaseSkill(skillID, SkillCallback_OnAfter, SkillCallback_OnEnd);
         if (releasingSkill != null) // 技能释放成功
         {
@@ -76,6 +77,7 @@ public partial class LogicActor {
             }
             ActionState = LogicObjectActionState.ReleasingSkill;
         }
+        onReleaseSkillResult?.Invoke(releasingSkill != null);
     }
 
 
@@ -108,7 +110,7 @@ public partial class LogicActor {
         if (ObjectState == LogicObjectState.Death) {
             return;
         }
-        if (_listBuff.Count ==0 && RenderObject.GetCurAnimName() != AnimaNames.Anim_Getup ) {
+        if (_listBuff.Count == 0 && RenderObject.GetCurAnimName() != AnimaNames.Anim_Getup) {
             PlayAnim(AnimaNames.Anim_Idle);
             ActionState = LogicObjectActionState.Idle;
         }

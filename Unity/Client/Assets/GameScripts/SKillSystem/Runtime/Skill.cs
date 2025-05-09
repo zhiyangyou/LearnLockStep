@@ -114,7 +114,7 @@ public partial class Skill {
         ReleaseAllEffect();
         // 组合技能
         if (_skillConfig.skillCfg.HasCombineSkill) {
-            _skillCreater.ReleaseSkill(_skillConfig.skillCfg.CombinationSkillId);
+            _skillCreater.ReleaseSkill(_skillConfig.skillCfg.CombinationSkillId, null);
         }
         InitTimer();
     }
@@ -210,7 +210,7 @@ public partial class Skill {
     #endregion
 
     #region private
-    
+
     private void InitTimer() {
         _curLogicFrame = 0;
         _curLogicFrameAccTimeMS = 0;
@@ -225,7 +225,7 @@ public partial class Skill {
         }
         else {
             // Debug.LogError($"蓄力结束: 阶段id{stageData.skillId} skillid:{stageData.skillId}");
-            _skillCreater.ReleaseSkill(stageData.skillId);
+            _skillCreater.ReleaseSkill(stageData.skillId, null);
         }
     }
 

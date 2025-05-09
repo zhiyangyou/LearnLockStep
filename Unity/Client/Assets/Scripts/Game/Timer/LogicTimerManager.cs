@@ -14,13 +14,22 @@ public class LogicTimerManager : Singleton<LogicTimerManager> {
 
     #region public
 
-    public void DelayCallOnce(FixInt delayTimeS, Action onTimerFinish) {
-        DelayCall(delayTimeS, onTimerFinish, 1);
+    public LogicTimer DelayCallOnce(FixInt delayTimeS, Action onTimerFinish) {
+        return DelayCall(delayTimeS, onTimerFinish, 1);
     }
 
-    public void DelayCall(FixInt delayTimeS, Action onTimerFinish, int loopCount) {
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="delayTimeS"></param>
+    /// <param name="onTimerFinish"></param>
+    /// <param name="loopCount">负数代表永久</param>
+    /// <returns></returns>
+    public LogicTimer DelayCall(FixInt delayTimeS, Action onTimerFinish, int loopCount) {
         LogicTimer timer = new LogicTimer(delayTimeS, onTimerFinish, loopCount);
         _listTimers.Add(timer);
+        return timer;
     }
 
     /// <summary>
@@ -36,8 +45,8 @@ public class LogicTimerManager : Singleton<LogicTimerManager> {
         }
 
         // 更新逻辑帧
-        foreach (var actionBehaviour in _listTimers) {
-            actionBehaviour.OnLogicFrameUpdate();
+        foreach (var timerBehaviour in _listTimers) {
+            timerBehaviour.OnLogicFrameUpdate();
         }
     }
 

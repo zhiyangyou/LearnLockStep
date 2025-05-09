@@ -71,8 +71,18 @@ public class SkillConfig {
     public string skillDes;
 
 
+    #region 询问字段
+
+    
+
+    
     public bool HasCombineSkill => CombinationSkillId > 0;
 
+    public float CDTimeS => skillCDTimeMS / 1000f;
+    
+    #endregion
+    
+    
     /// <summary>
     /// 技能类型改变回调
     /// </summary>

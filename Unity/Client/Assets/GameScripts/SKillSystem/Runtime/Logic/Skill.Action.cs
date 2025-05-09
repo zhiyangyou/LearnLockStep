@@ -43,7 +43,7 @@ public partial class Skill {
                         break;
                     case MoveActionFinishOpation.Skill: {
                         foreach (int skillID in configAction.actionFinishIDList) {
-                            _skillCreater.ReleaseSkill(skillID);
+                            _skillCreater.ReleaseSkill(skillID, null);
                         }
                     }
                         break;

@@ -26,5 +26,10 @@ public abstract class TimerBehaviour {
     /// </summary>
     public abstract void OnTimerFinish();
 
+    /// <summary>
+    /// 主动完成计时器
+    /// </summary>
+    public abstract void Complete();
+
     #endregion
 }

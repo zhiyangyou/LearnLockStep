@@ -21,9 +21,9 @@ public class LogicTimer : TimerBehaviour {
     #region public
 
     public LogicTimer(FixInt delayTimeS, Action onFinish, int loopCount) {
-        if (loopCount <= 0) {
-            throw new ArgumentException($"loopCount 不能小等于0 {nameof(loopCount)}:{loopCount}");
-        }
+        // if (loopCount <= 0) {
+        //     throw new ArgumentException($"loopCount 不能小等于0 {nameof(loopCount)}:{loopCount}");
+        // }
         _delayTimeS = delayTimeS;
         _loopCount = loopCount;
         _onTimerFinish = onFinish;
@@ -41,14 +41,19 @@ public class LogicTimer : TimerBehaviour {
             _onTimerFinish?.Invoke();
             _accLogicFrameTimeS -= _delayTimeS;
             _totalTimeS -= _delayTimeS;
-            if (_loopCount <= 1 || _totalTimeS <= 0) {
-                timerFinish = true;
-                _onTimerFinish = null;
+            if (_loopCount >= 0) {
+                if (_loopCount <= 1 || _totalTimeS <= 0) {
+                    timerFinish = true;
+                    _onTimerFinish = null;
+                }
             }
         }
     }
 
     public override void OnTimerFinish() { }
+    public override void Complete() {
+        timerFinish = true;
+    }
 
     #endregion
 }
