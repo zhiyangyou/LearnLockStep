@@ -68,7 +68,12 @@ public partial class LogicActor {
     }
 
     public void ReleaseSkill(int skillID, Action<bool> onReleaseSkillResult) {
-        var releasingSkill = _skillSystem.ReleaseSkill(skillID, SkillCallback_OnAfter, SkillCallback_OnEnd);
+        var releasingSkill = _skillSystem.ReleaseSkill(skillID, SkillCallback_OnAfter, (skill, combineSkill) => {
+            SkillCallback_OnEnd(skill, combineSkill);
+            if (skill.SkillCfgConfig.SkillType == SkillType.StockPile) {
+                onReleaseSkillResult?.Invoke(true);
+            }
+        });
         if (releasingSkill != null) // 技能释放成功
         {
             _listReleasingSkills.Add(releasingSkill);
@@ -76,8 +81,13 @@ public partial class LogicActor {
                 curNormalComboIndex = 0; // 重置普攻combo: 其他技能释放 Start阶段
             }
             ActionState = LogicObjectActionState.ReleasingSkill;
+            if (releasingSkill.SkillCfgConfig.SkillType != SkillType.StockPile) {
+                onReleaseSkillResult?.Invoke(true);
+            }
         }
-        onReleaseSkillResult?.Invoke(releasingSkill != null);
+        else {
+            onReleaseSkillResult?.Invoke(false);
+        }
     }
 
 
