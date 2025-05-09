@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e07ab935e9f40d39401d89a7158838c, type: 3}
-  m_Name: 10040
+  m_Name: 10020
   m_EditorClassIdentifier: 
   Icon: {fileID: 0}
-  id: 10040
-  name: "\u4E0A\u6311\u6D6E\u7A7A"
+  id: 10020
+  name: "\u79BB\u9B3C-2-\u6D6E\u7A7A"
   delayMS: 0
   intervalMS: 0
   DurationMS: 300
@@ -24,8 +24,8 @@ MonoBehaviour:
   damageType: 0
   damageRate: 0
   paramsList:
-  - Value: 1.5
-    Desc: "\u4E0A\u5347\u9AD8\u5EA6"
+  - Value: 1.2
+    Desc: "\u6D6E\u7A7A\u9AD8\u5EA6"
   targetGrabData:
     GrabMovePos: {x: 0, y: 0, z: 0}
     GrabMoveTimeMS: 0
