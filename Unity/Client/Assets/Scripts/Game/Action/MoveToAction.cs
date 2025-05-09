@@ -82,7 +82,7 @@ public class MoveToAction : ActionBehaviour {
     public override void OnLogicFrameUpdate() {
         _accRuntimeMS += LogicFrameConfig.LogicFrameIntervalMS;
         _curTimeScale = _accRuntimeMS / _durationMS; // TODO 不理解
-        
+
         if (_curTimeScale >= 1) {
             _curTimeScale = 1;
             actionFinish = true;
@@ -95,24 +95,44 @@ public class MoveToAction : ActionBehaviour {
         FixIntVector3 addDistance = FixIntVector3.zero; // 相对于_startPos的偏移值
 
         switch (_moveType) {
-            case MoveType.Target:
+            case MoveType.Target: {
                 addDistance = _moveDistance * _curTimeScale;
+                _actionObj.LogicPos = (_startPos + addDistance);
+            }
                 break;
-            case MoveType.X:
+            case MoveType.X: {
                 addDistance.x = (_moveDistance * _curTimeScale).x;
+                _actionObj.LogicPos = new FixIntVector3(
+                    _actionObj.LogicPos.x + addDistance.x,
+                    _actionObj.LogicPos.y,
+                    _actionObj.LogicPos.z
+                );
+            }
                 break;
-            case MoveType.Y:
+            case MoveType.Y: {
                 addDistance.y = (_moveDistance * _curTimeScale).y;
+                _actionObj.LogicPos = new FixIntVector3(
+                    _actionObj.LogicPos.x,
+                    _actionObj.LogicPos.y + addDistance.y,
+                    _actionObj.LogicPos.z
+                );
+            }
                 break;
-            case MoveType.Z:
+            case MoveType.Z: {
                 addDistance.z = (_moveDistance * _curTimeScale).z;
+                _actionObj.LogicPos = new FixIntVector3(
+                    _actionObj.LogicPos.x,
+                    _actionObj.LogicPos.y,
+                    _actionObj.LogicPos.z + addDistance.z
+                );
+            }
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
 
         // 移动时的操作的逻辑
-        _actionObj.LogicPos = (_startPos + addDistance); //  这种算法不会考量技能播放时进行移动
+        //  这种算法不会考量技能播放时进行移动
         // _actionObj.LogicPos += addDistance; // 这种算法会考量在技能释放过程中,存在移动的可能性
     }
 
