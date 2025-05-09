@@ -14,8 +14,8 @@ public partial class LogicActor : LogicObject {
     public override void OnLogicFrameUpdate() {
         base.OnLogicFrameUpdate();
         OnLogicFrameUpdate_Move();
-        OnLogicFrameUpdate_Skill();
         OnLogicFrameUpdate_Gravity();
+        OnLogicFrameUpdate_Skill();
     }
 
     public virtual void SkillDamage(FixInt hp, SkillConfig_Damage configDamage) {
