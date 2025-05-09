@@ -17,7 +17,7 @@ MonoBehaviour:
   name: "\u4E0A\u6311\u6D6E\u7A7A"
   delayMS: 0
   intervalMS: 0
-  DurationMS: 700
+  DurationMS: 800
   buffType: 2
   attachType: 2
   posType: 0

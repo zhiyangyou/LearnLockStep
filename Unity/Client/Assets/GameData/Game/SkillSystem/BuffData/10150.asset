@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e07ab935e9f40d39401d89a7158838c, type: 3}
-  m_Name: 10020
+  m_Name: 10150
   m_EditorClassIdentifier: 
   Icon: {fileID: 0}
-  id: 10020
-  name: "\u79BB\u9B3C-2-\u6D6E\u7A7A"
+  id: 10150
+  name: "\u89C9\u9192-1\u6BB5-\u786C\u76F4"
   delayMS: 0
   intervalMS: 0
-  DurationMS: 700
-  buffType: 2
+  DurationMS: 900
+  buffType: 3
   attachType: 2
   posType: 0
   damageType: 0
   damageRate: 0
   paramsList:
-  - Value: 17
-    Desc: "\u6D6E\u7A7A\u9AD8\u5EA6"
+  - Value: 1
+    Desc: "\u4E0A\u6D6E\u7A7A\u9AD8\u5EA6"
   targetGrabData:
     GrabMovePos: {x: 0, y: 0, z: 0}
     GrabMoveTimeMS: 0
@@ -35,5 +35,5 @@ MonoBehaviour:
     posType: 0
     effectAttachPosType: 0
   goBuffHitEffect: {fileID: 0}
-  buffTriggerAnim: 1
+  buffTriggerAnim: 2
   Desc: 
