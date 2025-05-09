@@ -17,14 +17,14 @@ MonoBehaviour:
   name: "\u89C9\u9192-2\u6BB5-\u6D6E\u7A7A"
   delayMS: 0
   intervalMS: 0
-  DurationMS: 700
+  DurationMS: 500
   buffType: 2
   attachType: 2
   posType: 0
   damageType: 0
   damageRate: 0
   paramsList:
-  - Value: 200
+  - Value: 10
     Desc: "\u6D6E\u7A7A\u521D\u901F\u5EA6"
   targetGrabData:
     GrabMovePos: {x: 0, y: 0, z: 0}
