@@ -33,11 +33,17 @@ public partial class Skill {
     }
 
     private void CreateButtle(SkillConfig_Bullet bulletConfig) {
-        
         // TODO 对象池? 资源框架的资源池管理
         var goBullet = GameObject.Instantiate(bulletConfig.goBulletPrefab);
-        
-        
+
+        SkillButtleRender bulletRender = goBullet.GetComponent<SkillButtleRender>();
+        if (bulletRender == null) {
+            bulletRender = goBullet.AddComponent<SkillButtleRender>();
+        }
+
+        SkillBulletLogic skillBulletLogic = new SkillBulletLogic(this, _skillCreater, bulletRender, bulletConfig);
+
+        bulletRender.SetRenderData(skillBulletLogic, bulletConfig);
     }
 
     #endregion
