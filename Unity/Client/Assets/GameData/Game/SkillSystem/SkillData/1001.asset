@@ -137,4 +137,5 @@ MonoBehaviour:
     triggerFrame: 1
     isLoop: 0
     endFrame: 0
+  bulletList: []
   actionList: []
