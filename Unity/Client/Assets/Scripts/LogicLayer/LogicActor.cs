@@ -16,10 +16,16 @@ public partial class LogicActor : LogicObject {
         OnLogicFrameUpdate_Move();
         OnLogicFrameUpdate_Gravity();
         OnLogicFrameUpdate_Skill();
+        OnLogicFrameUpdate_Bullet();
     }
 
     public virtual void SkillDamage(FixInt hp, SkillConfig_Damage configDamage) {
         CaculateDamage(hp, DamageSource.Skill);
+    }
+
+    public virtual void BulletDamage(FixInt hp, SkillConfig_Damage configDamage) {
+        CaculateDamage(hp, DamageSource.Bullet);
+        Debug.LogError($"BulletDamage, hp:{hp}");
     }
 
     /// <summary>

@@ -44,6 +44,8 @@ public partial class Skill {
         SkillBulletLogic skillBulletLogic = new SkillBulletLogic(this, _skillCreater, bulletRender, bulletConfig);
 
         bulletRender.SetRenderData(skillBulletLogic, bulletConfig);
+
+        _skillCreater.Bullet_Add(skillBulletLogic);
     }
 
     #endregion

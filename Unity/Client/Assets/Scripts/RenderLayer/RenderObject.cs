@@ -80,6 +80,21 @@ public class RenderObject : MonoBehaviour {
         return null;
     }
 
+    /// <summary>
+    /// 通用逻辑:更新方向
+    /// </summary>
+    public virtual void UpdateDir() {
+        _renderDir.y = LogicObject.LogicAxis_X >= 0 ? 0 : 180;
+        transform.localEulerAngles = _renderDir;
+    }
+
+    /// <summary>
+    /// 通用逻辑:更新位置
+    /// </summary>
+    public virtual void UpdatePosition() {
+        transform.position = Vector3.Lerp(transform.position, LogicObject.LogicPos.ToVector3(), Time.deltaTime * _smoothPosSpeed);
+    }
+
     #endregion
 
     #region private
@@ -90,28 +105,6 @@ public class RenderObject : MonoBehaviour {
         }
         UpdateDir();
         UpdatePosition();
-    }
-
-    /// <summary>
-    /// 通用逻辑:更新方向
-    /// </summary>
-    private void UpdateDir() {
-        // _renderDir.x = LogicObject.LogicAxis_X >= 0 ? 0 : -20;
-        _renderDir.y = LogicObject.LogicAxis_X >= 0 ? 0 : 180;
-        transform.localEulerAngles = _renderDir;
-    }
-
-    /// <summary>
-    /// 通用逻辑:更新位置
-    /// </summary>
-    private void UpdatePosition() {
-        // 对逻辑位置做插值动画, 使其渲染对象移动看起来比较流畅 
-        // TODO 不理解... 2025年4月23日17:07:36
-        // 上述代码可能导致延迟累积。因为Lerp的起点是上一渲染帧的位置，而非最新的逻辑位置，在高延迟或高速移动场景中，物体可能始终“追赶”逻辑位置。
-        // 
-
-
-        transform.position = Vector3.Lerp(transform.position, LogicObject.LogicPos.ToVector3(), Time.deltaTime * _smoothPosSpeed);
     }
 
     #endregion
