@@ -16,6 +16,7 @@ public class SkillConfigSO : ScriptableObject {
     public List<SkillConfig_Damage> damageCfgList;
     public List<SkillConfig_Effect> effectCfgList;
     public List<SkillConfig_Audio> audioList;
+    public List<SkillConfig_Bullet> bulletList;
     [FormerlySerializedAs("actionConfigs")] public List<SkillConfig_Action> actionList;
 
     public static void SaveSkillData(
@@ -24,6 +25,7 @@ public class SkillConfigSO : ScriptableObject {
         List<SkillConfig_Damage> damageConfigs,
         List<SkillConfig_Effect> effectConfigs,
         List<SkillConfig_Audio> audioConfigs,
+        List<SkillConfig_Bullet> bulletConfigs,
         List<SkillConfig_Action> actionConfigs
     ) {
         var so = ScriptableObject.CreateInstance<SkillConfigSO>();
@@ -32,6 +34,7 @@ public class SkillConfigSO : ScriptableObject {
         so.damageCfgList = damageConfigs;
         so.effectCfgList = effectConfigs;
         so.audioList = audioConfigs;
+        so.bulletList = bulletConfigs;
         so.actionList = actionConfigs;
 
 

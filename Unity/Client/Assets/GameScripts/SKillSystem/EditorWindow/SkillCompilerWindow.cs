@@ -23,6 +23,9 @@ public class SkillCompilerWindow : OdinEditorWindow {
     [TabGroup("SkillCompiler", "Audio", SdfIconType.OpticalAudio, TextColor = "blue")]
     public List<SkillConfig_Audio> audioList = new();
 
+    [TabGroup("SkillCompiler", "Buttle", SdfIconType.OpticalAudio, TextColor = "blue")]
+    public List<SkillConfig_Bullet> bulletList = new();
+
     [TabGroup("SkillCompiler", "Action", SdfIconType.OpticalAudio, TextColor = "cyan")]
     public List<SkillConfig_Action> actionList = new();
 
@@ -38,6 +41,7 @@ public class SkillCompilerWindow : OdinEditorWindow {
             damageList,
             effectList,
             audioList,
+            bulletList,
             actionList
         );
     }
@@ -48,6 +52,7 @@ public class SkillCompilerWindow : OdinEditorWindow {
         this.effectList = so.effectCfgList;
         this.damageList = so.damageCfgList;
         this.audioList = so.audioList;
+        this.bulletList = so.bulletList;
         this.actionList = so.actionList;
     }
 
