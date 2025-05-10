@@ -154,6 +154,7 @@ public partial class Skill {
         OnLogicFrameUpdate_Audio();
 
         // 更新子弹逻辑帧
+        OnLogicFrameUpdate_Buttle();
 
         // 蓄力技能, 和蓄力时间相关, 所以和蓄力结束帧无关
         if (_skillConfig.skillCfg.SkillType == SkillType.StockPile) {

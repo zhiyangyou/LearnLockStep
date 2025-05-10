@@ -1,6 +1,7 @@
 ﻿using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [Serializable]
 public class SkillConfig_Bullet {
@@ -16,7 +17,7 @@ public class SkillConfig_Bullet {
     public bool isLoopCreate;
 
     [LabelText("循环间隔,"), ShowIf(nameof(isLoopCreate)), BoxGroup("循环创建参数")]
-    public int loopIntervalMs;
+    public int loopIntervalMS;
 
     [LabelText("最小随机位置波动范围,"), ShowIf(nameof(isLoopCreate)), BoxGroup("循环创建参数")]
     public Vector3 minRandomRangeVec3;
@@ -34,12 +35,12 @@ public class SkillConfig_Bullet {
     [LabelText("击中特效"), PreviewField(70, ObjectFieldAlignment.Left)]
     public GameObject hitEffect;
 
-    [LabelText("特效存活时间")]
-    public int hitEffectSurvialTimeMS = 3000;
-    [LabelText("击中音效")]
-    public AudioClip hitAudio;
-    [ToggleGroup(nameof(isAttachDamage),"是否附加伤害")]
+    [LabelText("特效存活时间")] public int hitEffectSurvialTimeMS = 3000;
+    [LabelText("击中音效")] public AudioClip hitAudio;
+
+    [ToggleGroup(nameof(isAttachDamage), "是否附加伤害")]
     public bool isAttachDamage = false;
-    [ToggleGroup(nameof(isAttachDamage),"是否附加伤害")]
+
+    [ToggleGroup(nameof(isAttachDamage), "是否附加伤害")]
     public SkillConfig_Damage damageConfig;
 }
