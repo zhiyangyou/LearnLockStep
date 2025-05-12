@@ -73,7 +73,7 @@ MonoBehaviour:
     triggerFrame: 1
     endFrame: 9
     effectOffsetPos: {x: 0, y: 0, z: 0}
-    effectPosType: 0
+    effectPosType: 5
     isSetTransParent: 1
     TransParentType: 1
     IsAttachDamage: 0

@@ -37,11 +37,11 @@ MonoBehaviour:
     - stage: 1
       skillId: 3016
       startTimeMs: 0
-      endTimeMs: 500
+      endTimeMs: 1500
     - stage: 2
       skillId: 3017
-      startTimeMs: 501
-      endTimeMs: 1000
+      startTimeMs: 1501
+      endTimeMs: 3000
     skillGuideObj: {fileID: 0}
     skillGuideRange: 0
     CombinationSkillId: 0
@@ -55,7 +55,7 @@ MonoBehaviour:
   effectCfgList:
   - skillEffect: {fileID: 1260345263929180, guid: c7c505829f64b5045a71b3ada1cb3791, type: 3}
     triggerFrame: 1
-    endFrame: 14
+    endFrame: -1
     effectOffsetPos: {x: 0, y: 0, z: 0}
     effectPosType: 5
     isSetTransParent: 1
@@ -88,8 +88,8 @@ MonoBehaviour:
       moveActionFinishOpation: 0
       actionFinishIDList: 
   - skillEffect: {fileID: 1715534862165978, guid: 9b723e23293d113499cb6316594d6b3c, type: 3}
-    triggerFrame: 6
-    endFrame: 0
+    triggerFrame: 24
+    endFrame: -1
     effectOffsetPos: {x: 0, y: 0, z: 0}
     effectPosType: 0
     isSetTransParent: 0
@@ -122,8 +122,8 @@ MonoBehaviour:
       moveActionFinishOpation: 0
       actionFinishIDList: 
   - skillEffect: {fileID: 1389941809641780, guid: 07ae1b4e0a3859e4c926cfa6839e6c9b, type: 3}
-    triggerFrame: 7
-    endFrame: 0
+    triggerFrame: 24
+    endFrame: -1
     effectOffsetPos: {x: 0, y: 0, z: 0}
     effectPosType: 0
     isSetTransParent: 0
