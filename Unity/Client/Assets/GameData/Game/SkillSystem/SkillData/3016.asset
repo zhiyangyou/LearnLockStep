@@ -1,0 +1,147 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce2f7b12dee4a96ad4c38bc00dd2983, type: 3}
+  m_Name: 3016
+  m_EditorClassIdentifier: 
+  configCharacter:
+    sKillCharacterPrefab: {fileID: 1655574422363594, guid: 6e03e17984fcffe4792b9533f4280fb2, type: 3}
+    skillAnim: {fileID: 7400000, guid: 9b95ad53dde99ad469fa7ff9bea129db, type: 2}
+    animProgress: 100
+    isLoopAnim: 1
+    animLoopCount: 3
+    logicFrame: 9
+    isSetCustomLogicFrame: 1
+    customLogicFrame: 10
+    animLength: 0.59999996
+    skillDurationMS: 599
+  skillCfg:
+    skillIcon: {fileID: 21300000, guid: 34b23eccb182e9242bbbe38ac4df3b30, type: 3}
+    skillID: 3016
+    skillName: "\u6FC0\u5149\u70AE-1\u6BB5-\u84C4\u529B"
+    needMagicValue: 1
+    skillShakeBeforeTimeMs: 399
+    skillAttackDurationMs: 599
+    skillShakeAfterTimeMs: 200
+    skillCDTimeMS: 5000
+    SkillType: 0
+    stockPIleStageDatas:
+    - stage: 1
+      skillId: 3016
+      startTimeMs: 0
+      endTimeMs: 500
+    - stage: 2
+      skillId: 3017
+      startTimeMs: 501
+      endTimeMs: 1000
+    skillGuideObj: {fileID: 0}
+    skillGuideRange: 0
+    CombinationSkillId: 0
+    skillHitEffect: {fileID: 0}
+    hitEffectSurvialTimeMs: 100
+    SkillHitAudio: {fileID: 0}
+    showSkillPortrait: 0
+    skillPortraitObj: {fileID: 0}
+    skillDes: 
+  damageCfgList:
+  - triggerFrame: 3
+    endFrame: 7
+    triggerIntervalMs: 0
+    isFollowEffect: 0
+    damageType: 1
+    damageRate: 333
+    DetectionMode: 1
+    boxSize: {x: 17, y: 2, z: 1}
+    boxOffset: {x: 10, y: 1, z: 0}
+    sphereOffset: {x: 0, y: 0.9, z: 0}
+    radius: 1
+    radiusHeight: 0
+    ColliderPosType: 0
+    TargetType: 2
+    addBuffs: 204e0000
+    triggerSkillId: 0
+  effectCfgList:
+  - skillEffect: {fileID: 1260345263929180, guid: c7c505829f64b5045a71b3ada1cb3791, type: 3}
+    triggerFrame: 1
+    endFrame: 9
+    effectOffsetPos: {x: 0, y: 0, z: 0}
+    effectPosType: 0
+    isSetTransParent: 1
+    TransParentType: 1
+    IsAttachDamage: 0
+    SkillConfigDamage:
+      triggerFrame: 0
+      endFrame: 0
+      triggerIntervalMs: 0
+      isFollowEffect: 0
+      damageType: 0
+      damageRate: 0
+      DetectionMode: 0
+      boxSize: {x: 1, y: 1, z: 1}
+      boxOffset: {x: 0, y: 0, z: 0}
+      sphereOffset: {x: 0, y: 0.9, z: 0}
+      radius: 1
+      radiusHeight: 0
+      ColliderPosType: 0
+      TargetType: 0
+      addBuffs: 
+      triggerSkillId: 0
+    IsAttachAction: 0
+    SkillConfigAction:
+      triggerFrame: 0
+      moveActionType: 0
+      heightPos: {x: 0, y: 0, z: 0}
+      movePos: {x: 0, y: 0, z: 0}
+      durationMS: 0
+      moveActionFinishOpation: 0
+      actionFinishIDList: 
+  - skillEffect: {fileID: 7023820621642612246, guid: 0c809fc689cbe6344931b2301164e30b, type: 3}
+    triggerFrame: 1
+    endFrame: 9
+    effectOffsetPos: {x: 0, y: 0, z: 0}
+    effectPosType: 0
+    isSetTransParent: 0
+    TransParentType: 0
+    IsAttachDamage: 0
+    SkillConfigDamage:
+      triggerFrame: 0
+      endFrame: 0
+      triggerIntervalMs: 0
+      isFollowEffect: 0
+      damageType: 0
+      damageRate: 0
+      DetectionMode: 0
+      boxSize: {x: 1, y: 1, z: 1}
+      boxOffset: {x: 0, y: 0, z: 0}
+      sphereOffset: {x: 0, y: 0.9, z: 0}
+      radius: 1
+      radiusHeight: 0
+      ColliderPosType: 0
+      TargetType: 0
+      addBuffs: 
+      triggerSkillId: 0
+    IsAttachAction: 0
+    SkillConfigAction:
+      triggerFrame: 0
+      moveActionType: 0
+      heightPos: {x: 0, y: 0, z: 0}
+      movePos: {x: 0, y: 0, z: 0}
+      durationMS: 0
+      moveActionFinishOpation: 0
+      actionFinishIDList: 
+  audioList:
+  - skillAudio: {fileID: 8300000, guid: 7d359cffc27843347b25b6a309fe40af, type: 3}
+    audioName: Gunman_jiguangp_fashe
+    triggerFrame: 0
+    isLoop: 0
+    endFrame: 0
+  bulletList: []
+  actionList: []

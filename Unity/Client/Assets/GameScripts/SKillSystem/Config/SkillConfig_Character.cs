@@ -1,19 +1,18 @@
 ﻿using System;
 using Sirenix.OdinInspector;
+using UnityEngine;
+
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.SceneManagement;
-using UnityEngine;
-using UnityEngine.Serialization;
+#endif
 
 [HideMonoScript]
 [System.Serializable]
-public class  SkillConfig_Character
-{
+public class SkillConfig_Character {
     #region const
 
     private const string kStr操作按钮组 = "操作按钮组";
-
-    private const string kStr动画数据 = "动画数据";
 
     #endregion
 
@@ -38,41 +37,35 @@ public class  SkillConfig_Character
 
     #region odin序列化属性和字段
 
-    [AssetList]
-    [LabelText("角色模型")]
-    [PreviewField(90, ObjectFieldAlignment.Center)]
+    [AssetList] [LabelText("角色模型")] [PreviewField(90, ObjectFieldAlignment.Center)]
     public GameObject sKillCharacterPrefab;
 
 
-    [TitleGroup("技能渲染", "所有英雄渲染数据会在技能开始释放时触发")]
-    [LabelText("技能动画")]
+    [TitleGroup("技能渲染", "所有英雄渲染数据会在技能开始释放时触发")] [LabelText("技能动画")]
     public AnimationClip skillAnim;
 
-    [BoxGroup("kStr动画数据")]
-    [ProgressBar(0f, 100f, r: 0, g: 255, b: 0, Height = 30)]
-    [HideLabel]
-    [OnValueChanged(nameof(OnValueChanged_AnimProgress), InvokeOnUndoRedo = true)]
+    [BoxGroup("kStr动画数据")] [ProgressBar(0f, 100f, r: 0, g: 255, b: 0, Height = 30)] [HideLabel] [OnValueChanged(nameof(OnValueChanged_AnimProgress), InvokeOnUndoRedo = true)]
     public short animProgress = 0;
 
-    [BoxGroup("kStr动画数据")]
-    [LabelText("是否循环动画")]
+    [BoxGroup("kStr动画数据")] [LabelText("是否循环动画")]
     public bool isLoopAnim;
 
-    [BoxGroup("kStr动画数据")]
-    [LabelText("动画循环次数")]
-    [ShowIf(nameof(isLoopAnim))]
+    [BoxGroup("kStr动画数据")] [LabelText("动画循环次数")] [ShowIf(nameof(isLoopAnim))]
     public int animLoopCount;
 
-    [BoxGroup("kStr动画数据")]
-    [LabelText("逻辑帧数")]
+    [BoxGroup("kStr动画数据")] [LabelText("逻辑帧数"), HideIf(nameof(isSetCustomLogicFrame))]
     public int logicFrame = 0;
 
-    [BoxGroup("kStr动画数据")]
-    [LabelText("动画长度")]
+    [BoxGroup("kStr动画数据")] [LabelText("是否设置自定义逻辑帧数")]
+    public bool isSetCustomLogicFrame = false;
+
+    [BoxGroup("kStr动画数据")] [LabelText("自定义逻辑帧数"), ShowIf(nameof(isSetCustomLogicFrame))]
+    public int customLogicFrame = 0;
+
+    [BoxGroup("kStr动画数据")] [LabelText("动画长度")]
     public float animLength = 0f;
 
-    [BoxGroup("kStr动画数据")]
-    [LabelText("技能推荐时长(毫秒ms)")]
+    [BoxGroup("kStr动画数据")] [LabelText("技能推荐时长(毫秒ms)")]
     public float skillDurationMS = 0f;
 
     #endregion
@@ -82,10 +75,8 @@ public class  SkillConfig_Character
     [GUIColor(0, 0.7f, 0.2f)]
     [ButtonGroup(kStr操作按钮组)]
     [Button("播放", ButtonSizes.Large)]
-    public void Play()
-    {
-        if (sKillCharacterPrefab != null)
-        {
+    public void Play() {
+        if (sKillCharacterPrefab != null) {
             _curPlayAnimation = TryInitTempCharacter();
 
             // 动画文件长度
@@ -112,8 +103,7 @@ public class  SkillConfig_Character
     [GUIColor(0, 0.3f, 0.8f)]
     [ButtonGroup(kStr操作按钮组)]
     [Button("暂停", ButtonSizes.Large)]
-    public void Pause()
-    {
+    public void Pause() {
         _isPlayAnimation = false;
         var win = SkillCompilerWindow.GetWindow();
         win?.SkillPause();
@@ -123,16 +113,14 @@ public class  SkillConfig_Character
     [GUIColor(0.7f, 0.2f, 0)]
     [ButtonGroup(kStr操作按钮组)]
     [Button("保存", ButtonSizes.Large)]
-    public void SafeAssets()
-    {
+    public void SafeAssets() {
         SkillCompilerWindow.GetWindow().SaveSkillData();
     }
 
     [GUIColor(0.7f, 0.7f, 0.7f)]
     [ButtonGroup(kStr操作按钮组)]
     [Button("打开战斗场景", ButtonSizes.Large)]
-    public void OpenBattleScene()
-    {
+    public void OpenBattleScene() {
         EditorSceneManager.OpenScene("Assets/Scenes/Battle.unity");
     }
 
@@ -140,12 +128,11 @@ public class  SkillConfig_Character
 
     #region private
 
-    public void OnUpdate(Action onUpdateSkillAnim)
-    {
-        if (_isPlayAnimation)
-        {
-            if (_lastRuntime == 0)
-            {
+#if UNITY_EDITOR
+
+    public void OnEditorUpdate(Action onUpdateSkillAnim) {
+        if (_isPlayAnimation) {
+            if (_lastRuntime == 0) {
                 _lastRuntime = EditorApplication.timeSinceStartup;
             }
             // 当前运行时间
@@ -161,8 +148,7 @@ public class  SkillConfig_Character
             // 采样动画
             _curPlayAnimation.clip.SampleAnimation(_goTempCharacter, (float)curRuntime);
 
-            if (animProgress >= 100)
-            {
+            if (animProgress >= 100) {
                 // 播放完成
                 PlaySkillEnd();
             }
@@ -170,16 +156,15 @@ public class  SkillConfig_Character
         }
     }
 
+#endif
     /// <summary>
     /// 先从场景中查找技能对象，找不到就克隆
     /// </summary>
-    private Animation TryInitTempCharacter()
-    {
+    private Animation TryInitTempCharacter() {
         // 先从场景中查找技能对线，找不到就克隆
         string name = sKillCharacterPrefab.name;
         _goTempCharacter = GameObject.Find(name);
-        if (_goTempCharacter == null)
-        {
+        if (_goTempCharacter == null) {
             _goTempCharacter = GameObject.Instantiate(sKillCharacterPrefab);
             _goTempCharacter.name = name;
         }
@@ -193,14 +178,12 @@ public class  SkillConfig_Character
         return animation;
     }
 
-    private void PlaySkillEnd()
-    {
+    private void PlaySkillEnd() {
         _isPlayAnimation = false;
         SkillCompilerWindow.GetWindow()?.PlaySkillEnd();
     }
 
-    private void OnValueChanged_AnimProgress(float value)
-    {
+    private void OnValueChanged_AnimProgress(float value) {
         var animation = TryInitTempCharacter();
 
         // 根据当前动画进度进行采样

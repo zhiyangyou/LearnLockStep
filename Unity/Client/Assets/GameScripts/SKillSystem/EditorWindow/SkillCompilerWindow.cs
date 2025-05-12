@@ -147,7 +147,7 @@ public class SkillCompilerWindow : OdinEditorWindow {
 
     private void OnEditorUpdate() {
         try {
-            configCharacter.OnUpdate(Focus);
+            configCharacter.OnEditorUpdate(Focus);
             if (_isStartPlaySkill) {
                 OnLogicUpdate();
             }

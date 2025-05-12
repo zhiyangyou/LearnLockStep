@@ -19,6 +19,8 @@ MonoBehaviour:
     isLoopAnim: 0
     animLoopCount: 0
     logicFrame: 10
+    isSetCustomLogicFrame: 1
+    customLogicFrame: 10
     animLength: 0.43333352
     skillDurationMS: 433
   skillCfg:

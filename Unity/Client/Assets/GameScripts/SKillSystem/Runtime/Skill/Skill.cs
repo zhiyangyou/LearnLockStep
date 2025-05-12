@@ -95,6 +95,9 @@ public partial class Skill {
         // 初始化技能数据
         _isAutoMatchStockStage = false;
         InitTimer();
+        if (_skillConfig.configCharacter.isSetCustomLogicFrame && _skillConfig.configCharacter.customLogicFrame != 0) {
+            _skillConfig.configCharacter.logicFrame = _skillConfig.configCharacter.customLogicFrame;
+        }
     }
 
     /// <summary>

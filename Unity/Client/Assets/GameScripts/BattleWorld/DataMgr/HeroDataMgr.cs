@@ -37,7 +37,9 @@ namespace ZMGC.Battle {
                     1015, // 觉醒1段
                 }
             }, {
-                HeroIDConfig.HeroID_神枪手, new int[] { }
+                HeroIDConfig.HeroID_神枪手, new int[] {
+                    3015
+                }
             }
         };
 
