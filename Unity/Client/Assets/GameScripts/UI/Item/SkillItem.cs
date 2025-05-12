@@ -104,8 +104,6 @@ public class SkillItem : MonoBehaviour {
         }
         else if (skillguide == SKillGuideType.Position) {
             _heroRender.UpdateSkillGuide(SKillGuideType.Position, skillId, isPress, skillPos, skilldirdis);
-            skillPos.y = 0; // 确保引导的位置在地面上
-            _skillCreater.ReleaseSkill(skillId, null, _skillCreater.LogicPos + new FixIntVector3(skillPos));
         }
     }
 
@@ -115,22 +113,25 @@ public class SkillItem : MonoBehaviour {
     /// </summary>
     /// <param name="skillguide"></param>
     /// <param name="skillPos"></param>
-    /// <param name="skillid"></param>
-    private void OnTriggerSkill(SKillGuideType skillguide, Vector3 skillPos, int skillid) {
+    /// <param name="skillId"></param>
+    private void OnTriggerSkill(SKillGuideType skillguide, Vector3 skillPos, int skillId) {
         switch (skillguide) {
             case SKillGuideType.Click: {
                 // Debug.LogError($"触发 click 技能:{skillid}");
-                _skillCreater.ReleaseSkill(skillid, OnReleaseSkillResult);
+                _skillCreater.ReleaseSkill(skillId, OnReleaseSkillResult);
             }
                 break;
             case SKillGuideType.LongPress: {
                 // Debug.LogError($"触发 蓄力技能:{skillid} {Time.frameCount} ");
-                _skillCreater.TriggerStockPileSkill(skillid);
+                _skillCreater.TriggerStockPileSkill(skillId);
             }
                 break;
-            case SKillGuideType.Position:
+            case SKillGuideType.Position: {
+                skillPos.y = 0; // 确保引导的位置在地面上
+                _skillCreater.ReleaseSkill(skillId, null, _skillCreater.LogicPos + new FixIntVector3(skillPos));
+                // Debug.LogError("TODO 引导位置技能 释放");
                 _heroRender.OnGuideRelease();
-                Debug.LogError("TODO 引导位置技能 释放");
+            }
                 break;
             case SKillGuideType.Dirction:
                 Debug.LogError("TODO 引导方向");

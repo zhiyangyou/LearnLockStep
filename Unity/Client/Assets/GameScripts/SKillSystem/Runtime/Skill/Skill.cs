@@ -48,7 +48,7 @@ public partial class Skill {
 
     private int _curLogicFrameAccTimeMS = 0;
 
-    private FixIntVector3 _skillGuidePos = FixIntVector3.zero;
+    public FixIntVector3 skillGuidePos { get; private set; } = FixIntVector3.zero;
 
     public SkillCallback_OnAfter SkillCallbackOnAfter;
     public SkillCallback_OnEnd SkillCallbackOnEnd;
@@ -77,7 +77,7 @@ public partial class Skill {
     /// 4. SkillEnd 技能结束
     /// </summary>
     public void ReleaseSkill(FixIntVector3 guidePos, SkillCallback_OnAfter onSkillCallbackOnAfter, SkillCallback_OnEnd onSkillCallbackOnEnd) {
-        _skillGuidePos = guidePos;
+        skillGuidePos = guidePos;
         SkillCallbackOnAfter = onSkillCallbackOnAfter;
         SkillCallbackOnEnd = onSkillCallbackOnEnd;
         skillState = SkillState.Before;

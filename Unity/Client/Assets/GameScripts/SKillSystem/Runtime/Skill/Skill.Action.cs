@@ -37,10 +37,12 @@ public partial class Skill {
         }
         else if (configAction.moveActionType == MoveActionType.GuidePos) {
             // 目标位置
-            targetPos = _skillGuidePos;
+            targetPos = skillGuidePos;
             // 起始位置
-            startPos = targetPos + _skillCreater.LogicPos + new FixIntVector3(effectOffset);
-            moveType = MoveType.Target;
+            startPos = targetPos + _skillCreater.LogicAxis_X * new FixIntVector3(effectOffset);
+            startPos.y = FixIntMath.Abs(startPos.y);
+            // startPos = targetPos + new FixIntVector3(effectOffset);
+            // moveType = MoveType.Target;
             // 调用MoveToAction
         }
         else {

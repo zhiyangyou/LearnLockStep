@@ -13,7 +13,7 @@ public partial class Skill {
 
     #region public
 
-    public void  OnLogicFrameUpdate_Effect() {
+    public void OnLogicFrameUpdate_Effect() {
         var effectList = _skillConfig.effectCfgList;
         if (effectList != null && effectList.Count > 0) {
             foreach (SkillConfig_Effect item in effectList) {
@@ -38,7 +38,8 @@ public partial class Skill {
                     if (effectRender == null) effectRender = goEffect.AddComponent<SkillEffectRender>();
 
                     // 技能特效逻辑层
-                    SkillEffectLogic skillEffectLogic = new SkillEffectLogic(LogicObjectType.Effect, effectConfig, effectRender, _skillCreater);
+                    SkillEffectLogic skillEffectLogic = new SkillEffectLogic(
+                        LogicObjectType.Effect, effectConfig, effectRender, _skillCreater, this);
                     effectRender.SetLogicObject(skillEffectLogic, effectConfig.effectPosType != EffectPosType.Zero);
 
                     // 生命周期维护

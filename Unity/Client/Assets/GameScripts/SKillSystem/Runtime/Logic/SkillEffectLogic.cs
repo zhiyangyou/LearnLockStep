@@ -15,7 +15,13 @@ public class SkillEffectLogic : LogicObject {
 
     #region public
 
-    public SkillEffectLogic(LogicObjectType logicObjectType, SkillConfig_Effect skillConfigEffect, RenderObject renderObject, LogicActor skillCreater) {
+    public SkillEffectLogic(
+        LogicObjectType logicObjectType,
+        SkillConfig_Effect skillConfigEffect,
+        RenderObject renderObject,
+        LogicActor skillCreater,
+        Skill skill
+    ) {
         this.ObjectType = logicObjectType;
         this.RenderObject = renderObject;
         this._skillConfigEffect = skillConfigEffect;
@@ -28,6 +34,15 @@ public class SkillEffectLogic : LogicObject {
         }
         else if (skillConfigEffect.effectPosType == EffectPosType.Zero) {
             LogicPos = FixIntVector3.zero;
+        }
+        else if (skillConfigEffect.effectPosType == EffectPosType.GuidePos) {
+            var initPos = skill.skillGuidePos + skillCreater.LogicAxis_X * new FixIntVector3(skillConfigEffect.effectOffsetPos);
+            initPos.y = FixIntMath.Abs(initPos.y);
+            // Debug.LogError($"initPos:{initPos}");
+            LogicPos = initPos;
+        }
+        else {
+            Debug.LogError($"不支持的 effectPosType 类型{skillConfigEffect.effectPosType}");
         }
     }
 
@@ -46,7 +61,7 @@ public class SkillEffectLogic : LogicObject {
         // 特效行动配置
         if (_skillConfigEffect.IsAttachAction && _skillConfigEffect.SkillConfigAction.triggerFrame == curFrame) {
             skill.AddMoveAction(_skillConfigEffect.SkillConfigAction, this, _skillConfigEffect.effectOffsetPos, () => {
-                _collider.OnRelease();
+                _collider?.OnRelease();
                 skill.DestoryEffect(_skillConfigEffect);
                 _collider = null;
             }, () => { OnEffectMoveUpdate(skill); });
