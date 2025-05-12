@@ -13,7 +13,7 @@ public class SkillConfig_Damage {
 
     [LabelText("结束帧")] public int endFrame;
 
-    [LabelText("触发间隔")] public int triggerIntervalMs;
+    [LabelText("触发间隔(0:一次(非特效伤害) >0:间隔)")] public int triggerIntervalMs;
 
     [LabelText("碰撞体跟随特效移动")] public bool isFollowEffect;
 

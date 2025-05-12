@@ -15,7 +15,7 @@ public class SkillItem : MonoBehaviour {
 
     private Skill _skillData;
     private LogicActor _skillCreater;
-
+    private HeroRender _heroRender;
 
     private bool _isCD = false;
     private long _enterCDLogicFrame = 0;
@@ -37,11 +37,13 @@ public class SkillItem : MonoBehaviour {
     /// <param name="skillConfig"></param>
     /// <param name="skillCreater"></param>
     public void SetItemSkillData(Skill skillData, LogicActor skillCreater) {
-        this._skillCreater = skillCreater;
-        this._skillData = skillData;
+        _skillCreater = skillCreater;
+        _skillData = skillData;
+        _heroRender = skillCreater.RenderObject as HeroRender;
         _skillItemJoyStick.InitSkillData(GetSkillGuideType(skillData.SkillCfgConfig.SkillType), skillData.SkillID, skillData.SkillCfgConfig.skillGuideRange);
         _skillItemJoyStick.OnReleaseSkill += OnTriggerSkill;
         _skillItemJoyStick.OnSkillGuide += OnSkillGuide;
+        _skillItemJoyStick.OnSkillCancel += OnSkillCancle;
 
         // 初始化UI
         _imgIcon.sprite = skillData.SkillCfgConfig.skillIcon;
@@ -74,28 +76,33 @@ public class SkillItem : MonoBehaviour {
     public void OnDestroy() {
         _skillItemJoyStick.OnReleaseSkill -= OnTriggerSkill;
         _skillItemJoyStick.OnSkillGuide -= OnSkillGuide;
+        _skillItemJoyStick.OnSkillCancel -= OnSkillCancle;
     }
 
     #endregion
 
     #region private
 
+    private void OnSkillCancle(int skillid) {
+        _heroRender.OnGuideRelease();
+    }
+
     /// <summary>
     /// 
     /// </summary>
     /// <param name="skillguide">技能引导类型</param>
-    /// <param name="iscancel">是否取消</param>
-    /// <param name="skillpos">引导位置</param>
-    /// <param name="skillid">技能id</param>
+    /// <param name="isPress">是否取消</param>
+    /// <param name="skillPos">引导位置</param>
+    /// <param name="skillId">技能id</param>
     /// <param name="skilldirdis">技能半径距离</param>
-    private void OnSkillGuide(SKillGuideType skillguide, bool iscancel, Vector3 skillpos, int skillid, float skilldirdis) {
+    private void OnSkillGuide(SKillGuideType skillguide, bool isPress, Vector3 skillPos, int skillId, float skilldirdis) {
         // Debug.LogError($"Skill Guide ... {skillguide}");
         if (skillguide == SKillGuideType.LongPress) {
             // Debug.LogError($"OnSkillGuide long press 触发{skillid} {Time.frameCount} ");
-            _skillCreater.ReleaseSkill(skillid, OnReleaseSkillResult);
+            _skillCreater.ReleaseSkill(skillId, OnReleaseSkillResult);
         }
         else if (skillguide == SKillGuideType.Position) {
-            Debug.LogError("TODO 释放 position类型的技能");
+            _heroRender.UpdateSkillGuide(SKillGuideType.Position, skillId, isPress, skillPos, skilldirdis);
         }
     }
 
@@ -104,9 +111,9 @@ public class SkillItem : MonoBehaviour {
     /// 
     /// </summary>
     /// <param name="skillguide"></param>
-    /// <param name="skillpos"></param>
+    /// <param name="skillPos"></param>
     /// <param name="skillid"></param>
-    private void OnTriggerSkill(SKillGuideType skillguide, Vector3 skillpos, int skillid) {
+    private void OnTriggerSkill(SKillGuideType skillguide, Vector3 skillPos, int skillid) {
         switch (skillguide) {
             case SKillGuideType.Click: {
                 // Debug.LogError($"触发 click 技能:{skillid}");
@@ -119,7 +126,8 @@ public class SkillItem : MonoBehaviour {
             }
                 break;
             case SKillGuideType.Position:
-                Debug.LogError("TODO 引导到位置进行释放");
+                _heroRender.OnGuideRelease();
+                Debug.LogError("TODO 引导位置技能 释放");
                 break;
             case SKillGuideType.Dirction:
                 Debug.LogError("TODO 引导方向");

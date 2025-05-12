@@ -42,6 +42,10 @@ public partial class Skill {
                     CreateButtle(bulletConfig);
                 }
                 if (bulletConfig.isLoopCreate) {
+                    if (bulletConfig.loopIntervalMS <= 0) {
+                        Debug.LogError($"错误的loopIntervalMS :{bulletConfig.loopIntervalMS}");
+                        continue;
+                    }
                     while (_listCurCreateBulletAccTimeMS[i] >= bulletConfig.loopIntervalMS) {
                         CreateButtle(bulletConfig);
                         _listCurCreateBulletAccTimeMS[i] -= bulletConfig.loopIntervalMS;

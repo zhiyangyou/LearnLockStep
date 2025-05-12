@@ -11,6 +11,11 @@ public enum SKillGuideType
 }
 
 /// <summary>
+/// 曲线释放技能
+/// </summary>
+public delegate void OnSkillCancel(int skillId);
+
+/// <summary>
 /// 技能释放回调
 /// </summary>
 /// <param name="sKillGuide">技能引导</param>
@@ -70,6 +75,7 @@ public class SKillItem_JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandl
     /// 技能点击和抬起回调
     /// </summary>
     public OnClickOrPointerUpSkill OnClickAnPointerUpSkill;
+    public OnSkillCancel OnSkillCancel;
     #endregion
   
  
@@ -152,6 +158,7 @@ public class SKillItem_JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandl
         if (dir.magnitude > mSKillCancelRadius)
         {
             Debug.Log("取消技能释放");
+            OnSkillCancel?.Invoke(mSkillid);
             return;
         }
         //释放技能

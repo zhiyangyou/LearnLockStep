@@ -622,7 +622,7 @@ MonoBehaviour:
   mJoyPointTrans: {fileID: 2476174148822326475}
   mJoyBackTrans: {fileID: 8528196493450293243}
   mCancelSkillTrans: {fileID: 1490543854665105275}
-  mJoyPointMaxDir: 0
+  mJoyPointMaxDir: 90
 --- !u!222 &5087238819411001527
 CanvasRenderer:
   m_ObjectHideFlags: 0

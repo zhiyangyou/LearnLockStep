@@ -7,13 +7,11 @@ public class HeroRender : RenderObject {
 
     public Transform trLeftHand;
     public Transform trRightHand;
-
     private const string kStrAniName_Idle2 = "Anim_Idle02";
     private const string kStrAniName_Run = "Anim_Run";
-
     private HeroLogic _heroLogic;
-
     private Vector3 _curInputDir = Vector3.zero;
+    private GameObject _goGuideEffect; // 技能引导特效对象
 
     // 角色动画
     private Animation _ani;
@@ -40,6 +38,35 @@ public class HeroRender : RenderObject {
         PlayAni(animationClip.name);
     }
 
+    /// <summary>
+    /// 更新技能引导
+    /// </summary>
+    /// <param name="skillGuideType"></param>
+    /// <param name="skillId"></param>
+    /// <param name="isPress"></param>
+    /// <param name="pos">摇杆位置</param>
+    /// <param name="skillRange">范围</param>
+    public void UpdateSkillGuide(SKillGuideType skillGuideType, int skillId, bool isPress, Vector3 pos, float skillRange) {
+        // 初始化引导特效
+        InitSkillGuide(skillId);
+
+        // 更新引导位置
+        if (skillGuideType == SKillGuideType.Position) {
+            Vector3 skillGuidePos = transform.position + pos;
+            skillGuidePos = new Vector3(skillGuidePos.x, 0f, Mathf.Clamp(skillGuidePos.z, -1f, 8.6f)); // 限制位置
+            _goGuideEffect.transform.localPosition = skillGuidePos;
+        }
+        else {
+            Debug.LogError($"暂时不支持其他类型的引导:{skillGuideType}");
+        }
+    }
+    public void OnGuideRelease() {
+        if (_goGuideEffect != null) {
+            GameObject.DestroyImmediate(_goGuideEffect);
+            _goGuideEffect = null;
+        }
+    }
+    
     #endregion
 
     #region life-cycle
@@ -77,7 +104,7 @@ public class HeroRender : RenderObject {
                 return trLeftHand;
                 break;
             case TransParentType.RightHand:
-                return trRightHand;  
+                return trRightHand;
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(transParentType), transParentType, null);
@@ -109,6 +136,20 @@ public class HeroRender : RenderObject {
             Debug.LogError("HeroLogic is null");
         }
     }
+
+    private void InitSkillGuide(int skillID) {
+        if (_goGuideEffect == null) {
+            Skill skill = _heroLogic.GetSkill(skillID);
+            if (skill == null) {
+                Debug.LogError($"error skill ID {skillID}");
+                return;
+            }
+            _goGuideEffect = GameObject.Instantiate(skill.SkillCfgConfig.skillGuideObj);
+            _goGuideEffect.transform.localScale = Vector3.one;
+        }
+    }
+
+
 
     #endregion
 }

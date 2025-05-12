@@ -16,7 +16,7 @@ public class SkillConfig_Bullet {
     [LabelText("是否循环创建"), BoxGroup("循环创建参数")]
     public bool isLoopCreate;
 
-    [LabelText("循环间隔,"), ShowIf(nameof(isLoopCreate)), BoxGroup("循环创建参数")]
+    [LabelText("循环间隔"), ShowIf(nameof(isLoopCreate)), BoxGroup("循环创建参数")]
     public int loopIntervalMS;
 
     [LabelText("最小随机位置波动范围,"), ShowIf(nameof(isLoopCreate)), BoxGroup("循环创建参数")]
