@@ -11,7 +11,7 @@ public class SkillBulletLogic : LogicObject {
     private LogicActor _fireLogicActor;
     private SkillConfig_Bullet _bulletConfig;
     private ColliderBehaviour _bulletCollider;
-    private LogicRandom _logicRandom = new LogicRandom(10);
+     
 
     private int _curLogicFrame = 0;
     private int _curLogicFrameAccTime = 0;
@@ -27,7 +27,9 @@ public class SkillBulletLogic : LogicObject {
     public SkillBulletLogic(Skill skill,
         LogicActor fireLogicActor,
         RenderObject selfRenderObj,
-        SkillConfig_Bullet bulletConfig) {
+        SkillConfig_Bullet bulletConfig,
+        FixIntVector3 rangePos
+        ) {
         // 字段初始化
         _skill = skill;
         _fireLogicActor = fireLogicActor;
@@ -38,14 +40,7 @@ public class SkillBulletLogic : LogicObject {
         // 位置更新
         LogicAxis_X = _fireLogicActor.LogicAxis_X;
         LogicDir = new FixIntVector3(LogicAxis_X,0,0);
-        FixIntVector3 rangePos = FixIntVector3.zero;
-        if (_bulletConfig.isLoopCreate) {
-            var minV3 = _bulletConfig.minRandomRangeVec3;
-            var maxV3 = _bulletConfig.maxRandomRangeVec3;
-            rangePos.x = _logicRandom.Range(minV3.x, maxV3.x);
-            rangePos.y = _logicRandom.Range(minV3.y, maxV3.y);
-            rangePos.z = _logicRandom.Range(minV3.z, maxV3.z);
-        }
+
         FixIntVector3 genPos = LogicAxis_X * (new FixIntVector3(_bulletConfig.offset) + rangePos);
         genPos.y = FixIntMath.Abs(genPos.y);
         LogicPos = _fireLogicActor.LogicPos + genPos;

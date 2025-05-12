@@ -99,6 +99,8 @@ public partial class Skill {
         if (_skillConfig.configCharacter.isSetCustomLogicFrame && _skillConfig.configCharacter.customLogicFrame != 0) {
             _skillConfig.configCharacter.logicFrame = _skillConfig.configCharacter.customLogicFrame;
         }
+        
+        OnBulletInit();
     }
 
     /// <summary>
@@ -121,6 +123,7 @@ public partial class Skill {
             _skillCreater.ReleaseSkill(_skillConfig.skillCfg.CombinationSkillId, null);
         }
         InitTimer();
+        OnBulletRelease();
     }
 
 
