@@ -46,8 +46,86 @@ MonoBehaviour:
     skillPortraitObj: {fileID: 0}
     skillDes: 
   damageCfgList: []
-  effectCfgList: []
-  audioList: []
+  effectCfgList:
+  - skillEffect: {fileID: 1429140345367960, guid: ea381ab1248f02f4dae8626de793241c, type: 3}
+    triggerFrame: 4
+    endFrame: 10
+    effectOffsetPos: {x: 0, y: 0.2, z: 0}
+    effectPosType: 0
+    isSetTransParent: 0
+    TransParentType: 0
+    IsAttachDamage: 0
+    SkillConfigDamage:
+      triggerFrame: 0
+      endFrame: 0
+      triggerIntervalMs: 0
+      isFollowEffect: 0
+      damageType: 0
+      damageRate: 0
+      DetectionMode: 0
+      boxSize: {x: 1, y: 1, z: 1}
+      boxOffset: {x: 0, y: 0, z: 0}
+      sphereOffset: {x: 0, y: 0.9, z: 0}
+      radius: 1
+      radiusHeight: 0
+      ColliderPosType: 0
+      TargetType: 0
+      addBuffs: 
+      triggerSkillId: 0
+    IsAttachAction: 0
+    SkillConfigAction:
+      triggerFrame: 0
+      moveActionType: 0
+      heightPos: {x: 0, y: 0, z: 0}
+      movePos: {x: 0, y: 0, z: 0}
+      durationMS: 0
+      moveActionFinishOpation: 0
+      actionFinishIDList: 
+  - skillEffect: {fileID: 1021637318564478, guid: 76c24f7b65bdaba4ebabc07fa5c93433, type: 3}
+    triggerFrame: 4
+    endFrame: 10
+    effectOffsetPos: {x: 1, y: 0.2, z: 0}
+    effectPosType: 0
+    isSetTransParent: 0
+    TransParentType: 0
+    IsAttachDamage: 0
+    SkillConfigDamage:
+      triggerFrame: 0
+      endFrame: 0
+      triggerIntervalMs: 0
+      isFollowEffect: 0
+      damageType: 0
+      damageRate: 0
+      DetectionMode: 0
+      boxSize: {x: 1, y: 1, z: 1}
+      boxOffset: {x: 0, y: 0, z: 0}
+      sphereOffset: {x: 0, y: 0.9, z: 0}
+      radius: 1
+      radiusHeight: 0
+      ColliderPosType: 0
+      TargetType: 0
+      addBuffs: 
+      triggerSkillId: 0
+    IsAttachAction: 0
+    SkillConfigAction:
+      triggerFrame: 0
+      moveActionType: 0
+      heightPos: {x: 0, y: 0, z: 0}
+      movePos: {x: 0, y: 0, z: 0}
+      durationMS: 0
+      moveActionFinishOpation: 0
+      actionFinishIDList: 
+  audioList:
+  - skillAudio: {fileID: 8300000, guid: a85920d7e824ddd41922a250ed4b40d4, type: 3}
+    audioName: paning_01
+    triggerFrame: 1
+    isLoop: 0
+    endFrame: 0
+  - skillAudio: {fileID: 8300000, guid: 904b37dbb89f29547a8c2e9816e726ab, type: 3}
+    audioName: Fire02
+    triggerFrame: 3
+    isLoop: 0
+    endFrame: 0
   bulletList:
   - goBulletPrefab: {fileID: 1117869249781614, guid: aad9899b9e3578e48bb4af90e064668f, type: 3}
     intelligentAttack: 0
@@ -74,8 +152,8 @@ MonoBehaviour:
       damageType: 1
       damageRate: 123
       DetectionMode: 1
-      boxSize: {x: 1, y: 1, z: 1}
-      boxOffset: {x: 0, y: 0, z: 0}
+      boxSize: {x: 0.2, y: 1, z: 1}
+      boxOffset: {x: -0.5, y: 0, z: 0}
       sphereOffset: {x: 0, y: 0.9, z: 0}
       radius: 1
       radiusHeight: 0
