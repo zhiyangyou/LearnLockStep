@@ -34,9 +34,9 @@ namespace ZMGC.Battle
         
         public void InitHero()
         {
-            var goHero = ZMAsset.Instantiate($"{AssetsPathConfig.Game_Hero_Prefabs}/1000.prefab", null);
+            var goHero = ZMAsset.Instantiate($"{AssetsPathConfig.Game_Hero_Prefabs}/1001.prefab", null);
             var heroRender = goHero.GetComponent<HeroRender>();
-            HeroLogic heroLogic = new HeroLogic(1000, heroRender); // TODO 读取配置
+            HeroLogic heroLogic = new HeroLogic(1001, heroRender); // TODO 读取配置
             heroRender.SetLogicObject(heroLogic);
 
             //

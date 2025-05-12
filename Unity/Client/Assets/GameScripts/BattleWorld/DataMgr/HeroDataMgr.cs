@@ -19,6 +19,7 @@ namespace ZMGC.Battle {
         /// </summary>
         public Dictionary<int, int[]> heroNormalSkillCfgDic = new Dictionary<int, int[]>() {
             { HeroIDConfig.HeroID_鬼剑士, new int[] { 1001, 1002, 1003 } }, // 鬼剑士
+            { HeroIDConfig.HeroID_神枪手, new int[] { 3001,  } }, // 神枪手
         };
 
         /// <summary>
@@ -35,6 +36,8 @@ namespace ZMGC.Battle {
                     1010, // 拔刀-前摇
                     1015, // 觉醒1段
                 }
+            }, {
+                HeroIDConfig.HeroID_神枪手, new int[] { }
             }
         };
 
