@@ -22,8 +22,8 @@ public partial class LogicActor {
     #region private
 
     private void OnLogicFrameUpdate_Bullet() {
-        for (int i = _listBullets.Count - 1; i >= 0; i++) {
-            if (!_listBullets[i].BulletIsUnValid) {
+        for (int i = _listBullets.Count - 1; i >= 0; i-- ) {
+            if (_listBullets[i].BulletIsUnValid) {
                 Bullet_Remove(_listBullets[i]);
             }
         }
