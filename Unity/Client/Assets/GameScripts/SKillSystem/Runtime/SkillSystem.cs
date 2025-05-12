@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FixMath;
 using UnityEngine;
 
 /// <summary>
@@ -76,8 +77,7 @@ public class SkillSystem {
         }
     }
 
-    public Skill ReleaseSkill(int skillID, SkillCallback_OnAfter onAfter, SkillCallback_OnEnd onEnd) {
-        
+    public Skill ReleaseSkill(int skillID, FixIntVector3 guidePos, SkillCallback_OnAfter onAfter, SkillCallback_OnEnd onEnd) {
         if (SkillStateMutex(skillID)) {
             return null;
         }
@@ -88,15 +88,16 @@ public class SkillSystem {
                     // Debug.LogError($"技能正在释放中{skillID} ");
                     return null;
                 }
-                skill.ReleaseSkill((afterSkill) => {
-                    onAfter(afterSkill);
-                    curReleasingSkill = null;
-                }, (skRelease, isCombineSkill) => {
-                    onEnd.Invoke(skRelease, isCombineSkill);
-                    if (!isCombineSkill) {
-                        // TODO 根据技能组合的情况 处理组合逻辑
-                    }
-                });
+                skill.ReleaseSkill(guidePos,
+                    (afterSkill) => {
+                        onAfter(afterSkill);
+                        curReleasingSkill = null;
+                    }, (skRelease, isCombineSkill) => {
+                        onEnd.Invoke(skRelease, isCombineSkill);
+                        if (!isCombineSkill) {
+                            // TODO 根据技能组合的情况 处理组合逻辑
+                        }
+                    });
                 curReleasingSkill = skill;
                 return skill;
             }

@@ -8,32 +8,47 @@ public partial class Skill {
         if (actionList != null && actionList.Count > 0) {
             foreach (SkillConfig_Action actionConfig in actionList) {
                 if (actionConfig.triggerFrame == _curLogicFrame) {
-                    AddMoveAction(actionConfig, _skillCreater, null, null);
+                    AddMoveAction(actionConfig, _skillCreater, default, null, null);
                 }
             }
         }
     }
 
-    public void AddMoveAction(SkillConfig_Action configAction, LogicObject actionActor, Action onMoveFinish, Action onMoveUpdate) {
+    public void AddMoveAction(SkillConfig_Action configAction, LogicObject actionActor, Vector3 effectOffset, Action onMoveFinish, Action onMoveUpdate) {
         FixIntVector3 movePos = new FixIntVector3(configAction.movePos);
         FixIntVector3 targetPos = actionActor.LogicPos + movePos * actionActor.LogicAxis_X;
+        FixIntVector3 startPos = actionActor.LogicPos;
         // Debug.LogError($"add move action pos:{targetPos}");
         MoveType moveType = MoveType.Target;
-        if (movePos.IsOnlyAxis_X()) {
-            moveType = MoveType.X;
+
+        if (configAction.moveActionType == MoveActionType.TargerPos) {
+            if (movePos.IsOnlyAxis_X()) {
+                moveType = MoveType.X;
+            }
+            else if (movePos.IsOnlyAxis_Y()) {
+                moveType = MoveType.Y;
+            }
+            else if (movePos.IsOnlyAxis_Z()) {
+                moveType = MoveType.Z;
+            }
+            else {
+                moveType = MoveType.Target;
+            }
         }
-        else if (movePos.IsOnlyAxis_Y()) {
-            moveType = MoveType.Y;
-        }
-        else if (movePos.IsOnlyAxis_Z()) {
-            moveType = MoveType.Z;
+        else if (configAction.moveActionType == MoveActionType.GuidePos) {
+            // 目标位置
+            targetPos = _skillGuidePos;
+            // 起始位置
+            startPos = targetPos + _skillCreater.LogicPos + new FixIntVector3(effectOffset);
+            moveType = MoveType.Target;
+            // 调用MoveToAction
         }
         else {
-            moveType = MoveType.Target;
+            Debug.LogError($"暂时不支持其他类型的技能特效引导{configAction.moveActionType}");
         }
         MoveToAction moveToAction = new(
             actionActor,
-            actionActor.LogicPos,
+            startPos,
             targetPos,
             configAction.durationMS,
             () => {

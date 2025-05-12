@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using FixMath;
 using UnityEngine;
 using ZM.ZMAsset;
 
@@ -47,6 +48,8 @@ public partial class Skill {
 
     private int _curLogicFrameAccTimeMS = 0;
 
+    private FixIntVector3 _skillGuidePos = FixIntVector3.zero;
+
     public SkillCallback_OnAfter SkillCallbackOnAfter;
     public SkillCallback_OnEnd SkillCallbackOnEnd;
 
@@ -73,7 +76,8 @@ public partial class Skill {
     /// 3. SkillAfter后摇开始
     /// 4. SkillEnd 技能结束
     /// </summary>
-    public void ReleaseSkill(SkillCallback_OnAfter onSkillCallbackOnAfter, SkillCallback_OnEnd onSkillCallbackOnEnd) {
+    public void ReleaseSkill(FixIntVector3 guidePos, SkillCallback_OnAfter onSkillCallbackOnAfter, SkillCallback_OnEnd onSkillCallbackOnEnd) {
+        _skillGuidePos = guidePos;
         SkillCallbackOnAfter = onSkillCallbackOnAfter;
         SkillCallbackOnEnd = onSkillCallbackOnEnd;
         skillState = SkillState.Before;
@@ -99,7 +103,7 @@ public partial class Skill {
         if (_skillConfig.configCharacter.isSetCustomLogicFrame && _skillConfig.configCharacter.customLogicFrame != 0) {
             _skillConfig.configCharacter.logicFrame = _skillConfig.configCharacter.customLogicFrame;
         }
-        
+
         OnBulletInit();
     }
 

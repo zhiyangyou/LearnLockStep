@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using FixMath;
 using UnityEngine;
 using ZMGC.Battle;
 
@@ -68,13 +69,14 @@ public partial class LogicActor {
         return _normalAttackSkillArr.Contains(skillID);
     }
 
-    public void ReleaseSkill(int skillID, Action<bool> onReleaseSkillResult) {
-        var releasingSkill = _skillSystem.ReleaseSkill(skillID, SkillCallback_OnAfter, (skill, combineSkill) => {
-            SkillCallback_OnEnd(skill, combineSkill);
-            if (skill.SkillCfgConfig.SkillType == SkillType.StockPile) {
-                onReleaseSkillResult?.Invoke(true);
-            }
-        });
+    public void ReleaseSkill(int skillID, Action<bool> onReleaseSkillResult, FixIntVector3 guidePos = default(FixIntVector3)) {
+        var releasingSkill = _skillSystem.ReleaseSkill(skillID, guidePos,
+            SkillCallback_OnAfter, (skill, combineSkill) => {
+                SkillCallback_OnEnd(skill, combineSkill);
+                if (skill.SkillCfgConfig.SkillType == SkillType.StockPile) {
+                    onReleaseSkillResult?.Invoke(true);
+                }
+            });
         if (releasingSkill != null) // 技能释放成功
         {
             _listReleasingSkills.Add(releasingSkill);

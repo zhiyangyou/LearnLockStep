@@ -45,10 +45,10 @@ public class SkillEffectLogic : LogicObject {
 
         // 特效行动配置
         if (_skillConfigEffect.IsAttachAction && _skillConfigEffect.SkillConfigAction.triggerFrame == curFrame) {
-            skill.AddMoveAction(_skillConfigEffect.SkillConfigAction, this, () => {
+            skill.AddMoveAction(_skillConfigEffect.SkillConfigAction, this, _skillConfigEffect.effectOffsetPos, () => {
                 _collider.OnRelease();
                 skill.DestoryEffect(_skillConfigEffect);
-                _collider = null; 
+                _collider = null;
             }, () => { OnEffectMoveUpdate(skill); });
         }
 

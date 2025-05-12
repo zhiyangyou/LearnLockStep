@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using FixMath;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -103,6 +104,8 @@ public class SkillItem : MonoBehaviour {
         }
         else if (skillguide == SKillGuideType.Position) {
             _heroRender.UpdateSkillGuide(SKillGuideType.Position, skillId, isPress, skillPos, skilldirdis);
+            skillPos.y = 0; // 确保引导的位置在地面上
+            _skillCreater.ReleaseSkill(skillId, null, _skillCreater.LogicPos + new FixIntVector3(skillPos));
         }
     }
 
