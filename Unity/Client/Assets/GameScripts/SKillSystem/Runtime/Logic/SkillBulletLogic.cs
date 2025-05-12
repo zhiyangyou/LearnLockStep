@@ -36,9 +36,8 @@ public class SkillBulletLogic : LogicObject {
 
 
         // 位置更新
-
         LogicAxis_X = _fireLogicActor.LogicAxis_X;
-
+        LogicDir = new FixIntVector3(LogicAxis_X,0,0);
         FixIntVector3 rangePos = FixIntVector3.one;
         if (_bulletConfig.isLoopCreate) {
             var minV3 = _bulletConfig.minRandomRangeVec3;
@@ -50,7 +49,7 @@ public class SkillBulletLogic : LogicObject {
         FixIntVector3 genPos = LogicAxis_X * (new FixIntVector3(_bulletConfig.offset) + rangePos);
         genPos.y = FixIntMath.Abs(genPos.y);
         LogicPos = _fireLogicActor.LogicPos + genPos;
-        LogicDir = _fireLogicActor.LogicDir;
+      
         LogicAngle = new FixIntVector3(_bulletConfig.angle);
 
         // 伤害
@@ -131,9 +130,6 @@ public class SkillBulletLogic : LogicObject {
                     _hitTargetList.Add(enemyActor);
                 }
             }
-            if (_bulletIsHit && _bulletConfig.isHitDestory) {
-                Release();
-            }
         }
 
         if (_curLogicFrameAccTime >= _bulletConfig.survialTimeMsg) {
@@ -144,6 +140,7 @@ public class SkillBulletLogic : LogicObject {
     public void Release() {
         RenderObject.OnRelease();
         _bulletCollider.OnRelease();
+        _bulletCollider = null;
         BulletIsUnValid = true;
     }
 
