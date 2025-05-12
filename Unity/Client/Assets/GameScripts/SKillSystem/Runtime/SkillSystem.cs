@@ -77,9 +77,11 @@ public class SkillSystem {
     }
 
     public Skill ReleaseSkill(int skillID, SkillCallback_OnAfter onAfter, SkillCallback_OnEnd onEnd) {
+        
         if (SkillStateMutex(skillID)) {
             return null;
         }
+        // Debug.LogError($"release skill {skillID}");
         foreach (Skill skill in _listSkills) {
             if (skillID == skill.SkillID) {
                 if (skill.skillState != SkillState.None && skill.skillState != SkillState.End) {

@@ -18,7 +18,7 @@ MonoBehaviour:
     animProgress: 100
     isLoopAnim: 1
     animLoopCount: 3
-    logicFrame: 9
+    logicFrame: 10
     isSetCustomLogicFrame: 1
     customLogicFrame: 10
     animLength: 0.59999996
@@ -140,7 +140,7 @@ MonoBehaviour:
   audioList:
   - skillAudio: {fileID: 8300000, guid: 7d359cffc27843347b25b6a309fe40af, type: 3}
     audioName: Gunman_jiguangp_fashe
-    triggerFrame: 0
+    triggerFrame: 1
     isLoop: 0
     endFrame: 0
   bulletList: []

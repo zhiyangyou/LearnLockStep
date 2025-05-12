@@ -19,6 +19,8 @@ MonoBehaviour:
     isLoopAnim: 0
     animLoopCount: 0
     logicFrame: 4
+    isSetCustomLogicFrame: 0
+    customLogicFrame: 0
     animLength: 0.2666667
     skillDurationMS: 266
   skillCfg:
@@ -29,12 +31,12 @@ MonoBehaviour:
     skillShakeBeforeTimeMs: 266
     skillAttackDurationMs: 266
     skillShakeAfterTimeMs: 0
-    skillCDTimeMS: 6000
+    skillCDTimeMS: 1000
     SkillType: 3
     stockPIleStageDatas:
     - stage: 1
       skillId: 1011
-      startTimeMs: 500
+      startTimeMs: 0
       endTimeMs: 1000
     - stage: 2
       skillId: 1012
@@ -91,4 +93,5 @@ MonoBehaviour:
     triggerFrame: 0
     isLoop: 0
     endFrame: 0
+  bulletList: []
   actionList: []

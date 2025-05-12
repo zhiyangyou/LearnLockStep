@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 using ZM.ZMAsset;
 
@@ -166,20 +167,29 @@ public partial class Skill {
                 // Debug.LogError($"_isAutoMatchStockStage:{_isAutoMatchStockStage}");
                 // 1. 情况: 按下立马抬起
                 if (_isAutoMatchStockStage) {
+                    var matchSuccess = false;
                     foreach (var stockData in _skillConfig.skillCfg.stockPIleStageDatas) {
-                        if (_curLogicFrameAccTimeMS >= stockData.startTimeMs) {
+                        if (_curLogicFrameAccTimeMS >= stockData.startTimeMs
+                            && _curLogicFrameAccTimeMS <= stockData.endTimeMs
+                           ) {
+                            matchSuccess = true;
                             StockPileFinish(stockData);
                         }
                     }
-                }
-                else {
-                    // 2. 情况: 蓄力超时
-                    var lastStage = _skillConfig.skillCfg.stockPIleStageDatas[stockPileDataCount - 1];
-                    if (_curLogicFrameAccTimeMS >= lastStage.endTimeMs) {
-                        // Debug.LogError($"_isAutoMatchStockStage --- true;;; ");
-                        StockPileFinish(lastStage);
+                    if (!matchSuccess) {
+                        // Debug.LogError($"触发最后一个  没有匹配成功的时间 {_curLogicFrameAccTimeMS}");
+                        StockPileFinish(_skillConfig.skillCfg.stockPIleStageDatas.Last());
                     }
                 }
+                // else {
+                //     // 2. 情况: 蓄力超时
+                //     var lastStage = _skillConfig.skillCfg.stockPIleStageDatas[stockPileDataCount - 1];
+                //     if (_curLogicFrameAccTimeMS >= lastStage.endTimeMs) {
+                //         // Debug.LogError($"_isAutoMatchStockStage --- true;;; ");
+                //         // StockPileFinish(lastStage);
+                //         Debug.LogError("蓄力超时不触发");
+                //     }
+                // }
             }
         }
         else {
@@ -202,6 +212,7 @@ public partial class Skill {
         foreach (StockPileStageData stageData in _skillConfig.skillCfg.stockPIleStageDatas) {
             if (_curLogicFrameAccTimeMS >= stageData.startTimeMs && _curLogicFrameAccTimeMS <= stageData.endTimeMs) {
                 StockPileFinish(stageData);
+                // Debug.LogError($"{stageData.skillId} _curLogicFrameAccTimeMS:{_curLogicFrameAccTimeMS} {stageData.startTimeMs} {stageData.endTimeMs}");
                 return;
             }
         }

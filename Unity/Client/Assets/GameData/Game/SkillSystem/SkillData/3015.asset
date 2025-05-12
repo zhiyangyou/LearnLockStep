@@ -31,7 +31,7 @@ MonoBehaviour:
     skillShakeBeforeTimeMs: 300
     skillAttackDurationMs: 500
     skillShakeAfterTimeMs: 200
-    skillCDTimeMS: 5000
+    skillCDTimeMS: 1000
     SkillType: 3
     stockPIleStageDatas:
     - stage: 1
@@ -155,11 +155,6 @@ MonoBehaviour:
       durationMS: 0
       moveActionFinishOpation: 0
       actionFinishIDList: 
-  audioList:
-  - skillAudio: {fileID: 8300000, guid: 4c2f733de59ce9f478a7547dfd791b4d, type: 3}
-    audioName: Gunman_jiguangp_xuli
-    triggerFrame: 1
-    isLoop: 0
-    endFrame: 0
+  audioList: []
   bulletList: []
   actionList: []

@@ -51,8 +51,9 @@ public partial class LogicActor {
     ///  初始化技能
     /// </summary>
     public void InitActorSkill() {
-        _normalAttackSkillArr = BattleWorld.GetExitsDataMgr<HeroDataMgr>().GetHeroNormalSkillIDs(HeroIDConfig.HeroID_神枪手);
-        _normalSkillArr = BattleWorld.GetExitsDataMgr<HeroDataMgr>().GetHeroSkillIDs(HeroIDConfig.HeroID_神枪手);
+        var heroID = HeroIDConfig.TestHeroID;
+        _normalAttackSkillArr = BattleWorld.GetExitsDataMgr<HeroDataMgr>().GetHeroNormalSkillIDs(heroID);
+        _normalSkillArr = BattleWorld.GetExitsDataMgr<HeroDataMgr>().GetHeroSkillIDs(heroID);
         _skillSystem = new SkillSystem(this);
         _skillSystem.InitSkills(_normalAttackSkillArr);
         _skillSystem.InitSkills(_normalSkillArr);
