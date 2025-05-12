@@ -99,7 +99,7 @@ public class MoveToAction : ActionBehaviour {
             case MoveType.Target: {
                 addDistance = _moveDistance * _curTimeScale;
                 _actionObj.LogicPos = (_startPos + addDistance);
-                Debug.LogError($"{Time.frameCount} move 赋值XYZ轴 位置数值");
+                // Debug.LogError($"{Time.frameCount} move 赋值XYZ轴 位置数值");
             }
                 break;
             case MoveType.X: {
