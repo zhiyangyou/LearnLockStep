@@ -77,7 +77,7 @@ public class HeroRender : RenderObject {
                 return trLeftHand;
                 break;
             case TransParentType.RightHand:
-                return trRightHand;
+                return trRightHand;  
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(transParentType), transParentType, null);
