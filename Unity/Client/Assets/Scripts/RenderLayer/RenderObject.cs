@@ -66,12 +66,12 @@ public class RenderObject : MonoBehaviour {
         textItem.ShowDamageText(damageValue, this);
     }
 
-    public virtual void OnHit(GameObject goEffect, int survialTimeMS, LogicActor sourceActor) {
+    public virtual void OnHit(GameObject goEffect, int survialTimeMS, LogicObject sourceObj) {
         if (goEffect != null) {
             var createGoEffect = GameObject.Instantiate(goEffect);
-            createGoEffect.transform.position = this.transform.position;
+            createGoEffect.transform.position = sourceObj.RenderObject.transform.position;
             // goHitEffect.transform.position = sourceActor.RenderObject.transform.position;
-            createGoEffect.transform.localScale = sourceActor.LogicAxis_X > 0 ? Vector3.one : new Vector3(-1, 1, 1);
+            createGoEffect.transform.localScale = sourceObj.LogicAxis_X > 0 ? Vector3.one : new Vector3(-1, 1, 1);
             GameObject.Destroy(createGoEffect, survialTimeMS * 0.001f);
         }
     }

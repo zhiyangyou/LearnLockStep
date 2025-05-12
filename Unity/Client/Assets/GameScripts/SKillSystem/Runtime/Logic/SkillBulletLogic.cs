@@ -38,7 +38,7 @@ public class SkillBulletLogic : LogicObject {
         // 位置更新
         LogicAxis_X = _fireLogicActor.LogicAxis_X;
         LogicDir = new FixIntVector3(LogicAxis_X,0,0);
-        FixIntVector3 rangePos = FixIntVector3.one;
+        FixIntVector3 rangePos = FixIntVector3.zero;
         if (_bulletConfig.isLoopCreate) {
             var minV3 = _bulletConfig.minRandomRangeVec3;
             var maxV3 = _bulletConfig.maxRandomRangeVec3;
@@ -82,7 +82,7 @@ public class SkillBulletLogic : LogicObject {
         // 触发伤害
         foreach (LogicActor hitTarget in _hitTargetList) {
             hitTarget.BulletDamage(2222, damageConfig);
-            hitTarget.OnHit(_bulletConfig.hitEffect, _bulletConfig.hitEffectSurvialTimeMS, _fireLogicActor);
+            hitTarget.OnHit(_bulletConfig.hitEffect, _bulletConfig.hitEffectSurvialTimeMS, this );
             if (_bulletConfig.hitAudio != null) {
                 AudioController.GetInstance().PlaySoundByAudioClip(_bulletConfig.hitAudio, false, AudioPriorityConfig.Bullet_AudioClip);
             }
