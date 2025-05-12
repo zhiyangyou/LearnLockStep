@@ -48,7 +48,7 @@ MonoBehaviour:
   - skillEffect: {fileID: 1251718671737700, guid: dc457486a43c7d342ad38db2c24bd2ec, type: 3}
     triggerFrame: 1
     endFrame: 4
-    effectOffsetPos: {x: 0, y: 0, z: 0}
+    effectOffsetPos: {x: -5, y: 5, z: 0}
     effectPosType: 3
     isSetTransParent: 0
     TransParentType: 0
@@ -72,11 +72,11 @@ MonoBehaviour:
       triggerSkillId: 0
     IsAttachAction: 1
     SkillConfigAction:
-      triggerFrame: 0
+      triggerFrame: 1
       moveActionType: 1
       heightPos: {x: 0, y: 0, z: 0}
       movePos: {x: 0, y: 0, z: 0}
-      durationMS: 500
+      durationMS: 2000
       moveActionFinishOpation: 0
       actionFinishIDList: 
   audioList:
