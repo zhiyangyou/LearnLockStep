@@ -11,6 +11,7 @@ public partial class LogicActor {
 
     private float _StartFloatingTime = 0f;
 
+    public bool IsIgnoreGravity { get; set; } = false;
 
     /// <summary>
     /// 浮空总时间
@@ -32,18 +33,14 @@ public partial class LogicActor {
             FixInt timeScale = (risingUpTime * 2) / _risingTimeS; // 时间缩放倍率
 
             velicity.y -= (gravity * logicFrameInterval * timeScale);
-
-            // Debug.LogError($"gt:{gt} timeScale:{timeScale} velicity.y:{velicity.y} ");
+            if (!IsIgnoreGravity) { }
 
             var newPosY = FixIntMath.Clamp(LogicPos.y + velicity.y * logicFrameInterval, 0, FixInt.MaxValue); // 防止陷入到地底下去
-            FixIntVector3 newPos = new FixIntVector3(LogicPos.x, newPosY, LogicPos.z);  
-            // Debug.LogError($"{Time.frameCount} 复制浮空位置数值");
+            FixIntVector3 newPos = new FixIntVector3(LogicPos.x, newPosY, LogicPos.z);
             // 落地
             if (newPos.y <= 0) {
                 isAddForce = false;
                 State_TriggerGrounding();
-                // var allFloatingTime = Time.realtimeSinceStartup - _StartFloatingTime;
-                // Debug.LogError($"浮空总时间:{allFloatingTime} 误差:{allFloatingTime / _risingTimeS}");
             }
             else {
                 // 上升阶段
@@ -55,8 +52,9 @@ public partial class LogicActor {
                     State_Floating(false);
                 }
             }
-
-            LogicPos = newPos;
+            if (!IsIgnoreGravity) {
+                LogicPos = newPos;
+            }
         }
     }
 

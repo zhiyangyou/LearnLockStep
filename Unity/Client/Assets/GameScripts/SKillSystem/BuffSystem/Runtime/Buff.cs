@@ -189,6 +189,9 @@ public class Buff {
         else if (buffType == BuffType.Grab) {
             _buffLogic = new Buff_Grab(this);
         }
+        else if (buffType == BuffType.IgnoreGravity) {
+            _buffLogic = new Buff_IgnoreGravity(this);
+        }
         else {
             Debug.LogError($"尚未实现的buff类型:{buffType}");
         }

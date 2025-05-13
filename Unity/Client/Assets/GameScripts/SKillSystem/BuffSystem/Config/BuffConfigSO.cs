@@ -167,4 +167,5 @@ public enum BuffType {
     [LabelText("硬直")] Stiff, // 硬直
     [LabelText("群体血量修改")] HP_Modify, // 群体血量修改 
     [LabelText("抓取")] Grab, // 群体血量修改 
+    [LabelText("无视重力")] IgnoreGravity, // 群体血量修改 
 }
