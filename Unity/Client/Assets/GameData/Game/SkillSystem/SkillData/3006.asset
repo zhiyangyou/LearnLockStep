@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   configCharacter:
     sKillCharacterPrefab: {fileID: 1655574422363594, guid: 6e03e17984fcffe4792b9533f4280fb2, type: 3}
-    skillAnim: {fileID: 7400000, guid: 56b152bd267baa143a2bb8510fdfe505, type: 2}
+    skillAnim: {fileID: 7400000, guid: b3d7dd53f8cbe104581c6410aff2b1ae, type: 2}
     animProgress: 100
     isLoopAnim: 1
     animLoopCount: 7
@@ -24,7 +24,7 @@ MonoBehaviour:
     animLength: 0.19999999
     skillDurationMS: 199
   skillCfg:
-    skillIcon: {fileID: 21300000, guid: 2a572c9e25b7c6a45b263c3a9f82213c, type: 3}
+    skillIcon: {fileID: 21300000, guid: d3919ace84d1a5c4181467ee9202ef16, type: 3}
     skillID: 3006
     skillName: "\u52A0\u7279\u6797-2\u6BB5-\u5C04\u51FB"
     needMagicValue: 100
@@ -44,109 +44,7 @@ MonoBehaviour:
     skillPortraitObj: {fileID: 0}
     skillDes: 
   damageCfgList: []
-  effectCfgList:
-  - skillEffect: {fileID: 132250, guid: 2d88c740571350c44bc6cb02b6728d63, type: 3}
-    triggerFrame: 7
-    endFrame: 21
-    effectOffsetPos: {x: 0, y: 0, z: 0}
-    effectPosType: 5
-    isSetTransParent: 1
-    TransParentType: 2
-    IsAttachDamage: 0
-    SkillConfigDamage:
-      triggerFrame: 0
-      endFrame: 0
-      triggerIntervalMs: 0
-      isFollowEffect: 0
-      damageType: 0
-      damageRate: 0
-      DetectionMode: 0
-      boxSize: {x: 1, y: 1, z: 1}
-      boxOffset: {x: 0, y: 0, z: 0}
-      sphereOffset: {x: 0, y: 0.9, z: 0}
-      radius: 1
-      radiusHeight: 0
-      ColliderPosType: 0
-      TargetType: 0
-      addBuffs: 
-      triggerSkillId: 0
-    IsAttachAction: 0
-    SkillConfigAction:
-      triggerFrame: 0
-      moveActionType: 0
-      heightPos: {x: 0, y: 0, z: 0}
-      movePos: {x: 0, y: 0, z: 0}
-      durationMS: 0
-      moveActionFinishOpation: 0
-      actionFinishIDList: 
-  - skillEffect: {fileID: 1873701971916060, guid: f383e52a7eba25a498278dedda3e47fd, type: 3}
-    triggerFrame: 1
-    endFrame: 21
-    effectOffsetPos: {x: 0, y: 0, z: 0}
-    effectPosType: 5
-    isSetTransParent: 1
-    TransParentType: 2
-    IsAttachDamage: 0
-    SkillConfigDamage:
-      triggerFrame: 0
-      endFrame: 0
-      triggerIntervalMs: 0
-      isFollowEffect: 0
-      damageType: 0
-      damageRate: 0
-      DetectionMode: 0
-      boxSize: {x: 1, y: 1, z: 1}
-      boxOffset: {x: 0, y: 0, z: 0}
-      sphereOffset: {x: 0, y: 0.9, z: 0}
-      radius: 1
-      radiusHeight: 0
-      ColliderPosType: 0
-      TargetType: 0
-      addBuffs: 
-      triggerSkillId: 0
-    IsAttachAction: 0
-    SkillConfigAction:
-      triggerFrame: 0
-      moveActionType: 0
-      heightPos: {x: 0, y: 0, z: 0}
-      movePos: {x: 0, y: 0, z: 0}
-      durationMS: 0
-      moveActionFinishOpation: 0
-      actionFinishIDList: 
-  - skillEffect: {fileID: 1982240369692290, guid: 652cf840c2b739847ab309b7e4079bf1, type: 3}
-    triggerFrame: 1
-    endFrame: 21
-    effectOffsetPos: {x: 0, y: 0, z: 0}
-    effectPosType: 5
-    isSetTransParent: 1
-    TransParentType: 2
-    IsAttachDamage: 0
-    SkillConfigDamage:
-      triggerFrame: 0
-      endFrame: 0
-      triggerIntervalMs: 0
-      isFollowEffect: 0
-      damageType: 0
-      damageRate: 0
-      DetectionMode: 0
-      boxSize: {x: 1, y: 1, z: 1}
-      boxOffset: {x: 0, y: 0, z: 0}
-      sphereOffset: {x: 0, y: 0.9, z: 0}
-      radius: 1
-      radiusHeight: 0
-      ColliderPosType: 0
-      TargetType: 0
-      addBuffs: 
-      triggerSkillId: 0
-    IsAttachAction: 0
-    SkillConfigAction:
-      triggerFrame: 0
-      moveActionType: 0
-      heightPos: {x: 0, y: 0, z: 0}
-      movePos: {x: 0, y: 0, z: 0}
-      durationMS: 0
-      moveActionFinishOpation: 0
-      actionFinishIDList: 
+  effectCfgList: []
   audioList:
   - skillAudio: {fileID: 8300000, guid: 78a0483d95e82f94a9710c53aef51749, type: 3}
     audioName: Gunman_gelinjq_jiashe
