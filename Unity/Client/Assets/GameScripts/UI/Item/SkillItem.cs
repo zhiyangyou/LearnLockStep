@@ -128,7 +128,7 @@ public class SkillItem : MonoBehaviour {
                 break;
             case SKillGuideType.Position: {
                 skillPos.y = 0; // 确保引导的位置在地面上
-                _skillCreater.ReleaseSkill(skillId, null, _skillCreater.LogicPos + new FixIntVector3(skillPos));
+                _skillCreater.ReleaseSkill(skillId, OnReleaseSkillResult, _skillCreater.LogicPos + new FixIntVector3(skillPos));
                 // Debug.LogError("TODO 引导位置技能 释放");
                 _heroRender.OnGuideRelease();
             }
