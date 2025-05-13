@@ -32,11 +32,6 @@ public class BuffRender : RenderObject {
         _heroRender = buffReleaser.RenderObject as HeroRender;
         _buffReleaser = buffReleaser;
         _buffAttachTarget = buffAttachTarget;
-        // 音效
-        if (buffConfigSo.audioClip != null) {
-            AudioController.GetInstance().PlaySoundByAudioClip(buffConfigSo.audioClip, false, AudioPriorityConfig.Buff_AudioClip);
-        }
-
         // 特效位置
         var attachPosType = buffConfigSo.effectConfig.effectAttachPosType;
         if (attachPosType == BuffEffectAttachPosType.Hand) {
@@ -46,7 +41,6 @@ public class BuffRender : RenderObject {
             transform.rotation = Quaternion.identity;
         }
         else {
-            Debug.LogError($"buffConfigSo.posType:{buffConfigSo.posType}");
             switch (buffConfigSo.posType) {
                 case BuffPosType.ReleaserPos:
                     transform.position = _buffReleaser.LogicPos.ToVector3();

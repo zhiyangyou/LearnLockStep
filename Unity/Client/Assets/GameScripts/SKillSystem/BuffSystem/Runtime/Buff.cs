@@ -76,8 +76,7 @@ public class Buff {
         var soAssetPath = $"{AssetsPathConfig.Buff_Data_Path}/{buffID}.asset";
         BuffConfigSo = ZMAsset.LoadScriptableObject<BuffConfigSO>(soAssetPath);
         CompositeBuffImpl();
-        CreateBuffEffect();
-        _buffRender.InitBuffRender(releaser, attachTarget, BuffConfigSo, skill.skillGuidePos);
+
         buffState = BuffConfigSo.IsDelayBuff ? BuffState.Delay : BuffState.Start;
         _curLeftDelayMS = BuffConfigSo.delayMS;
         _curRealRuntime = 0;
@@ -136,8 +135,15 @@ public class Buff {
     #region private
 
     private void Buff_Start() {
+        CreateBuffEffect();
+        _buffRender.InitBuffRender(releaser, attachTarget, BuffConfigSo, skill.skillGuidePos);
         _buffLogic.BuffStart();
         attachTarget.AddBuff(this);
+        
+        // 播放音效
+        if (BuffConfigSo.audioClip != null) {
+            AudioController.GetInstance().PlaySoundByAudioClip(BuffConfigSo.audioClip, false, AudioPriorityConfig.Buff_AudioClip);
+        }
     }
 
     private void Buff_Trigger() {
@@ -160,10 +166,7 @@ public class Buff {
                 break;
         }
 
-        // 播放音效
-        if (BuffConfigSo.audioClip != null) {
-            AudioController.GetInstance().PlaySoundByAudioClip(BuffConfigSo.audioClip, false, AudioPriorityConfig.Buff_AudioClip);
-        }
+ 
     }
 
     /// <summary>

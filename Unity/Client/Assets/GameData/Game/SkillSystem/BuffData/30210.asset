@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e07ab935e9f40d39401d89a7158838c, type: 3}
-  m_Name: 121
+  m_Name: 30210
   m_EditorClassIdentifier: 
   Icon: {fileID: 0}
-  id: 121
-  name: "\u91CF\u5B50\u7206\u5F39-\u4F24\u5BB3buff"
-  delayMS: 0
+  id: 30210
+  name: "\u91CF\u5B50\u7206\u5F39-\u4F24\u5BB3buff-1\u6BB5"
+  delayMS: 1000
   intervalMS: 300
   DurationMS: 900
   buffType: 4
@@ -29,7 +29,7 @@ MonoBehaviour:
   targetGrabData:
     GrabMovePos: {x: 0, y: 0, z: 0}
     GrabMoveTimeMS: 0
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 675370802f743f14aa313e20bae41f68, type: 3}
   effectConfig:
     GoEffect: {fileID: 1111494322501242, guid: 97557f3af91212e40b1589fe78919aa0, type: 3}
     posType: 2
