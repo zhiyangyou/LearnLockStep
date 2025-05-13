@@ -166,4 +166,5 @@ public enum BuffType {
     [LabelText("浮空")] Floating, // 浮空
     [LabelText("硬直")] Stiff, // 硬直
     [LabelText("群体血量修改")] HP_Modify, // 群体血量修改 
+    [LabelText("抓取")] Grab, // 群体血量修改 
 }

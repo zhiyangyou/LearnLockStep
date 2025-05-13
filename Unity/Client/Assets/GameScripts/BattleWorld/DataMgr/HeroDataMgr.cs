@@ -40,6 +40,7 @@ namespace ZMGC.Battle {
                 HeroIDConfig.HeroID_神枪手, new int[] {
                     3015,
                     3005,
+                    3007,
                     3021,
                     3022,
                 }

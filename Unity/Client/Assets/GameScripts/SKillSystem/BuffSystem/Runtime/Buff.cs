@@ -186,6 +186,9 @@ public class Buff {
         else if (buffType == BuffType.HP_Modify) {
             _buffLogic = new Buff_ModifyAttribute(this);
         }
+        else if (buffType == BuffType.Grab) {
+            _buffLogic = new Buff_Grab(this);
+        }
         else {
             Debug.LogError($"尚未实现的buff类型:{buffType}");
         }
