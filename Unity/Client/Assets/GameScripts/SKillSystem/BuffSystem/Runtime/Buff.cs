@@ -50,6 +50,7 @@ public class Buff {
     private int _curLeftDelayMS = 0; // 当前剩余延迟时间
 
     private BuffComposite _buffLogic; // buff逻辑 (组合的对象)
+    private BuffRender _buffRender; // buffRender 
 
     private int _curRealRuntime = 0; // 当前真实运行时间
     private int _curAccRuntime = 0; // 当前累积运行时间
@@ -75,6 +76,8 @@ public class Buff {
         var soAssetPath = $"{AssetsPathConfig.Buff_Data_Path}/{buffID}.asset";
         BuffConfigSo = ZMAsset.LoadScriptableObject<BuffConfigSO>(soAssetPath);
         CompositeBuffImpl();
+        CreateBuffEffect();
+        _buffRender.InitBuffRender(releaser, attachTarget, BuffConfigSo, skill.skillGuidePos);
         buffState = BuffConfigSo.IsDelayBuff ? BuffState.Delay : BuffState.Start;
         _curLeftDelayMS = BuffConfigSo.delayMS;
         _curRealRuntime = 0;
@@ -122,6 +125,7 @@ public class Buff {
 
 
     public void OnDestory() {
+        _buffRender.OnRelease();
         _buffLogic.BuffEnd();
         BuffSystem.Instance.RemoveBuff(this); // 这个写法不是很合理
         attachTarget.RemoveBuff(this);
@@ -203,6 +207,19 @@ public class Buff {
         if (_curAccRuntime >= BuffConfigSo.DurationMS) {
             buffState = BuffState.End;
         }
+    }
+
+    private BuffRender CreateBuffEffect() {
+        // 读取配置, 生成特效
+        if (BuffConfigSo.effectConfig != null && BuffConfigSo.effectConfig.GoEffect != null) {
+            var goBuffEffect = GameObject.Instantiate(BuffConfigSo.effectConfig.GoEffect);
+            _buffRender = goBuffEffect.GetComponent<BuffRender>();
+            if (_buffRender == null) {
+                _buffRender = goBuffEffect.AddComponent<BuffRender>();
+            }
+            return _buffRender;
+        }
+        return null;
     }
 
     #endregion
