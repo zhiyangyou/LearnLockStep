@@ -11,7 +11,7 @@ public class SkillBulletLogic : LogicObject {
     private LogicActor _fireLogicActor;
     private SkillConfig_Bullet _bulletConfig;
     private ColliderBehaviour _bulletCollider;
-     
+
 
     private int _curLogicFrame = 0;
     private int _curLogicFrameAccTime = 0;
@@ -29,7 +29,7 @@ public class SkillBulletLogic : LogicObject {
         RenderObject selfRenderObj,
         SkillConfig_Bullet bulletConfig,
         FixIntVector3 rangePos
-        ) {
+    ) {
         // 字段初始化
         _skill = skill;
         _fireLogicActor = fireLogicActor;
@@ -39,13 +39,13 @@ public class SkillBulletLogic : LogicObject {
 
         // 位置更新
         LogicAxis_X = _fireLogicActor.LogicAxis_X;
-        LogicDir = new FixIntVector3(LogicAxis_X,0,0);
+        LogicDir = new FixIntVector3(LogicAxis_X, 0, 0) + new FixIntVector3(bulletConfig.dirOffset);
 
         FixIntVector3 genPos = LogicAxis_X * (new FixIntVector3(_bulletConfig.offset) + rangePos);
         genPos.y = FixIntMath.Abs(genPos.y);
         LogicPos = _fireLogicActor.LogicPos + genPos;
-      
-        LogicAngle = new FixIntVector3(_bulletConfig.angle);
+
+        LogicAngle = new FixIntVector3(_bulletConfig.angle) * LogicAxis_X;
 
         // 伤害
         if (_bulletConfig.isAttachDamage) {
@@ -77,7 +77,7 @@ public class SkillBulletLogic : LogicObject {
         // 触发伤害
         foreach (LogicActor hitTarget in _hitTargetList) {
             hitTarget.BulletDamage(2222, damageConfig);
-            hitTarget.OnHit(_bulletConfig.hitEffect, _bulletConfig.hitEffectSurvialTimeMS, this );
+            hitTarget.OnHit(_bulletConfig.hitEffect, _bulletConfig.hitEffectSurvialTimeMS, this);
             if (_bulletConfig.hitAudio != null) {
                 AudioController.GetInstance().PlaySoundByAudioClip(_bulletConfig.hitAudio, false, AudioPriorityConfig.Bullet_AudioClip);
             }
