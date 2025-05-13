@@ -46,15 +46,16 @@ public class BuffRender : RenderObject {
             transform.rotation = Quaternion.identity;
         }
         else {
+            Debug.LogError($"buffConfigSo.posType:{buffConfigSo.posType}");
             switch (buffConfigSo.posType) {
-                case BuffPosType.HitTargetPos:
-                    transform.position = buffAttachTarget.LogicPos.ToVector3();
+                case BuffPosType.ReleaserPos:
+                    transform.position = _buffReleaser.LogicPos.ToVector3();
+                    break;
+                case BuffPosType.FollowTarget:
+                    transform.position = _buffAttachTarget.LogicPos.ToVector3();
                     break;
                 case BuffPosType.UIInputPos:
                     transform.position = _buffInputPos.ToVector3();
-                    break;
-                case BuffPosType.FollowTarget:
-                    transform.position = _buffReleaser.LogicPos.ToVector3();
                     break;
                 case BuffPosType.None:
                 default:
@@ -69,9 +70,10 @@ public class BuffRender : RenderObject {
 
 
     protected override void Update() {
-        base.Update();
+        // base.Update();
         if (_buffConfig != null
             && _buffConfig.posType == BuffPosType.FollowTarget) {
+            // Debug.LogError("跟随位置...");
             transform.position = _buffAttachTarget.RenderObject.transform.position;
         }
     }

@@ -31,8 +31,8 @@ MonoBehaviour:
     GrabMoveTimeMS: 0
   audioClip: {fileID: 0}
   effectConfig:
-    GoEffect: {fileID: 0}
-    posType: 0
+    GoEffect: {fileID: 1111494322501242, guid: 97557f3af91212e40b1589fe78919aa0, type: 3}
+    posType: 2
     effectAttachPosType: 0
   goBuffHitEffect: {fileID: 0}
   buffTriggerAnim: 0

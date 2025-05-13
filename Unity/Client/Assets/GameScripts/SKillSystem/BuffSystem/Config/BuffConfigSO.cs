@@ -142,8 +142,8 @@ public enum BuffDamageType {
 public enum BuffPosType {
     [LabelText("无配置")] None,
     [LabelText("跟随目标")] FollowTarget,
-    [LabelText("技能击中的位置")] HitTargetPos,
     [LabelText("摇杆输入位置")] UIInputPos,
+    [LabelText("施法者位置")] ReleaserPos,
 }
 
 [LabelText("Buff附加类型")]

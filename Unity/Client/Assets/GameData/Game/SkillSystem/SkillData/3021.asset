@@ -76,7 +76,7 @@ MonoBehaviour:
       moveActionType: 1
       heightPos: {x: 0, y: 0, z: 0}
       movePos: {x: 0, y: 0, z: 0}
-      durationMS: 2000
+      durationMS: 600
       moveActionFinishOpation: 2
       actionFinishIDList: 79000000
   audioList:
