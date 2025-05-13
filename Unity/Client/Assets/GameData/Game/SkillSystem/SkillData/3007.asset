@@ -58,7 +58,7 @@ MonoBehaviour:
     radiusHeight: 0
     ColliderPosType: 0
     TargetType: 2
-    addBuffs: 76750000
+    addBuffs: 767500007775000078750000
     triggerSkillId: 3008
   effectCfgList: []
   audioList:

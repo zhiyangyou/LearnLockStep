@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e07ab935e9f40d39401d89a7158838c, type: 3}
-  m_Name: 30070
+  m_Name: 30072
   m_EditorClassIdentifier: 
   Icon: {fileID: 0}
-  id: 30070
-  name: "BBQ\u6293\u53D6"
-  delayMS: 0
+  id: 30072
+  name: "BBQ\u6280\u80FD-\u65E0\u89C6\u91CD\u529B"
+  delayMS: 900
   intervalMS: 0
-  DurationMS: 0
-  buffType: 5
+  DurationMS: 1000
+  buffType: 6
   attachType: 2
   posType: 0
   damageType: 0
   damageRate: 0
   paramsList: []
   targetGrabData:
-    GrabMovePos: {x: 3, y: 3, z: 0}
-    GrabMoveTimeMS: 300
+    GrabMovePos: {x: 0, y: 0, z: 0}
+    GrabMoveTimeMS: 0
   audioClip: {fileID: 0}
   effectConfig:
     GoEffect: {fileID: 0}

@@ -13,17 +13,19 @@ MonoBehaviour:
   m_Name: 30071
   m_EditorClassIdentifier: 
   Icon: {fileID: 0}
-  id: 0
-  name: 
+  id: 30071
+  name: "BBQ\u6D6E\u7A7A"
   delayMS: 0
   intervalMS: 0
-  DurationMS: 0
-  buffType: 0
-  attachType: 0
+  DurationMS: 1666
+  buffType: 2
+  attachType: 2
   posType: 0
   damageType: 0
   damageRate: 0
-  paramsList: []
+  paramsList:
+  - Value: 3
+    Desc: "\u91CD\u529B"
   targetGrabData:
     GrabMovePos: {x: 0, y: 0, z: 0}
     GrabMoveTimeMS: 0
