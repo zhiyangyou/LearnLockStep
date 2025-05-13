@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using FixMath;
 using UnityEngine;
@@ -7,7 +8,7 @@ using ZM.ZMAsset;
 
 public delegate void SkillCallback_OnAfter(Skill skill);
 
-public delegate void SkillCallback_OnEnd(Skill skill, bool isCombineSkill);
+public delegate void SkillCallback_OnEnd(Skill skill);
 
 
 public enum SkillState {
@@ -37,16 +38,23 @@ public partial class Skill {
     private LogicActor _skillCreater;
 
     // 配置数据
-    private SkillConfigSO _skillConfig;
+    private SkillConfigSO _skillConfigSo;
 
     public SkillState skillState { get; private set; } = SkillState.None;
 
-    public SkillConfig SkillCfgConfig => _skillConfig.skillCfg;
+    public SkillConfig SkillCfgConfig => _skillConfigSo.skillCfg;
+
+    public List<SkillConfig_Damage> SkillConfigDamages => _skillConfigSo.damageCfgList;
 
     // 当前逻辑帧
     private int _curLogicFrame = 0;
 
     private int _curLogicFrameAccTimeMS = 0;
+
+    /// <summary>
+    /// 预释放ID
+    /// </summary>
+    private int _combinationSkillID = 0;
 
     public FixIntVector3 skillGuidePos { get; private set; } = FixIntVector3.zero;
 
@@ -66,7 +74,8 @@ public partial class Skill {
         SkillID = skillId;
         _skillCreater = skillCreater;
         var configPath = $"{AssetsPathConfig.Skill_Data_Path}/{skillId}.asset";
-        _skillConfig = ZMAsset.LoadScriptableObject<SkillConfigSO>(configPath);
+        _skillConfigSo = ZMAsset.LoadScriptableObject<SkillConfigSO>(configPath);
+        CheckNextIDMutex();
     }
 
     /// <summary>
@@ -90,7 +99,7 @@ public partial class Skill {
     /// </summary>
     public void PlayAni() {
         // 播放角色动画
-        _skillCreater.PlayAnim(_skillConfig.configCharacter.skillAnim);
+        _skillCreater.PlayAnim(_skillConfigSo.configCharacter.skillAnim);
     }
 
     /// <summary>
@@ -99,9 +108,10 @@ public partial class Skill {
     public void SkillStart() {
         // 初始化技能数据
         _isAutoMatchStockStage = false;
+        _combinationSkillID = _skillConfigSo.skillCfg.CombinationSkillId;
         InitTimer();
-        if (_skillConfig.configCharacter.isSetCustomLogicFrame && _skillConfig.configCharacter.customLogicFrame != 0) {
-            _skillConfig.configCharacter.logicFrame = _skillConfig.configCharacter.customLogicFrame;
+        if (_skillConfigSo.configCharacter.isSetCustomLogicFrame && _skillConfigSo.configCharacter.customLogicFrame != 0) {
+            _skillConfigSo.configCharacter.logicFrame = _skillConfigSo.configCharacter.customLogicFrame;
         }
 
         OnBulletInit();
@@ -120,11 +130,12 @@ public partial class Skill {
     /// </summary>
     public void SkillEnd() {
         skillState = SkillState.End;
-        this.SkillCallbackOnEnd?.Invoke(this, _skillConfig.skillCfg.HasCombineSkill); // TODO 暂且都是false 2025年4月26日18:10:48 
+        this.SkillCallbackOnEnd?.Invoke(this);
         ReleaseAllEffect();
         // 组合技能
-        if (_skillConfig.skillCfg.HasCombineSkill) {
-            _skillCreater.ReleaseSkill(_skillConfig.skillCfg.CombinationSkillId, null);
+
+        if (_combinationSkillID != 0) {
+            _skillCreater.ReleaseSkill(_combinationSkillID, null);
         }
         InitTimer();
         OnBulletRelease();
@@ -144,8 +155,8 @@ public partial class Skill {
 
         // 尝试进入技能后摇
         if (skillState == SkillState.Before
-            && _curLogicFrameAccTimeMS >= _skillConfig.skillCfg.skillShakeBeforeTimeMs
-            && _skillConfig.skillCfg.SkillType != SkillType.StockPile // 蓄力技能没有后摇
+            && _curLogicFrameAccTimeMS >= _skillConfigSo.skillCfg.skillShakeBeforeTimeMs
+            && _skillConfigSo.skillCfg.SkillType != SkillType.StockPile // 蓄力技能没有后摇
            ) {
             SkillAfter();
         }
@@ -168,14 +179,14 @@ public partial class Skill {
         OnLogicFrameUpdate_Buttle();
 
         // 蓄力技能, 和蓄力时间相关, 所以和蓄力结束帧无关
-        if (_skillConfig.skillCfg.SkillType == SkillType.StockPile) {
-            var stockPileDataCount = _skillConfig.skillCfg.stockPIleStageDatas.Count;
+        if (_skillConfigSo.skillCfg.SkillType == SkillType.StockPile) {
+            var stockPileDataCount = _skillConfigSo.skillCfg.stockPIleStageDatas.Count;
             if (stockPileDataCount > 0) {
                 // Debug.LogError($"_isAutoMatchStockStage:{_isAutoMatchStockStage}");
                 // 1. 情况: 按下立马抬起
                 if (_isAutoMatchStockStage) {
                     var matchSuccess = false;
-                    foreach (var stockData in _skillConfig.skillCfg.stockPIleStageDatas) {
+                    foreach (var stockData in _skillConfigSo.skillCfg.stockPIleStageDatas) {
                         if (_curLogicFrameAccTimeMS >= stockData.startTimeMs
                             && _curLogicFrameAccTimeMS <= stockData.endTimeMs
                            ) {
@@ -185,7 +196,7 @@ public partial class Skill {
                     }
                     if (!matchSuccess) {
                         // Debug.LogError($"触发最后一个  没有匹配成功的时间 {_curLogicFrameAccTimeMS}");
-                        StockPileFinish(_skillConfig.skillCfg.stockPIleStageDatas.Last());
+                        StockPileFinish(_skillConfigSo.skillCfg.stockPIleStageDatas.Last());
                     }
                 }
                 // else {
@@ -202,7 +213,7 @@ public partial class Skill {
         else {
             // 非蓄力技能
 
-            if (_curLogicFrame == _skillConfig.configCharacter.logicFrame) {
+            if (_curLogicFrame == _skillConfigSo.configCharacter.logicFrame) {
                 SkillEnd();
             }
         }
@@ -216,7 +227,7 @@ public partial class Skill {
     /// </summary>
     public void TriggerStockPileSkill() {
         // 蓄力时间符合某个阶段, 直接触发
-        foreach (StockPileStageData stageData in _skillConfig.skillCfg.stockPIleStageDatas) {
+        foreach (StockPileStageData stageData in _skillConfigSo.skillCfg.stockPIleStageDatas) {
             if (_curLogicFrameAccTimeMS >= stageData.startTimeMs && _curLogicFrameAccTimeMS <= stageData.endTimeMs) {
                 StockPileFinish(stageData);
                 // Debug.LogError($"{stageData.skillId} _curLogicFrameAccTimeMS:{_curLogicFrameAccTimeMS} {stageData.startTimeMs} {stageData.endTimeMs}");
@@ -232,6 +243,25 @@ public partial class Skill {
     #endregion
 
     #region private
+
+    /// <summary>
+    /// 检查下个触发技能互斥逻辑
+    /// </summary>
+    private void CheckNextIDMutex() {
+        bool hasConbineSkillID = _skillConfigSo.skillCfg.CombinationSkillId != 0;
+        bool hasDamageTriggerID = false;
+        int damageTriggerSkillID = 0;
+        foreach (var damageConfig in _skillConfigSo.damageCfgList) {
+            if (damageConfig.triggerSkillId != 0) {
+                damageTriggerSkillID = damageConfig.triggerSkillId;
+                hasDamageTriggerID = true;
+                break;
+            }
+        }
+        if (hasConbineSkillID && hasDamageTriggerID) {
+            Debug.LogError($"该技能存在两个互斥的组合技 CombinationSkillId:{_skillConfigSo.skillCfg.CombinationSkillId} 伤害配置也存在后续触发技能:{damageTriggerSkillID}");
+        }
+    }
 
     private void InitTimer() {
         _curLogicFrame = 0;

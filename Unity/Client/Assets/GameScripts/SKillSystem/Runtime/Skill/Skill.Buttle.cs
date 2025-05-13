@@ -22,7 +22,7 @@ public partial class Skill {
 
     private void OnBulletInit() {
         _listCurCreateBulletAccTimeMS.Clear();
-        var listBulletConfig = _skillConfig.bulletList;
+        var listBulletConfig = _skillConfigSo.bulletList;
         if (listBulletConfig != null && listBulletConfig.Count > 0) {
             for (int i = 0; i < listBulletConfig.Count; i++) {
                 _listCurCreateBulletAccTimeMS.Add(0);
@@ -32,7 +32,7 @@ public partial class Skill {
     }
 
     private void OnLogicFrameUpdate_Buttle() {
-        var listBulletConfig = _skillConfig.bulletList;
+        var listBulletConfig = _skillConfigSo.bulletList;
         if (listBulletConfig != null && listBulletConfig.Count > 0) {
             for (int i = 0; i < listBulletConfig.Count; i++) {
                 var bulletConfig = listBulletConfig[i];

@@ -37,17 +37,25 @@ public class SkillSystem {
     public void InitSkills(int[] arrSkillID) {
         foreach (var skillID in arrSkillID) {
             Skill skill = new Skill(skillID, _skillCreater);
-            if (skill.SkillCfgConfig.HasCombineSkill) {
+            if (skill.SkillCfgConfig.CombinationSkillId != 0) {
                 InitSkills(new int[1] { skill.SkillCfgConfig.CombinationSkillId });
             }
 
-            if (skill.SkillCfgConfig.SkillType == SkillType.StockPile && skill.SkillCfgConfig.stockPIleStageDatas.Count > 0) {
+            if (skill.SkillCfgConfig.SkillType == SkillType.StockPile
+                && skill.SkillCfgConfig.stockPIleStageDatas.Count > 0) {
                 foreach (var data in skill.SkillCfgConfig.stockPIleStageDatas) {
                     if (data.skillId > 0) {
                         InitSkills(new int[1] { data.skillId });
                     }
                 }
-                // InitSkills(skill.SkillCfgConfig.stockPIleStageDatas.Where(data => data.skillId > 0).Select(data => data.skillId).ToArray());
+            }
+            if (skill.SkillConfigDamages is { Count: > 0 }) {
+                foreach (var configDamage in skill.SkillConfigDamages) {
+                    var triggerSkillID = configDamage.triggerSkillId;
+                    if (triggerSkillID > 0) {
+                        InitSkills(new int[1] { triggerSkillID });
+                    }
+                }
             }
             _listSkills.Add(skill);
         }
@@ -92,11 +100,11 @@ public class SkillSystem {
                     (afterSkill) => {
                         onAfter(afterSkill);
                         curReleasingSkill = null;
-                    }, (skRelease, isCombineSkill) => {
-                        onEnd.Invoke(skRelease, isCombineSkill);
-                        if (!isCombineSkill) {
+                    }, (skRelease) => {
+                        onEnd.Invoke(skRelease);
+                        // if (!isCombineSkill) {
                             // TODO 根据技能组合的情况 处理组合逻辑
-                        }
+                        // }
                     });
                 curReleasingSkill = skill;
                 return skill;

@@ -76,7 +76,7 @@ public class SkillConfig {
     
 
     
-    public bool HasCombineSkill => CombinationSkillId > 0;
+    // public bool HasCombineSkill => CombinationSkillId > 0;
 
     public float CDTimeS => skillCDTimeMS / 1000f;
     

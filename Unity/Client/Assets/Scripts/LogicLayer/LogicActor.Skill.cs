@@ -71,8 +71,8 @@ public partial class LogicActor {
 
     public void ReleaseSkill(int skillID, Action<bool> onReleaseSkillResult, FixIntVector3 guidePos = default(FixIntVector3)) {
         var releasingSkill = _skillSystem.ReleaseSkill(skillID, guidePos,
-            SkillCallback_OnAfter, (skill, combineSkill) => {
-                SkillCallback_OnEnd(skill, combineSkill);
+            SkillCallback_OnAfter, (skill) => {
+                SkillCallback_OnEnd(skill);
                 if (skill.SkillCfgConfig.SkillType == SkillType.StockPile) {
                     onReleaseSkillResult?.Invoke(true);
                 }
@@ -145,7 +145,7 @@ public partial class LogicActor {
     /// </summary>
     /// <param name="sk"></param>
     /// <param name="isCombineSkill"></param>
-    private void SkillCallback_OnEnd(Skill sk, bool isCombineSkill) {
+    private void SkillCallback_OnEnd(Skill sk) {
         if (_listReleasingSkills != null && _listReleasingSkills.Count == 0) {
             curNormalComboIndex = 0; // 重置普攻combo: 技能释放 End阶段
         }

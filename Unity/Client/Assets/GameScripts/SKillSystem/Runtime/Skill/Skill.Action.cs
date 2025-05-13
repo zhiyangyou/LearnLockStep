@@ -4,7 +4,7 @@ using UnityEngine;
 
 public partial class Skill {
     public void OnLogicFrameUpdate_Action() {
-        var actionList = _skillConfig.actionList;
+        var actionList = _skillConfigSo.actionList;
         if (actionList != null && actionList.Count > 0) {
             foreach (SkillConfig_Action actionConfig in actionList) {
                 if (actionConfig.triggerFrame == _curLogicFrame) {

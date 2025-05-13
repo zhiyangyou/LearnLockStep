@@ -36,9 +36,9 @@ public partial class Skill {
     ///  
     /// </summary>
     public void OnLogicFrameUpdate_Damage() {
-        if (_skillConfig.damageCfgList != null
-            && _skillConfig.damageCfgList.Count > 0) {
-            foreach (SkillConfig_Damage damageConfig in _skillConfig.damageCfgList) {
+        if (_skillConfigSo.damageCfgList != null
+            && _skillConfigSo.damageCfgList.Count > 0) {
+            foreach (SkillConfig_Damage damageConfig in _skillConfigSo.damageCfgList) {
                 var configHashCode = damageConfig.GetHashCode();
 
                 // 如果需要变更位置的碰撞盒类型,那么更新碰撞体位置
@@ -111,8 +111,8 @@ public partial class Skill {
     }
 
     public void AddHitEffect(LogicActor target) {
-        if (_skillConfig.skillCfg.skillHitEffect != null) {
-            target.OnHit(_skillConfig.skillCfg.skillHitEffect, _skillConfig.skillCfg.hitEffectSurvialTimeMs, _skillCreater);
+        if (_skillConfigSo.skillCfg.skillHitEffect != null) {
+            target.OnHit(_skillConfigSo.skillCfg.skillHitEffect, _skillConfigSo.skillCfg.hitEffectSurvialTimeMs, _skillCreater);
         }
     }
 
@@ -155,6 +155,12 @@ public partial class Skill {
                 foreach (var buffID in configDamage.addBuffs) {
                     BuffSystem.Instance.AttachBuff(buffID, _skillCreater, damageTargetActor, this, null);
                 }
+            }
+
+            // 触发后续技能
+            if (configDamage.triggerSkillId != 0) {
+                // 预先释放
+                _combinationSkillID = configDamage.triggerSkillId;
             }
 
             // 播放击中音效
