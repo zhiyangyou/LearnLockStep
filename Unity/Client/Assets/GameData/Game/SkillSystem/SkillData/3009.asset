@@ -117,7 +117,7 @@ MonoBehaviour:
       sphereOffset: {x: 0, y: 0.9, z: 0}
       radius: 1
       radiusHeight: 0
-      ColliderPosType: 0
+      ColliderPosType: 1
       TargetType: 2
       addBuffs: 
       triggerSkillId: 0

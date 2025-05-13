@@ -39,7 +39,7 @@ public partial class Skill {
                 _listCurCreateBulletAccTimeMS[i] += LogicFrameConfig.LogicFrameIntervalMS;
                 if (bulletConfig.triggerFrame == _curLogicFrame) {
                     // 创建子弹
-                    CreateButtle(bulletConfig);
+                    CreateBullet(bulletConfig);
                 }
                 if (bulletConfig.isLoopCreate) {
                     if (bulletConfig.loopIntervalMS <= 0) {
@@ -47,7 +47,7 @@ public partial class Skill {
                         continue;
                     }
                     while (_listCurCreateBulletAccTimeMS[i] >= bulletConfig.loopIntervalMS) {
-                        CreateButtle(bulletConfig);
+                        CreateBullet(bulletConfig);
                         _listCurCreateBulletAccTimeMS[i] -= bulletConfig.loopIntervalMS;
                     }
                 }
@@ -55,7 +55,7 @@ public partial class Skill {
         }
     }
 
-    private void CreateButtle(SkillConfig_Bullet bulletConfig) {
+    private void CreateBullet(SkillConfig_Bullet bulletConfig) {
         // TODO 对象池? 资源框架的资源池管理
         var goBullet = GameObject.Instantiate(bulletConfig.goBulletPrefab);
 
