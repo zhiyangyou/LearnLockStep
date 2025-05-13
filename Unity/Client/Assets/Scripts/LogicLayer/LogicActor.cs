@@ -23,6 +23,11 @@ public partial class LogicActor : LogicObject {
         CaculateDamage(hp, DamageSource.Skill);
     }
 
+    public virtual void BuffDamage(FixInt hp, SkillConfig_Damage configDamage) {
+        Debug.LogError($"buffDamage, hp:{hp}");
+        CaculateDamage(hp, DamageSource.Buff);
+    }
+
     public virtual void BulletDamage(FixInt hp, SkillConfig_Damage configDamage) {
         CaculateDamage(hp, DamageSource.Bullet);
         Debug.LogError($"BulletDamage, hp:{hp}");

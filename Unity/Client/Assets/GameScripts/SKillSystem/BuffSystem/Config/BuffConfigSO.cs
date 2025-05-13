@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "Buff配置", menuName = "Buff配置", order = 0)]
 [Serializable]
@@ -164,4 +163,5 @@ public enum BuffType {
     [LabelText("击退")] Repel, // 击退
     [LabelText("浮空")] Floating, // 浮空
     [LabelText("硬直")] Stiff, // 硬直
+    [LabelText("群体血量修改")] HP_Modify, // 群体血量修改 
 }

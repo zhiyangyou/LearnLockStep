@@ -40,7 +40,7 @@ public class BuffCollider {
     }
 
 
-    public ColliderBehaviour CreateOrUpdateCollider(LogicObject followObj) {
+    public ColliderBehaviour CreateOrUpdateCollider() {
         if (_configDamage.DetectionMode == DamageDetectionMode.Box3D) {
             FixIntVector3 boxSize = new FixIntVector3(_configDamage.boxSize);
             FixIntVector3 offset = new FixIntVector3(_configDamage.boxOffset);
@@ -72,25 +72,25 @@ public class BuffCollider {
     /// <summary>
     /// 触发碰撞伤害检测
     /// </summary>
-    public List<LogicActor> CaculateColliderTargetObjs(ColliderBehaviour collider) {
+    public List<LogicActor> CaculateColliderTargetObjs() {
         // 1. 获取目标
         var enemyList = BattleWorld.GetExitsLogicCtrl<BattleLogicCtrl>().GetEnemyList(_buffReleaser.ObjectType);
 
         // 2.碰撞检测逻辑
         List<LogicActor> damageTargetList = new List<LogicActor>();
         foreach (LogicActor target in enemyList) {
-            if (collider.ColliderType == ColliderType.Box) {
-                if (PhysicsManager.IsCollision(collider as FixIntBoxCollider, target.FixIntBoxCollider)) {
+            if (_buffCollider.ColliderType == ColliderType.Box) {
+                if (PhysicsManager.IsCollision(_buffCollider as FixIntBoxCollider, target.FixIntBoxCollider)) {
                     damageTargetList.Add(target);
                 }
             }
-            else if (collider.ColliderType == ColliderType.Shpere) {
-                if (PhysicsManager.IsCollision(collider as FixIntSphereCollider, target.FixIntBoxCollider)) {
+            else if (_buffCollider.ColliderType == ColliderType.Shpere) {
+                if (PhysicsManager.IsCollision(_buffCollider as FixIntSphereCollider, target.FixIntBoxCollider)) {
                     damageTargetList.Add(target);
                 }
             }
             else {
-                Debug.LogError($"不支持{collider.ColliderType}类型的碰撞盒子 objectType:{target.ObjectType}");
+                Debug.LogError($"不支持{_buffCollider.ColliderType}类型的碰撞盒子 objectType:{target.ObjectType}");
             }
         }
 

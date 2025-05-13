@@ -77,8 +77,8 @@ MonoBehaviour:
       heightPos: {x: 0, y: 0, z: 0}
       movePos: {x: 0, y: 0, z: 0}
       durationMS: 2000
-      moveActionFinishOpation: 0
-      actionFinishIDList: 
+      moveActionFinishOpation: 2
+      actionFinishIDList: 79000000
   audioList:
   - skillAudio: {fileID: 8300000, guid: 3f674b82c4524d54dbfc190fd71f081f, type: 3}
     audioName: gunman_hh_liangzibd01

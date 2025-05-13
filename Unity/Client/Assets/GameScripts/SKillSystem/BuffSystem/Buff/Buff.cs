@@ -176,6 +176,9 @@ public class Buff {
         else if (buffType == BuffType.Stiff) {
             _buffLogic = new Buff_Stiff(this);
         }
+        else if (buffType == BuffType.HP_Modify) {
+            _buffLogic = new Buff_ModifyAttribute(this);
+        }
         else {
             Debug.LogError($"尚未实现的buff类型:{buffType}");
         }

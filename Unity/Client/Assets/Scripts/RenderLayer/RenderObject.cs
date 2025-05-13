@@ -70,7 +70,6 @@ public class RenderObject : MonoBehaviour {
         if (goEffect != null) {
             var createGoEffect = GameObject.Instantiate(goEffect);
             createGoEffect.transform.position = sourceObj.RenderObject.transform.position;
-            // goHitEffect.transform.position = sourceActor.RenderObject.transform.position;
             createGoEffect.transform.localScale = sourceObj.LogicAxis_X > 0 ? Vector3.one : new Vector3(-1, 1, 1);
             GameObject.Destroy(createGoEffect, survialTimeMS * 0.001f);
         }
