@@ -124,7 +124,7 @@ public class Buff {
 
 
     public void OnDestory() {
-        _buffRender.OnRelease();
+        _buffRender?.OnRelease();
         _buffLogic.BuffEnd();
         BuffSystem.Instance.RemoveBuff(this); // 这个写法不是很合理
         attachTarget.RemoveBuff(this);
@@ -136,10 +136,12 @@ public class Buff {
 
     private void Buff_Start() {
         CreateBuffEffect();
-        _buffRender.InitBuffRender(releaser, attachTarget, BuffConfigSo, skill.skillGuidePos);
+        if (BuffConfigSo.HasEffect) {
+            _buffRender.InitBuffRender(releaser, attachTarget, BuffConfigSo, skill.skillGuidePos);
+        }
         _buffLogic.BuffStart();
         attachTarget.AddBuff(this);
-        
+
         // 播放音效
         if (BuffConfigSo.audioClip != null) {
             AudioController.GetInstance().PlaySoundByAudioClip(BuffConfigSo.audioClip, false, AudioPriorityConfig.Buff_AudioClip);
@@ -165,8 +167,6 @@ public class Buff {
                 Debug.LogError($"尚未实现的buffTriggerAnim类型:{BuffConfigSo.buffTriggerAnim}");
                 break;
         }
-
- 
     }
 
     /// <summary>
@@ -214,7 +214,7 @@ public class Buff {
 
     private BuffRender CreateBuffEffect() {
         // 读取配置, 生成特效
-        if (BuffConfigSo.effectConfig != null && BuffConfigSo.effectConfig.GoEffect != null) {
+        if (BuffConfigSo.HasEffect) {
             var goBuffEffect = GameObject.Instantiate(BuffConfigSo.effectConfig.GoEffect);
             _buffRender = goBuffEffect.GetComponent<BuffRender>();
             if (_buffRender == null) {

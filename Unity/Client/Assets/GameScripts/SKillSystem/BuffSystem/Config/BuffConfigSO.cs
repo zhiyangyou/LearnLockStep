@@ -60,6 +60,8 @@ public class BuffConfigSO : ScriptableObject {
     /// </summary>
     public bool IsForeverBuff => DurationMS < 0;
 
+    public bool HasEffect => effectConfig != null && effectConfig.GoEffect != null;
+
     /// <summary>
     /// 是不是限时buff
     /// </summary>
