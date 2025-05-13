@@ -24,13 +24,13 @@ public partial class LogicActor : LogicObject {
     }
 
     public virtual void BuffDamage(FixInt hp, SkillConfig_Damage configDamage) {
-        Debug.LogError($"buffDamage, hp:{hp}");
+        // Debug.LogError($"buffDamage, hp:{hp}");
         CaculateDamage(hp, DamageSource.Buff);
     }
 
     public virtual void BulletDamage(FixInt hp, SkillConfig_Damage configDamage) {
         CaculateDamage(hp, DamageSource.Bullet);
-        Debug.LogError($"BulletDamage, hp:{hp}");
+        // Debug.LogError($"BulletDamage, hp:{hp}");
     }
 
     /// <summary>

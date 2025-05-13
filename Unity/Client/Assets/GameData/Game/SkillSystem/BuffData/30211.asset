@@ -29,7 +29,7 @@ MonoBehaviour:
   targetGrabData:
     GrabMovePos: {x: 0, y: 0, z: 0}
     GrabMoveTimeMS: 0
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 675370802f743f14aa313e20bae41f68, type: 3}
   effectConfig:
     GoEffect: {fileID: 1331792761227052, guid: 5ead298b6ede1b74dbe828abcf547c35, type: 3}
     posType: 2
@@ -54,6 +54,6 @@ MonoBehaviour:
       radiusHeight: 0
       ColliderPosType: 2
       TargetType: 2
-      addBuffs: 
+      addBuffs: 04760000
       triggerSkillId: 0
   Desc: 

@@ -10,34 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e07ab935e9f40d39401d89a7158838c, type: 3}
-  m_Name: 30210
+  m_Name: 30212
   m_EditorClassIdentifier: 
   Icon: {fileID: 0}
-  id: 30210
-  name: "\u91CF\u5B50\u7206\u5F39-\u4F24\u5BB3buff-1\u6BB5"
-  delayMS: 500
-  intervalMS: 300
-  DurationMS: 900
-  buffType: 4
-  attachType: 5
-  posType: 2
-  damageType: 1
-  damageRate: 1234
-  paramsList:
-  - Value: 11123
-    Desc: "\u6BCF\u6B21\u9020\u6210\u4F24\u5BB3"
+  id: 30212
+  name: "\u91CF\u5B50\u7206\u5F39-\u786C\u76F4"
+  delayMS: 0
+  intervalMS: 0
+  DurationMS: 500
+  buffType: 3
+  attachType: 2
+  posType: 0
+  damageType: 0
+  damageRate: 0
+  paramsList: []
   targetGrabData:
     GrabMovePos: {x: 0, y: 0, z: 0}
     GrabMoveTimeMS: 0
   audioClip: {fileID: 0}
   effectConfig:
-    GoEffect: {fileID: 1111494322501242, guid: 97557f3af91212e40b1589fe78919aa0, type: 3}
+    GoEffect: {fileID: 0}
     posType: 2
     effectAttachPosType: 0
   goBuffHitEffect: {fileID: 0}
   buffTriggerAnim: 0
   targetConfig:
-    isOpen: 1
+    isOpen: 0
     targetType: 2
     damageConfig:
       triggerFrame: 0
