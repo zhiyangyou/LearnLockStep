@@ -66,7 +66,9 @@ public partial class Skill {
                         break;
                     case MoveActionFinishOpation.Buff: {
                         // buff系统
-                        Debug.LogError("TODO buff 系统的释放");
+                        foreach (var buffID in configAction.actionFinishIDList) {
+                            BuffSystem.Instance.AttachBuff(buffID, _skillCreater, _skillCreater, this, null);
+                        }
                     }
                         break;
                     default:

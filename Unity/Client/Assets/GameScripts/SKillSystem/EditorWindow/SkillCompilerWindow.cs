@@ -89,6 +89,9 @@ public class SkillCompilerWindow : OdinEditorWindow {
     /// </summary>
     /// <returns></returns>
     public static Vector3 GetCharacterPos() {
+        if (!HasOpenInstances<SkillCompilerWindow>()) {
+            return Vector3.zero;
+        }
         var win = GetWindow<SkillCompilerWindow>();
         if (win == null) return Vector3.zero;
         return win.configCharacter.sKillCharacterPrefab.transform.position;

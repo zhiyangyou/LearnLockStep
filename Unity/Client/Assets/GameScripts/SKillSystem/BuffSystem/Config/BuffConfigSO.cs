@@ -42,6 +42,8 @@ public class BuffConfigSO : ScriptableObject {
     [LabelText("Buff击中动画"), TitleGroup("buff技能表现", "所有的表现数据会在buff触发和释放时触发"), PropertyTooltip("buff触发的角色动画,比如眩晕, 硬直")]
     public ObjectAnimationState buffTriggerAnim = ObjectAnimationState.None;
 
+    [LabelText("伤害目标配置")] public TargetConfig targetConfig;
+
     [LabelText("Buff描述"), HideLabel, MultiLineProperty(5)]
     public string Desc;
 
@@ -92,6 +94,17 @@ public class BuffParam {
 public class TargetGrabData {
     [LabelText("抓取到目标位置")] public Vector3 GrabMovePos;
     [LabelText("抓取到目标位置需要的移动时间")] public int GrabMoveTimeMS;
+}
+
+[Serializable, TabGroup("目标配置")]
+public class TargetConfig {
+    [LabelText("是否启用")] public bool isOpen = false; // 是否启用
+
+    [LabelText("作用目标类型"), ShowIf(nameof(isOpen))]
+    public TargetType targetType; // 作用目标
+
+    [LabelText("伤害配置"), ShowIf(nameof(isOpen))]
+    public SkillConfig_Damage damageConfig; // 伤害配置
 }
 
 /// <summary>
