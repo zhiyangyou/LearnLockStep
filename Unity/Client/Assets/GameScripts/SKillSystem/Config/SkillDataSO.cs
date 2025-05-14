@@ -13,6 +13,7 @@ public class SkillConfigSO : ScriptableObject {
 
     [FormerlySerializedAs("character")] public SkillConfig_Character configCharacter;
     [FormerlySerializedAs("skill")] [FormerlySerializedAs("SkillCfg")] public SkillConfig skillCfg;
+    public List<SkillConfig_Buff> buffCfgList;
     public List<SkillConfig_Damage> damageCfgList;
     public List<SkillConfig_Effect> effectCfgList;
     public List<SkillConfig_Audio> audioList;
@@ -23,6 +24,7 @@ public class SkillConfigSO : ScriptableObject {
         SkillConfig_Character configCharacter,
         SkillConfig skillConfig,
         List<SkillConfig_Damage> damageConfigs,
+        List<SkillConfig_Buff> buffConfigs,
         List<SkillConfig_Effect> effectConfigs,
         List<SkillConfig_Audio> audioConfigs,
         List<SkillConfig_Bullet> bulletConfigs,
@@ -32,6 +34,7 @@ public class SkillConfigSO : ScriptableObject {
         so.configCharacter = configCharacter;
         so.skillCfg = skillConfig;
         so.damageCfgList = damageConfigs;
+        so.buffCfgList = buffConfigs;
         so.effectCfgList = effectConfigs;
         so.audioList = audioConfigs;
         so.bulletList = bulletConfigs;

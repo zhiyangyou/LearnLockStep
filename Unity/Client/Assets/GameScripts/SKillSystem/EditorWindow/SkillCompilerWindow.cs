@@ -14,6 +14,9 @@ public class SkillCompilerWindow : OdinEditorWindow {
     [TabGroup("SkillCompiler", "Skill", SdfIconType.Robot, TextColor = "lightmagenta")]
     public SkillConfig skill = new();
 
+    [TabGroup("SkillCompiler", "Buff", SdfIconType.Magic, TextColor = "red")]
+    public List<SkillConfig_Buff> buffList = new();
+
     [TabGroup("SkillCompiler", "Damage", SdfIconType.At, TextColor = "lightmagenta")]
     public List<SkillConfig_Damage> damageList = new();
 
@@ -39,6 +42,7 @@ public class SkillCompilerWindow : OdinEditorWindow {
             configCharacter,
             skill,
             damageList,
+            buffList,
             effectList,
             audioList,
             bulletList,
@@ -51,6 +55,7 @@ public class SkillCompilerWindow : OdinEditorWindow {
         this.skill = so.skillCfg;
         this.effectList = so.effectCfgList;
         this.damageList = so.damageCfgList;
+        this.buffList = so.buffCfgList;
         this.audioList = so.audioList;
         this.bulletList = so.bulletList;
         this.actionList = so.actionList;
