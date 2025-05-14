@@ -134,7 +134,7 @@ public class SkillBulletLogic : LogicObject {
 
     public void Release() {
         RenderObject.OnRelease();
-        _bulletCollider.OnRelease();
+        _bulletCollider?.OnRelease();
         _bulletCollider = null;
         BulletIsUnValid = true;
     }
