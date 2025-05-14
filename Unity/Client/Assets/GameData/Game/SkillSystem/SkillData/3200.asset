@@ -59,7 +59,7 @@ MonoBehaviour:
     radiusHeight: 0
     ColliderPosType: 0
     TargetType: 0
-    addBuffs: 
+    addBuffs: 017d0000
     triggerSkillId: 0
   - triggerFrame: 36
     endFrame: 70
@@ -75,7 +75,7 @@ MonoBehaviour:
     radiusHeight: 0
     ColliderPosType: 0
     TargetType: 2
-    addBuffs: 
+    addBuffs: 017d0000
     triggerSkillId: 0
   - triggerFrame: 80
     endFrame: 110
@@ -91,7 +91,7 @@ MonoBehaviour:
     radiusHeight: 0
     ColliderPosType: 0
     TargetType: 2
-    addBuffs: 
+    addBuffs: 017d0000
     triggerSkillId: 0
   effectCfgList:
   - skillEffect: {fileID: 1019778347080694, guid: defe7adc774bbd54e898dbb5ba3176b4, type: 3}
