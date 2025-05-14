@@ -25,59 +25,13 @@ public partial class Skill {
     /// <summary>
     /// 当前伤害累加时间, LogicTime, 单位是毫米阿尼
     /// </summary>
-    private int _curDamageAccTimeMS = 0;
+    // private int _curDamageAccTimeMS = 0;
+    private List<int> _listDamageAccTimeMS = new();
 
     #endregion
 
 
     #region public
-
-    /// <summary>
-    ///  
-    /// </summary>
-    public void OnLogicFrameUpdate_Damage() {
-        if (_skillConfigSo.damageCfgList != null
-            && _skillConfigSo.damageCfgList.Count > 0) {
-            foreach (SkillConfig_Damage damageConfig in _skillConfigSo.damageCfgList) {
-                var configHashCode = damageConfig.GetHashCode();
-
-                // 如果需要变更位置的碰撞盒类型,那么更新碰撞体位置
-                if (damageConfig.ColliderPosType == ColliderPosType.FollowPos
-                    && _dicColliders.TryGetValue(configHashCode, out var damageCollider)
-                    && damageCollider != null) {
-                    CreateOrUpdateCollider(damageConfig, damageCollider, _skillCreater);
-                }
-
-                // 创建碰撞体
-                if (_curLogicFrame == damageConfig.triggerFrame) {
-                    DestoryCollider(damageConfig);
-                    var collider = CreateOrUpdateCollider(damageConfig, null, _skillCreater);
-                    _dicColliders.Add(configHashCode, collider);
-
-                    // 如果没有配置,每帧都触发
-                    if (damageConfig.triggerIntervalMs == 0) {
-                        TriggerColliderDamage(collider, damageConfig);
-                    }
-                }
-
-                // 碰撞体的伤害检测
-                if (damageConfig.triggerIntervalMs != 0) {
-                    _curDamageAccTimeMS += LogicFrameConfig.LogicFrameIntervalMS;
-                    if (_curDamageAccTimeMS >= damageConfig.triggerIntervalMs) {
-                        _curDamageAccTimeMS = 0;
-                        if (_dicColliders.TryGetValue(configHashCode, out var collider)) {
-                            TriggerColliderDamage(collider, damageConfig);
-                        }
-                    }
-                }
-
-                // 销毁碰撞体
-                if (_curLogicFrame == damageConfig.endFrame) {
-                    DestoryCollider(damageConfig);
-                }
-            }
-        }
-    }
 
     public ColliderBehaviour CreateOrUpdateCollider(SkillConfig_Damage configDamage, ColliderBehaviour colliderBehaviour, LogicObject followObj) {
         ColliderBehaviour collider = colliderBehaviour;
@@ -110,11 +64,6 @@ public partial class Skill {
         return collider;
     }
 
-    public void AddHitEffect(LogicActor target, LogicActor sourceActor) {
-        if (_skillConfigSo.skillCfg.skillHitEffect != null) {
-            target.OnHit(_skillConfigSo.skillCfg.skillHitEffect, _skillConfigSo.skillCfg.hitEffectSurvialTimeMs, sourceActor, _skillCreater.LogicAxis_X);
-        }
-    }
 
     /// <summary>
     /// 触发碰撞伤害检测
@@ -168,11 +117,81 @@ public partial class Skill {
         }
     }
 
+    #endregion
+
+    #region private
+
+    private void ResetDamageAccTime() {
+        _listDamageAccTimeMS.Clear();
+    }
+
+    private void InitDamageAccTime() {
+        var damageConfigCount = _skillConfigSo.damageCfgList.Count;
+        for (int i = 0; i < damageConfigCount; i++) {
+            _listDamageAccTimeMS.Add(0);
+        }
+    }
+
+    /// <summary>
+    ///  
+    /// </summary>
+    private void OnLogicFrameUpdate_Damage() {
+        if (_skillConfigSo.damageCfgList != null
+            && _skillConfigSo.damageCfgList.Count > 0) {
+            // foreach (SkillConfig_Damage damageConfig in _skillConfigSo.damageCfgList)
+            for (int i = 0; i < _skillConfigSo.damageCfgList.Count; i++) {
+                SkillConfig_Damage damageConfig = _skillConfigSo.damageCfgList[i];
+                var configHashCode = damageConfig.GetHashCode();
+
+                // 如果需要变更位置的碰撞盒类型,那么更新碰撞体位置
+                if (damageConfig.ColliderPosType == ColliderPosType.FollowPos
+                    && _dicColliders.TryGetValue(configHashCode, out var damageCollider)
+                    && damageCollider != null) {
+                    CreateOrUpdateCollider(damageConfig, damageCollider, _skillCreater);
+                }
+
+                // 创建碰撞体
+                if (_curLogicFrame == damageConfig.triggerFrame) {
+                    DestoryCollider(damageConfig);
+                    var collider = CreateOrUpdateCollider(damageConfig, null, _skillCreater);
+                    _dicColliders.Add(configHashCode, collider);
+
+                    // 如果没有配置,每帧都触发
+                    if (damageConfig.triggerIntervalMs == 0) {
+                        TriggerColliderDamage(collider, damageConfig);
+                    }
+                }
+
+                // 碰撞体的伤害检测
+                if (damageConfig.triggerIntervalMs != 0) {
+                    _listDamageAccTimeMS[i] += LogicFrameConfig.LogicFrameIntervalMS;
+                    if (_listDamageAccTimeMS[i] >= damageConfig.triggerIntervalMs) {
+                        _listDamageAccTimeMS[i] = 0;
+                        if (_dicColliders.TryGetValue(configHashCode, out var collider)) {
+                            TriggerColliderDamage(collider, damageConfig);
+                        }
+                    }
+                }
+
+                // 销毁碰撞体
+                if (_curLogicFrame == damageConfig.endFrame) {
+                    DestoryCollider(damageConfig);
+                }
+            }
+        }
+    }
+
+    private void AddHitEffect(LogicActor target, LogicActor sourceActor) {
+        if (_skillConfigSo.skillCfg.skillHitEffect != null) {
+            target.OnHit(_skillConfigSo.skillCfg.skillHitEffect, _skillConfigSo.skillCfg.hitEffectSurvialTimeMs, sourceActor, _skillCreater.LogicAxis_X);
+        }
+    }
+
     /// <summary>
     /// 销毁对应配置生成的碰撞体
     /// </summary>
     /// <param name="config"></param>
-    public void DestoryCollider(SkillConfig_Damage config) {
+    private void DestoryCollider(SkillConfig_Damage config) {
         var configHashCode = config.GetHashCode();
         if (_dicColliders.TryGetValue(configHashCode, out var collider)) {
             _dicColliders.Remove(configHashCode);

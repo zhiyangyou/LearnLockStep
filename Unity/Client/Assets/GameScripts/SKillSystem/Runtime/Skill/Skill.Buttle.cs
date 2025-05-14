@@ -20,7 +20,7 @@ public partial class Skill {
 
     #region private
 
-    private void OnBulletInit() {
+    private void InitBulletAccTime() {
         _listCurCreateBulletAccTimeMS.Clear();
         var listBulletConfig = _skillConfigSo.bulletList;
         if (listBulletConfig != null && listBulletConfig.Count > 0) {
@@ -29,6 +29,11 @@ public partial class Skill {
             }
         }
         _logicRandom = new LogicRandom(10);
+    }
+
+    private void ResetBulletAccTime() {
+        _listCurCreateBulletAccTimeMS.Clear();
+        _logicRandom = null;
     }
 
     private void OnLogicFrameUpdate_Buttle() {
@@ -77,11 +82,6 @@ public partial class Skill {
         bulletRender.SetRenderData(skillBulletLogic, bulletConfig);
 
         _skillCreater.Bullet_Add(skillBulletLogic);
-    }
-
-    private void OnBulletRelease() {
-        _listCurCreateBulletAccTimeMS.Clear();
-        _logicRandom = null;
     }
 
     #endregion

@@ -114,7 +114,8 @@ public partial class Skill {
             _skillConfigSo.configCharacter.logicFrame = _skillConfigSo.configCharacter.customLogicFrame;
         }
 
-        OnBulletInit();
+        InitDamageAccTime();
+        InitBulletAccTime();
     }
 
     /// <summary>
@@ -132,12 +133,13 @@ public partial class Skill {
         skillState = SkillState.End;
         this.SkillCallbackOnEnd?.Invoke(this);
         InitTimer();
-        OnBulletRelease();
+        ResetBulletAccTime();
+        ResetDamageAccTime();
+        ReleaseAllEffect();
         // 组合技能
         if (_combinationSkillID != 0) {
             _skillCreater.ReleaseSkill(_combinationSkillID, null);
         }
-        ReleaseAllEffect();
     }
 
 
@@ -268,7 +270,6 @@ public partial class Skill {
     private void InitTimer() {
         _curLogicFrame = 0;
         _curLogicFrameAccTimeMS = 0;
-        _curDamageAccTimeMS = 0;
     }
 
     private void StockPileFinish(StockPileStageData stageData) {
