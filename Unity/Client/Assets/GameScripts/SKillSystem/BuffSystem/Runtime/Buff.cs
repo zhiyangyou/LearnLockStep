@@ -192,6 +192,13 @@ public class Buff {
         else if (buffType == BuffType.IgnoreGravity) {
             _buffLogic = new Buff_IgnoreGravity(this);
         }
+        else if (buffType == BuffType.MoveSpeed_Modify_Single) {
+            _buffLogic = new Buff_ModifyAttribute_Single(this);
+        }
+        else if (buffType == BuffType.AllowMove 
+                 || buffType == BuffType.NotAllowModifyDir) {
+            _buffLogic = new Buff_StatusModify_Single(this);
+        }
         else {
             Debug.LogError($"尚未实现的buff类型:{buffType}");
         }

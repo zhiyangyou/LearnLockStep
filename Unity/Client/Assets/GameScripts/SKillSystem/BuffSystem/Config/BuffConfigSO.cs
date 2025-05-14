@@ -168,4 +168,7 @@ public enum BuffType {
     [LabelText("群体血量修改")] HP_Modify, // 群体血量修改 
     [LabelText("抓取")] Grab, // 群体血量修改 
     [LabelText("无视重力")] IgnoreGravity, // 群体血量修改 
+    [LabelText("单体移动速度修改")] MoveSpeed_Modify_Single, // 单体移动速度修改 
+    [LabelText("允许移动")] AllowMove, // 单体移动速度修改 
+    [LabelText("不允许修改朝向")] NotAllowModifyDir, // 不允许修改朝向 
 }

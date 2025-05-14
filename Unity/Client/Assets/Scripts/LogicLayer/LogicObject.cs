@@ -13,6 +13,8 @@ public abstract class LogicObject {
     private FixInt _logicMoveSpeed = (FixInt)3; // 移动速度
     private FixInt _logicAxis_X = FixInt.One; // 默认朝右
     private bool _isActive; // 是否激活
+    private bool _isForceAllowMove; // 是否强制允许移动
+    private bool _isForceNotAllowModifyDir; // 是否强制不允许修改位置
 
     public FixIntVector3 LogicPos {
         get { return _logicPos; }
@@ -31,7 +33,7 @@ public abstract class LogicObject {
 
     public FixInt LogicMoveSpeed {
         get { return _logicMoveSpeed; }
-        protected set { _logicMoveSpeed = value; }
+        set { _logicMoveSpeed = value; }
     }
 
     public FixInt LogicAxis_X {
@@ -39,9 +41,18 @@ public abstract class LogicObject {
         protected set { _logicAxis_X = value; }
     }
 
-    public bool LsActive {
-        get { return _isActive; }
-        protected set { _isActive = value; }
+    public bool IsActive {
+        get => _isActive;
+        set => _isActive = value;
+    }
+
+    public bool IsForceAllowMove {
+        get => _isForceAllowMove;
+        set => _isForceAllowMove = value;
+    }
+    public bool IsForceNotAllowModifyDir {
+        get => _isForceNotAllowModifyDir;
+        set => _isForceNotAllowModifyDir = value;
     }
 
     /// <summary>
@@ -72,7 +83,7 @@ public abstract class LogicObject {
 
     public virtual void OnCreate() { }
 
-    public virtual void  OnLogicFrameUpdate() { }
+    public virtual void OnLogicFrameUpdate() { }
 
     public virtual void OnDestory() { }
 }
