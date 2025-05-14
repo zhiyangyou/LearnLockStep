@@ -40,8 +40,8 @@ MonoBehaviour:
     skillHitEffect: {fileID: 0}
     hitEffectSurvialTimeMs: 0
     SkillHitAudio: {fileID: 0}
-    showSkillPortrait: 0
-    skillPortraitObj: {fileID: 0}
+    showSkillPortrait: 1
+    skillPortraitObj: {fileID: 2820098208712261571, guid: c5e894c238e73e545b7dea7a594011c3, type: 3}
     skillDes: 
   buffCfgList: []
   damageCfgList:

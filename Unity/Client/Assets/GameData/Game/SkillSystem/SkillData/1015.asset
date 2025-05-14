@@ -19,6 +19,8 @@ MonoBehaviour:
     isLoopAnim: 0
     animLoopCount: 0
     logicFrame: 45
+    isSetCustomLogicFrame: 0
+    customLogicFrame: 0
     animLength: 3
     skillDurationMS: 3000
   skillCfg:
@@ -38,9 +40,10 @@ MonoBehaviour:
     skillHitEffect: {fileID: 5023627635078921320, guid: eebb9919fe1d53f4690a67203d880219, type: 3}
     hitEffectSurvialTimeMs: 100
     SkillHitAudio: {fileID: 0}
-    showSkillPortrait: 0
-    skillPortraitObj: {fileID: 0}
+    showSkillPortrait: 1
+    skillPortraitObj: {fileID: 2820098208712261571, guid: ac1ead54a0d916343b7bc23a4c2b52c9, type: 3}
     skillDes: 
+  buffCfgList: []
   damageCfgList:
   - triggerFrame: 8
     endFrame: 13
@@ -271,6 +274,7 @@ MonoBehaviour:
     triggerFrame: 16
     isLoop: 1
     endFrame: 44
+  bulletList: []
   actionList:
   - triggerFrame: 9
     moveActionType: 0
