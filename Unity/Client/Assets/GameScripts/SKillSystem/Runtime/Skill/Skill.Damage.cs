@@ -112,7 +112,7 @@ public partial class Skill {
 
     public void AddHitEffect(LogicActor target, LogicActor sourceActor) {
         if (_skillConfigSo.skillCfg.skillHitEffect != null) {
-            target.OnHit(_skillConfigSo.skillCfg.skillHitEffect, _skillConfigSo.skillCfg.hitEffectSurvialTimeMs, sourceActor);
+            target.OnHit(_skillConfigSo.skillCfg.skillHitEffect, _skillConfigSo.skillCfg.hitEffectSurvialTimeMs, sourceActor, _skillCreater.LogicAxis_X);
         }
     }
 

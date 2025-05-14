@@ -76,7 +76,7 @@ public partial class LogicActor : LogicObject {
         RenderObject.PlayAnim(animationClip);
     }
 
-    public virtual void OnHit(GameObject goEffect, int survialTimeMS, LogicObject sourceObj) {
+    public virtual void OnHit(GameObject goEffect, int survialTimeMS, LogicObject sourceObj, FixInt logicAxisX) {
         RenderObject.OnHit(goEffect, survialTimeMS, sourceObj);
     }
 

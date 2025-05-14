@@ -77,7 +77,7 @@ public class SkillBulletLogic : LogicObject {
         // 触发伤害
         foreach (LogicActor hitTarget in _hitTargetList) {
             hitTarget.BulletDamage(2222, damageConfig);
-            hitTarget.OnHit(_bulletConfig.hitEffect, _bulletConfig.hitEffectSurvialTimeMS, this);
+            hitTarget.OnHit(_bulletConfig.hitEffect, _bulletConfig.hitEffectSurvialTimeMS, this, LogicAxis_X);
             if (_bulletConfig.hitAudio != null) {
                 AudioController.GetInstance().PlaySoundByAudioClip(_bulletConfig.hitAudio, false, AudioPriorityConfig.Bullet_AudioClip);
             }

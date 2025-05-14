@@ -45,12 +45,13 @@ MonoBehaviour:
     skillGuideObj: {fileID: 0}
     skillGuideRange: 0
     CombinationSkillId: 0
-    skillHitEffect: {fileID: 0}
+    skillHitEffect: {fileID: 1389941809641780, guid: 07ae1b4e0a3859e4c926cfa6839e6c9b, type: 3}
     hitEffectSurvialTimeMs: 100
     SkillHitAudio: {fileID: 0}
     showSkillPortrait: 0
     skillPortraitObj: {fileID: 0}
     skillDes: 
+  buffCfgList: []
   damageCfgList:
   - triggerFrame: 3
     endFrame: 7

@@ -19,9 +19,9 @@ public class MonsterLogic : LogicActor {
         ObjectType = LogicObjectType.Monster;
     }
 
-    public override void OnHit(GameObject goEffect, int survialTimeMS, LogicObject sourceObj) {
-        base.OnHit(goEffect, survialTimeMS, sourceObj);
-        LogicAxis_X = -sourceObj.LogicAxis_X;
+    public override void OnHit(GameObject goEffect, int survialTimeMS, LogicObject sourceObj, FixInt logicAxisX) {
+        base.OnHit(goEffect, survialTimeMS, sourceObj, logicAxisX);
+        LogicAxis_X = -logicAxisX;
     }
 
     public override void State_Floating(bool isUpFloating) {
