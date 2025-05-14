@@ -226,14 +226,14 @@ public class ExcelUtility
         List<Dictionary<string, object>> table = new List<Dictionary<string, object>>();
 
         //读取数据
-        for (int i = 1; i < rowCount; i++)
+        for (int i = 2; i < rowCount; i++)
         {
             //准备一个字典存储每一行的数据
             Dictionary<string, object> row = new Dictionary<string, object>();
             for (int j = 0; j < colCount; j++)
             {
                 //读取第1行数据作为表头字段
-                string field = mSheet.Rows[0][j].ToString();
+                string field = mSheet.Rows[1][j].ToString();
                 //Key-Value对应
                 row[field] = mSheet.Rows[i][j];
             }
