@@ -67,6 +67,10 @@ public class MoveToAction : ActionBehaviour {
         _actionObj = actionObj;
         _startPos = startPos;
         _durationMS = durationMS;
+        if (_durationMS == FixInt.Zero) {
+            Debug.LogError("持续时间不允许配置0 , 强制改成0.1");
+            _durationMS = 0.1;
+        }
         _onMoveFinish = onMoveFinish;
         _onMoveUpdate = onMoveUpdate;
         _moveType = moveType;
