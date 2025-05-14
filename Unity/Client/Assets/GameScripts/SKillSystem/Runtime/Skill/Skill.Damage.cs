@@ -110,9 +110,9 @@ public partial class Skill {
         return collider;
     }
 
-    public void AddHitEffect(LogicActor target) {
+    public void AddHitEffect(LogicActor target, LogicActor sourceActor) {
         if (_skillConfigSo.skillCfg.skillHitEffect != null) {
-            target.OnHit(_skillConfigSo.skillCfg.skillHitEffect, _skillConfigSo.skillCfg.hitEffectSurvialTimeMs, _skillCreater);
+            target.OnHit(_skillConfigSo.skillCfg.skillHitEffect, _skillConfigSo.skillCfg.hitEffectSurvialTimeMs, sourceActor);
         }
     }
 
@@ -148,7 +148,7 @@ public partial class Skill {
             damageTargetActor.SkillDamage(9999, configDamage);
 
             // 添加伤害特效
-            AddHitEffect(damageTargetActor);
+            AddHitEffect(damageTargetActor, configDamage.TargetType == TargetType.Self ? _skillCreater : damageTargetActor);
 
             // 添加伤害buff
             if (configDamage.HasAddBuffs) {
