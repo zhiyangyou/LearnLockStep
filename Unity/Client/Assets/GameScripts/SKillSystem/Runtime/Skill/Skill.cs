@@ -182,6 +182,9 @@ public partial class Skill {
         // buff 逻辑
         OnLogicFrameUpdate_Buff();
 
+        // 立绘
+        OnLogicFrameUpdate_Portrait();
+
         // 蓄力技能, 和蓄力时间相关, 所以和蓄力结束帧无关
         if (_skillConfigSo.skillCfg.SkillType == SkillType.StockPile) {
             var stockPileDataCount = _skillConfigSo.skillCfg.stockPIleStageDatas.Count;

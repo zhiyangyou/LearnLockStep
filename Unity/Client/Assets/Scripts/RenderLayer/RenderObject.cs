@@ -94,6 +94,16 @@ public class RenderObject : MonoBehaviour {
         transform.position = Vector3.Lerp(transform.position, LogicObject.LogicPos.ToVector3(), Time.deltaTime * _smoothPosSpeed);
     }
 
+    /// <summary>
+    /// 展示技能立绘
+    /// </summary>
+    public virtual void ShowSkillPortrait(GameObject goPortrait) {
+        if (goPortrait != null) {
+            var go = GameObject.Instantiate(goPortrait);
+            GameObject.Destroy(go, 3f);
+        }
+    }
+
     #endregion
 
     #region private
