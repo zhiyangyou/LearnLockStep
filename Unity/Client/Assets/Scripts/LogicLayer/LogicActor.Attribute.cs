@@ -58,6 +58,7 @@ public partial class LogicActor {
 
     #region 公开属性
 
+    public FixInt Level => level; // 等级
     public FixInt HP => hp; // 血量
     public FixInt MP => mp; // 法力值
     public FixInt AP => ap + add_ap; // 魔法攻击力
