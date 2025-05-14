@@ -5,7 +5,13 @@ using FixMath;
 using UnityEngine;
 
 public class MonsterLogic : LogicActor {
+    #region 属性字段
+
     public int MonsterID { get; private set; }
+
+    #endregion
+
+    #region public
 
     public MonsterLogic(int monsterID,
         RenderObject renderObject,
@@ -47,4 +53,32 @@ public class MonsterLogic : LogicActor {
             // ActionState = LogicObjectActionState.Idle; // TODO 还没验证
         }
     }
+
+    #endregion
+
+    #region private
+
+    private void InitAttribute() {
+        MonsterCfg cfg = ConfigCenter.Instance.GetMonsterCfgById(MonsterID);
+        if (cfg == null) {
+            Debug.LogError($"配置是空 MonsterID:{MonsterID}");
+            return;
+        }
+        this.mp = cfg.mp;
+        this.ap = cfg.ap;
+        this.ad = cfg.ad;
+        this.adDef = cfg.adDef;
+        this.apDef = cfg.apDef;
+        this.pct = cfg.pct;
+        this.mct = cfg.mct;
+        this.adPctRate = cfg.adPctRate;
+        this.apMctRate = cfg.apMctRate;
+        this.str = cfg.str;
+        this.sta = cfg.sta;
+        this.Int = cfg.Int;
+        this.spi = cfg.spi;
+        this.agl = cfg.agl;
+    }
+
+    #endregion
 }
