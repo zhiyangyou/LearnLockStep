@@ -27,7 +27,7 @@ namespace ZMGC.Battle {
 
         public void InitHero() {
             var heroID = HeroIDConfig.TestHeroID;
-            var goHero = ZMAsset.Instantiate($"{AssetsPathConfig.Game_Hero_Prefabs}/{heroID}.prefab", null);
+            var goHero = ZMAsset.Instantiate($"{AssetsPathConfig.Game_Hero_Prefabs}{heroID}.prefab", null);
             var heroRender = goHero.GetComponent<HeroRender>();
             HeroLogic heroLogic = new HeroLogic(heroID, heroRender);  
             heroRender.SetLogicObject(heroLogic);

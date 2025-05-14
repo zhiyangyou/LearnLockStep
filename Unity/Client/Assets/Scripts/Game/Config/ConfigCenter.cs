@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ZM.ZMAsset;
 
-public class ConfigConter : Singleton<ConfigConter> {
+public class ConfigCenter : Singleton<ConfigCenter> {
     //英雄配置字典
     private Dictionary<int, HeroDataCfg> mHeroDtaCfgDic;
 
@@ -31,7 +31,7 @@ public class ConfigConter : Singleton<ConfigConter> {
         foreach (var item in monsterCfgList) {
             mMonsterCfgDic.Add(item.id, item);
         }
-        Debug.LogError("LoadMonsterCfg Success, Count:" + mMonsterCfgDic.Count);
+        Debug.Log("LoadMonsterCfg Success, Count:" + mMonsterCfgDic.Count);
     }
 
     private void LoadHeroCfg() {
@@ -47,7 +47,7 @@ public class ConfigConter : Singleton<ConfigConter> {
         foreach (var item in heroCfgList) {
             mHeroDtaCfgDic.Add(item.id, item);
         }
-        Debug.LogError("LoadHeroCfg Success, Count:" + mHeroDtaCfgDic.Count);
+        Debug.Log("LoadHeroCfg Success, Count:" + mHeroDtaCfgDic.Count);
     }
 
     #endregion

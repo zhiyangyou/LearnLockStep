@@ -60,7 +60,7 @@ public class RenderObject : MonoBehaviour {
     /// <param name="damageValue"></param>
     /// <param name="damageSource"></param>
     public virtual void Damage(int damageValue, DamageSource damageSource) {
-        var goDamageText = ZMAsset.Instantiate($"{AssetsPathConfig.Game_Prefabs}/DamageItem/DamageText.prefab", null);
+        var goDamageText = ZMAsset.Instantiate($"{AssetsPathConfig.Game_Prefabs}DamageItem/DamageText.prefab", null);
         goDamageText.name = $"damage text {damageValue}";
         var textItem = goDamageText.GetComponent<DamageTextItem>();
         textItem.ShowDamageText(damageValue, this);

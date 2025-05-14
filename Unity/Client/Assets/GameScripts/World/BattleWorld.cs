@@ -62,6 +62,7 @@ namespace ZMGC.Battle {
             Debug.Log("节约笔记本性能, 限制帧率60");
             Application.targetFrameRate = 60;
             base.OnCreate();
+            ConfigCenter.Instance.InitGameCfg();
             HeroLogicCtrl = BattleWorld.GetExitsLogicCtrl<HeroLogicCtrl>();
             MonsterLogicCtrl = BattleWorld.GetExitsLogicCtrl<MonsterLogicCtrl>();
             HeroLogicCtrl.InitHero();

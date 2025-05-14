@@ -63,7 +63,7 @@ namespace ZMGC.Battle
             {
                 FixIntVector3 logicPos = new FixIntVector3(pos);
                 var monsterID = _listMonsterIDs[index];
-                var goMonster = ZMAsset.Instantiate($"{AssetsPathConfig.Game_Monster_Prefabs}/{monsterID}.prefab", null);
+                var goMonster = ZMAsset.Instantiate($"{AssetsPathConfig.Game_Monster_Prefabs}{monsterID}.prefab", null);
                 // 初始化
                 BoxColliderGizmo boxInfo = goMonster.GetComponent<BoxColliderGizmo>();
                 boxInfo.enabled = false;

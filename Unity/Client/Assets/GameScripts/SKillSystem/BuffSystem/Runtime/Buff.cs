@@ -73,7 +73,7 @@ public class Buff {
     }
 
     public void OnCreate() {
-        var soAssetPath = $"{AssetsPathConfig.Buff_Data_Path}/{buffID}.asset";
+        var soAssetPath = $"{AssetsPathConfig.Buff_Data_Path}{buffID}.asset";
         BuffConfigSo = ZMAsset.LoadScriptableObject<BuffConfigSO>(soAssetPath);
         CompositeBuffImpl();
 

@@ -57,7 +57,7 @@ public class BattleWindow : WindowBase {
                 Debug.LogError($"错误的skill ID:{skillID} 技能系统中没有初始化这个实例");
                 continue;
             }
-            var goSkillItem = ZMAsset.Instantiate($"{AssetsPathConfig.Game_Prefabs}/Item/SkillItem.prefab", _listSkillItemTr[i]);
+            var goSkillItem = ZMAsset.Instantiate($"{AssetsPathConfig.Game_Prefabs}Item/SkillItem.prefab", _listSkillItemTr[i]);
             goSkillItem.transform.localScale = Vector3.one;
             goSkillItem.transform.localPosition = Vector3.zero;
             goSkillItem.transform.rotation = Quaternion.identity;
