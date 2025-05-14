@@ -37,8 +37,7 @@ public partial class Skill {
                     var effectRender = goEffect.GetComponent<SkillEffectRender>();
                     if (effectRender == null) effectRender = goEffect.AddComponent<SkillEffectRender>();
                     
-                    Debug.LogError($"{Time.frameCount} {LogicFrameConfig.LogicFrameID} create effect");
-                    
+                     
                     // 技能特效逻辑层
                     SkillEffectLogic skillEffectLogic = new SkillEffectLogic(
                         LogicObjectType.Effect, effectConfig, effectRender, _skillCreater, this);

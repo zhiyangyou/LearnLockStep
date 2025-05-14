@@ -37,8 +37,8 @@ MonoBehaviour:
     skillGuideObj: {fileID: 0}
     skillGuideRange: 0
     CombinationSkillId: 0
-    skillHitEffect: {fileID: 0}
-    hitEffectSurvialTimeMs: 0
+    skillHitEffect: {fileID: 1709585897738810, guid: 80413ee31b142a34e9b2d17922427ee9, type: 3}
+    hitEffectSurvialTimeMs: 500
     SkillHitAudio: {fileID: 0}
     showSkillPortrait: 0
     skillPortraitObj: {fileID: 0}
@@ -46,7 +46,7 @@ MonoBehaviour:
   damageCfgList:
   - triggerFrame: 1
     endFrame: 45
-    triggerIntervalMs: 500
+    triggerIntervalMs: 200
     isFollowEffect: 0
     damageType: 2
     damageRate: 0
@@ -58,7 +58,7 @@ MonoBehaviour:
     radiusHeight: 0
     ColliderPosType: 1
     TargetType: 2
-    addBuffs: 
+    addBuffs: 367e0000
     triggerSkillId: 0
   effectCfgList:
   - skillEffect: {fileID: 149314, guid: 0fb3643cff7edfc499c4a8ffd9944857, type: 3}
