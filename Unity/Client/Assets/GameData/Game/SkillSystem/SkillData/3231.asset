@@ -131,4 +131,11 @@ MonoBehaviour:
       actionFinishIDList: 
   audioList: []
   bulletList: []
-  actionList: []
+  actionList:
+  - triggerFrame: 0
+    moveActionType: 0
+    heightPos: {x: 0, y: 0, z: 0}
+    movePos: {x: 0, y: 0, z: 0}
+    durationMS: 1
+    moveActionFinishOpation: 2
+    actionFinishIDList: 377e0000387e0000397e0000
