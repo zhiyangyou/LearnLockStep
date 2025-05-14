@@ -78,7 +78,7 @@ public class BuffRender : RenderObject {
         _buffConfig = null;
         _buffReleaser = null;
         _buffAttachTarget = null;
-        DestroyImmediate(gameObject);
+        Destroy(gameObject);
     }
 
     #endregion

@@ -93,7 +93,7 @@ public class SkillConfig_Effect {
     /// </summary>
     public void DestoryEffect() {
         if (_goCloneSkillEffect == null) return;
-        GameObject.DestroyImmediate(_goCloneSkillEffect);
+        GameObject.Destroy(_goCloneSkillEffect);
         if (_animationAgent != null) {
             _animationAgent.OnDestory();
             _animationAgent = null;

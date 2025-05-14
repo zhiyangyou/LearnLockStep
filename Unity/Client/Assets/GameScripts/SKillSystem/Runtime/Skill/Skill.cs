@@ -131,14 +131,13 @@ public partial class Skill {
     public void SkillEnd() {
         skillState = SkillState.End;
         this.SkillCallbackOnEnd?.Invoke(this);
-        ReleaseAllEffect();
+        InitTimer();
+        OnBulletRelease();
         // 组合技能
-
         if (_combinationSkillID != 0) {
             _skillCreater.ReleaseSkill(_combinationSkillID, null);
         }
-        InitTimer();
-        OnBulletRelease();
+        ReleaseAllEffect();
     }
 
 

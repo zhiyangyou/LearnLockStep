@@ -43,6 +43,7 @@ namespace ZMGC.Battle {
                     3007,
                     3021,
                     3022,
+                    3230,
                 }
             }
         };

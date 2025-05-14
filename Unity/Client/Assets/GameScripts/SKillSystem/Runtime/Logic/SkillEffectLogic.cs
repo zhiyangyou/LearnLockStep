@@ -49,6 +49,7 @@ public class SkillEffectLogic : LogicObject {
     public override void OnDestory() {
         base.OnDestory();
         RenderObject.OnRelease();
+        Debug.LogError($"{Time.frameCount} {LogicFrameConfig.LogicFrameID} destory effect");
     }
 
     public void OnLogicFrameUpdate_Effect(Skill skill, int curFrame) {
