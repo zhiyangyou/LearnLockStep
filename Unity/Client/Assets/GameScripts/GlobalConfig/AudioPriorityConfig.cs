@@ -19,4 +19,6 @@
     /// 子弹命中音效
     /// </summary>
     public const int Bullet_AudioClip = 400;
+
+    public const int Monster_BeHit_Audio = 500;
 }
