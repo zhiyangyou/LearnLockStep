@@ -78,6 +78,9 @@ public class MonsterLogic : LogicActor {
         this.Int = cfg.Int;
         this.spi = cfg.spi;
         this.agl = cfg.agl;
+
+        this.atkRange = cfg.atkRange;
+        this.searchDisRange = cfg.searchDisRange;
     }
 
     #endregion
