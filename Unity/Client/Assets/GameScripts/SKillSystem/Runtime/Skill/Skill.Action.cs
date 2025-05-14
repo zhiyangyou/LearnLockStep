@@ -28,6 +28,7 @@ public partial class Skill {
                     break;
                 case MoveActionFinishOpation.Buff: {
                     // buff系统
+                    skillGuidePos = actionActor.LogicPos; 
                     foreach (var buffID in configAction.actionFinishIDList) {
                         BuffSystem.Instance.AttachBuff(buffID, _skillCreater, _skillCreater, this, null);
                     }

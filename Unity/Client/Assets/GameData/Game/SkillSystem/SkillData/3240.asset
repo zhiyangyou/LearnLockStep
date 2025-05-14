@@ -79,10 +79,15 @@ MonoBehaviour:
       movePos: {x: 4, y: 0, z: 0}
       durationMS: 500
       moveActionFinishOpation: 2
-      actionFinishIDList: 
+      actionFinishIDList: 907e0000
   audioList:
   - skillAudio: {fileID: 8300000, guid: 75a1d0b1497e00b44a95feea43934b8c, type: 3}
     audioName: Gunman_shoulei_diuchu
+    triggerFrame: 1
+    isLoop: 0
+    endFrame: 0
+  - skillAudio: {fileID: 8300000, guid: f20d57139c64ffa4bb7e5f086ffa2349, type: 3}
+    audioName: gn_grenade
     triggerFrame: 0
     isLoop: 0
     endFrame: 0

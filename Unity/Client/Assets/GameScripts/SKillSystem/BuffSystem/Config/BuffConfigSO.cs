@@ -148,14 +148,13 @@ public enum BuffPosType {
     [LabelText("施法者位置")] ReleaserPos,
 }
 
-[LabelText("Buff附加类型")]
 public enum BuffAttachType {
     [LabelText("无配置")] None,
     [LabelText("施法者")] Creator, // 附加到施法者身上
     [LabelText("施法目标")] Target, // 附加到目标上, 中毒
     [LabelText("施法者位置")] Creator_Pos, // 施法者所处位置, 岩浆地形
-    [LabelText("目标位置")] Target_Pos, // 目标所处位置, 岩浆地形
-    [LabelText("引导目标位置")] GuidePos, // 摇杆选中的位置, 岩浆地形
+    [LabelText("目施法目标位置")] Target_Pos, // 目标所处位置, 岩浆地形
+    [LabelText("引导位置")] GuidePos, // 摇杆选中的位置, 岩浆地形
 }
 
 

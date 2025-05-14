@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e07ab935e9f40d39401d89a7158838c, type: 3}
+  m_Name: 32400
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 0}
+  id: 32400
+  name: "\u624B\u96F7\u7206\u70B8"
+  delayMS: 0
+  intervalMS: 0
+  DurationMS: 500
+  buffType: 4
+  attachType: 5
+  posType: 2
+  damageType: 1
+  damageRate: 145
+  paramsList:
+  - Value: 1235
+    Desc: "\u4F24\u5BB3\u6570\u503C"
+  targetGrabData:
+    GrabMovePos: {x: 0, y: 0, z: 0}
+    GrabMoveTimeMS: 0
+  audioClip: {fileID: 8300000, guid: 73144af8bef24c34f9de4c888bfee8f0, type: 3}
+  effectConfig:
+    GoEffect: {fileID: 1000012949227160, guid: 555f4e930f571fa4ebcfc2ef86830ca2, type: 3}
+    posType: 0
+    effectAttachPosType: 0
+  goBuffHitEffect: {fileID: 0}
+  buffTriggerAnim: 0
+  targetConfig:
+    isOpen: 1
+    targetType: 2
+    damageConfig:
+      triggerFrame: 0
+      endFrame: 0
+      triggerIntervalMs: 0
+      isFollowEffect: 0
+      damageType: 1
+      damageRate: 12345
+      DetectionMode: 2
+      boxSize: {x: 1, y: 1, z: 1}
+      boxOffset: {x: 0, y: 0, z: 0}
+      sphereOffset: {x: 0, y: 0.9, z: 0}
+      radius: 3
+      radiusHeight: 0
+      ColliderPosType: 0
+      TargetType: 2
+      addBuffs: 917e0000
+      triggerSkillId: 0
+  Desc: 
