@@ -50,7 +50,7 @@ MonoBehaviour:
     triggerFrame: 3
     endFrame: 8
     effectOffsetPos: {x: 0.6, y: 0.8, z: 0}
-    effectPosType: 0
+    effectPosType: 1
     isSetTransParent: 0
     TransParentType: 0
     IsAttachDamage: 0
@@ -75,8 +75,8 @@ MonoBehaviour:
     SkillConfigAction:
       triggerFrame: 3
       moveActionType: 2
-      heightPos: {x: 2, y: 2, z: 0}
-      movePos: {x: 3, y: 0, z: 0}
+      heightPos: {x: 2, y: 3, z: 0}
+      movePos: {x: 4, y: 0, z: 0}
       durationMS: 500
       moveActionFinishOpation: 2
       actionFinishIDList: 
