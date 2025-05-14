@@ -19,7 +19,7 @@ namespace ZMGC.Battle {
         /// </summary>
         public Dictionary<int, int[]> heroNormalSkillCfgDic = new Dictionary<int, int[]>() {
             { HeroIDConfig.HeroID_鬼剑士, new int[] { 1001, 1002, 1003 } }, // 鬼剑士
-            { HeroIDConfig.HeroID_神枪手, new int[] { 3001, 3002, 3003, 3004,  } }, // 神枪手
+            { HeroIDConfig.HeroID_神枪手, new int[] { 3001, 3002, 3003, 3004, } }, // 神枪手
         };
 
         /// <summary>
@@ -42,8 +42,9 @@ namespace ZMGC.Battle {
                     3005,
                     3007,
                     3021,
-                    3022,
-                    3230,
+                    3022, // 
+                    3230, // 聚焦喷火器
+                    3240, // 爆炸手雷
                 }
             }
         };

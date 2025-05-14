@@ -20,7 +20,7 @@ public partial class Skill {
         FixIntVector3 startPos = actionActor.LogicPos;
         // Debug.LogError($"add move action pos:{targetPos}");
         MoveType moveType = MoveType.Target;
-
+        +
         if (configAction.moveActionType == MoveActionType.TargerPos) {
             if (movePos.IsOnlyAxis_X()) {
                 moveType = MoveType.X;
@@ -44,6 +44,25 @@ public partial class Skill {
             // startPos = targetPos + new FixIntVector3(effectOffset);
             // moveType = MoveType.Target;
             // 调用MoveToAction
+        }
+        else if (configAction.moveActionType == MoveActionType.BezierPos) {
+            //
+            startPos = _skillCreater.LogicPos + _skillCreater.LogicAxis_X * new FixIntVector3(effectOffset);
+            startPos.y = FixIntMath.Abs(startPos.y);
+
+            //
+            FixIntVector3 highestPos = new FixIntVector3(configAction.heightPos) * _skillCreater.LogicAxis_X;
+            highestPos.y = FixIntMath.Abs(highestPos.y);
+            highestPos += _skillCreater.LogicPos;
+
+            // 
+            FixIntVector3 endPos = new FixIntVector3(configAction.movePos) * _skillCreater.LogicAxis_X;
+            endPos.y = FixIntMath.Abs(endPos.y);
+            targetPos += _skillCreater.LogicPos;
+            
+            MoveBezierAction bezierAction = new MoveBezierAction(,) {
+                
+            }
         }
         else {
             Debug.LogError($"暂时不支持其他类型的技能特效引导{configAction.moveActionType}");

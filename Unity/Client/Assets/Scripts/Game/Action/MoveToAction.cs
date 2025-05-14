@@ -46,7 +46,7 @@ public class MoveToAction : ActionBehaviour {
     /// </summary>
     private FixInt _accRuntimeMS;
 
-    private FixInt _curTimeScale;
+    private FixInt _curTimeProgress;
 
     #endregion
 
@@ -77,7 +77,7 @@ public class MoveToAction : ActionBehaviour {
 
         _moveDistance = targetPos - startPos;
         _accRuntimeMS = 0;
-        _curTimeScale = 0;
+        _curTimeProgress = 0;
     }
 
     /// <summary>
@@ -85,10 +85,10 @@ public class MoveToAction : ActionBehaviour {
     /// </summary>
     public override void OnLogicFrameUpdate() {
         _accRuntimeMS += LogicFrameConfig.LogicFrameIntervalMS;
-        _curTimeScale = _accRuntimeMS / _durationMS; // TODO 不理解
+        _curTimeProgress = _accRuntimeMS / _durationMS; // TODO 不理解
 
-        if (_curTimeScale >= 1) {
-            _curTimeScale = 1;
+        if (_curTimeProgress >= 1) {
+            _curTimeProgress = 1;
             actionFinish = true;
             OnActionFinish();
             return;
@@ -101,13 +101,13 @@ public class MoveToAction : ActionBehaviour {
         // TODO 这里不能使用startPos 会影响其他修改坐标位置的系统的逻辑
         switch (_moveType) {
             case MoveType.Target: {
-                addDistance = _moveDistance * _curTimeScale;
+                addDistance = _moveDistance * _curTimeProgress;
                 _actionObj.LogicPos = (_startPos + addDistance);
                 // Debug.LogError($"{Time.frameCount} move 赋值XYZ轴 位置数值");
             }
                 break;
             case MoveType.X: {
-                addDistance.x = (_moveDistance * _curTimeScale).x;
+                addDistance.x = (_moveDistance * _curTimeProgress).x;
                 _actionObj.LogicPos = new FixIntVector3(
                     _actionObj.LogicPos.x + addDistance.x,
                     _actionObj.LogicPos.y,
@@ -117,7 +117,7 @@ public class MoveToAction : ActionBehaviour {
             }
                 break;
             case MoveType.Y: {
-                addDistance.y = (_moveDistance * _curTimeScale).y;
+                addDistance.y = (_moveDistance * _curTimeProgress).y;
                 _actionObj.LogicPos = new FixIntVector3(
                     _actionObj.LogicPos.x,
                     _actionObj.LogicPos.y + addDistance.y,
@@ -127,7 +127,7 @@ public class MoveToAction : ActionBehaviour {
             }
                 break;
             case MoveType.Z: {
-                addDistance.z = (_moveDistance * _curTimeScale).z;
+                addDistance.z = (_moveDistance * _curTimeProgress).z;
                 _actionObj.LogicPos = new FixIntVector3(
                     _actionObj.LogicPos.x,
                     _actionObj.LogicPos.y,
@@ -139,10 +139,6 @@ public class MoveToAction : ActionBehaviour {
             default:
                 throw new ArgumentOutOfRangeException();
         }
-
-        // 移动时的操作的逻辑
-        //  这种算法不会考量技能播放时进行移动
-        // _actionObj.LogicPos += addDistance; // 这种算法会考量在技能释放过程中,存在移动的可能性
     }
 
     public override void OnActionFinish() {
