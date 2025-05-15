@@ -2,6 +2,7 @@
 using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Reflection;
 
@@ -146,21 +147,22 @@ public class ExcelTools : EditorWindow
 			}
 
 			//判断输出类型
-			string output="";
+			var fileName = Path.GetFileName(excelPath);
+			string output=$"{pathRoot}/Assets/GameData/Game/Data/{fileName}";
 			if(indexOfFormat==0){
-				output=excelPath.Replace(".xlsx",".json");
+				output=output.Replace(".xlsx",".json");
 				excel.ConvertToJson(output,encoding);
 			}else if(indexOfFormat==1){
-				output=excelPath.Replace(".xlsx",".csv");
+				output=output.Replace(".xlsx",".csv");
 				excel.ConvertToCSV(output,encoding);
 			}else if(indexOfFormat==2){
-				output=excelPath.Replace(".xlsx",".xml");
+				output=output.Replace(".xlsx",".xml");
 				excel.ConvertToXml(output);
 			}else if (indexOfFormat == 3)  {
-                output = excelPath.Replace(".xlsx", ".lua");
+                output = output.Replace(".xlsx", ".lua");
                 excel.ConvertToLua(output, encoding);
             }else if (indexOfFormat == 4)   {
-                output = excelPath.Replace(".xlsx", ".txt");
+                output = output.Replace(".xlsx", ".txt");
                 excel.ConvertToTxt(output, encoding);
             } else if (indexOfFormat == 5) {
                 
