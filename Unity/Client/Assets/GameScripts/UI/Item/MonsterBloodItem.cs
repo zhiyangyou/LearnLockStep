@@ -16,6 +16,7 @@ public class MonsterBloodItem : MonoBehaviour {
     private int monsterID;
 
     public int InstanceID { get; private set; }
+
     #endregion
 
     #region public
@@ -30,8 +31,11 @@ public class MonsterBloodItem : MonoBehaviour {
 
     public void Damage(FixInt subHp) {
         bloodBars.ChangeBlood(subHp.RawFloat);
+        if (bloodBars.nowBlood <= 0) {
+            bloodBars.gameObject.SetActive(false);
+        }
     }
-    
+
     #endregion
 
     #region private

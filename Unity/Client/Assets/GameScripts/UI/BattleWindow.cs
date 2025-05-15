@@ -6,7 +6,9 @@
  *注意:以下文件是自动生成的，再次生成不会覆盖原有的代码，会在原有的代码上进行新增，可放心使用
 ---------------------------------*/
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using FixMath;
 using UnityEngine.UI;
 using UnityEngine;
@@ -84,6 +86,8 @@ public class BattleWindow : WindowBase {
     //物体销毁时执行
     public override void OnDestroy() {
         base.OnDestroy();
+
+        // 释放GameOBject
         foreach (var kv in _dicBloodItems) {
             ZMAsset.Release(kv.Value.gameObject);
         }
@@ -115,8 +119,7 @@ public class BattleWindow : WindowBase {
         }
         else {
             MonsterBloodItem showItem = null;
-            if (_dicBloodItems.TryGetValue(instanceID, out showItem)) { }
-            if (showItem == null) {
+            if (!_dicBloodItems.TryGetValue(instanceID, out showItem)) {
                 string prefabPath = null;
                 if (monsterCfg.type == MonsterType.Normal) {
                     prefabPath = $"{AssetsPathConfig.Game_Prefabs}Item/MonsterBloodKItem.prefab";
@@ -136,16 +139,19 @@ public class BattleWindow : WindowBase {
                 goBlood.transform.localScale = Vector3.one;
                 goBlood.transform.localRotation = Quaternion.identity;
                 showItem = goBlood.GetComponent<MonsterBloodItem>();
-                Debug.LogError($"curHP :{curHp}");
                 showItem.InitBloodData(monsterCfg, curHp, instanceID);
                 _dicBloodItems.Add(instanceID, showItem);
             }
+
+
             if (_curShowBloodItem != null) {
                 _curShowBloodItem.gameObject.SetActive(false);
             }
+
             showItem.gameObject.SetActive(true);
-            // Debug.LogError($"damage update {damageHp}");
             showItem.Damage(damageHp);
+
+
             _curShowBloodItem = showItem;
             _lastShowBloodItemTime = Time.realtimeSinceStartup;
         }
@@ -158,6 +164,10 @@ public class BattleWindow : WindowBase {
     public void OnNormalAttackButtonClick() {
         _heroLogicActor.ReleaseNormalAttack(); //  普通攻击技能
     }
+
+    #endregion
+
+    #region private
 
     #endregion
 }

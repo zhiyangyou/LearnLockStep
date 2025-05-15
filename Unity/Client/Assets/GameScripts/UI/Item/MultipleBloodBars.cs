@@ -18,7 +18,7 @@ public class MultipleBloodBars : MonoBehaviour {
     public Text countText; //剩下的血条数text
 
     private int count; //剩下的血条数(不包括当前血量)
-    private float nowBlood; //在一条血中的当前血量，如：100/1000则为100  
+    public float nowBlood { get; private set; } //在一条血中的当前血量，如：100/1000则为100  
     private float oneBarBlood = 10000f; //一条血的容量，如：100/1000则为1000     
 
     private int colorIndex = 0;
