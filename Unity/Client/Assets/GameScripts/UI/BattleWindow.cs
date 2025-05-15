@@ -107,7 +107,7 @@ public class BattleWindow : WindowBase {
     /// <param name="damageHp">伤害Hp</param>
     public void ShowMonsterDamage(MonsterCfg monsterCfg, int instanceID, FixInt curHp, FixInt damageHp) {
         const float changeInterval = 0.5f; // 切换的最小时间
-
+        
         damageHp = -damageHp;
         // 0.5秒不切换
         if (_curShowBloodItem != null
@@ -118,6 +118,7 @@ public class BattleWindow : WindowBase {
             _lastShowBloodItemTime = Time.realtimeSinceStartup;
         }
         else {
+           
             MonsterBloodItem showItem = null;
             if (!_dicBloodItems.TryGetValue(instanceID, out showItem)) {
                 string prefabPath = null;
@@ -142,16 +143,11 @@ public class BattleWindow : WindowBase {
                 showItem.InitBloodData(monsterCfg, curHp, instanceID);
                 _dicBloodItems.Add(instanceID, showItem);
             }
-
-
             if (_curShowBloodItem != null) {
                 _curShowBloodItem.gameObject.SetActive(false);
             }
-
-            showItem.gameObject.SetActive(true);
             showItem.Damage(damageHp);
-
-
+            
             _curShowBloodItem = showItem;
             _lastShowBloodItemTime = Time.realtimeSinceStartup;
         }

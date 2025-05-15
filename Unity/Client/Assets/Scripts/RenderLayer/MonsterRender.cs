@@ -44,7 +44,12 @@ public class MonsterRender : RenderObject {
         }
         else {
             _curAnimName = animClipName;
-            _anim.Play(animClipName);
+            if (_anim.GetClip(animClipName)) {
+                _anim.Play(animClipName);
+            }
+            else {
+                Debug.LogError($"{this.gameObject.name} Animation中没有{animClipName}动画");
+            }
         }
     }
 
@@ -65,6 +70,10 @@ public class MonsterRender : RenderObject {
             // 蜘蛛
             audioClip = ZMAsset.LoadAudio($"{AssetsPathConfig.Game_Audio_Path}zhizu/NorthrendGhoulWound1.wav");
         }
+        else if (_monsterID == 30001) {
+            // 蜘蛛
+            audioClip = ZMAsset.LoadAudio($"{AssetsPathConfig.Game_Audio_Path}zhizu/NorthrendGhoulWound1.wav");
+        }
         if (audioClip != null) {
             AudioController.GetInstance().PlaySoundByAudioClip(audioClip, false, AudioPriorityConfig.Monster_BeHit_Audio);
         }
@@ -79,6 +88,9 @@ public class MonsterRender : RenderObject {
     public override void OnDeath() {
         base.OnDeath();
         PlayAnim(AnimaNames.Anim_Dead);
+        LogicTimerManager.Instance.DelayCallOnce(1.5f, () => {
+            ZMAsset.Release(gameObject);
+        });
     }
 
     #endregion

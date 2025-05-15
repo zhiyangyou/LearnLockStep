@@ -52,13 +52,15 @@ public class MultipleBloodBars : MonoBehaviour {
     /// </summary>  
     /// <param name="number"></param>  
     public void InitBlood(float number) {
+        if (number <= 0f) {
+            return;
+        }
         count = (int)(number / oneBarBlood); //剩下的血条数
         nowBlood = number % oneBarBlood; //最后一条血的当前血量
         if (nowBlood == 0) //如果最后一条血的血量刚好充满剩余血条数减一
         {
             nowBlood = oneBarBlood;
             count--;
-            // count = count <= 0 ? 0 : count;
         }
 
         colorIndex = count % colors.Length;

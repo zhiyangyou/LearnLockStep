@@ -1,16 +1,15 @@
+using System;
 using System.Collections.Generic;
 using FixIntPhysics;
 using FixMath;
 using UnityEngine;
 using ZM.ZMAsset;
 
-namespace ZMGC.Battle
-{
+namespace ZMGC.Battle {
     /// <summary>
     /// 怪物逻辑
     /// </summary>
-    public class MonsterLogicCtrl : ILogicBehaviour
-    {
+    public class MonsterLogicCtrl : ILogicBehaviour {
         #region 属性和字段
 
         /// <summary>
@@ -18,51 +17,39 @@ namespace ZMGC.Battle
         /// </summary>
         public List<MonsterLogic> ListMonsterLogic { get; private set; } = new();
 
-        private List<Vector3> _listMonsterPos = new List<Vector3>()
-        {
-            Vector3.zero,
-            new Vector3(-2f, 0f, 0f)
-        };
-
-        private List<int> _listMonsterIDs = new List<int>()
-        {
-            20001,
-            20005,
+        private List<(Vector3, int)> _listMonsterPosAndID = new() {
+            (new Vector3(-2, 0, 0), 20001),
+            (new Vector3(0, 0, 0), 20005),
+            (new Vector3(2, 0, 0), 30001),
         };
 
         #endregion
 
         #region life-cycle
 
-        public void OnCreate()
-        {
+        public void OnCreate() {
             // Debug.LogError("on create monster ... ");
         }
 
-        public void OnDestroy()
-        {
-        }
+        public void OnDestroy() { }
 
         #endregion
 
         #region public
 
-        public void OnLogicFrameUpdate()
-        {
-            for (int i = ListMonsterLogic.Count - 1; i >= 0; i--)
-            {
+        public void OnLogicFrameUpdate() {
+            for (int i = ListMonsterLogic.Count - 1; i >= 0; i--) {
                 var monsterLogic = ListMonsterLogic[i];
                 monsterLogic.OnLogicFrameUpdate();
             }
         }
 
-        public void InitMonster()
-        {
+        public void InitMonster() {
             var index = 0;
-            foreach (var pos in _listMonsterPos)
-            {
+            foreach (var tp in _listMonsterPosAndID) {
+                var pos = tp.Item1;
+                var monsterID = tp.Item2;
                 FixIntVector3 logicPos = new FixIntVector3(pos);
-                var monsterID = _listMonsterIDs[index];
                 var goMonster = ZMAsset.Instantiate($"{AssetsPathConfig.Game_Monster_Prefabs}{monsterID}.prefab", null);
                 // 初始化
                 BoxColliderGizmo boxInfo = goMonster.GetComponent<BoxColliderGizmo>();

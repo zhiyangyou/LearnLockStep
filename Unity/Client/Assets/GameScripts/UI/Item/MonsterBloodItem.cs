@@ -30,6 +30,9 @@ public class MonsterBloodItem : MonoBehaviour {
     }
 
     public void Damage(FixInt subHp) {
+        if (!gameObject.activeInHierarchy) {
+            gameObject.SetActive(true);
+        }
         bloodBars.ChangeBlood(subHp.RawFloat);
         if (bloodBars.nowBlood <= 0) {
             bloodBars.gameObject.SetActive(false);
