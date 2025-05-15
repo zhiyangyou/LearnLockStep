@@ -45,7 +45,7 @@ public class Buff_ModifyAttribute : BuffComposite {
             for (var i = 0; i < buffHitTargets.Count; i++) {
                 var hitTarget = buffHitTargets[i];
                 if (hitTarget.ObjectState != LogicObjectState.Death) {
-                    hitTarget.BuffDamage(_buffDamageValue, buffDamageConfig);
+                    hitTarget.BuffDamage(DamageCalcuCenter.CalculateDamage(buff.BuffConfigSo, buff.releaser, hitTarget), buffDamageConfig);
                     hitTarget.OnHit(buff.BuffConfigSo.goBuffHitEffect, 1000, hitTarget, buff.releaser.LogicAxis_X);
 
                     //  处理造成伤害后的buff附加

@@ -22,7 +22,7 @@ public class BuffConfigSO : ScriptableObject {
     [LabelText("buff类型")] public BuffType buffType; // buff类型: 晕眩, 沉默 , 击退等...
     [LabelText("buff附加目标类型")] public BuffAttachType attachType;
     [LabelText("buff附加位置")] public BuffPosType posType;
-    [LabelText("buff伤害类型")] public BuffDamageType damageType;
+    [LabelText("buff伤害类型")] public DamageType damageType;
     [LabelText("buff伤害倍率")] public int damageRate;
     [LabelText("buff数值配置")] public List<BuffParam> paramsList;
 
@@ -133,12 +133,7 @@ public enum BuffEffectPosType {
     [LabelText("目标位置")] TargetPos,
 }
 
-[LabelText("buff伤害类型")]
-public enum BuffDamageType {
-    [LabelText("无配置")] None,
-    [LabelText("物理伤害")] AD,
-    [LabelText("魔法伤害")] AP,
-}
+ 
 
 [LabelText("buff位置类型")]
 public enum BuffPosType {

@@ -58,7 +58,7 @@ MonoBehaviour:
     triggerIntervalMs: 0
     isFollowEffect: 0
     damageType: 1
-    damageRate: 333
+    damageRate: 106
     DetectionMode: 1
     boxSize: {x: 17, y: 2, z: 1}
     boxOffset: {x: 10, y: 1, z: 0}

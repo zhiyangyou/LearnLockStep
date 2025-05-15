@@ -94,7 +94,7 @@ public partial class Skill {
         enemyList.Clear();
         foreach (LogicActor damageTargetActor in damageTargetList) {
             // 造成伤害
-            damageTargetActor.SkillDamage(9999, configDamage);
+            damageTargetActor.SkillDamage(DamageCalcuCenter.CalculateDamage(configDamage, _skillCreater, damageTargetActor), configDamage);
 
             // 添加伤害特效
             AddHitEffect(damageTargetActor, configDamage.TargetType == TargetType.Self ? _skillCreater : damageTargetActor);
