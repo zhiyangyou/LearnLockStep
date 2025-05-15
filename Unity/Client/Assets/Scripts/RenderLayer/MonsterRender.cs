@@ -48,7 +48,7 @@ public class MonsterRender : RenderObject {
                 _anim.Play(animClipName);
             }
             else {
-                Debug.LogError($"{this.gameObject.name} Animation中没有{animClipName}动画");
+                Debug.LogWarning($"{this.gameObject.name} Animation中没有{animClipName}动画");
             }
         }
     }

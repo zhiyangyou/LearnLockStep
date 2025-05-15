@@ -25,8 +25,8 @@ public class BattleWindow : WindowBase {
     private List<SkillItem> _listSkillItemCompt = new();
 
     // 上次显示血条时间
-    private float _lastShowBloodItemTime = 0f;
-    private MonsterBloodItem _curShowBloodItem = null;
+    // private float _lastShowBloodItemTime = 0f;
+    // private MonsterBloodItem _curShowBloodItem = null;
 
     public BattleWindowDataComponent uiCompt = null;
 
@@ -106,51 +106,35 @@ public class BattleWindow : WindowBase {
     /// <param name="curHp">当前Hp</param>
     /// <param name="damageHp">伤害Hp</param>
     public void ShowMonsterDamage(MonsterCfg monsterCfg, int instanceID, FixInt curHp, FixInt damageHp) {
-        const float changeInterval = 0.5f; // 切换的最小时间
-        
         damageHp = -damageHp;
-        // 0.5秒不切换
-        if (_curShowBloodItem != null
-            && monsterCfg.type != MonsterType.Boss
-            && (Time.realtimeSinceStartup - _lastShowBloodItemTime < changeInterval)
-           ) {
-            _curShowBloodItem.Damage(damageHp);
-            _lastShowBloodItemTime = Time.realtimeSinceStartup;
-        }
-        else {
-           
-            MonsterBloodItem showItem = null;
-            if (!_dicBloodItems.TryGetValue(instanceID, out showItem)) {
-                string prefabPath = null;
-                if (monsterCfg.type == MonsterType.Normal) {
-                    prefabPath = $"{AssetsPathConfig.Game_Prefabs}Item/MonsterBloodKItem.prefab";
-                }
-                else if (monsterCfg.type == MonsterType.Boss) {
-                    prefabPath = $"{AssetsPathConfig.Game_Prefabs}Item/BossBloodKItem.prefab";
-                }
-                else if (monsterCfg.type == MonsterType.Elite) {
-                    prefabPath = $"{AssetsPathConfig.Game_Prefabs}Item/MonsterBloodKItem.prefab";
-                }
-                else {
-                    Debug.LogError($"暂时不支持{monsterCfg.type}类型血条展示");
-                    return;
-                }
-                var goBlood = ZMAsset.Instantiate(prefabPath, uiCompt.BloodRoot);
-                goBlood.transform.localPosition = Vector3.zero;
-                goBlood.transform.localScale = Vector3.one;
-                goBlood.transform.localRotation = Quaternion.identity;
-                showItem = goBlood.GetComponent<MonsterBloodItem>();
-                showItem.InitBloodData(monsterCfg, curHp, instanceID);
-                _dicBloodItems.Add(instanceID, showItem);
+        MonsterBloodItem showItem = null;
+        if (!_dicBloodItems.TryGetValue(instanceID, out showItem)) {
+            string prefabPath = null;
+            if (monsterCfg.type == MonsterType.Normal) {
+                prefabPath = $"{AssetsPathConfig.Game_Prefabs}Item/MonsterBloodKItem.prefab";
             }
-            if (_curShowBloodItem != null) {
-                _curShowBloodItem.gameObject.SetActive(false);
+            else if (monsterCfg.type == MonsterType.Boss) {
+                prefabPath = $"{AssetsPathConfig.Game_Prefabs}Item/BossBloodKItem.prefab";
             }
-            showItem.Damage(damageHp);
-            
-            _curShowBloodItem = showItem;
-            _lastShowBloodItemTime = Time.realtimeSinceStartup;
+            else if (monsterCfg.type == MonsterType.Elite) {
+                prefabPath = $"{AssetsPathConfig.Game_Prefabs}Item/MonsterBloodKItem.prefab";
+            }
+            else {
+                Debug.LogError($"暂时不支持{monsterCfg.type}类型血条展示");
+                return;
+            }
+            var goBlood = ZMAsset.Instantiate(prefabPath, uiCompt.BloodRoot);
+            goBlood.transform.localPosition = Vector3.zero;
+            goBlood.transform.localScale = Vector3.one;
+            goBlood.transform.localRotation = Quaternion.identity;
+            showItem = goBlood.GetComponent<MonsterBloodItem>();
+            showItem.InitBloodData(monsterCfg, curHp, instanceID);
+            _dicBloodItems.Add(instanceID, showItem);
         }
+        Debug.LogError($"ShowMonsterDamage  curHp:{curHp} {damageHp}");
+        showItem.Damage(damageHp);
+
+        JudgeShowWhoseBlood(monsterCfg, instanceID);
     }
 
     #endregion
@@ -164,6 +148,19 @@ public class BattleWindow : WindowBase {
     #endregion
 
     #region private
+
+    private void JudgeShowWhoseBlood(MonsterCfg monsterCfg, int instanceID) {
+        var type = monsterCfg.type;
+
+        // 全部关闭
+        foreach (var kv in _dicBloodItems) {
+            kv.Value.gameObject.SetActive(false);
+        }
+        var item = _dicBloodItems[instanceID];
+        if (item.bloodBars.nowBlood > 0) {
+            item.gameObject.SetActive(true);
+        }
+    }
 
     #endregion
 }
