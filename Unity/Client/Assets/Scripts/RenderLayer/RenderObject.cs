@@ -25,7 +25,9 @@ public class RenderObject : MonoBehaviour {
     #region life-cycle
 
     protected virtual void Update() {
-        UpdatePosAndDir();
+        if (LogicObject != null) {
+            UpdatePosAndDir();
+        }
     }
 
     #endregion

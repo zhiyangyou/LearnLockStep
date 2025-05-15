@@ -2,8 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(HeroRender))]
-public class HeroStateDebugger : MonoBehaviour
-{
+public class HeroStateDebugger : MonoBehaviour {
     private HeroRender _heroRender = null;
 
     [Header("是否有技能释放中")] public bool HasReleasingSkill = false;
@@ -11,16 +10,16 @@ public class HeroStateDebugger : MonoBehaviour
 
 #if UNITY_EDITOR
 
-    private void Awake()
-    {
+    private void Awake() {
         _heroRender = GetComponent<HeroRender>();
     }
 
-    private void Update()
-    {
+    private void Update() {
         HeroLogic heroLogic = _heroRender.LogicObject as HeroLogic;
-        this.HasReleasingSkill = heroLogic.HasReleasingSkill;
-        this.ActionState = heroLogic.ActionState;
+        if (heroLogic != null) {
+            this.HasReleasingSkill = heroLogic.HasReleasingSkill;
+            this.ActionState = heroLogic.ActionState;
+        }
     }
 #endif
 }

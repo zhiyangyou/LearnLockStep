@@ -60,13 +60,14 @@ public class HeroRender : RenderObject {
             Debug.LogError($"暂时不支持其他类型的引导:{skillGuideType}");
         }
     }
+
     public void OnGuideRelease() {
         if (_goGuideEffect != null) {
             GameObject.DestroyImmediate(_goGuideEffect);
             _goGuideEffect = null;
         }
     }
-    
+
     #endregion
 
     #region life-cycle
@@ -85,6 +86,9 @@ public class HeroRender : RenderObject {
     }
 
     protected override void Update() {
+        if (heroLogic == null) {
+            return;
+        }
         base.Update();
 
         // 判断有没有在技能释放, 有技能释放,播放技能动画的动画片段
@@ -148,8 +152,6 @@ public class HeroRender : RenderObject {
             _goGuideEffect.transform.localScale = Vector3.one;
         }
     }
-
-
 
     #endregion
 }
