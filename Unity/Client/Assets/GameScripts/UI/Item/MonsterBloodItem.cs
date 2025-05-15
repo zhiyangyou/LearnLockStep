@@ -30,7 +30,7 @@ public class MonsterBloodItem : MonoBehaviour {
     }
 
     public void Damage(FixInt subHp) {
-        Debug.LogError($"sub hp {subHp} nowHp:{bloodBars.nowBlood}");
+        // Debug.LogError($"sub hp {subHp} nowHp:{bloodBars.nowBlood}");
         if (!gameObject.activeSelf) {
             gameObject.SetActive(true);
         }

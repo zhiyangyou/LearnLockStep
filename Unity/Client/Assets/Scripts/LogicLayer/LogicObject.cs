@@ -31,7 +31,7 @@ public abstract class LogicObject {
         protected set { _logicAngle = value; }
     }
 
-    public FixInt LogicMoveSpeed {
+    public virtual FixInt LogicMoveSpeed {
         get { return _logicMoveSpeed; }
         set { _logicMoveSpeed = value; }
     }

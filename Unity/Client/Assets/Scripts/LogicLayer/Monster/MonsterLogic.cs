@@ -3,15 +3,26 @@ using System.Collections.Generic;
 using FixIntPhysics;
 using FixMath;
 using UnityEngine;
+using ZMGC.Battle;
 
 public class MonsterLogic : LogicActor {
     #region 属性字段
 
     public int MonsterID { get; private set; }
 
+    private FixInt _attackRange = 0.5f; // 攻击范围
+    private FixInt _chaseDistance = 4f; // 追踪范围 
+    private LogicActor _chaseTarget = null; // 追踪目标
+    private FixInt _moveSpeed = 1f;
+
     #endregion
 
     #region public
+
+    public override FixInt LogicMoveSpeed {
+        get { return _moveSpeed; }
+        set { _moveSpeed = value; }
+    }
 
     public MonsterLogic(int monsterID,
         RenderObject renderObject,
@@ -29,12 +40,19 @@ public class MonsterLogic : LogicActor {
     public override void OnCreate() {
         base.OnCreate();
         InitAttribute();
+        _chaseTarget = BattleWorld.GetExitsLogicCtrl<HeroLogicCtrl>().HeroLogic;
     }
 
     public override void OnHit(GameObject goEffect, int survialTimeMS, LogicObject sourceObj, FixInt logicAxisX) {
         base.OnHit(goEffect, survialTimeMS, sourceObj, logicAxisX);
         LogicAxis_X = -logicAxisX;
     }
+
+    public override void OnLogicFrameUpdate() {
+        base.OnLogicFrameUpdate();
+        UpdateAIMove();
+    }
+
 
     public override void State_Floating(bool isUpFloating) {
         base.State_Floating(isUpFloating);
@@ -64,6 +82,41 @@ public class MonsterLogic : LogicActor {
 
     #region private
 
+    private void UpdateAIMove() {
+        if (ObjectState == LogicObjectState.Death) {
+            return;
+        }
+
+        // 追踪目标位置
+        FixIntVector3 targetPos = _chaseTarget.LogicPos;
+        // 方向向量
+        FixIntVector3 dirToPlayer = (_chaseTarget.LogicPos - LogicPos).normalized;
+        //距离
+        FixInt distance = FixIntVector3.Distance(LogicPos, _chaseTarget.LogicPos);
+
+        if (distance <= _attackRange) {
+            // 执行攻击
+            if (ActionState == LogicObjectActionState.Idle) {
+                PlayAnim(AnimaNames.Anim_Gongji_01);
+                // TODO 使用怪物的技能系统进行技能释放
+            }
+        }
+        else if (distance > atkRange && distance <= _chaseDistance) {
+            // 执行移动
+            if (ActionState == LogicObjectActionState.Idle
+                || ActionState == LogicObjectActionState.Move
+               ) {
+                LogicPos += (dirToPlayer * LogicMoveSpeed * LogicFrameConfig.LogicFrameInterval);
+                LogicAxis_X = dirToPlayer.x;
+                PlayAnim(AnimaNames.Anim_Walk);
+            }
+        }
+        else {
+            // 什么都干
+            PlayAnim(AnimaNames.Anim_Idle);
+        }
+    }
+
     private void InitAttribute() {
         MonsterCfg cfg = ConfigCenter.Instance.GetMonsterCfgById(MonsterID);
         if (cfg == null) {
@@ -88,6 +141,8 @@ public class MonsterLogic : LogicActor {
 
         this.atkRange = cfg.atkRange;
         this.searchDisRange = cfg.searchDisRange;
+
+        this.LogicMoveSpeed = 1f; // TODO 读配置表
     }
 
     #endregion

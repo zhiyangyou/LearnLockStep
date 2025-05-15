@@ -131,7 +131,7 @@ public class BattleWindow : WindowBase {
             showItem.InitBloodData(monsterCfg, curHp, instanceID);
             _dicBloodItems.Add(instanceID, showItem);
         }
-        Debug.LogError($"ShowMonsterDamage  curHp:{curHp} {damageHp}");
+        // Debug.LogError($"ShowMonsterDamage  curHp:{curHp} {damageHp}");
         showItem.Damage(damageHp);
 
         JudgeShowWhoseBlood(monsterCfg, instanceID);
