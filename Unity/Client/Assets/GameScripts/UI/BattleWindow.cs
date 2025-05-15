@@ -124,8 +124,8 @@ public class BattleWindow : WindowBase {
                 if (monsterCfg.type == MonsterType.Normal) {
                     prefabPath = $"{AssetsPathConfig.Game_Prefabs}Item/MonsterBloodKItem.prefab";
                 }
-                else if (monsterCfg.type == MonsterType.Normal) {
-                    prefabPath = $"{AssetsPathConfig.Game_Prefabs}Item/MonsterBloodKItem.prefab";
+                else if (monsterCfg.type == MonsterType.Boss) {
+                    prefabPath = $"{AssetsPathConfig.Game_Prefabs}Item/BossBloodKItem.prefab";
                 }
                 else if (monsterCfg.type == MonsterType.Elite) {
                     prefabPath = $"{AssetsPathConfig.Game_Prefabs}Item/MonsterBloodKItem.prefab";
