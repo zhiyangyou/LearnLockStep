@@ -36,6 +36,7 @@ public class HeroLogic : LogicActor {
             Debug.LogError($"配置是空 heroID:{HeroId}");
             return;
         }
+        this.hp = heroDataCfg.hp;
         this.mp = heroDataCfg.mp;
         this.ap = heroDataCfg.ap;
         this.ad = heroDataCfg.ad;

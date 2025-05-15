@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using FixMath;
+using UnityEngine;
 using ZM.ZMAsset;
 
 public class MonsterRender : RenderObject {
@@ -9,6 +10,10 @@ public class MonsterRender : RenderObject {
     private string _curAnimName = null;
 
     private int _monsterID = 0;
+
+    private MonsterCfg _monsterCfg;
+
+    private MonsterLogic _monsterLogic;
 
     #endregion
 
@@ -21,6 +26,8 @@ public class MonsterRender : RenderObject {
             Debug.LogError("MonsterRenderer上没有挂Animation组件");
         }
         _monsterID = ((MonsterLogic)LogicObject).MonsterID;
+        _monsterCfg = ConfigCenter.Instance.GetMonsterCfgById(_monsterID);
+        _monsterLogic = this.LogicObject as MonsterLogic;
     }
 
     public override void PlayAnim(string animClipName) {
@@ -48,7 +55,7 @@ public class MonsterRender : RenderObject {
     public override void OnHit(GameObject goEffect, int survialTimeMS, LogicObject sourceObj) {
         base.OnHit(goEffect, survialTimeMS, sourceObj);
         AudioClip audioClip = null;
-        
+
         // 通过配置表来处理...
         if (_monsterID == 20001) {
             // 哥布林
@@ -61,6 +68,17 @@ public class MonsterRender : RenderObject {
         if (audioClip != null) {
             AudioController.GetInstance().PlaySoundByAudioClip(audioClip, false, AudioPriorityConfig.Monster_BeHit_Audio);
         }
+    }
+
+    public override void Damage(int damageValue, DamageSource damageSource) {
+        base.Damage(damageValue, damageSource);
+        UIModule.Instance.GetWindow<BattleWindow>()
+            .ShowMonsterDamage(_monsterCfg, gameObject.GetInstanceID(), _monsterLogic.HP, new FixInt(damageValue));
+    }
+
+    public override void OnDeath() {
+        base.OnDeath();
+        PlayAnim(AnimaNames.Anim_Dead);
     }
 
     #endregion

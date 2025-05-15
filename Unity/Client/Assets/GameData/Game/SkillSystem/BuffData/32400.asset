@@ -23,9 +23,7 @@ MonoBehaviour:
   posType: 2
   damageType: 1
   damageRate: 145
-  paramsList:
-  - Value: 1235
-    Desc: "\u4F24\u5BB3\u6570\u503C"
+  paramsList: []
   targetGrabData:
     GrabMovePos: {x: 0, y: 0, z: 0}
     GrabMoveTimeMS: 0

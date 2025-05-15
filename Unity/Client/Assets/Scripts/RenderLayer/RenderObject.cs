@@ -75,6 +75,8 @@ public class RenderObject : MonoBehaviour {
         }
     }
 
+    public virtual void OnDeath() { }
+
     public virtual Transform GetTransParent(TransParentType transParentType) {
         return null;
     }

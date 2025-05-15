@@ -25,6 +25,12 @@ public class MonsterLogic : LogicActor {
         ObjectType = LogicObjectType.Monster;
     }
 
+
+    public override void OnCreate() {
+        base.OnCreate();
+        InitAttribute();
+    }
+
     public override void OnHit(GameObject goEffect, int survialTimeMS, LogicObject sourceObj, FixInt logicAxisX) {
         base.OnHit(goEffect, survialTimeMS, sourceObj, logicAxisX);
         LogicAxis_X = -logicAxisX;
@@ -64,6 +70,7 @@ public class MonsterLogic : LogicActor {
             Debug.LogError($"配置是空 MonsterID:{MonsterID}");
             return;
         }
+        this.hp = cfg.hp;
         this.mp = cfg.mp;
         this.ap = cfg.ap;
         this.ad = cfg.ad;

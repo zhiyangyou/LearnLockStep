@@ -42,10 +42,19 @@ public partial class LogicActor : LogicObject {
         if (ObjectState == LogicObjectState.Death) {
             return;
         }
-        // 1. 血量减少
-        // 2. 判断死亡
-        // 3. 飘字渲染
+        
+        // 3. 处理表现: 飘字 && 血条
         RenderObject.Damage(hp.RawInt, damageSource);
+        
+        // 1. 血量减少
+        ReduceHp(hp);
+        // 2. 判断死亡
+        if (this.hp <= 0) {
+            this.FixIntBoxCollider.Active = false;
+            ObjectState = LogicObjectState.Death;
+            RenderObject.OnDeath();
+        }
+       
     }
 
 

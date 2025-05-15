@@ -76,4 +76,15 @@ public partial class LogicActor {
     public FixInt AGL => agl + add_agl; // 敏捷
 
     #endregion
+
+    #region public接口
+
+    public void ReduceHp(FixInt reduceHp) {
+        hp -= reduceHp;
+        if (hp <= 0) {
+            hp = 0;
+        }
+    }
+
+    #endregion
 }

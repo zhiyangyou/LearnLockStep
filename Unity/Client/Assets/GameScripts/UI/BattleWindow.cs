@@ -7,6 +7,7 @@
 ---------------------------------*/
 
 using System.Collections.Generic;
+using FixMath;
 using UnityEngine.UI;
 using UnityEngine;
 using ZM.ZMAsset;
@@ -21,9 +22,16 @@ public class BattleWindow : WindowBase {
     private List<Transform> _listSkillItemTr = new();
     private List<SkillItem> _listSkillItemCompt = new();
 
-    #endregion
+    // 上次显示血条时间
+    private float _lastShowBloodItemTime = 0f;
+    private MonsterBloodItem _curShowBloodItem = null;
 
     public BattleWindowDataComponent uiCompt = null;
+
+    private Dictionary<int, MonsterBloodItem> _dicBloodItems = new();
+
+    #endregion
+
 
     #region 声明周期函数
 
@@ -76,11 +84,72 @@ public class BattleWindow : WindowBase {
     //物体销毁时执行
     public override void OnDestroy() {
         base.OnDestroy();
+        foreach (var kv in _dicBloodItems) {
+            ZMAsset.Release(kv.Value.gameObject);
+        }
+        _dicBloodItems.Clear();
     }
 
     #endregion
 
     #region API Function
+
+    /// <summary>
+    /// 显示怪物血条
+    /// </summary>
+    /// <param name="monsterCfg">怪物配置</param>
+    /// <param name="instanceID">怪物实例ID</param>
+    /// <param name="curHp">当前Hp</param>
+    /// <param name="damageHp">伤害Hp</param>
+    public void ShowMonsterDamage(MonsterCfg monsterCfg, int instanceID, FixInt curHp, FixInt damageHp) {
+        const float changeInterval = 0.5f; // 切换的最小时间
+
+        damageHp = -damageHp;
+        // 0.5秒不切换
+        if (_curShowBloodItem != null
+            && monsterCfg.type != MonsterType.Boss
+            && (Time.realtimeSinceStartup - _lastShowBloodItemTime < changeInterval)
+           ) {
+            _curShowBloodItem.Damage(damageHp);
+            _lastShowBloodItemTime = Time.realtimeSinceStartup;
+        }
+        else {
+            MonsterBloodItem showItem = null;
+            if (_dicBloodItems.TryGetValue(instanceID, out showItem)) { }
+            if (showItem == null) {
+                string prefabPath = null;
+                if (monsterCfg.type == MonsterType.Normal) {
+                    prefabPath = $"{AssetsPathConfig.Game_Prefabs}Item/MonsterBloodKItem.prefab";
+                }
+                else if (monsterCfg.type == MonsterType.Normal) {
+                    prefabPath = $"{AssetsPathConfig.Game_Prefabs}Item/MonsterBloodKItem.prefab";
+                }
+                else if (monsterCfg.type == MonsterType.Elite) {
+                    prefabPath = $"{AssetsPathConfig.Game_Prefabs}Item/MonsterBloodKItem.prefab";
+                }
+                else {
+                    Debug.LogError($"暂时不支持{monsterCfg.type}类型血条展示");
+                    return;
+                }
+                var goBlood = ZMAsset.Instantiate(prefabPath, uiCompt.BloodRoot);
+                goBlood.transform.localPosition = Vector3.zero;
+                goBlood.transform.localScale = Vector3.one;
+                goBlood.transform.localRotation = Quaternion.identity;
+                showItem = goBlood.GetComponent<MonsterBloodItem>();
+                Debug.LogError($"curHP :{curHp}");
+                showItem.InitBloodData(monsterCfg, curHp, instanceID);
+                _dicBloodItems.Add(instanceID, showItem);
+            }
+            if (_curShowBloodItem != null) {
+                _curShowBloodItem.gameObject.SetActive(false);
+            }
+            showItem.gameObject.SetActive(true);
+            // Debug.LogError($"damage update {damageHp}");
+            showItem.Damage(damageHp);
+            _curShowBloodItem = showItem;
+            _lastShowBloodItemTime = Time.realtimeSinceStartup;
+        }
+    }
 
     #endregion
 

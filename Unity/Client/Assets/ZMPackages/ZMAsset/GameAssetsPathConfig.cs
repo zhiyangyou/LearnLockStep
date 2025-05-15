@@ -23,11 +23,7 @@ public class GameAssetsPathConfig
     public const string HALL_PATH = GAME_DATA_PATH + "Hall/";
     public const string HALL_PREFABS_PATH = HALL_PATH + "Prefabs/";
     public const string HALL_DYNAMICITEM_PATH = HALL_PREFABS_PATH + "DynamicItem/";
-
- 
-
-
-
+    
     public const string HALL_TEXTURE_PATH = HALL_PATH + "Textures/";
 
     public const string HALL_DATA_PATH = HALL_PATH+ "CfgData/";
