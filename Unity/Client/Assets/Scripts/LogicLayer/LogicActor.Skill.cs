@@ -5,6 +5,7 @@ using System.Linq;
 using FixMath;
 using UnityEngine;
 using ZMGC.Battle;
+using ZMGC.Hall;
 
 public partial class LogicActor {
     #region 属性和字段
@@ -52,7 +53,8 @@ public partial class LogicActor {
     ///  初始化技能
     /// </summary>
     public void InitActorSkill() {
-        var heroID = HeroIDConfig.TestHeroID;
+        
+        var heroID = HallWorld.GetExitsDataMgr<UserDataMgr>().CurSelectRoleID;
         _normalAttackSkillArr = BattleWorld.GetExitsDataMgr<HeroDataMgr>().GetHeroNormalSkillIDs(heroID);
         _normalSkillArr = BattleWorld.GetExitsDataMgr<HeroDataMgr>().GetHeroSkillIDs(heroID);
         _skillSystem = new SkillSystem(this);

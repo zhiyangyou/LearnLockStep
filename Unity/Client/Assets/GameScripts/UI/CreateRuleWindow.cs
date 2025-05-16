@@ -19,14 +19,9 @@ using ZMUIFrameWork;
 public class CreateRuleWindow : WindowBase {
     #region 属性和字段
 
-    private List<int> _listRoleIDs = new() {
-        HeroIDConfig.HeroID_神枪手,
-        HeroIDConfig.HeroID_鬼剑士,
-    };
-
     private List<GameObject> _listRoleSelectItem = new();
 
-    private int _curSelectRoleID = -1;
+    private UserDataMgr _userDataMgr;
 
     #endregion
 
@@ -40,11 +35,12 @@ public class CreateRuleWindow : WindowBase {
         uiCompt = gameObject.GetComponent<CreateRuleWindowDataComponent>();
         uiCompt.InitComponent(this);
 
+        _userDataMgr = HallWorld.GetExitsDataMgr<UserDataMgr>();
+        _userDataMgr.CurSelectRoleID = _userDataMgr.RoleIDs.First();
         uiCompt.RoleTemplateGameObject.SetActive(false);
 
-        _curSelectRoleID = _listRoleIDs.First();
-        uiCompt.CurSelectRoleIDText.text = $"ID: {_curSelectRoleID}";
-        foreach (var id in _listRoleIDs) {
+        uiCompt.CurSelectRoleIDText.text = $"ID: {_userDataMgr.CurSelectRoleID}";
+        foreach (var id in _userDataMgr.RoleIDs) {
             int roleID = id;
             var go = GameObject.Instantiate(uiCompt.RoleTemplateGameObject, uiCompt.RoleSelectListTransform);
             go.GetComponent<Button>().onClick.AddListener(() => { OnClick_RoleItem(roleID); });
@@ -60,8 +56,8 @@ public class CreateRuleWindow : WindowBase {
     }
 
     private void OnClick_RoleItem(int roleID) {
-        _curSelectRoleID = roleID;
-        uiCompt.CurSelectRoleIDText.text = $"ID: {_curSelectRoleID}";
+        _userDataMgr.CurSelectRoleID = roleID;
+        uiCompt.CurSelectRoleIDText.text = $"ID: {roleID}";
     }
 
     //物体隐藏时执行

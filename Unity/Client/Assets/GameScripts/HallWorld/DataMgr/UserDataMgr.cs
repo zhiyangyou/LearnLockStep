@@ -7,20 +7,28 @@
 * 注意:以下文件为自动生成，强制再次生成将会覆盖
 ----------------------------------------------------------------------------------------*/
 
+using System.Collections.Generic;
 using UnityEngine;
 
-namespace ZMGC.Hall
-{
-    public class UserDataMgr : IDataBehaviour
-    {
+namespace ZMGC.Hall {
+    public class UserDataMgr : IDataBehaviour {
+        #region 属性和字段
+
+        private List<int> _listRoleIDs = new() {
+            HeroIDConfig.HeroID_神枪手,
+            HeroIDConfig.HeroID_鬼剑士,
+        };
+
+        public IEnumerable<int> RoleIDs => _listRoleIDs;
+
+        public int CurSelectRoleID { get; set; }
+
+        #endregion
+
         public string UserName;
 
-        public void OnCreate()
-        { 
-        }
+        public void OnCreate() { }
 
-        public void OnDestroy()
-        { 
-        }
+        public void OnDestroy() { }
     }
 }
