@@ -19,6 +19,8 @@ MonoBehaviour:
     isLoopAnim: 0
     animLoopCount: 0
     logicFrame: 9
+    isSetCustomLogicFrame: 0
+    customLogicFrame: 0
     animLength: 0.6
     skillDurationMS: 600
   skillCfg:
@@ -41,13 +43,14 @@ MonoBehaviour:
     showSkillPortrait: 0
     skillPortraitObj: {fileID: 0}
     skillDes: 
+  buffCfgList: []
   damageCfgList:
   - triggerFrame: 1
     endFrame: 3
     triggerIntervalMs: 0
     isFollowEffect: 0
     damageType: 1
-    damageRate: 0
+    damageRate: 4000
     DetectionMode: 2
     boxSize: {x: 1, y: 1, z: 1}
     boxOffset: {x: 0, y: 0, z: 0}
@@ -99,4 +102,5 @@ MonoBehaviour:
     triggerFrame: 1
     isLoop: 0
     endFrame: 0
+  bulletList: []
   actionList: []
