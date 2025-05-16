@@ -30,6 +30,7 @@ namespace ZMGC.Hall
 
             // pop first winow
             UIModule.Instance.PopUpWindow<CreateRuleWindow>();
+            AudioController.GetInstance().PlayMusicFade($"{AssetsPathConfig.Game_Audio_Path}BG/Login.mp3",2f);
         }
 
         public override void OnUpdate()

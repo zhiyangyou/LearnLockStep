@@ -71,6 +71,8 @@ namespace ZMGC.Battle {
             BuffSystem.Instance.OnCreate();
             _accLogicRealTime = 0f;
             _nextLogicFrameTime = 0f;
+            
+            AudioController.GetInstance().PlayMusicFade($"{AssetsPathConfig.Game_Audio_Path}BG/jizhou.mp3",2f);
         }
 
 
