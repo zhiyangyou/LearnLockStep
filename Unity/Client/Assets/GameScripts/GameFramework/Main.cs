@@ -13,14 +13,20 @@ public class Main : MonoBehaviour
 
     public static Main Instance => _instance;
 
+    private void Awake() {
+        Debug.LogError($"DontDestroyOnLoad({gameObject.name})");
+        DontDestroyOnLoad(gameObject);
+    }
+
     void Start()
-    {
+    { 
         _instance = this;
         UIModule.Instance.Initialize();
         ZMAsset.InitFrameWork();
         WorldManager.CreateWorld<HallWorld>();
-
-        DontDestroyOnLoad(gameObject);
     }
-    
+
+    private void Update() {
+       
+    }
 }
