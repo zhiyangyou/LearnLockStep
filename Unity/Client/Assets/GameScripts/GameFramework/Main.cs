@@ -33,6 +33,8 @@ public class Main : MonoBehaviour {
         }) as Rcv_Test1;
         
         Debug.LogError(test1Rsp.error_msg);
+        Debug.LogError(test1Rsp.ErrorCode);
+        Debug.LogError(test1Rsp.success);
     }
 
     void Start() {
@@ -46,13 +48,13 @@ public class Main : MonoBehaviour {
 
     #region server
 
-    private const string Server_Gate_Addresss = "127.0.0.1:11002";
+    private const string Server_Gate_Addresss = "127.0.0.1:20000";
 
     private async Task InitServer() {
-        await Entry.Initialize();
+        await Entry.Initialize(typeof(Main).Assembly);
         _fScene = await Entry.CreateScene();
         _fScene.Connect(Server_Gate_Addresss,
-            NetworkProtocolType.TCP,
+            NetworkProtocolType.KCP,
             OnServerGate_ConnectComplete,
             OnServerGate_ConnectFailed,
             OnServer_Gate_Disconnect,
