@@ -1,0 +1,3 @@
+[submodule "Server/Fantasy"]
+	path = Server/Fantasy
+	url = ../../qq362946/Fantasy.git
