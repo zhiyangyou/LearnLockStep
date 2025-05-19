@@ -27,6 +27,12 @@ public class Main : MonoBehaviour {
     private async Task Awake() {
         DontDestroyOnLoad(gameObject);
         await InitServer();
+        Rcv_Test1 test1Rsp = await _fScene.Session.Call(new Send_Test1() {
+            pass_word = "111",
+            user_name = "222",
+        }) as Rcv_Test1;
+        
+        Debug.LogError(test1Rsp.error_msg);
     }
 
     void Start() {
