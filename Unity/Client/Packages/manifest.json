@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.fantasy.unity": "file:../../../Server/Fantasy/Fantasy.Unity/Fantasy.Unity",
     "com.unity.feature.development": "1.0.1",
     "com.unity.ide.rider": "3.0.34",
     "com.unity.textmeshpro": "3.0.7",
