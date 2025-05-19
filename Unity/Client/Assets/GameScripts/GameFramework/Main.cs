@@ -8,7 +8,9 @@ using ZMGC.Battle;
 using ZMGC.Hall;
 using ZM.ZMAsset;
 using Fantasy;
+using Fantasy.Async;
 using Fantasy.Network;
+using Fantasy.Network.Interface;
 using Fantasy.Platform.Unity;
 using FantasyScene = Fantasy.Scene;
 
@@ -31,10 +33,15 @@ public class Main : MonoBehaviour {
             pass_word = "111",
             user_name = "222",
         }) as Rcv_Test1;
-        
+
         Debug.LogError(test1Rsp.error_msg);
         Debug.LogError(test1Rsp.ErrorCode);
         Debug.LogError(test1Rsp.success);
+
+        _fScene.Session.Send(new C2G_Test2() {
+            frameOpCode = 1001,
+            msg_content = "C2G_Test2 content msg",
+        });
     }
 
     void Start() {
@@ -74,4 +81,11 @@ public class Main : MonoBehaviour {
     }
 
     #endregion
+}
+
+public class G2C_Test_Handler : Message<G2C_Test2> {
+    protected override async FTask Run(Session session, G2C_Test2 message) {
+        Debug.LogError($"G2C_Test2 : {message.frameOpCode} {message.msg_content}");
+        await FTask.CompletedTask;
+    }
 }
