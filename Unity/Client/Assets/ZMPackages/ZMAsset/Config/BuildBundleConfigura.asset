@@ -16,8 +16,8 @@ MonoBehaviour:
   - bundleid: 0
     moduleName: Game
     isAddressableAsset: 0
-    isBuild: 0
-    lastClickBtnTime: 586.79224
+    isBuild: 1
+    lastClickBtnTime: 121.24034
     prefabPathArr:
     - Assets/GameData/Hall/Prefabs
     - Assets/GameData/Game/Prefabs
@@ -27,8 +27,7 @@ MonoBehaviour:
     - Assets/GameData/Hall/Effects
     - Assets/GameData/Game/Effects
     - Assets/GameData/Game/Arts
-    - Assets/GameData/Game/SkillSystem/BuffData
-    - Assets/GameData/Game/SkillSystem/SkillData
+    - Assets/GameData/Game/SkillSystem
     signFolderPathArr:
     - abName: gameSound
       bundlePath: Assets/GameData/Game/Sound

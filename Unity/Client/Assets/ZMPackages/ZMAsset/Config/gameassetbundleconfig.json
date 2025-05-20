@@ -9197,6 +9197,347 @@
       "bundleDependce": []
     },
     {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/10010.asset",
+      "crc": 3838464275,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "10010.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/10020.asset",
+      "crc": 1782929136,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "10020.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/10030.asset",
+      "crc": 2800703086,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "10030.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/10040.asset",
+      "crc": 2888458103,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "10040.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/10050.asset",
+      "crc": 1619025897,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "10050.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/10060.asset",
+      "crc": 3993982986,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "10060.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/10070.asset",
+      "crc": 581261460,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "10070.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/10080.asset",
+      "crc": 4219816504,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "10080.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/10090.asset",
+      "crc": 925846182,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "10090.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/10150.asset",
+      "crc": 2012957610,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "10150.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/10160.asset",
+      "crc": 4185148489,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "10160.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/10161.asset",
+      "crc": 1594050557,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "10161.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/20000.asset",
+      "crc": 2978101132,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "20000.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/30040.asset",
+      "crc": 4098287286,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "30040.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/30041.asset",
+      "crc": 1379003650,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "30041.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/30050.asset",
+      "crc": 955049512,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "30050.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/30060.asset",
+      "crc": 3059999179,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "30060.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/30070.asset",
+      "crc": 2060050773,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "30070.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/30071.asset",
+      "crc": 3703499489,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "30071.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/30072.asset",
+      "crc": 3981897852,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "30072.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/30170.asset",
+      "crc": 1840444694,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "30170.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/30210.asset",
+      "crc": 2454765652,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "30210.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_hero_fightergirl.uab",
+        "game_common.uab",
+        "game_hero_qiangpao.uab",
+        "game_hero_gungirl.uab",
+        "game_hero_kuangzhan.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/30211.asset",
+      "crc": 875023328,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "30211.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_common.uab",
+        "game_hero_qiangpao.uab",
+        "game_20004.uab",
+        "game_gamesound.uab",
+        "game_hero_gunman.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/30212.asset",
+      "crc": 97505661,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "30212.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/30220.asset",
+      "crc": 484427703,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "30220.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_hero_qiangpao.uab",
+        "game_common.uab",
+        "game_hero_gungirl.uab",
+        "game_hero_kuangzhan.uab",
+        "game_hero_fightergirl.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/30221.asset",
+      "crc": 3131624451,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "30221.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_common.uab",
+        "game_hero_qiangpao.uab",
+        "game_20004.uab",
+        "game_gamesound.uab",
+        "game_hero_gunman.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/30222.asset",
+      "crc": 2336282270,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "30222.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_common.uab",
+        "game_hero_qiangpao.uab",
+        "game_20004.uab",
+        "game_gamesound.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/32001.asset",
+      "crc": 3532534725,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "32001.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/32310.asset",
+      "crc": 2178810922,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "32310.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/32311.asset",
+      "crc": 665391006,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "32311.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/32312.asset",
+      "crc": 373363971,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "32312.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/32313.asset",
+      "crc": 2956336823,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "32313.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/32400.asset",
+      "crc": 689269117,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "32400.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_common.uab",
+        "game_hero_gunman.uab",
+        "game_hero_swordman.uab",
+        "game_hero_kuangzhan.uab",
+        "game_gamesound.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/BuffData/32401.asset",
+      "crc": 2405589705,
+      "bundleName": "game_buffdata.uab",
+      "assetName": "32401.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": []
+    },
+    {
       "path": "Assets/GameData/Game/Effects/Chongwu/Materials/Eff_CW_Xianlu_liuxingyu02.mat",
       "crc": 2377239527,
       "bundleName": "game_chongwu.uab",
@@ -34270,6 +34611,570 @@
       "bundleDependce": [
         "game_20004.uab",
         "game_common.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/1001.asset",
+      "crc": 379412229,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "1001.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_1000.uab",
+        "game_hero_jianhun.uab",
+        "game_common.uab",
+        "game_gamesound.uab",
+        "game_hero_swordman.uab",
+        "game_eff_jianhun_hit.uab",
+        "game_skillicon2.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/1002.asset",
+      "crc": 661996952,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "1002.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_1000.uab",
+        "game_common.uab",
+        "game_hero_jianhun.uab",
+        "game_gamesound.uab",
+        "game_eff_jianhun_hit.uab",
+        "game_skillicon2.uab",
+        "game_20004.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/1003.asset",
+      "crc": 2164411948,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "1003.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_hero_jianhun.uab",
+        "game_1000.uab",
+        "game_common.uab",
+        "game_gamesound.uab",
+        "game_eff_jianhun_hit.uab",
+        "game_skillicon2.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/1004.asset",
+      "crc": 1151692962,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "1004.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_1000.uab",
+        "game_common.uab",
+        "game_hero_jianhun.uab",
+        "game_gamesound.uab",
+        "game_eff_jianhun_hit.uab",
+        "game_skillicon2.uab",
+        "game_20004.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/1005.asset",
+      "crc": 3805444886,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "1005.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_1000.uab",
+        "game_common.uab",
+        "game_gamesound.uab",
+        "game_skillicon2.uab",
+        "game_eff_jianhun_hit.uab",
+        "game_hero_jianhun.uab",
+        "game_20004.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/1006.asset",
+      "crc": 3543818635,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "1006.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_1000.uab",
+        "game_common.uab",
+        "game_skillicon2.uab",
+        "game_gamesound.uab",
+        "game_eff_jianhun_hit.uab",
+        "game_hero_swordman.uab",
+        "game_hero_jianhun.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/1007.asset",
+      "crc": 1968007743,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "1007.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_1000.uab",
+        "game_common.uab",
+        "game_hero_jianhun.uab",
+        "game_skillicon2.uab",
+        "game_eff_jianhun_hit.uab",
+        "game_gamesound.uab",
+        "game_20004.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/1008.asset",
+      "crc": 2198149846,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "1008.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_gamesound.uab",
+        "game_1000.uab",
+        "game_common.uab",
+        "game_eff_jianhun_hit.uab",
+        "game_hero_jianhun.uab",
+        "game_skillicon2.uab",
+        "game_20004.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/1009.asset",
+      "crc": 628232546,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "1009.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_1000.uab",
+        "game_common.uab",
+        "game_hero_jianhun.uab",
+        "game_eff_jianhun_hit.uab",
+        "game_gamesound.uab",
+        "game_skillicon2.uab",
+        "game_20004.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/1010.asset",
+      "crc": 2084590639,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "1010.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_1000.uab",
+        "game_common.uab",
+        "game_skillicon2.uab",
+        "game_hero_jianhun.uab",
+        "game_eff_jianhun_hit.uab",
+        "game_gamesound.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/1011.asset",
+      "crc": 3661062043,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "1011.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_1000.uab",
+        "game_common.uab",
+        "game_skillicon2.uab",
+        "game_hero_jianhun.uab",
+        "game_eff_jianhun_hit.uab",
+        "game_gamesound.uab",
+        "game_20004.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/1012.asset",
+      "crc": 3957277958,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "1012.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_1000.uab",
+        "game_common.uab",
+        "game_skillicon2.uab",
+        "game_hero_jianhun.uab",
+        "game_eff_jianhun_hit.uab",
+        "game_gamesound.uab",
+        "game_20004.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/1013.asset",
+      "crc": 1302875826,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "1013.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_1000.uab",
+        "game_common.uab",
+        "game_skillicon2.uab",
+        "game_hero_jianhun.uab",
+        "game_eff_jianhun_hit.uab",
+        "game_gamesound.uab",
+        "game_20004.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/1015.asset",
+      "crc": 779647880,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "1015.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_portrait.uab",
+        "game_1000.uab",
+        "game_hero_jianhun.uab",
+        "game_common.uab",
+        "game_hero_mage.uab",
+        "game_actor.uab",
+        "game_eff_jianhun_hit.uab",
+        "game_skillicon2.uab",
+        "game_hero_zhaohuanshi.uab",
+        "game_20004.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/1016.asset",
+      "crc": 529555733,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "1016.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_1000.uab",
+        "game_hero_jianhun.uab",
+        "game_common.uab",
+        "game_gamesound.uab",
+        "game_skillicon2.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/3001.asset",
+      "crc": 308842296,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "3001.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_1001.uab",
+        "game_hero_gunman.uab",
+        "game_common.uab",
+        "game_hero_jianhun.uab",
+        "game_skillicon2.uab",
+        "game_gamesound.uab",
+        "game_eff_jianhun_hit.uab",
+        "game_20004.uab",
+        "game_1000.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/3002.asset",
+      "crc": 595629477,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "3002.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_1001.uab",
+        "game_hero_gunman.uab",
+        "game_common.uab",
+        "game_hero_jianhun.uab",
+        "game_skillicon2.uab",
+        "game_gamesound.uab",
+        "game_eff_jianhun_hit.uab",
+        "game_20004.uab",
+        "game_1000.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/3003.asset",
+      "crc": 2247597585,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "3003.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_1001.uab",
+        "game_hero_gunman.uab",
+        "game_common.uab",
+        "game_hero_jianhun.uab",
+        "game_skillicon2.uab",
+        "game_gamesound.uab",
+        "game_eff_jianhun_hit.uab",
+        "game_20004.uab",
+        "game_1000.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/3004.asset",
+      "crc": 1079025823,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "3004.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_1001.uab",
+        "game_hero_gunman.uab",
+        "game_common.uab",
+        "game_hero_jianhun.uab",
+        "game_skillicon2.uab",
+        "game_gamesound.uab",
+        "game_eff_jianhun_hit.uab",
+        "game_20004.uab",
+        "game_1000.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/3005.asset",
+      "crc": 3861359403,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "3005.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_1001.uab",
+        "game_gamesound.uab",
+        "game_actor.uab",
+        "game_skillicon1.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/3006.asset",
+      "crc": 3620712886,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "3006.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_common.uab",
+        "game_gamesound.uab",
+        "game_hero_gunman.uab",
+        "game_1001.uab",
+        "game_actor.uab",
+        "game_20004.uab",
+        "game_skillicon1.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/3007.asset",
+      "crc": 1907931650,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "3007.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_1001.uab",
+        "game_actor.uab",
+        "game_gamesound.uab",
+        "game_skillicon1.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/3008.asset",
+      "crc": 2280704747,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "3008.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_1001.uab",
+        "game_actor.uab",
+        "game_skillicon1.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/3009.asset",
+      "crc": 562544991,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "3009.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_1001.uab",
+        "game_gamesound.uab",
+        "game_common.uab",
+        "game_actor.uab",
+        "game_hero_gunman.uab",
+        "game_20004.uab",
+        "game_skillicon1.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/3015.asset",
+      "crc": 713927605,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "3015.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_1001.uab",
+        "game_common.uab",
+        "game_actor.uab",
+        "game_hero_qiangpao.uab",
+        "game_1000.uab",
+        "game_20001.uab",
+        "game_20004.uab",
+        "game_skillicon1.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/3016.asset",
+      "crc": 459649320,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "3016.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_hero_qiangpao.uab",
+        "game_1001.uab",
+        "game_common.uab",
+        "game_actor.uab",
+        "game_1000.uab",
+        "game_20001.uab",
+        "game_gamesound.uab",
+        "game_20004.uab",
+        "game_skillicon1.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/3017.asset",
+      "crc": 3172121244,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "3017.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_hero_qiangpao.uab",
+        "game_1001.uab",
+        "game_common.uab",
+        "game_actor.uab",
+        "game_1000.uab",
+        "game_20001.uab",
+        "game_gamesound.uab",
+        "game_20004.uab",
+        "game_skillicon1.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/3021.asset",
+      "crc": 1347258437,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "3021.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_1001.uab",
+        "game_actor.uab",
+        "game_common.uab",
+        "game_hero_qiangpao.uab",
+        "game_skillicon1.uab",
+        "game_gamesound.uab",
+        "game_20004.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/3022.asset",
+      "crc": 1638240984,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "3022.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_common.uab",
+        "game_1001.uab",
+        "game_gamesound.uab",
+        "game_actor.uab",
+        "game_hero_qiangpao.uab",
+        "game_20004.uab",
+        "game_skillicon1.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/3200.asset",
+      "crc": 2599005194,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "3200.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_1001.uab",
+        "game_hero_qiangpao.uab",
+        "game_common.uab",
+        "game_gamesound.uab",
+        "game_actor.uab",
+        "game_portrait.uab",
+        "game_20004.uab",
+        "game_20001.uab",
+        "game_skillicon1.uab",
+        "game_1000.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/3230.asset",
+      "crc": 342273001,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "3230.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_1001.uab",
+        "game_weapon.uab",
+        "game_actor.uab",
+        "game_skillicon1.uab",
+        "game_gamesound.uab",
+        "game_common.uab",
+        "game_20004.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/3231.asset",
+      "crc": 2987499613,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "3231.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_common.uab",
+        "game_1001.uab",
+        "game_weapon.uab",
+        "game_actor.uab",
+        "game_hero_qiangpao.uab",
+        "game_20004.uab"
+      ]
+    },
+    {
+      "path": "Assets/GameData/Game/SkillSystem/SkillData/3240.asset",
+      "crc": 514040560,
+      "bundleName": "game_skilldata.uab",
+      "assetName": "3240.asset",
+      "bundleModule": "Game",
+      "isAddressableAsset": false,
+      "bundleDependce": [
+        "game_1001.uab",
+        "game_hero_gunman.uab",
+        "game_common.uab",
+        "game_gamesound.uab",
+        "game_actor.uab",
+        "game_skillicon1.uab"
       ]
     },
     {
