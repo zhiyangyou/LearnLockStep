@@ -8,13 +8,14 @@
 *
 * Date: 2023.4.13
 *
-* Modify: 
+* Modify:
 ------------------------------------------------------------------------------------------------------------------------------------------------*/
+#if UNITY_EDITOR
 using System.Collections;
 using System.Collections.Generic;
-#if UNITY_EDITOR
+
 using UnityEditor;
-#endif
+
 using UnityEngine;
 
 [CreateAssetMenu(menuName ="AssetBundle",fileName = "BuildBundleConfigura",order =4)]
@@ -104,3 +105,5 @@ public class BuildBundleConfigura : ScriptableObject
 #endif
     }
 }
+
+#endif

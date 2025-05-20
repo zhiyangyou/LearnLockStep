@@ -1,24 +1,23 @@
 /*------------------------------------------------------------------
 *
-* Title: 毕业级日志系统 
+* Title: 锟斤拷业锟斤拷锟斤拷志系统
 *
-* Description: 支持本地文件写入、自定义颜色日志、FPS实时显示、手机日志运行时查看、日志代码编译剔除、ProtoBuff转Json
-* 
-* Author: 腾讯课堂 铸梦xy
+* Description: 支锟街憋拷锟斤拷锟侥硷拷写锟诫、锟皆讹拷锟斤拷锟斤拷色锟斤拷志锟斤拷FPS实时锟斤拷示锟斤拷锟街伙拷锟斤拷志锟斤拷锟斤拷时锟介看锟斤拷锟斤拷志锟斤拷锟斤拷锟斤拷锟斤拷蕹锟斤拷锟絇rotoBuff转Json
+*
+* Author: 锟斤拷讯锟斤拷锟斤拷 锟斤拷锟斤拷xy
 *
 * Date: 2023.8.13
 *
-* Modify: 
+* Modify:
 -------------------------------------------------------------------*/
-using System.Collections;
-using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class LogEditor
 {
-    [MenuItem("ZMLog/打开日志系统")]
+    [MenuItem("ZMLog/锟斤拷锟斤拷志系统")]
     public static void LoadReport()
     {
         ScriptingDefineSymbols.AddScriptingDefineSymbol("OPEN_LOG");
@@ -33,7 +32,7 @@ public class LogEditor
             Debug.Log("Open Log Finish!");
         }
     }
-    [MenuItem("ZMLog/关闭日志系统")]
+    [MenuItem("ZMLog/锟截憋拷锟斤拷志系统")]
     public static void CloseReport()
     {
         ScriptingDefineSymbols.RemoveScriptingDefineSymbol("OPEN_LOG");
@@ -48,3 +47,5 @@ public class LogEditor
         }
     }
 }
+
+#endif

@@ -8,8 +8,9 @@
 *
 * Date: 2023.4.13
 *
-* Modify: 
+* Modify:
 ------------------------------------------------------------------------------------------------------------------------------------------------*/
+#if UNITY_EDITOR
 using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
@@ -137,3 +138,5 @@ public class BundleBehaviour
 
     }
 }
+
+#endif

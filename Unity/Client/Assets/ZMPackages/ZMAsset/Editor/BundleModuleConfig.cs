@@ -10,6 +10,7 @@
 *
 * Modify: 
 ------------------------------------------------------------------------------------------------------------------------------------------------*/
+#if UNITY_EDITOR
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using System.Collections;
@@ -146,3 +147,4 @@ public class BundleModuleConfig : OdinEditorWindow
         BuildWindows.ShowAssetBundleWindow();
     }
 }
+#endif

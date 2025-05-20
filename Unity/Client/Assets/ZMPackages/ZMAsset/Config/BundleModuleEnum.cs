@@ -10,6 +10,7 @@ namespace ZM.ZMAsset
 	public enum BundleModuleEnum
 	{
 		None,
+		Game,
 		Hall,
 		GameItem,
 		AdressAsset,

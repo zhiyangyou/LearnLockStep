@@ -8,8 +8,9 @@
 *
 * Date: 2023.4.13
 *
-* Modify: 
+* Modify:
 ------------------------------------------------------------------------------------------------------------------------------------------------*/
+#if UNITY_EDITOR
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -67,3 +68,5 @@ public class BundleTools
 
     }
 }
+
+#endif

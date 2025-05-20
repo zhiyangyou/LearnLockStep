@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEngine;
 using System.Collections;
 using UnityEditor;
@@ -59,3 +60,5 @@ public class FindReferences
         return "Assets" + Path.GetFullPath(path).Replace(Path.GetFullPath(Application.dataPath), "").Replace('\\', '/');
     }
 }
+
+#endif

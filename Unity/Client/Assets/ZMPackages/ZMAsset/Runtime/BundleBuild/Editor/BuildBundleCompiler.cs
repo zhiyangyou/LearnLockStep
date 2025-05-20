@@ -8,8 +8,9 @@
 *
 * Date: 2023.4.13
 *
-* Modify: 
+* Modify:
 ------------------------------------------------------------------------------------------------------------------------------------------------*/
+#if UNITY_EDITOR
 using Newtonsoft.Json;
 using System;
 using System.Collections;
@@ -630,3 +631,5 @@ namespace ZM.ZMAsset
         }
     }
 }
+
+#endif

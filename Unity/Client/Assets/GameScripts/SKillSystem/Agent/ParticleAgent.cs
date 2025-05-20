@@ -23,7 +23,7 @@ public class ParticleAgent
         EditorApplication.update -= OnUpdate;
     }
 
-#endif
+
     public void OnUpdate()
     {
         if (_lastRuntime == 0)
@@ -48,4 +48,5 @@ public class ParticleAgent
             }
         }
     }
+#endif
 }

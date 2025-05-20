@@ -10,6 +10,10 @@
 *
 * Modify: 
 ------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+#if UNITY_EDITOR
+
+
 using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities;
 using Sirenix.Utilities.Editor;
@@ -60,3 +64,4 @@ public class BuildWindows : OdinMenuEditorWindow
         return menuTree;
     }
 }
+#endif

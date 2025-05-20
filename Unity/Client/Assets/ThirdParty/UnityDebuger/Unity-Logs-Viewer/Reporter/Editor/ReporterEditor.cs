@@ -1,9 +1,7 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 using UnityEditor;
-using UnityEditor.Callbacks;
-
 using System.IO;
-using System.Collections;
 
 
 public class ReporterEditor : Editor
@@ -92,3 +90,5 @@ public class ReporterModificationProcessor : UnityEditor.AssetModificationProces
 		}
 	}
 }
+
+#endif

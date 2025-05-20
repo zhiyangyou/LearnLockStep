@@ -1,7 +1,5 @@
 ﻿using System;
-using Palmmedia.ReportGenerator.Core.Reporting.Builders;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 
 [RequireComponent(typeof(Camera))]

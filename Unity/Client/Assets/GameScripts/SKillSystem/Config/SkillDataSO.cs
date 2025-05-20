@@ -42,8 +42,10 @@ public class SkillConfigSO : ScriptableObject {
 
 
         var assetPath = $"{SKillDataBasePath}{skillConfig.skillID.ToString()}.asset";
+#if UNITY_EDITOR
         AssetDatabase.DeleteAsset(assetPath);
         AssetDatabase.CreateAsset(so, assetPath);
+#endif
     }
 
 #if UNITY_EDITOR

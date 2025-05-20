@@ -94,9 +94,10 @@ public class SkillConfig_Character {
             _lastRuntime = 0;
             _isPlayAnimation = true;
             _curPlayAnimation.Play();
-
+#if UNITY_EDITOR
             var win = SkillCompilerWindow.GetWindow();
             win?.PlaySkillStart();
+#endif
         }
     }
 
@@ -104,9 +105,11 @@ public class SkillConfig_Character {
     [ButtonGroup(kStr操作按钮组)]
     [Button("暂停", ButtonSizes.Large)]
     public void Pause() {
+#if UNITY_EDITOR
         _isPlayAnimation = false;
         var win = SkillCompilerWindow.GetWindow();
         win?.SkillPause();
+#endif
     }
 
 
@@ -114,14 +117,18 @@ public class SkillConfig_Character {
     [ButtonGroup(kStr操作按钮组)]
     [Button("保存", ButtonSizes.Large)]
     public void SafeAssets() {
+#if UNITY_EDITOR
         SkillCompilerWindow.GetWindow().SaveSkillData();
+#endif
     }
 
     [GUIColor(0.7f, 0.7f, 0.7f)]
     [ButtonGroup(kStr操作按钮组)]
     [Button("打开战斗场景", ButtonSizes.Large)]
     public void OpenBattleScene() {
+#if UNITY_EDITOR
         EditorSceneManager.OpenScene("Assets/Scenes/Battle.unity");
+#endif
     }
 
     #endregion
@@ -179,8 +186,10 @@ public class SkillConfig_Character {
     }
 
     private void PlaySkillEnd() {
+#if UNITY_EDITOR
         _isPlayAnimation = false;
         SkillCompilerWindow.GetWindow()?.PlaySkillEnd();
+#endif
     }
 
     private void OnValueChanged_AnimProgress(float value) {

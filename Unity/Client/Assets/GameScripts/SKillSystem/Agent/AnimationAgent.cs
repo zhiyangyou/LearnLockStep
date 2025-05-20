@@ -24,7 +24,7 @@ public class AnimationAgent
         EditorApplication.update -= OnUpdate;
     }
 
-#endif
+
     public void OnUpdate()
     {
         if (_animation == null || _animation.clip == null) return;
@@ -41,4 +41,5 @@ public class AnimationAgent
         // 采样动画
         _animation.clip.SampleAnimation(_animation.gameObject, (float)curRuntime);
     }
+#endif
 }

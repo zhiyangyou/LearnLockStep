@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 using UnityEditor;
 
 namespace U3DExtends
@@ -18,3 +19,5 @@ namespace U3DExtends
     
     //Cat!TODO:给按钮文本等控件增加切换样式的功能
 }
+
+#endif

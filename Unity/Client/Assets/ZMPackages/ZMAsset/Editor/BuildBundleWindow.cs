@@ -8,14 +8,17 @@
 *
 * Date: 2023.4.13
 *
-* Modify: 
+* Modify:
 ------------------------------------------------------------------------------------------------------------------------------------------------*/
+#if UNITY_EDITOR
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using ZM.ZMAsset;
+
 using Sirenix.Utilities.Editor;
+
 public class BuildBundleWindow : BundleBehaviour
 {
     protected string[] buildButtonsNameArr = new string[] { "打包资源", "内嵌资源" };
@@ -58,7 +61,9 @@ public class BuildBundleWindow : BundleBehaviour
                     {
                         //打包AssetBundle按钮事件
                         BuildBundle();
+#if UNITY_EDITOR
                         GUIHelper.ExitGUI(true);
+#endif
                     }
                     else
                     {
@@ -108,3 +113,5 @@ public class BuildBundleWindow : BundleBehaviour
         }
     }
 }
+
+#endif

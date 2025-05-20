@@ -57,7 +57,6 @@ public class SkillConfig_Damage {
 
     #endregion
 
-#if UNITY_EDITOR
 
     #region 状态字段
 
@@ -114,6 +113,7 @@ public class SkillConfig_Damage {
     /// </summary>
     /// <returns></returns>
     public Vector3 GetCollierOffsetPos() {
+#if UNITY_EDITOR
         var characterPos = SkillCompilerWindow.GetCharacterPos();
         if (DetectionMode == DamageDetectionMode.Box3D) {
             return characterPos + boxOffset;
@@ -121,6 +121,7 @@ public class SkillConfig_Damage {
         else if (DetectionMode == DamageDetectionMode.Sphere3D) {
             return characterPos + sphereOffset;
         }
+#endif
         return Vector3.zero;
     }
 
@@ -175,7 +176,6 @@ public class SkillConfig_Damage {
         }
         _curLogicFrame++;
     }
-#endif
 }
 
 

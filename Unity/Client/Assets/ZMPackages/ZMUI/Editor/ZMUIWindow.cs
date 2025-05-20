@@ -11,6 +11,9 @@
 * Modify: 
 ------------------------------------------------------------------------------------------------------------------------------------------------*/
 # if ODIN_INSPECTOR
+#if UNITY_EDITOR
+
+
 using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities;
 using Sirenix.Utilities.Editor;
@@ -50,4 +53,5 @@ public class ZMUIWindow : OdinMenuEditorWindow
         UISetting.Instance.Save();
     }
 }
+#endif
 #endif

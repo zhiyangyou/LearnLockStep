@@ -14,25 +14,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AssetBundleConfig:
   - bundleid: 0
-    moduleName: Hall
+    moduleName: Game
     isAddressableAsset: 0
     isBuild: 0
-    lastClickBtnTime: 2863.2488
+    lastClickBtnTime: 586.79224
     prefabPathArr:
     - Assets/GameData/Hall/Prefabs
-    rootFolderPathArr:
-    - Assets/GameData/Hall/Textures
-    signFolderPathArr:
-    - abName: hallData
-      bundlePath: Assets/GameData/Hall/CfgData
-    - abName: scene
-      bundlePath: Assets/Scenes
-  - bundleid: 0
-    moduleName: Battle
-    isAddressableAsset: 0
-    isBuild: 0
-    lastClickBtnTime: 2801.5334
-    prefabPathArr:
     - Assets/GameData/Game/Prefabs
-    rootFolderPathArr: []
-    signFolderPathArr: []
+    rootFolderPathArr:
+    - Assets/GameData/Game/Textures
+    - Assets/GameData/Hall/Textures
+    - Assets/GameData/Hall/Effects
+    - Assets/GameData/Game/Effects
+    - Assets/GameData/Game/Arts
+    - Assets/GameData/Game/SkillSystem/BuffData
+    - Assets/GameData/Game/SkillSystem/SkillData
+    signFolderPathArr:
+    - abName: gameSound
+      bundlePath: Assets/GameData/Game/Sound
+    - abName: gameDataCfg
+      bundlePath: Assets/GameData/Game/Data
+    - abName: gameAnim
+      bundlePath: Assets/GameData/Game/Anim
+    - abName: font
+      bundlePath: Assets/GameData/Game/Font
+    - abName: gameMap
+      bundlePath: Assets/GameData/Game/Map
