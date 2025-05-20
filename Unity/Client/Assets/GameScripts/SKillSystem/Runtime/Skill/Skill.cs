@@ -73,7 +73,7 @@ public partial class Skill {
     public Skill(int skillId, LogicActor skillCreater) {
         SkillID = skillId;
         _skillCreater = skillCreater;
-        var configPath = $"{AssetsPathConfig.Skill_Data_Path}/{skillId}.asset";
+        var configPath = $"{AssetsPathConfig.Skill_Data_Path}{skillId}.asset";
         _skillConfigSo = ZMAsset.LoadScriptableObject<SkillConfigSO>(configPath);
         CheckNextIDMutex();
     }
