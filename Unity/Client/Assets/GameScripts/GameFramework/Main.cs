@@ -20,28 +20,14 @@ public class Main : MonoBehaviour {
     private static Main _instance = null;
     public static Main Instance => _instance;
 
-    private FantasyScene _fScene = null;
-
     #endregion
 
     #region life-cycle
 
     private async Task Awake() {
         DontDestroyOnLoad(gameObject);
-        await InitServer();
-        Rcv_Test1 test1Rsp = await _fScene.Session.Call(new Send_Test1() {
-            pass_word = "111",
-            user_name = "222",
-        }) as Rcv_Test1;
-
-        Debug.LogError(test1Rsp.error_msg);
-        Debug.LogError(test1Rsp.ErrorCode);
-        Debug.LogError(test1Rsp.success);
-
-        _fScene.Session.Send(new C2G_Test2() {
-            frameOpCode = 1001,
-            msg_content = "C2G_Test2 content msg",
-        });
+        await InitNetworkManager();
+        InitUnityDebugger();
     }
 
     void Start() {
@@ -53,39 +39,31 @@ public class Main : MonoBehaviour {
 
     #endregion
 
-    #region server
+    #region private
 
-    private const string Server_Gate_Addresss = "127.0.0.1:20000";
-
-    private async Task InitServer() {
-        await Entry.Initialize(typeof(Main).Assembly);
-        _fScene = await Entry.CreateScene();
-        _fScene.Connect(Server_Gate_Addresss,
-            NetworkProtocolType.TCP,
-            OnServerGate_ConnectComplete,
-            OnServerGate_ConnectFailed,
-            OnServer_Gate_Disconnect,
-            false, 5000);
+    private void InitUnityDebugger() {
+        Debuger.InitLog(new LogConfig() { });
+        Debuger.LogGreen("InitUnityDebugger 初始化完成");
     }
 
-    private void OnServer_Gate_Disconnect() {
-        Debug.LogError($"{Server_Gate_Addresss} Disconnect");
-    }
+    private async Task InitNetworkManager() {
+        await NetworkManager.Instance.Initlization();
+        NetworkManager.Instance.Connect("127.0.0.1:20000", NetworkProtocolType.TCP, async () => {
+            Rcv_Test1 test1Rsp = (Rcv_Test1)await NetworkManager.Instance.SendCallMessage(new Send_Test1() {
+                pass_word = "111",
+                user_name = "222",
+            });
 
-    private void OnServerGate_ConnectFailed() {
-        Debug.LogError($"{Server_Gate_Addresss} ConnectFailed");
-    }
+            Debuger.LogGreen(test1Rsp.error_msg);
+            Debuger.LogGreen(test1Rsp.ErrorCode);
+            Debuger.LogGreen(test1Rsp.success);
 
-    private void OnServerGate_ConnectComplete() {
-        Debug.LogError($"{Server_Gate_Addresss} ConnectComplete");
+            NetworkManager.Instance.Send(new C2G_Test2() {
+                frameOpCode = 1001,
+                msg_content = "C2G_Test2 content msg",
+            });
+        });
     }
 
     #endregion
-}
-
-public class G2C_Test_Handler : Message<G2C_Test2> {
-    protected override async FTask Run(Session session, G2C_Test2 message) {
-        Debug.LogError($"G2C_Test2 : {message.frameOpCode} {message.msg_content}");
-        await FTask.CompletedTask;
-    }
 }
