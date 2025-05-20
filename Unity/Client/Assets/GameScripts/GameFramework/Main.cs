@@ -1,18 +1,10 @@
-using System;
-using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using ZM.ZMAsset;
-using ZMGC.Battle;
 using ZMGC.Hall;
-using ZM.ZMAsset;
 using Fantasy;
-using Fantasy.Async;
 using Fantasy.Network;
-using Fantasy.Network.Interface;
-using Fantasy.Platform.Unity;
-using FantasyScene = Fantasy.Scene;
+
 
 public class Main : MonoBehaviour {
     #region 属性字段
@@ -32,14 +24,23 @@ public class Main : MonoBehaviour {
 
     void Start() {
         _instance = this;
-        UIModule.Instance.Initialize();
         ZMAsset.InitFrameWork();
-        WorldManager.CreateWorld<HallWorld>();
+
+        InitAssetBundle();
     }
 
     #endregion
 
     #region private
+
+    private void InitAssetBundle() {
+        HotUpdateManager.Instance.HotAndUnPackAssets(BundleModuleEnum.Game, OnUnPackAssetComplete);
+    }
+
+    private void OnUnPackAssetComplete() {
+        UIModule.Instance.Initialize();
+        WorldManager.CreateWorld<HallWorld>();
+    }
 
     private void InitUnityDebugger() {
         Debuger.InitLog(new LogConfig() { });
