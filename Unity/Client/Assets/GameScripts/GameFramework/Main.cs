@@ -61,7 +61,7 @@ public class Main : MonoBehaviour {
         await Entry.Initialize(typeof(Main).Assembly);
         _fScene = await Entry.CreateScene();
         _fScene.Connect(Server_Gate_Addresss,
-            NetworkProtocolType.KCP,
+            NetworkProtocolType.TCP,
             OnServerGate_ConnectComplete,
             OnServerGate_ConnectFailed,
             OnServer_Gate_Disconnect,
