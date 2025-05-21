@@ -1,0 +1,120 @@
+fileFormatVersion: 2
+guid: 9824dbf92aef63848a19fa73a15a3581
+timeCreated: 1482979999
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: H_Town_Hedunmaer_guidepost
+    100004: H_Town_Hedunmaer_lamp01
+    100006: Object001
+    100008: Plane001
+    100010: Sidunxueyu_house001
+    100012: Sidunxueyu_shan01
+    100014: Sidunxueyu_shan02
+    100016: Sidunxueyu_sky
+    100018: Sidunxueyu_sky01
+    400000: //RootNode
+    400002: H_Town_Hedunmaer_guidepost
+    400004: H_Town_Hedunmaer_lamp01
+    400006: Object001
+    400008: Plane001
+    400010: Sidunxueyu_house001
+    400012: Sidunxueyu_shan01
+    400014: Sidunxueyu_shan02
+    400016: Sidunxueyu_sky
+    400018: Sidunxueyu_sky01
+    2300000: //RootNode
+    2300002: H_Town_Hedunmaer_guidepost
+    2300004: H_Town_Hedunmaer_lamp01
+    2300006: Object001
+    2300008: Plane001
+    2300010: Sidunxueyu_house001
+    2300012: Sidunxueyu_shan01
+    2300014: Sidunxueyu_shan02
+    2300016: Sidunxueyu_sky
+    2300018: Sidunxueyu_sky01
+    3300000: //RootNode
+    3300002: H_Town_Hedunmaer_guidepost
+    3300004: H_Town_Hedunmaer_lamp01
+    3300006: Object001
+    3300008: Plane001
+    3300010: Sidunxueyu_house001
+    3300012: Sidunxueyu_shan01
+    3300014: Sidunxueyu_shan02
+    3300016: Sidunxueyu_sky
+    3300018: Sidunxueyu_sky01
+    4300000: H_Town_Hedunmaer_guidepost
+    4300002: Sidunxueyu_house001
+    4300004: Object001
+    4300006: Sidunxueyu_shan02
+    4300008: Sidunxueyu_shan01
+    4300010: Sidunxueyu_sky
+    4300012: Sidunxueyu_sky01
+    4300014: H_Town_Hedunmaer_lamp01
+    4300016: Plane001
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

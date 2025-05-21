@@ -1041,8 +1041,7 @@ AnimationClip:
       m_RotationOrder: 4
     path: EffUI_town_chuansong_shang/gantan_shang
   m_FloatCurves:
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -1070,9 +1069,7 @@ AnimationClip:
     path: EffUI_town_chuansong_you/liuguang_you
     classID: 23
     script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -1100,9 +1097,7 @@ AnimationClip:
     path: EffUI_town_chuansong_you/liuguang_you
     classID: 23
     script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -1130,9 +1125,7 @@ AnimationClip:
     path: EffUI_town_chuansong_you/liuguang_you
     classID: 23
     script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -1160,9 +1153,7 @@ AnimationClip:
     path: EffUI_town_chuansong_you/liuguang_you
     classID: 23
     script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -1199,9 +1190,7 @@ AnimationClip:
     path: EffUI_town_chuansong_you/liuguang_you
     classID: 23
     script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -1238,9 +1227,7 @@ AnimationClip:
     path: EffUI_town_chuansong_you/liuguang_you
     classID: 23
     script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -1277,9 +1264,7 @@ AnimationClip:
     path: EffUI_town_chuansong_you/liuguang_you
     classID: 23
     script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -1316,9 +1301,7 @@ AnimationClip:
     path: EffUI_town_chuansong_you/liuguang_you
     classID: 23
     script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -1355,9 +1338,7 @@ AnimationClip:
     path: EffUI_town_chuansong_zuo/liuguang_zuo
     classID: 23
     script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -1394,9 +1375,7 @@ AnimationClip:
     path: EffUI_town_chuansong_zuo/liuguang_zuo
     classID: 23
     script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -1433,9 +1412,7 @@ AnimationClip:
     path: EffUI_town_chuansong_zuo/liuguang_zuo
     classID: 23
     script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -1472,9 +1449,7 @@ AnimationClip:
     path: EffUI_town_chuansong_zuo/liuguang_zuo
     classID: 23
     script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -1502,9 +1477,7 @@ AnimationClip:
     path: EffUI_town_chuansong_zuo/liuguang_zuo
     classID: 23
     script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -1532,9 +1505,7 @@ AnimationClip:
     path: EffUI_town_chuansong_zuo/liuguang_zuo
     classID: 23
     script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -1562,9 +1533,7 @@ AnimationClip:
     path: EffUI_town_chuansong_zuo/liuguang_zuo
     classID: 23
     script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -1592,9 +1561,7 @@ AnimationClip:
     path: EffUI_town_chuansong_zuo/liuguang_zuo
     classID: 23
     script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -1631,9 +1598,7 @@ AnimationClip:
     path: EffUI_town_chuansong_xia/liuguang_xia
     classID: 23
     script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -1670,9 +1635,7 @@ AnimationClip:
     path: EffUI_town_chuansong_xia/liuguang_xia
     classID: 23
     script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -1709,9 +1672,7 @@ AnimationClip:
     path: EffUI_town_chuansong_xia/liuguang_xia
     classID: 23
     script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -1748,9 +1709,7 @@ AnimationClip:
     path: EffUI_town_chuansong_xia/liuguang_xia
     classID: 23
     script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -1769,9 +1728,7 @@ AnimationClip:
     path: EffUI_town_chuansong_xia/liuguang_xia
     classID: 23
     script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -1799,9 +1756,7 @@ AnimationClip:
     path: EffUI_town_chuansong_xia/liuguang_xia
     classID: 23
     script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -1829,9 +1784,7 @@ AnimationClip:
     path: EffUI_town_chuansong_xia/liuguang_xia
     classID: 23
     script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -1859,9 +1812,7 @@ AnimationClip:
     path: EffUI_town_chuansong_xia/liuguang_xia
     classID: 23
     script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -1889,9 +1840,7 @@ AnimationClip:
     path: EffUI_town_chuansong_shang/liuguang_shang
     classID: 23
     script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -1919,9 +1868,7 @@ AnimationClip:
     path: EffUI_town_chuansong_shang/liuguang_shang
     classID: 23
     script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -1949,9 +1896,7 @@ AnimationClip:
     path: EffUI_town_chuansong_shang/liuguang_shang
     classID: 23
     script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -1979,9 +1924,7 @@ AnimationClip:
     path: EffUI_town_chuansong_shang/liuguang_shang
     classID: 23
     script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -2018,9 +1961,7 @@ AnimationClip:
     path: EffUI_town_chuansong_shang/liuguang_shang
     classID: 23
     script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -2057,9 +1998,7 @@ AnimationClip:
     path: EffUI_town_chuansong_shang/liuguang_shang
     classID: 23
     script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -2096,9 +2035,7 @@ AnimationClip:
     path: EffUI_town_chuansong_shang/liuguang_shang
     classID: 23
     script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
+  - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -2135,7 +2072,6 @@ AnimationClip:
     path: EffUI_town_chuansong_shang/liuguang_shang
     classID: 23
     script: {fileID: 0}
-    flags: 16
   m_PPtrCurves: []
   m_SampleRate: 60
   m_WrapMode: 0
@@ -2151,8 +2087,6 @@ AnimationClip:
       typeID: 4
       customType: 0
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 1759862946
       attribute: 1
@@ -2160,8 +2094,6 @@ AnimationClip:
       typeID: 4
       customType: 0
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 1167957087
       attribute: 1
@@ -2169,8 +2101,6 @@ AnimationClip:
       typeID: 4
       customType: 0
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 3426195939
       attribute: 1
@@ -2178,8 +2108,6 @@ AnimationClip:
       typeID: 4
       customType: 0
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 496923324
       attribute: 1
@@ -2187,8 +2115,6 @@ AnimationClip:
       typeID: 4
       customType: 0
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 749175492
       attribute: 1
@@ -2196,8 +2122,6 @@ AnimationClip:
       typeID: 4
       customType: 0
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 2585042536
       attribute: 1
@@ -2205,8 +2129,6 @@ AnimationClip:
       typeID: 4
       customType: 0
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 2536031393
       attribute: 1
@@ -2214,8 +2136,6 @@ AnimationClip:
       typeID: 4
       customType: 0
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 32687848
       attribute: 1
@@ -2223,8 +2143,6 @@ AnimationClip:
       typeID: 4
       customType: 0
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 2029182672
       attribute: 1
@@ -2232,8 +2150,6 @@ AnimationClip:
       typeID: 4
       customType: 0
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 895695209
       attribute: 1
@@ -2241,8 +2157,6 @@ AnimationClip:
       typeID: 4
       customType: 0
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 3011602439
       attribute: 1
@@ -2250,8 +2164,6 @@ AnimationClip:
       typeID: 4
       customType: 0
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 1905914979
       attribute: 1
@@ -2259,8 +2171,6 @@ AnimationClip:
       typeID: 4
       customType: 0
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 639291300
       attribute: 1
@@ -2268,8 +2178,6 @@ AnimationClip:
       typeID: 4
       customType: 0
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 2849148227
       attribute: 1
@@ -2277,8 +2185,6 @@ AnimationClip:
       typeID: 4
       customType: 0
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 2369091096
       attribute: 1
@@ -2286,8 +2192,6 @@ AnimationClip:
       typeID: 4
       customType: 0
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 1759862946
       attribute: 3
@@ -2295,8 +2199,6 @@ AnimationClip:
       typeID: 4
       customType: 0
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 1167957087
       attribute: 3
@@ -2304,8 +2206,6 @@ AnimationClip:
       typeID: 4
       customType: 0
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 3426195939
       attribute: 3
@@ -2313,8 +2213,6 @@ AnimationClip:
       typeID: 4
       customType: 0
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 749175492
       attribute: 3
@@ -2322,8 +2220,6 @@ AnimationClip:
       typeID: 4
       customType: 0
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 2585042536
       attribute: 3
@@ -2331,8 +2227,6 @@ AnimationClip:
       typeID: 4
       customType: 0
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 2536031393
       attribute: 3
@@ -2340,8 +2234,6 @@ AnimationClip:
       typeID: 4
       customType: 0
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 2029182672
       attribute: 3
@@ -2349,8 +2241,6 @@ AnimationClip:
       typeID: 4
       customType: 0
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 895695209
       attribute: 3
@@ -2358,8 +2248,6 @@ AnimationClip:
       typeID: 4
       customType: 0
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 3011602439
       attribute: 3
@@ -2367,8 +2255,6 @@ AnimationClip:
       typeID: 4
       customType: 0
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 639291300
       attribute: 3
@@ -2376,8 +2262,6 @@ AnimationClip:
       typeID: 4
       customType: 0
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 2849148227
       attribute: 3
@@ -2385,8 +2269,6 @@ AnimationClip:
       typeID: 4
       customType: 0
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 2369091096
       attribute: 3
@@ -2394,8 +2276,6 @@ AnimationClip:
       typeID: 4
       customType: 0
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 427775274
       attribute: 646366601
@@ -2403,8 +2283,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 427775274
       attribute: 1895888582
@@ -2412,8 +2290,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 3897972878
       attribute: 1090582214
@@ -2421,8 +2297,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 3897972878
       attribute: 1359017670
@@ -2430,8 +2304,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 3897972878
       attribute: 1627453126
@@ -2439,8 +2311,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 3897972878
       attribute: 1895888582
@@ -2448,8 +2318,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 3897972878
       attribute: 646366601
@@ -2457,8 +2325,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 2813442802
       attribute: 1895888582
@@ -2466,8 +2332,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 2813442802
       attribute: 109495689
@@ -2475,8 +2339,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 2813442802
       attribute: 377931145
@@ -2484,8 +2346,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 2813442802
       attribute: 646366601
@@ -2493,8 +2353,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 2813442802
       attribute: 914802057
@@ -2502,8 +2360,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 68859668
       attribute: 646366601
@@ -2511,8 +2367,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 68859668
       attribute: 1895888582
@@ -2520,8 +2374,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 427775274
       attribute: 109495689
@@ -2529,8 +2381,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 427775274
       attribute: 377931145
@@ -2538,8 +2388,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 427775274
       attribute: 914802057
@@ -2547,8 +2395,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 427775274
       attribute: 1090582214
@@ -2556,8 +2402,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 427775274
       attribute: 1359017670
@@ -2565,8 +2409,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 427775274
       attribute: 1627453126
@@ -2574,8 +2416,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 3897972878
       attribute: 109495689
@@ -2583,8 +2423,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 3897972878
       attribute: 377931145
@@ -2592,8 +2430,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 3897972878
       attribute: 914802057
@@ -2601,8 +2437,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 2813442802
       attribute: 1090582214
@@ -2610,8 +2444,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 2813442802
       attribute: 1359017670
@@ -2619,8 +2451,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 2813442802
       attribute: 1627453126
@@ -2628,8 +2458,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 68859668
       attribute: 109495689
@@ -2637,8 +2465,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 68859668
       attribute: 377931145
@@ -2646,8 +2472,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 68859668
       attribute: 914802057
@@ -2655,8 +2479,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 68859668
       attribute: 1090582214
@@ -2664,8 +2486,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 68859668
       attribute: 1359017670
@@ -2673,8 +2493,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 68859668
       attribute: 1627453126
@@ -2682,8 +2500,6 @@ AnimationClip:
       typeID: 23
       customType: 22
       isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     pptrCurveMapping: []
   m_AnimationClipSettings:
     serializedVersion: 2

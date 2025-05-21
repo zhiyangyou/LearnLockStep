@@ -1,0 +1,171 @@
+fileFormatVersion: 2
+guid: b0e0514a66b9b2843906b671b73c4b6c
+timeCreated: 1498206442
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: H_Town_Hedunmaer_back
+    100004: H_Town_Hedunmaer_frount03
+    100006: H_Town_Hedunmaer_ground001
+    100008: H_Town_Hedunmaer_guidepost
+    100010: H_Town_Hedunmaer_lamp01
+    100012: Hedunmaer_cp
+    100014: Hedunmaerout_back01
+    100016: Hedunmaerout_back01_a
+    100018: Hedunmaerout_back02
+    100020: Hedunmaerout_boat01
+    100022: Hedunmaerout_frount01
+    100024: Hedunmaerout_frount01 1
+    100026: Hedunmaerout_house01
+    100028: Hedunmaerout_house01_a
+    100030: Hedunmaerout_lg01
+    100032: Hedunmaerout_taijie
+    100034: N_Hedunmaerout_door01
+    100036: shibei01
+    400000: //RootNode
+    400002: H_Town_Hedunmaer_back
+    400004: H_Town_Hedunmaer_frount03
+    400006: H_Town_Hedunmaer_ground001
+    400008: H_Town_Hedunmaer_guidepost
+    400010: H_Town_Hedunmaer_lamp01
+    400012: Hedunmaer_cp
+    400014: Hedunmaerout_back01
+    400016: Hedunmaerout_back01_a
+    400018: Hedunmaerout_back02
+    400020: Hedunmaerout_boat01
+    400022: Hedunmaerout_frount01
+    400024: Hedunmaerout_frount01 1
+    400026: Hedunmaerout_house01
+    400028: Hedunmaerout_house01_a
+    400030: Hedunmaerout_lg01
+    400032: Hedunmaerout_taijie
+    400034: N_Hedunmaerout_door01
+    400036: shibei01
+    2300000: //RootNode
+    2300002: H_Town_Hedunmaer_back
+    2300004: H_Town_Hedunmaer_frount03
+    2300006: H_Town_Hedunmaer_ground001
+    2300008: H_Town_Hedunmaer_guidepost
+    2300010: H_Town_Hedunmaer_lamp01
+    2300012: Hedunmaer_cp
+    2300014: Hedunmaerout_back01
+    2300016: Hedunmaerout_back01_a
+    2300018: Hedunmaerout_back02
+    2300020: Hedunmaerout_boat01
+    2300022: Hedunmaerout_frount01
+    2300024: Hedunmaerout_frount01 1
+    2300026: Hedunmaerout_house01
+    2300028: Hedunmaerout_house01_a
+    2300030: Hedunmaerout_lg01
+    2300032: Hedunmaerout_taijie
+    2300034: N_Hedunmaerout_door01
+    2300036: shibei01
+    3300000: //RootNode
+    3300002: H_Town_Hedunmaer_back
+    3300004: H_Town_Hedunmaer_frount03
+    3300006: H_Town_Hedunmaer_ground001
+    3300008: H_Town_Hedunmaer_guidepost
+    3300010: H_Town_Hedunmaer_lamp01
+    3300012: Hedunmaer_cp
+    3300014: Hedunmaerout_back01
+    3300016: Hedunmaerout_back01_a
+    3300018: Hedunmaerout_back02
+    3300020: Hedunmaerout_boat01
+    3300022: Hedunmaerout_frount01
+    3300024: Hedunmaerout_frount01 1
+    3300026: Hedunmaerout_house01
+    3300028: Hedunmaerout_house01_a
+    3300030: Hedunmaerout_lg01
+    3300032: Hedunmaerout_taijie
+    3300034: N_Hedunmaerout_door01
+    3300036: shibei01
+    4300000: Hedunmaerout_boat01
+    4300002: H_Town_Hedunmaer_ground001
+    4300004: Hedunmaerout_frount01
+    4300006: H_Town_Hedunmaer_lamp01
+    4300008: Hedunmaer_cp
+    4300010: shibei01
+    4300012: Hedunmaerout_frount01
+    4300014: Hedunmaerout_house01
+    4300016: Hedunmaerout_house01_a
+    4300018: N_Hedunmaerout_door01
+    4300020: H_Town_Hedunmaer_guidepost
+    4300022: H_Town_Hedunmaer_frount03
+    4300024: Hedunmaerout_taijie
+    4300026: Hedunmaerout_lg01
+    4300028: H_Town_Hedunmaer_back
+    4300030: Hedunmaerout_back02
+    4300032: Hedunmaerout_back01
+    4300034: Hedunmaerout_back01_a
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
