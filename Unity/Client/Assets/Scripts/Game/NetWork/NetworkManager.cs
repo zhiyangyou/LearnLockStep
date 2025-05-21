@@ -56,8 +56,8 @@ public class NetworkManager : Singleton<NetworkManager> {
     }
 
     public void OnRelease() {
-        _session.Dispose();
-        _fScene.Dispose();
+        _session?.Dispose();
+        _fScene?.Dispose();
         OnConnectSuccess = null;
         OnConnectFailed = null;
         OnDisconnect = null;
@@ -82,17 +82,17 @@ public class NetworkManager : Singleton<NetworkManager> {
     #region private
 
     private void _OnDisconnect() {
-        Debug.LogError("NetworkManager:Disconnect");
+        Debuger .LogError("NetworkManager:Disconnect");
         OnDisconnect?.Invoke();
     }
 
     private void OnFailed() {
-        Debug.LogError("NetworkManager:Connect Failed");
+        Debuger.LogError("NetworkManager:Connect Failed");
         OnConnectFailed?.Invoke();
     }
 
     private void OnComplete() {
-        Debug.LogError("NetworkManager:Connect Success");
+        Debuger.LogGreen("NetworkManager:Connect Success");
         OnConnectSuccess?.Invoke();
     }
 
