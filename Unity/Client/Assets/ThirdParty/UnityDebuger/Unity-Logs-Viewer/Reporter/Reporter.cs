@@ -1850,7 +1850,7 @@ public class Reporter : MonoBehaviour
 #endif
 
 		calculateStartIndex();
-		if (!show && isGestureDone()) {
+		if (!show && isGestureDone() && Application.platform != RuntimePlatform.WindowsEditor) {
 			doShow();
 		}
 
