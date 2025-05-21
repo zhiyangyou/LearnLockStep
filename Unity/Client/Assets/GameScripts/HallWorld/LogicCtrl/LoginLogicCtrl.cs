@@ -7,6 +7,7 @@
 * 注意:以下文件为自动生成，强制再次生成将会覆盖
 ----------------------------------------------------------------------------------------*/
 
+using System;
 using Fantasy;
 using Fantasy.Network;
 
@@ -14,11 +15,12 @@ namespace ZMGC.Hall {
     public class LoginLogicCtrl : ILogicBehaviour {
         private const string kStr_AuthenticationAddr = "127.0.0.1:20001";
 
-        public void RegisterAccount(string account, string password) {
+        public void RegisterAccount(string account, string password, Action<int> onResult) {
             if (string.IsNullOrEmpty(account)
                 || string.IsNullOrEmpty(password)
                ) {
                 ToastManager.ShowToast("账号或是密码为空");
+                onResult?.Invoke(ErrorCode.Code_InvalidInput);
                 return;
             }
             NetworkManager.Instance.Connect(kStr_AuthenticationAddr, NetworkProtocolType.TCP, async () => {
@@ -27,25 +29,10 @@ namespace ZMGC.Hall {
                         user_name = account,
                     };
                     var resp = await NetworkManager.Instance.SendCallMessage<Rcv_RegisterAccount>(register);
-                    if (resp.ErrorCode == 0) {
-                        ToastManager.ShowToast("注册成功");
-                    }
-                    else {
-                        ToastManager.ShowToast($"注册失败{resp.ErrorCode}");
-                        Debuger.LogGreen($"注册失败{resp.ErrorCode}");
-                    }
                     NetworkManager.Instance.Disconnect();
+                    onResult?.Invoke((int)resp.ErrorCode);
                 },
-                () => {
-                    const string msg = "鉴权服务器连接失败, 检查网络后重试";
-                    ToastManager.ShowToast(msg);
-                    Debuger.LogError(msg);
-                },
-                () => {
-                    const string strDisconnectMsg = "鉴权服务器断联";
-                    // ToastManager.ShowToast(strDisconnectMsg);
-                    Debuger.LogWarning(strDisconnectMsg);
-                });
+                () => { onResult?.Invoke(ErrorCode.Code_NetConnectFailed); }, null);
         }
 
         public void OnCreate() { }

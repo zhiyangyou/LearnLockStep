@@ -47,8 +47,26 @@ public class RegisterWindow : WindowBase {
 
     // ReSharper disable Unity.PerformanceAnalysis
     public void OnRegisterButtonClick() {
+        PopUpWindow<ReConnectWindow>();
+
         HallWorld.GetExitsLogicCtrl<LoginLogicCtrl>()
-            .RegisterAccount(uiCompt.AccountInputField.text, uiCompt.PasswordInputField.text);
+            .RegisterAccount(uiCompt.AccountInputField.text, uiCompt.PasswordInputField.text, (resultCode) => {
+                UIModule.Instance.HideWindow<ReConnectWindow>();
+                if (resultCode == 0) {
+                    ToastManager.ShowToast("注册成功");
+                    UIModule.Instance.HideWindow<RegisterWindow>();
+                }
+                else if (resultCode == ErrorCode.Code_NetConnectFailed) {
+                    ToastManager.ShowToast("鉴权服务连接失败");
+                }
+                else if (resultCode == ErrorCode.Code_InvalidInput) {
+                    ToastManager.ShowToast("输入值不合法");
+                }
+                else {
+                    ToastManager.ShowToast($"注册失败{resultCode}");
+                    Debuger.LogGreen($"注册失败{resultCode}");
+                }
+            });
     }
 
     public void OnPasswordInputChange(string text) { }
