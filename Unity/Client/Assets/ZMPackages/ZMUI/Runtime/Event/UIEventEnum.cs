@@ -7,4 +7,5 @@ public enum UIEventEnum
     LoginSuccess,
     SceneLoadingProgress,
     SceneLoadingLoadComplete,
+    BlackScreen,
 }
