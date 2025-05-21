@@ -21,3 +21,4 @@ MonoBehaviour:
   WindowPrefabFolderPathArr:
   - Assets/GameData/Hall/Prefabs/Window
   - Assets/GameData/Game/Prefabs/Window
+  - Assets/GameData/Hall/Prefabs/Item

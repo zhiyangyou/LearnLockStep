@@ -1,10 +1,10 @@
 /*------------------------------------------------------------------
 *
-* Title: ±ÏÒµ¼¶ÈÕÖ¾ÏµÍ³ 
+* Title: æ¯•ä¸šçº§æ—¥å¿—ç³»ç»Ÿ 
 *
-* Description: Ö§³Ö±¾µØÎÄ¼şĞ´Èë¡¢×Ô¶¨ÒåÑÕÉ«ÈÕÖ¾¡¢FPSÊµÊ±ÏÔÊ¾¡¢ÊÖ»úÈÕÖ¾ÔËĞĞÊ±²é¿´¡¢ÈÕÖ¾´úÂë±àÒëÌŞ³ı¡¢ProtoBuff×ªJson
+* Description: æ”¯æŒæœ¬åœ°æ–‡ä»¶å†™å…¥ã€è‡ªå®šä¹‰é¢œè‰²æ—¥å¿—ã€FPSå®æ—¶æ˜¾ç¤ºã€æ‰‹æœºæ—¥å¿—è¿è¡Œæ—¶æŸ¥çœ‹ã€æ—¥å¿—ä»£ç ç¼–è¯‘å‰”é™¤ã€ProtoBuffè½¬Json
 * 
-* Author: ÌÚÑ¶¿ÎÌÃ ÖıÃÎxy
+* Author: è…¾è®¯è¯¾å ‚ é“¸æ¢¦xy
 *
 * Date: 2023.8.13
 *
@@ -48,7 +48,7 @@ public class Debuger
         }
     }
 
-    #region ÆÕÍ¨ÈÕÖ¾
+    #region æ™®é€šæ—¥å¿—
     [Conditional("OPEN_LOG")]
     public static void Log(object obj)
     {
@@ -136,7 +136,7 @@ public class Debuger
 
     #endregion
 
-    #region ÑÕÉ«ÈÕÖ¾´òÓ¡
+    #region é¢œè‰²æ—¥å¿—æ‰“å°
     [Conditional("OPEN_LOG")]
     public static void ColorLog(LogColor color,object obj)
     {

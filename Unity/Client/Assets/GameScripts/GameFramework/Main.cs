@@ -44,26 +44,11 @@ public class Main : MonoBehaviour {
 
     private void InitUnityDebugger() {
         Debuger.InitLog(new LogConfig() { });
-        Debuger.LogGreen("InitUnityDebugger 初始化完成");
+        Debug.Log("InitUnityDebugger 初始化完成");
     }
 
     private async Task InitNetworkManager() {
         await NetworkManager.Instance.Initlization();
-        NetworkManager.Instance.Connect("127.0.0.1:20000", NetworkProtocolType.TCP, async () => {
-            Rcv_Test1 test1Rsp = (Rcv_Test1)await NetworkManager.Instance.SendCallMessage(new Send_Test1() {
-                pass_word = "111",
-                user_name = "222",
-            });
-
-            Debuger.LogGreen(test1Rsp.error_msg);
-            Debuger.LogGreen(test1Rsp.ErrorCode);
-            Debuger.LogGreen(test1Rsp.success);
-
-            NetworkManager.Instance.Send(new C2G_Test2() {
-                frameOpCode = 1001,
-                msg_content = "C2G_Test2 content msg",
-            });
-        });
     }
 
     #endregion

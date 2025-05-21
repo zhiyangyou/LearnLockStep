@@ -3,7 +3,6 @@ using Fantasy.Async;
 using Fantasy.Network;
 using Fantasy.Network.Interface;
 using Fantasy.Platform.Unity;
-using UnityEngine;
 using ZM.ZMAsset;
 using FScene = Fantasy.Scene;
 
@@ -55,6 +54,11 @@ public class NetworkManager : Singleton<NetworkManager> {
         return _session;
     }
 
+    public void Disconnect() {
+        _session?.Dispose();
+        _session = null;
+    }
+
     public void OnRelease() {
         _session?.Dispose();
         _fScene?.Dispose();
@@ -69,8 +73,8 @@ public class NetworkManager : Singleton<NetworkManager> {
     /// <param name="request"></param>
     /// <param name="routeID"></param>
     /// <returns></returns>
-    public async FTask<IResponse> SendCallMessage(IRequest request, long routeID = 0) {
-        return await _session.Call(request, routeID);
+    public async FTask<T> SendCallMessage<T>(IRequest request, long routeID = 0) where T : IResponse{
+        return (T)(await _session.Call(request, routeID)) ;
     }
 
     public void Send(IMessage message, uint rpcId = 0, long routeId = 0) {
@@ -92,7 +96,7 @@ public class NetworkManager : Singleton<NetworkManager> {
     }
 
     private void OnComplete() {
-        Debuger.LogGreen("NetworkManager:Connect Success");
+        // Debuger.LogGreen("NetworkManager:Connect Success");
         OnConnectSuccess?.Invoke();
     }
 
