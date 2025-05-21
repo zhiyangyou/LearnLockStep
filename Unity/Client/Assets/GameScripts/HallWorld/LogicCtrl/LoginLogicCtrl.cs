@@ -43,8 +43,8 @@ namespace ZMGC.Hall {
                 },
                 () => {
                     const string strDisconnectMsg = "鉴权服务器断联";
-                    ToastManager.ShowToast(strDisconnectMsg);
-                    Debuger.LogError(strDisconnectMsg);
+                    // ToastManager.ShowToast(strDisconnectMsg);
+                    Debuger.LogWarning(strDisconnectMsg);
                 });
         }
 
