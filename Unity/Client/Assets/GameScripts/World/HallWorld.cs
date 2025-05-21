@@ -29,7 +29,7 @@ namespace ZMGC.Hall
             base.OnCreate();
 
             // pop first winow
-            UIModule.Instance.PopUpWindow<CreateRuleWindow>();
+            UIModule.Instance.PopUpWindow<LoginWindow>();
             AudioController.GetInstance().PlayMusicFade($"{AssetsPathConfig.Game_Audio_Path}BG/Login.mp3",2f);
         }
 

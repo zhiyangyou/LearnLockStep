@@ -617,7 +617,7 @@ namespace ZM.ZMAsset
                 }
                 else
                 {
-                    Debug.LogError("item is null ...Path:" + path);
+                        Debug.LogError("item is null ...Path:" + path);
                     return null;
                 }
             }
