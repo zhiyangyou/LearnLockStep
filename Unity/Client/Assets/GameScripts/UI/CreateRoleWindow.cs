@@ -28,17 +28,16 @@ public class CreateRoleWindow : WindowBase {
         _userDataMgr = HallWorld.GetExitsDataMgr<UserDataMgr>();
         _userDataMgr.CurSelectRoleID = _userDataMgr.RoleIDs.First();
         
-        
-        // uiCompt.RoleTemplateGameObject.SetActive(false);
-        // uiCompt.CurSelectRoleIDText.text = $"ID: {_userDataMgr.CurSelectRoleID}";
-        // foreach (var id in _userDataMgr.RoleIDs) {
-        //     int roleID = id;
-        //     var go = GameObject.Instantiate(uiCompt.RoleTemplateGameObject, uiCompt.RoleSelectListTransform);
-        //     go.GetComponent<Button>().onClick.AddListener(() => { OnClick_RoleItem(roleID); });
-        //     go.GetComponentInChildren<Text>().text = $"{roleID}";
-        //     go.SetActive(true);
-        //     _listRoleSelectItem.Add(go);
-        // }
+        uiCompt.ItemRoleSelectGameObject.SetActive(false);
+        uiCompt.CurSelectRoleIDText.text = $"ID: {_userDataMgr.CurSelectRoleID}";
+        foreach (var id in _userDataMgr.RoleIDs) {
+            int roleID = id;
+            var go = GameObject.Instantiate(uiCompt.ItemRoleSelectGameObject, uiCompt.ContentTransform);
+            go.GetComponent<Button>().onClick.AddListener(() => { OnClick_RoleItem(roleID); });
+            go.GetComponentInChildren<Text>().text =$"ID: {roleID}";
+            go.SetActive(true);
+            _listRoleSelectItem.Add(go);
+        }
     }
 
     //物体显示时执行
@@ -73,7 +72,7 @@ public class CreateRoleWindow : WindowBase {
 
     private void OnClick_RoleItem(int roleID) {
         _userDataMgr.CurSelectRoleID = roleID;
-        // uiCompt.CurSelectRoleIDText.text = $"ID: {roleID}";
+        uiCompt.CurSelectRoleIDText.text = $"ID: {roleID}";
     }
 
     #endregion
@@ -92,7 +91,7 @@ public class CreateRoleWindow : WindowBase {
 
     public void OnEnterGameButtonClick() {
         HallWorld.EnterBattleWorld();
-        UIModule.Instance.HideWindow<CreateRuleWindow>();
+        UIModule.Instance.HideWindow<CreateRoleWindow>();
     }
 
     public void OnCreateRoleButtonClick() { }

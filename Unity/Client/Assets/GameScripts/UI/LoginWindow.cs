@@ -13,6 +13,8 @@ using ZMGC.Hall;
 using ZMUIFrameWork;
 
 public class LoginWindow : WindowBase {
+    private const string PerfKey_Account = "PerfKey_Account";
+    private const string PerfKey_Password = "PerfKey_Password";
     public LoginWindowUIComponent uiCompt = new LoginWindowUIComponent();
 
     private LoginLogicCtrl _logicCtrl = null;
@@ -33,14 +35,18 @@ public class LoginWindow : WindowBase {
     public override void OnShow() {
         base.OnShow();
         UIEventControl.AddEvent(UIEventEnum.LoginSuccess, OnLoginSuccess);
+        uiCompt.AccountInputField.text = PersistentDataTool.LoadStr(PerfKey_Account);
+        uiCompt.PasswordInputField.text = PersistentDataTool.LoadStr(PerfKey_Password);
     }
-
 
 
     //物体隐藏时执行
     public override void OnHide() {
         base.OnHide();
         UIEventControl.RemoveEvent(UIEventEnum.LoginSuccess, OnLoginSuccess);
+
+        PersistentDataTool.SaveStr(PerfKey_Account, uiCompt.AccountInputField.text);
+        PersistentDataTool.SaveStr(PerfKey_Password, uiCompt.PasswordInputField.text);
     }
 
     //物体销毁时执行
@@ -51,13 +57,14 @@ public class LoginWindow : WindowBase {
     #endregion
 
     #region 事件回调
-    
+
     private void OnLoginSuccess(object data) {
-     
         HideWindow();
         UIModule.Instance.PopUpWindow<SelectRoleWindow>();
     }
+
     #endregion
+
     #region API Function
 
     #endregion
