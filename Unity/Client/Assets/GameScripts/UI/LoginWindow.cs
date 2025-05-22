@@ -32,11 +32,15 @@ public class LoginWindow : WindowBase {
     //物体显示时执行
     public override void OnShow() {
         base.OnShow();
+        UIEventControl.AddEvent(UIEventEnum.LoginSuccess, OnLoginSuccess);
     }
+
+
 
     //物体隐藏时执行
     public override void OnHide() {
         base.OnHide();
+        UIEventControl.RemoveEvent(UIEventEnum.LoginSuccess, OnLoginSuccess);
     }
 
     //物体销毁时执行
@@ -46,6 +50,14 @@ public class LoginWindow : WindowBase {
 
     #endregion
 
+    #region 事件回调
+    
+    private void OnLoginSuccess(object data) {
+     
+        HideWindow();
+        UIModule.Instance.PopUpWindow<SelectRoleWindow>();
+    }
+    #endregion
     #region API Function
 
     #endregion
@@ -97,9 +109,13 @@ public class LoginWindow : WindowBase {
             ToastManager.ShowToast(toastMsg);
             if (code == 0) {
                 _userData.InitByLoginData(loginData);
-                // UIModule.Instance.HideWindow<LoginWindow>();
+                LoginSuccess();
             }
         });
+    }
+
+    private void LoginSuccess() {
+        UIEventControl.DispensEvent(UIEventEnum.LoginSuccess);
     }
 
     #endregion
