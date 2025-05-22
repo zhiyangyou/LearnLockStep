@@ -28,6 +28,10 @@ public class SelectRoleWindow : WindowBase {
         uiCompt.InitComponent(this);
         _userDataMgr = HallWorld.GetExitsDataMgr<UserDataMgr>();
         InitRoleItems();
+        if (_userDataMgr.RoleDatas.Count > 0) {
+            DoSelectItem(0); // 默认选着第一个
+        }
+
         base.OnAwake();
     }
 
@@ -51,7 +55,6 @@ public class SelectRoleWindow : WindowBase {
     public override void PseudoHidden(int value) {
         base.PseudoHidden(value);
         SetModelsVisiable(value != 0);
-        
     }
 
     #endregion
@@ -85,7 +88,7 @@ public class SelectRoleWindow : WindowBase {
             item.SetModelVisiable(visiable);
         }
     }
-    
+
     private void DestoryAllRoleItems() {
         foreach (var item in _listSelectRoles) {
             item.OnRelease();
@@ -112,6 +115,10 @@ public class SelectRoleWindow : WindowBase {
     }
 
     private void OnClick_RoleItem(int clickIndex) {
+        DoSelectItem(clickIndex);
+    }
+
+    private void DoSelectItem(int clickIndex) {
         if (clickIndex >= 0 && clickIndex < _userDataMgr.RoleDatas.Count) {
             foreach (var item in _listSelectRoles) {
                 item.SetIsSelect(false);
