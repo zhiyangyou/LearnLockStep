@@ -119,7 +119,7 @@ public class AudioController : MonoBehaviour {
     /// <param name="name"></param>
     /// <param name="priority"></param>
     public void PlaySoundByName(string name, int priority, float soundVolume = -1) {
-        string path = "Audio/" + name;
+        string path =$"{AssetsPathConfig.Game_Audio_Path}{name}";
         //获取需要播放的音源
         AudioClip clip = GetAudioClip(path);
 
