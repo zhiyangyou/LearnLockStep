@@ -1,7 +1,7 @@
 /*---------------------------------
  *Title:UI自动化组件查找代码生成工具
  *Author:铸梦
- *Date:2025/5/22 11:35:29
+ *Date:2025/5/22 17:46:23
  *Description:变量需要以[Text]括号加组件类型的格式进行声明，然后右键窗口物体—— 一键生成UI组件查找脚本即可
  *注意:以下文件是自动生成的，任何手动修改都会被下次生成覆盖,若手动修改后,尽量避免自动生成
 ---------------------------------*/
@@ -13,6 +13,8 @@ namespace ZMUIFrameWork
 	public class SelectRoleWindowUIComponent
 	{
 		public   Transform  RoleListTransform;
+
+		public   GameObject  SelectRoleItemGameObject;
 
 		public   Button  CloseButton;
 
@@ -30,6 +32,7 @@ namespace ZMUIFrameWork
 		{
 		     //组件查找
 		     RoleListTransform =target.transform.Find("UIContent/RoleRoot/[Transform]RoleList").transform;
+		     SelectRoleItemGameObject =target.transform.Find("UIContent/RoleRoot/[Transform]RoleList/[GameObject]SelectRoleItem").gameObject;
 		     CloseButton =target.transform.Find("UIContent/[Button]Close").GetComponent<Button>();
 		     EnterGameButton =target.transform.Find("UIContent/[Button]EnterGame").GetComponent<Button>();
 		     CreateRoleButton =target.transform.Find("UIContent/[Button]CreateRole").GetComponent<Button>();

@@ -67,8 +67,11 @@ namespace ZM.ZMAsset
         public object param2;
         public object param3;
 
-        public void Release()
+        public void Release(bool isDestory =true)
         {
+            if (obj != null) {
+                ZMAsset.Release(obj);
+            }
             obj = null;
             param1 = null;
             param2 = null;

@@ -126,9 +126,10 @@ public class CreateRoleWindow : WindowBase {
             ToastManager.ShowToast($"创建角色失败 code:{code}");
         }
         else {
+            _userDataMgr.AddRoleData(resultCreateRole.role_data);
             ToastManager.ShowToast("创建角色成功");
             // TODO
-            Debug.LogError("加载大厅, 并跳转  ");  
+            Debug.LogError("加载大厅, 并跳转  ");
         }
         UIModule.Instance.HideWindow<ReConnectWindow>();
     }

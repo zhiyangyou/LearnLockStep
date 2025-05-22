@@ -21,6 +21,8 @@ namespace ZMGC.Hall {
         public long diamonds;
         public long level;
 
+        public List<RoleData> RoleDatas = new();
+
         private List<int> _listRoleIDs = new() {
             HeroIDConfig.HeroID_神枪手,
             HeroIDConfig.HeroID_鬼剑士,
@@ -31,15 +33,30 @@ namespace ZMGC.Hall {
         #endregion
 
         public string UserName;
-        
+
         public int CurSelectRoleID { get; set; }
 
+        public int CurSelectRoleIndex = 0;
+        
         #region public
 
         public void InitByLoginData(Rcv_LoginGate loginData) {
             this.level = loginData.level;
             this.diamonds = loginData.diamond;
             this.gold = loginData.gold;
+            this.RoleDatas.Clear();
+            this.RoleDatas.AddRange(loginData.role_datas);
+        }
+
+        public void AddRoleData(RoleData roleData) {
+            var hasExist = this.RoleDatas.Exists(data => data.role_name == roleData.role_name);
+            if (hasExist) {
+                Debug.LogError($"本地数据添加了重复角色名的roleData {roleData.role_name}");
+                return;
+            }
+            else {
+                this.RoleDatas.Add(roleData);
+            }
         }
 
         public void OnCreate() { }
