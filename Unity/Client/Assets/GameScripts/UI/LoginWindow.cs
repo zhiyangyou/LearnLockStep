@@ -88,7 +88,6 @@ public class LoginWindow : WindowBase {
                 UIModule.Instance.HideWindow<ReConnectWindow>();
                 var code = tuple.Item1;
                 if (code == 0) {
-                    
                     ContinueLogin(tuple.Item2);
                 }
                 else {

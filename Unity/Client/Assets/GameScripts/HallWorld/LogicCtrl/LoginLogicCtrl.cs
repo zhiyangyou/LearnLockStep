@@ -53,15 +53,17 @@ namespace ZMGC.Hall {
                         account_name = account,
                         pass_word = password,
                     });
+
+                    NetworkManager.Instance.Disconnect();
                     if (resp.ErrorCode != 0) {
                         Debug.LogError($"获取token 失败 code:{resp.ErrorCode}");
+                        onResult?.Invoke(((int)resp.ErrorCode, resp));
                         resp = null;
                     }
                     else {
                         Debuger.LogGreen($"获取token 成功 {resp.login_address} {resp.token}");
+                        onResult?.Invoke((0, resp));
                     }
-                    NetworkManager.Instance.Disconnect();
-                    onResult?.Invoke((0, resp));
                 },
                 () => { onResult?.Invoke((-1, null)); }, null);
         }

@@ -3,6 +3,7 @@ using Fantasy.Async;
 using Fantasy.Network;
 using Fantasy.Network.Interface;
 using Fantasy.Platform.Unity;
+using UnityEngine;
 using ZM.ZMAsset;
 using FScene = Fantasy.Scene;
 
