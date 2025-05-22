@@ -10,6 +10,7 @@
 using System;
 using Fantasy;
 using Fantasy.Network;
+using UnityEngine;
 
 namespace ZMGC.Hall {
     public class LoginLogicCtrl : ILogicBehaviour {
@@ -33,6 +34,33 @@ namespace ZMGC.Hall {
                     onResult?.Invoke((int)resp.ErrorCode);
                 },
                 () => { onResult?.Invoke(ErrorCode.Code_NetConnectFailed); }, null);
+        }
+
+        public void GetToken(string account, string password, Action<(int result, Rcv_GetLoginToken loginToken)> onResult) {
+            if (string.IsNullOrEmpty(account)
+                || string.IsNullOrEmpty(password)
+               ) {
+                ToastManager.ShowToast("GetToken: 账号或是密码为空");
+                onResult?.Invoke((-1, null));
+                return;
+            }
+
+            NetworkManager.Instance.Connect(kStr_AuthenticationAddr, NetworkProtocolType.TCP, async () => {
+                    var resp = await NetworkManager.Instance.SendCallMessage<Rcv_GetLoginToken>(new Send_GetLoginToken() {
+                        account_name = account,
+                        pass_word = password,
+                    });
+                    if (resp.ErrorCode != 0) {
+                        Debug.LogError($"获取token 失败 code:{resp.ErrorCode}");
+                        resp = null;
+                    }
+                    else {
+                        Debuger.LogGreen($"获取token 成功 {resp.login_address} {resp.token}");
+                    }
+                    NetworkManager.Instance.Disconnect();
+                    onResult?.Invoke((0, resp));
+                },
+                () => { onResult?.Invoke((-1, null)); }, null);
         }
 
         public void OnCreate() { }

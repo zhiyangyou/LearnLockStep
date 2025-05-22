@@ -6,8 +6,10 @@
  *注意:以下文件是自动生成的，再次生成不会覆盖原有的代码，会在原有的代码上进行新增，可放心使用
 ---------------------------------*/
 
+using Fantasy;
 using UnityEngine.UI;
 using UnityEngine;
+using ZMGC.Hall;
 using ZMUIFrameWork;
 
 public class LoginWindow : WindowBase {
@@ -53,7 +55,19 @@ public class LoginWindow : WindowBase {
     public void OnAccountInputEnd(string text) { }
     public void OnPasswordInputChange(string text) { }
     public void OnPasswordInputEnd(string text) { }
-    public void OnEnterGameButtonClick() { }
+
+    public void OnEnterGameButtonClick() {
+        PopUpWindow<ReConnectWindow>();
+        HallWorld
+            .GetExitsLogicCtrl<LoginLogicCtrl>()
+            .GetToken(uiCompt.AccountInputField.text, uiCompt.PasswordInputField.text,
+                tuple => {
+                    UIModule.Instance.HideWindow<ReConnectWindow>();
+                    var code = tuple.Item1;
+                    var token = tuple.Item2;
+                });
+    }
+
     public void OnPublishButtonClick() { }
     public void OnClickEnterButtonClick() { }
 
