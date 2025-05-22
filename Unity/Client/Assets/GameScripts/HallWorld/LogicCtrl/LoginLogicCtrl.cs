@@ -14,6 +14,9 @@ using UnityEngine;
 
 namespace ZMGC.Hall {
     public class LoginLogicCtrl : ILogicBehaviour {
+        /// <summary>
+        /// 鉴权服务地址
+        /// </summary>
         private const string kStr_AuthenticationAddr = "127.0.0.1:20001";
 
         public void RegisterAccount(string account, string password, Action<int> onResult) {
@@ -62,6 +65,31 @@ namespace ZMGC.Hall {
                 },
                 () => { onResult?.Invoke((-1, null)); }, null);
         }
+
+
+        public void LoginWithToken(Rcv_GetLoginToken tokenInfo, Action<(int, Rcv_LoginGate)> onResult) {
+            if (tokenInfo == null
+                || string.IsNullOrEmpty(tokenInfo.token)
+                || string.IsNullOrEmpty(tokenInfo.login_address)
+               ) {
+                ToastManager.ShowToast("LoginWithToken 输入参数不合法");
+                onResult?.Invoke((-1, null));
+                return;
+            }
+
+            NetworkManager.Instance.Connect(tokenInfo.login_address, NetworkProtocolType.TCP, async () => {
+                    Send_LoginGate loginGate = new() {
+                        token = tokenInfo.token,
+                        account_id = tokenInfo.account_id,
+                        scene_config_id = tokenInfo.scene_config_id,
+                    };
+                    var resp = await NetworkManager.Instance.SendCallMessage<Rcv_LoginGate>(loginGate);
+                    NetworkManager.Instance.Disconnect();
+                    onResult?.Invoke(((int)resp.ErrorCode, resp));
+                },
+                () => { onResult?.Invoke((ErrorCode.Code_NetConnectFailed, null)); }, null);
+        }
+
 
         public void OnCreate() { }
 

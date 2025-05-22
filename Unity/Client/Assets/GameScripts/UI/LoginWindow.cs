@@ -15,11 +15,17 @@ using ZMUIFrameWork;
 public class LoginWindow : WindowBase {
     public LoginWindowUIComponent uiCompt = new LoginWindowUIComponent();
 
+    private LoginLogicCtrl _logicCtrl = null;
+
+    private UserDataMgr _userData = null;
+
     #region 声明周期函数
 
     //调用机制与Mono Awake一致
     public override void OnAwake() {
         uiCompt.InitComponent(this);
+        _logicCtrl = HallWorld.GetExitsLogicCtrl<LoginLogicCtrl>();
+        _userData = HallWorld.GetExitsDataMgr<UserDataMgr>();
         base.OnAwake();
     }
 
@@ -58,14 +64,17 @@ public class LoginWindow : WindowBase {
 
     public void OnEnterGameButtonClick() {
         PopUpWindow<ReConnectWindow>();
-        HallWorld
-            .GetExitsLogicCtrl<LoginLogicCtrl>()
-            .GetToken(uiCompt.AccountInputField.text, uiCompt.PasswordInputField.text,
-                tuple => {
-                    UIModule.Instance.HideWindow<ReConnectWindow>();
-                    var code = tuple.Item1;
-                    var token = tuple.Item2;
-                });
+        _logicCtrl.GetToken(uiCompt.AccountInputField.text, uiCompt.PasswordInputField.text,
+            tuple => {
+                UIModule.Instance.HideWindow<ReConnectWindow>();
+                var code = tuple.Item1;
+                if (code == 0) {
+                    ContinueLogin(tuple.Item2);
+                }
+                else {
+                    ToastManager.ShowToast("获取token失败");
+                }
+            });
     }
 
     public void OnPublishButtonClick() { }
@@ -73,6 +82,24 @@ public class LoginWindow : WindowBase {
 
     public void OnRegisterAccountButtonClick() {
         PopUpWindow<RegisterWindow>();
+    }
+
+    #endregion
+
+    #region private
+
+    private void ContinueLogin(Rcv_GetLoginToken tokenInfo) {
+        _logicCtrl.LoginWithToken(tokenInfo, tp => {
+            var code = tp.Item1;
+            var loginData = tp.Item2;
+
+            var toastMsg = code == 0 ? "登录成功" : $"登录失败:{code}";
+            ToastManager.ShowToast(toastMsg);
+            if (code == 0) {
+                _userData.InitByLoginData(loginData);
+                // UIModule.Instance.HideWindow<LoginWindow>();
+            }
+        });
     }
 
     #endregion

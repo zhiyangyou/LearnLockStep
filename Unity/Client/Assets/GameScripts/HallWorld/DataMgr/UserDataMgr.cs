@@ -8,11 +8,16 @@
 ----------------------------------------------------------------------------------------*/
 
 using System.Collections.Generic;
+using Fantasy;
 using UnityEngine;
 
 namespace ZMGC.Hall {
     public class UserDataMgr : IDataBehaviour {
         #region 属性和字段
+
+        public long gold;
+        public long diamonds;
+        public long level;
 
         private List<int> _listRoleIDs = new() {
             HeroIDConfig.HeroID_神枪手,
@@ -27,8 +32,19 @@ namespace ZMGC.Hall {
 
         public string UserName;
 
+
+        #region public
+
+        public void InitByLoginData(Rcv_LoginGate loginData) {
+            this.level = loginData.level;
+            this.diamonds = loginData.diamonds;
+            this.gold = loginData.gold;
+        }
+
         public void OnCreate() { }
 
         public void OnDestroy() { }
+
+        #endregion
     }
 }
