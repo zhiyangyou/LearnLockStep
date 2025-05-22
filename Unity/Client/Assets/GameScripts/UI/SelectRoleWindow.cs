@@ -17,6 +17,7 @@ public class SelectRoleWindow : WindowBase {
 
     //调用机制与Mono Awake一致
     public override void OnAwake() {
+        this.FullScreenWindow = true;
         uiCompt.InitComponent(this);
         base.OnAwake();
     }

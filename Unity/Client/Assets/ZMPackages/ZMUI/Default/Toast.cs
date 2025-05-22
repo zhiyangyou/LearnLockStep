@@ -25,7 +25,6 @@ public class Toast : MonoBehaviour
     /// </summary>
     public void ShowToast(string key)
     {
-        Debug.Log("ShowToast:" + key);
         if (canvas.worldCamera == null)
             canvas.worldCamera = UIModule.Instance.Camera;
 

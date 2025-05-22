@@ -88,6 +88,7 @@ public class LoginWindow : WindowBase {
                 UIModule.Instance.HideWindow<ReConnectWindow>();
                 var code = tuple.Item1;
                 if (code == 0) {
+                    
                     ContinueLogin(tuple.Item2);
                 }
                 else {
@@ -108,7 +109,10 @@ public class LoginWindow : WindowBase {
     #region private
 
     private void ContinueLogin(Rcv_GetLoginToken tokenInfo) {
+        _userData.account_id = tokenInfo.account_id;
+        PopUpWindow<ReConnectWindow>();
         _logicCtrl.LoginWithToken(tokenInfo, tp => {
+            UIModule.Instance.HideWindow<ReConnectWindow>();
             var code = tp.Item1;
             var loginData = tp.Item2;
 

@@ -19,6 +19,7 @@ using ZMUIFrameWork;
 		 public override void OnAwake()
 		 {
 			 uiCompt.InitComponent(this);
+			 this.mDisableAnim = true;
 			 base.OnAwake();
 		 }
 		 //物体显示时执行

@@ -8,6 +8,8 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using Fantasy;
 using UnityEngine.UI;
 using UnityEngine;
 using ZMGC.Hall;
@@ -18,23 +20,31 @@ public class CreateRoleWindow : WindowBase {
     private List<GameObject> _listRoleSelectItem = new();
     private UserDataMgr _userDataMgr;
 
+
+    /// <summary>
+    /// 创建角色页面的当前选择的角色ID
+    /// </summary>
+    public int _curSelectRoleID { get; set; }
+
+
     #region 声明周期函数
 
     //调用机制与Mono Awake一致
     public override void OnAwake() {
+        this.FullScreenWindow = true;
         uiCompt.InitComponent(this);
         base.OnAwake();
 
         _userDataMgr = HallWorld.GetExitsDataMgr<UserDataMgr>();
-        _userDataMgr.CurSelectRoleID = _userDataMgr.RoleIDs.First();
-        
+        this._curSelectRoleID = _userDataMgr.RoleIDs.First();
+
         uiCompt.ItemRoleSelectGameObject.SetActive(false);
-        uiCompt.CurSelectRoleIDText.text = $"ID: {_userDataMgr.CurSelectRoleID}";
+        uiCompt.CurSelectRoleIDText.text = $"ID: {this._curSelectRoleID}";
         foreach (var id in _userDataMgr.RoleIDs) {
             int roleID = id;
             var go = GameObject.Instantiate(uiCompt.ItemRoleSelectGameObject, uiCompt.ContentTransform);
             go.GetComponent<Button>().onClick.AddListener(() => { OnClick_RoleItem(roleID); });
-            go.GetComponentInChildren<Text>().text =$"ID: {roleID}";
+            go.GetComponentInChildren<Text>().text = $"ID: {roleID}";
             go.SetActive(true);
             _listRoleSelectItem.Add(go);
         }
@@ -71,7 +81,7 @@ public class CreateRoleWindow : WindowBase {
     #region private
 
     private void OnClick_RoleItem(int roleID) {
-        _userDataMgr.CurSelectRoleID = roleID;
+        this._curSelectRoleID = roleID;
         uiCompt.CurSelectRoleIDText.text = $"ID: {roleID}";
     }
 
@@ -89,15 +99,53 @@ public class CreateRoleWindow : WindowBase {
         HideWindow();
     }
 
-    public void OnEnterGameButtonClick() {
-        HallWorld.EnterBattleWorld();
-        UIModule.Instance.HideWindow<CreateRoleWindow>();
-    }
+    public void OnEnterGameButtonClick() { }
 
-    public void OnCreateRoleButtonClick() { }
+    public void OnCreateRoleButtonClick() {
+     
+        NetSend_CreateRole();
+        
+    }
     public void OnDeleteButtonClick() { }
     public void OnAllowRightButtonClick() { }
     public void OnAllowLeftButtonClick() { }
+
+    #endregion
+
+
+    #region 网络接口
+
+    private async void NetSend_CreateRole() {
+        Send_CreateRole sendCreateRole = new();
+        sendCreateRole.account_id = _userDataMgr.account_id;
+        sendCreateRole.role_id = _curSelectRoleID;
+        sendCreateRole.role_name = uiCompt.NameInputField.text;
+        if (sendCreateRole.account_id <= 0) {
+            ToastManager.ShowToast($" sendCreateRole.account_id  非法:{sendCreateRole.account_id}");
+            return;
+        }
+        if (sendCreateRole.role_id <= 0) {
+            ToastManager.ShowToast($"roleID 非法:{sendCreateRole.role_id}");
+            return;
+        }
+        if (string.IsNullOrEmpty(sendCreateRole.role_name)) {
+            ToastManager.ShowToast($"角色名字不能是空");
+            return;
+        }
+        PopUpWindow<ReConnectWindow>();
+        Rcv_CreateRole resultCreateRole = await NetworkManager.Instance.SendCallMessage<Rcv_CreateRole>(sendCreateRole);
+
+        var code = resultCreateRole.ErrorCode;
+        if (code != 0) {
+            ToastManager.ShowToast("创建角色失败");
+        }
+        else {
+            ToastManager.ShowToast("创建角色成功");
+            // TODO
+            Debug.LogError("加载大厅, 并跳转");
+        }
+        UIModule.Instance.HideWindow<ReConnectWindow>();
+    }
 
     #endregion
 }

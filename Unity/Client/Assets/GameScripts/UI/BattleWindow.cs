@@ -55,7 +55,7 @@ public class BattleWindow : WindowBase {
         base.OnShow();
         _heroLogicActor = BattleWorld.GetExitsLogicCtrl<HeroLogicCtrl>().HeroLogic;
 
-        var heroID = HallWorld.GetExitsDataMgr<UserDataMgr>().CurSelectRoleID;
+        var heroID = HallWorld.GetExitsDataMgr<UserDataMgr>().CurSelectRoleIDWhenCreate;
         // 遍历角色技能数组, 生成对应的技能按钮
         var skillIDs = BattleWorld.GetExitsDataMgr<HeroDataMgr>().GetHeroSkillIDs(heroID);
         for (int i = 0; i < skillIDs.Length; i++) {
