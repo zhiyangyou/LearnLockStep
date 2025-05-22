@@ -10,15 +10,22 @@
 *
 * Modify: 
 ------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 namespace ZM.ZMAsset
 {
+    public enum LoadWhat {
+        Config
+    }
+    
     public class HotUpdateManager : MonoSingleton<HotUpdateManager>
     {
         private HotAssetsWindow mHotAssetsWindow;
         private System.Action OnHotFinishCallBackAction;
+        public Action<LoadWhat> OnLoadingState;
         /// <summary>
         /// 热更并且解压热更模块
         /// </summary>
@@ -159,7 +166,7 @@ namespace ZM.ZMAsset
         }
         public void LoadGameConfig()
         {
-
+            OnLoadingState?.Invoke(LoadWhat.Config);
         }
         public T InstantiateResourcesObj<T>(string prefabName)
         {

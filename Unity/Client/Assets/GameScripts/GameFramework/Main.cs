@@ -18,6 +18,7 @@ public class Main : MonoBehaviour {
 
     private async Task Awake() {
         DontDestroyOnLoad(gameObject);
+        InitLoadingStateCallback();
         await InitNetworkManager();
         InitUnityDebugger();
     }
@@ -49,6 +50,14 @@ public class Main : MonoBehaviour {
 
     private async Task InitNetworkManager() {
         await NetworkManager.Instance.Initlization();
+    }
+
+    private void InitLoadingStateCallback() {
+        HotUpdateManager.Instance.OnLoadingState += what => {
+            if (what == LoadWhat.Config) {
+                ConfigCenter.Instance.InitGameCfg();
+            }
+        };
     }
 
     #endregion

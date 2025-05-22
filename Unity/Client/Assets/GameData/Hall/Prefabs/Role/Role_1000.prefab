@@ -197,7 +197,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4021450948173451975}
   - component: {fileID: 3914983401237185581}
-  - component: {fileID: 779250370}
   m_Layer: 5
   m_Name: Role_1000
   m_TagString: Untagged
@@ -274,20 +273,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 1
---- !u!114 &779250370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4024320815063798503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af65a22902c96964887f0d4b0eb44a4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mConter: {x: 0, y: 1, z: 0}
-  mSize: {x: 1, y: 2, z: 1}
 --- !u!1 &4024323688017696489
 GameObject:
   m_ObjectHideFlags: 0

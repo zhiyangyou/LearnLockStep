@@ -50,4 +50,10 @@ public class ItemSelectRole : MonoBehaviour {
     
 
     #endregion
+
+    public void SetModelVisiable(bool visiable) {
+        if (_goModelRequest != null) {
+            _goModelRequest.obj.SetActive(visiable);
+        }
+    }
 }

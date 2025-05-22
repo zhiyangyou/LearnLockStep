@@ -27,7 +27,6 @@ namespace ZMGC.Hall
         public override void OnCreate()
         {
             base.OnCreate();
-            ConfigCenter.Instance.InitGameCfg();
             // pop first winow
             UIModule.Instance.PopUpWindow<LoginWindow>();
             AudioController.GetInstance().PlayMusicFade($"{AssetsPathConfig.Game_Audio_Path}BG/Login.mp3",2f);

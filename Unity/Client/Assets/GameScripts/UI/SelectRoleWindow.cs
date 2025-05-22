@@ -34,6 +34,7 @@ public class SelectRoleWindow : WindowBase {
     //物体显示时执行
     public override void OnShow() {
         base.OnShow();
+        SetModelsVisiable(true);
     }
 
     //物体隐藏时执行
@@ -45,6 +46,12 @@ public class SelectRoleWindow : WindowBase {
     public override void OnDestroy() {
         DestoryAllRoleItems();
         base.OnDestroy();
+    }
+
+    public override void PseudoHidden(int value) {
+        base.PseudoHidden(value);
+        SetModelsVisiable(value != 0);
+        
     }
 
     #endregion
@@ -73,6 +80,12 @@ public class SelectRoleWindow : WindowBase {
 
     #region private
 
+    private void SetModelsVisiable(bool visiable) {
+        foreach (var item in _listSelectRoles) {
+            item.SetModelVisiable(visiable);
+        }
+    }
+    
     private void DestoryAllRoleItems() {
         foreach (var item in _listSelectRoles) {
             item.OnRelease();
