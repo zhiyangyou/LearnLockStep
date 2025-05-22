@@ -84,7 +84,7 @@ namespace ZMGC.Hall {
                         scene_config_id = tokenInfo.scene_config_id,
                     };
                     var resp = await NetworkManager.Instance.SendCallMessage<Rcv_LoginGate>(loginGate);
-                    NetworkManager.Instance.Disconnect();
+                    // NetworkManager.Instance.Disconnect(); // 登录成功之后, session 会一直保持在gate服务器
                     onResult?.Invoke(((int)resp.ErrorCode, resp));
                 },
                 () => { onResult?.Invoke((ErrorCode.Code_NetConnectFailed, null)); }, null);

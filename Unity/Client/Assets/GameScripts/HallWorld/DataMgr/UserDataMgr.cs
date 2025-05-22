@@ -15,8 +15,8 @@ namespace ZMGC.Hall {
     public class UserDataMgr : IDataBehaviour {
         #region 属性和字段
 
-        public long account_id ;
-        
+        public long account_id;
+
         public long gold;
         public long diamonds;
         public long level;
@@ -28,11 +28,11 @@ namespace ZMGC.Hall {
 
         public IEnumerable<int> RoleIDs => _listRoleIDs;
 
-
         #endregion
 
         public string UserName;
-
+        
+        public int CurSelectRoleID { get; set; }
 
         #region public
 

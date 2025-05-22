@@ -37,6 +37,7 @@ public class CreateRoleWindow : WindowBase {
 
         _userDataMgr = HallWorld.GetExitsDataMgr<UserDataMgr>();
         this._curSelectRoleID = _userDataMgr.RoleIDs.First();
+        HallWorld.GetExitsDataMgr<UserDataMgr>().CurSelectRoleID = _curSelectRoleID;
 
         uiCompt.ItemRoleSelectGameObject.SetActive(false);
         uiCompt.CurSelectRoleIDText.text = $"ID: {this._curSelectRoleID}";
@@ -50,15 +51,6 @@ public class CreateRoleWindow : WindowBase {
         }
     }
 
-    //物体显示时执行
-    public override void OnShow() {
-        base.OnShow();
-    }
-
-    //物体隐藏时执行
-    public override void OnHide() {
-        base.OnHide();
-    }
 
     //物体销毁时执行
     public override void OnDestroy() {
@@ -82,6 +74,7 @@ public class CreateRoleWindow : WindowBase {
 
     private void OnClick_RoleItem(int roleID) {
         this._curSelectRoleID = roleID;
+        HallWorld.GetExitsDataMgr<UserDataMgr>().CurSelectRoleID = _curSelectRoleID;
         uiCompt.CurSelectRoleIDText.text = $"ID: {roleID}";
     }
 
@@ -99,16 +92,9 @@ public class CreateRoleWindow : WindowBase {
         HideWindow();
     }
 
-    public void OnEnterGameButtonClick() { }
-
-    public void OnCreateRoleButtonClick() {
-     
+    public void OnEnterGameButtonClick() {
         NetSend_CreateRole();
-        
     }
-    public void OnDeleteButtonClick() { }
-    public void OnAllowRightButtonClick() { }
-    public void OnAllowLeftButtonClick() { }
 
     #endregion
 
@@ -137,12 +123,12 @@ public class CreateRoleWindow : WindowBase {
 
         var code = resultCreateRole.ErrorCode;
         if (code != 0) {
-            ToastManager.ShowToast("创建角色失败");
+            ToastManager.ShowToast($"创建角色失败 code:{code}");
         }
         else {
             ToastManager.ShowToast("创建角色成功");
             // TODO
-            Debug.LogError("加载大厅, 并跳转");
+            Debug.LogError("加载大厅, 并跳转  ");  
         }
         UIModule.Instance.HideWindow<ReConnectWindow>();
     }

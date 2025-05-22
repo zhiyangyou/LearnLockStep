@@ -54,7 +54,7 @@ public partial class LogicActor {
     /// </summary>
     public void InitActorSkill() {
         
-        var heroID = HallWorld.GetExitsDataMgr<UserDataMgr>().CurSelectRoleIDWhenCreate;
+        var heroID = HallWorld.GetExitsDataMgr<UserDataMgr>().CurSelectRoleID;
         _normalAttackSkillArr = BattleWorld.GetExitsDataMgr<HeroDataMgr>().GetHeroNormalSkillIDs(heroID);
         _normalSkillArr = BattleWorld.GetExitsDataMgr<HeroDataMgr>().GetHeroSkillIDs(heroID);
         _skillSystem = new SkillSystem(this);
