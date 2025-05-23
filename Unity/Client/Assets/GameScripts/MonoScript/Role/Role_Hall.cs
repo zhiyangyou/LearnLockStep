@@ -13,7 +13,7 @@ public class Role_Hall : MonoBehaviour {
 
     public float smoothSpeed = 2f;
 
-    public float zMoveSpeedAdjust = 3f;
+    public float zMoveSpeedAdjust = 2.5f;
 
     #endregion
 
