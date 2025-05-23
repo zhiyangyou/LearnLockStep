@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Animation))]
-public class Role_Hall : MonoBehaviour {
+public partial class Role_Hall : MonoBehaviour {
     #region 属性和字段
 
     private Animation _anim;

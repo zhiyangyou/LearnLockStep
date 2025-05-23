@@ -37,9 +37,11 @@ namespace ZMGC.Hall {
             goRole.transform.ReSetParent(HallWorld.GetExitsLogicCtrl<MapLogicCtrl>().CurMap.trRoleInitPos);
             goRole.name = rolePrefabName;
             goRole.transform.localScale = Vector3.one * 0.6f;
-            if (goRole.GetComponent<Role_Hall>() == null) {
-                goRole.AddComponent<Role_Hall>();
+            Role_Hall roleHall = goRole.GetComponent<Role_Hall>();
+            if (roleHall == null) {
+                roleHall = goRole.AddComponent<Role_Hall>();
             }
+            roleHall.enabled = true;
         }
 
         public void OnCreate() {
@@ -56,6 +58,10 @@ namespace ZMGC.Hall {
 
         private void ReleaseRoleAsset() {
             if (_roleAssetRequest != null) {
+                var go = _roleAssetRequest.obj;
+                if (go != null && go.TryGetComponent<Role_Hall>(out var item)) {
+                    item.enabled = false;
+                }
                 _roleAssetRequest.Release();
                 _roleAssetRequest = null;
             }
