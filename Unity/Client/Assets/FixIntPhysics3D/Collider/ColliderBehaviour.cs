@@ -1,10 +1,30 @@
-﻿using FixMath;
+﻿using System;
+using FixMath;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace FixIntPhysics {
+    public delegate void OnCollsionCallback(ColliderBehaviour other, MonoBehaviour otherMono_MayBeNull);
     public abstract class ColliderBehaviour {
+
+        /// <summary>
+        ///  碰撞进入, MonoBehavior可能为空
+        /// </summary>
+        public OnCollsionCallback OnCollision_Enter;
+        
+        /// <summary>
+        /// 持续碰撞, MonoBehavior可能为空
+        /// </summary>
+        public OnCollsionCallback OnCollision_Stay;
+        
+        
+        /// <summary>
+        /// 碰撞离开, MonoBehavior可能为空
+        /// </summary>
+        public OnCollsionCallback OnCollision_Exit;
+        
+        
         public bool Active = true;
         public ColliderType ColliderType { get; protected set; }
         public FixIntVector3 LogicPosition { get; set; }
