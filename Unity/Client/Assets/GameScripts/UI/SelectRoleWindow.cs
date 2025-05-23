@@ -131,6 +131,7 @@ public class SelectRoleWindow : WindowBase {
         for (int i = 0; i < initCount; i++) {
             var newGo = GameObject.Instantiate(templateGo, templateGo.transform.parent);
             newGo.SetActive(true);
+            newGo.ChangeGoLayer(LayerMask.NameToLayer("UI"));
             ItemSelectRole itemSelectRole = newGo.GetComponent<ItemSelectRole>();
             _listSelectRoles.Add(itemSelectRole);
 

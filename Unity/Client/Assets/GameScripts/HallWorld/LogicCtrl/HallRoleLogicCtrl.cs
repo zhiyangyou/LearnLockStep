@@ -33,6 +33,7 @@ namespace ZMGC.Hall {
             _roleAssetRequest = await ZMAsset.InstantiateAsync($"{AssetsPathConfig.Hall_Role_Prefabs}{rolePrefabName}");
             GameObject goRole = _roleAssetRequest.obj;
             goRole.SetActive(true);
+            goRole.ChangeGoLayer(LayerMask.NameToLayer("World"));
             goRole.transform.ReSetParent(HallWorld.GetExitsLogicCtrl<MapLogicCtrl>().CurMap.trRoleInitPos);
             goRole.name = rolePrefabName;
             goRole.transform.localScale = Vector3.one * 0.6f;
