@@ -90,6 +90,7 @@ public class SelectRoleWindow : WindowBase {
         var code = response.ErrorCode;
         if (code == 0) {
             ToastManager.ShowToast("成功! 进入游戏中...");
+            HallWorld.EnterBattleWorld();
         }
         else {
             ToastManager.ShowToast($"进入游戏失败 {code}");

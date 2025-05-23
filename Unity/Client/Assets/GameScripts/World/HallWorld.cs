@@ -71,10 +71,10 @@ namespace ZMGC.Hall
 
         public static void EnterBattleWorld()
         {
-            LoadSceneManager.Instance.LoadSceneAsync("Battle", () =>
-            {
-                // UIModule.Instance.DestroyAllWindow();
-                WorldManager.CreateWorld<BattleWorld>();
+            LoadSceneManager.Instance.LoadSceneAsync("Hall", () =>
+            { 
+                UIModule.Instance.DestroyAllWindow();
+                HallWorld.GetExitsLogicCtrl<MapLogicCtrl>().Init();
             });
         }
 

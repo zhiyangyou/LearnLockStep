@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using ZM.ZMAsset;
@@ -34,6 +36,8 @@ public class Main : MonoBehaviour {
 
     #region private
 
+    
+    
     private void InitAssetBundle() {
         HotUpdateManager.Instance.HotAndUnPackAssets(BundleModuleEnum.Game, OnUnPackAssetComplete);
     }
@@ -44,8 +48,7 @@ public class Main : MonoBehaviour {
     }
 
     private void InitUnityDebugger() {
-        Debuger.InitLog(new LogConfig() { });
-        Debug.Log("InitUnityDebugger 初始化完成");
+        Debuger.InitLog(new LogConfig() { }); 
     }
 
     private async Task InitNetworkManager() {
