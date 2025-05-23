@@ -13,17 +13,20 @@ namespace FixIntPhysics
         /// </summary>
         public  BoxColliderGizmo boxDraw;
 
-        public FixIntBoxCollider(FixIntVector3 size, FixIntVector3 conter)
+        private bool _needGizmos = true;
+        public FixIntBoxCollider(FixIntVector3 size, FixIntVector3 conter, bool needGizmos = true)
         {
             this.Size = size;
             this.Conter = conter;
             ColliderType = ColliderType.Box;
+            _needGizmos = needGizmos;
         }
-        public FixIntBoxCollider(Vector3 size, Vector3 conter)
+        public FixIntBoxCollider(Vector3 size, Vector3 conter, bool needGizmos = true)
         {
             this.Size =new FixIntVector3(size);
             this.Conter =new FixIntVector3(conter);
             ColliderType = ColliderType.Box;
+            _needGizmos = needGizmos;
         }
 
         /// <summary>
@@ -62,7 +65,7 @@ namespace FixIntPhysics
 
         public override void SetBoxData(FixIntVector3 conter, FixIntVector3 size, bool isFloowTarget = false)
         {
-            if (boxDraw == null) {
+            if (boxDraw == null && _needGizmos) {
                 var obj = CreateGo();
                 obj.name = $"boxCollider:{conter}";
                 boxDraw = obj.AddComponent<BoxColliderGizmo>();

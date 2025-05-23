@@ -41,6 +41,7 @@ public partial class Role_Hall : MonoBehaviour {
         UpdatePos();
         UpdateDir();
         UpdateState();
+        UpdateCollider();
     }
 
     private void UpdatePos() {

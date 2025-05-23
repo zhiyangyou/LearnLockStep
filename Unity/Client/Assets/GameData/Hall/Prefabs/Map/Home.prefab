@@ -498,6 +498,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mConter: {x: 0, y: 1, z: 0}
   mSize: {x: 3, y: 2, z: 2}
+  needDraw: 1
 --- !u!114 &3279215903548655986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -510,6 +511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc05c0b00bc4c16966e5478975bb20a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLogicUpdate: 0
 --- !u!1 &9001574258011705401
 GameObject:
   m_ObjectHideFlags: 0

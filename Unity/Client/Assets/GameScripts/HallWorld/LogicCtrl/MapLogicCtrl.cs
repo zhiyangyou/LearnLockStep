@@ -29,8 +29,8 @@ namespace ZMGC.Hall {
             OnRelease();
         }
 
-        public void Init() {
-            LoadMap("Home");
+        public async Task Init() {
+            await LoadMap("Home");
         }
 
         #endregion
@@ -46,6 +46,10 @@ namespace ZMGC.Hall {
             CurMap.Init();
         }
 
+
+        private void InitMapRoleEnv() {
+            
+        }
         private void ReleaseMapAsset() {
             if (_homeMapAssetRequest != null) {
                 _homeMapAssetRequest.Release();

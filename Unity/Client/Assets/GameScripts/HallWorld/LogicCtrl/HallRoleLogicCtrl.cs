@@ -19,6 +19,8 @@ namespace ZMGC.Hall {
 
         private UserDataMgr _userDataMgr = null;
 
+        public Role_Hall CurRoleHall { get; private set; }
+
         #endregion
 
 
@@ -41,7 +43,9 @@ namespace ZMGC.Hall {
             if (roleHall == null) {
                 roleHall = goRole.AddComponent<Role_Hall>();
             }
+            roleHall.InitCollider();
             roleHall.enabled = true;
+            CurRoleHall = roleHall;
         }
 
         public void OnCreate() {

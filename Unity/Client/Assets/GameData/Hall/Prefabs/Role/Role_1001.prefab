@@ -2213,6 +2213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4941176501443072}
   - component: {fileID: 111377722698973100}
+  - component: {fileID: 3521190554623284285}
   m_Layer: 5
   m_Name: Role_1001
   m_TagString: Untagged
@@ -2261,6 +2262,21 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 1
+--- !u!114 &3521190554623284285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655574422363594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af65a22902c96964887f0d4b0eb44a4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mConter: {x: 0, y: 1, z: 0}
+  mSize: {x: 1, y: 2, z: 1}
+  needDraw: 0
 --- !u!1 &1667065152575688
 GameObject:
   m_ObjectHideFlags: 0

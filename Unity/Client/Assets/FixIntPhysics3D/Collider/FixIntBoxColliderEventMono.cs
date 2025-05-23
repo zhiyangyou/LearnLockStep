@@ -11,7 +11,7 @@ public class FixIntBoxColliderEventMono : MonoBehaviour {
     private List<FixIntBoxCollider> _listCheckTargets = new();
     private HashSet<FixIntBoxCollider> _setHasCollisonTargets = new();
 
-    public bool isLogicUpdate = true;
+    public bool isLogicUpdate = false;
 
     #endregion
 
@@ -64,13 +64,13 @@ public class FixIntBoxColliderEventMono : MonoBehaviour {
             if (isCollision) {
                 if (_setHasCollisonTargets.Contains(target)) {
                     // 持续碰撞
-                    target.OnCollision_Stay(_fixIntBoxCollider, this);
-                    _fixIntBoxCollider.OnCollision_Stay(target, null);
+                    target.OnFixIntCollision_Stay?.Invoke(_fixIntBoxCollider, this);
+                    _fixIntBoxCollider.OnFixIntCollision_Stay?.Invoke(target, null);
                 }
                 else {
                     // 首次碰撞
-                    target.OnCollision_Enter(_fixIntBoxCollider, this);
-                    _fixIntBoxCollider.OnCollision_Enter(target, null);
+                    target.OnFixIntCollision_Enter?.Invoke(_fixIntBoxCollider, this);
+                    _fixIntBoxCollider.OnFixIntCollision_Enter?.Invoke(target, null);
                     _setHasCollisonTargets.Add(target);
                 }
             }
@@ -78,8 +78,8 @@ public class FixIntBoxColliderEventMono : MonoBehaviour {
                 if (_setHasCollisonTargets.Contains(target)) {
                     // 离开碰撞
                     _setHasCollisonTargets.Remove(target);
-                    target.OnCollision_Exit(_fixIntBoxCollider, this);
-                    _fixIntBoxCollider.OnCollision_Exit(target, null);
+                    target.OnFixIntCollision_Exit?.Invoke(_fixIntBoxCollider, this);
+                    _fixIntBoxCollider.OnFixIntCollision_Exit?.Invoke(target, null);
                 }
             }
         }

@@ -11,18 +11,18 @@ namespace FixIntPhysics {
         /// <summary>
         ///  碰撞进入, MonoBehavior可能为空
         /// </summary>
-        public OnCollsionCallback OnCollision_Enter;
+        public OnCollsionCallback OnFixIntCollision_Enter;
         
         /// <summary>
         /// 持续碰撞, MonoBehavior可能为空
         /// </summary>
-        public OnCollsionCallback OnCollision_Stay;
+        public OnCollsionCallback OnFixIntCollision_Stay;
         
         
         /// <summary>
         /// 碰撞离开, MonoBehavior可能为空
         /// </summary>
-        public OnCollsionCallback OnCollision_Exit;
+        public OnCollsionCallback OnFixIntCollision_Exit;
         
         
         public bool Active = true;
