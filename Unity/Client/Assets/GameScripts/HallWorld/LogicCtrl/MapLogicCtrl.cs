@@ -15,7 +15,9 @@ namespace ZMGC.Hall {
     public class MapLogicCtrl : ILogicBehaviour {
         #region 属性字段
 
-        AssetsRequest _homeMapAssetRequest;
+        private AssetsRequest _homeMapAssetRequest;
+
+        public Map CurMap { get; private set; }
 
         #endregion
 
@@ -37,16 +39,17 @@ namespace ZMGC.Hall {
         #region private
 
         private async Task LoadMap(string mapName) {
-            UIModule.Instance.PopUpWindow<HallWindow>();
             mapName = mapName.EndsWith(".prefab") ? mapName : $"{mapName}.prefab";
             _homeMapAssetRequest = await ZMAsset.InstantiateAsync($"{AssetsPathConfig.Hall_Map_Prefabs}{mapName}");
             GameObject goMap = _homeMapAssetRequest.obj;
+            CurMap = goMap.GetComponent<Map>();
+            CurMap.Init();
         }
 
         private void ReleaseMapAsset() {
             if (_homeMapAssetRequest != null) {
                 _homeMapAssetRequest.Release();
-                _homeMapAssetRequest = null; 
+                _homeMapAssetRequest = null;
             }
         }
 

@@ -37,8 +37,20 @@ namespace ZMGC.Hall {
         public int CurSelectRoleID { get; set; }
 
         public int CurSelectRoleIndex = 0;
-        
+
         #region public
+
+        public bool HasSelectAnyRole() {
+            return GetCurSelectRoleData() != null;
+        }
+
+        public RoleData GetCurSelectRoleData() {
+            if (CurSelectRoleIndex < 0 || CurSelectRoleIndex >= RoleDatas.Count) {
+                Debug.LogError("当前没有选择任何角色");
+                return null;
+            }
+            return RoleDatas[CurSelectRoleIndex];
+        }
 
         public void InitByLoginData(Rcv_LoginGate loginData) {
             this.level = loginData.level;

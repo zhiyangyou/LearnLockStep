@@ -81,7 +81,7 @@ public class SelectRoleWindow : WindowBase {
             ToastManager.ShowToast("选择的index的数据是null");
             return;
         }
-        
+
         Send_SelectRole request = new Send_SelectRole();
         request.account_id = _userDataMgr.account_id;
         request.role_uid = roleData.uid;

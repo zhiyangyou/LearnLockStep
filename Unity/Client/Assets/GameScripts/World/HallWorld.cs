@@ -74,7 +74,9 @@ namespace ZMGC.Hall
             LoadSceneManager.Instance.LoadSceneAsync("Hall", () =>
             { 
                 UIModule.Instance.DestroyAllWindow();
+                UIModule.Instance.PopUpWindow<HallWindow>();
                 HallWorld.GetExitsLogicCtrl<MapLogicCtrl>().Init();
+                HallWorld.GetExitsLogicCtrl<HallRoleLogicCtrl>().Init();
             });
         }
 
