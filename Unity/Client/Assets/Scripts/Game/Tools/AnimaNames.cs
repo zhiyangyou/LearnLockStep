@@ -1,5 +1,6 @@
 ﻿public static class AnimaNames {
     public const string Anim_Idle = "Anim_Idle";
+    public const string Anim_Idle02 = "Anim_Idle02";
     public const string Anim_Getup = "Anim_Getup";
     public const string Anim_Dead = "Anim_Dead";
     public const string Anim_Float_down = "Anim_Float_down";

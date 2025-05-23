@@ -36,6 +36,9 @@ namespace ZMGC.Hall {
             goRole.transform.ReSetParent(HallWorld.GetExitsLogicCtrl<MapLogicCtrl>().CurMap.trRoleInitPos);
             goRole.name = rolePrefabName;
             goRole.transform.localScale = Vector3.one * 0.6f;
+            if (goRole.GetComponent<Role_Hall>() == null) {
+                goRole.AddComponent<Role_Hall>();
+            }
         }
 
         public void OnCreate() {
