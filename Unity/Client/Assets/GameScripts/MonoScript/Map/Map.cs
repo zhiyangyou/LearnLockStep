@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using FixIntPhysics;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class Map : MonoBehaviour {
@@ -20,8 +21,13 @@ public class Map : MonoBehaviour {
 
     public Transform trRoleInitPos;
 
-    private List<FixIntBoxColliderEventMono> _listAllEntryEventBox = new();
+    public MapType MapType;
 
+    [SerializeField] [Header("所有入口碰撞体Box(自动赋值)")][DisableInEditorMode]
+    private List<FixIntBoxColliderEventMono> _listAllEntryEventBox;
+
+    [SerializeField] [Header("所有入口MapEntry(自动赋值)")] [DisableInEditorMode]
+    public List<MapEntry> _ListAllMapEntry;
 
     public void AddEntryBoxCheckCollider(FixIntBoxCollider boxCollider) {
         if (boxCollider == null) {
@@ -44,5 +50,6 @@ public class Map : MonoBehaviour {
     public void Init() {
         this.transform.position = mapInitPos;
         _listAllEntryEventBox.AddRange(GetComponentsInChildren<FixIntBoxColliderEventMono>());
+        _ListAllMapEntry.AddRange(GetComponentsInChildren<MapEntry>());
     }
 }

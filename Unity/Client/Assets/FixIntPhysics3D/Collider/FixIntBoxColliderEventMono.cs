@@ -8,7 +8,7 @@ public class FixIntBoxColliderEventMono : MonoBehaviour {
     #region 属性和字段
 
     private FixIntBoxCollider _fixIntBoxCollider;
-    private List<FixIntBoxCollider> _listCheckTargets = new();
+    private HashSet<FixIntBoxCollider> _listCheckTargets = new();
     private HashSet<FixIntBoxCollider> _setHasCollisonTargets = new();
 
     public bool isLogicUpdate = false;
@@ -19,6 +19,9 @@ public class FixIntBoxColliderEventMono : MonoBehaviour {
 
     public void AddCheckTarget(FixIntBoxCollider checkTarget) {
         if (checkTarget == null) {
+            return;
+        }
+        if (_listCheckTargets.Contains(checkTarget)) {
             return;
         }
         _listCheckTargets.Add(checkTarget);
@@ -51,6 +54,13 @@ public class FixIntBoxColliderEventMono : MonoBehaviour {
         _fixIntBoxCollider.SetBoxData(pos, gizmo.mSize);
     }
 
+    private void OnDestroy() {
+        if (_fixIntBoxCollider != null) {
+            _fixIntBoxCollider.OnRelease();
+            _fixIntBoxCollider = null;
+        }
+    }
+
     private void Update() {
         if (!isLogicUpdate) {
             UpdateCollider();
@@ -58,8 +68,8 @@ public class FixIntBoxColliderEventMono : MonoBehaviour {
     }
 
     private void UpdateCollider() {
-        for (int i = _listCheckTargets.Count - 1; i >= 0; i--) {
-            var target = _listCheckTargets[i];
+        foreach (var checkTarget in _listCheckTargets) {
+            var target = checkTarget;
             var isCollision = PhysicsManager.IsCollision(_fixIntBoxCollider, target);
             if (isCollision) {
                 if (_setHasCollisonTargets.Contains(target)) {

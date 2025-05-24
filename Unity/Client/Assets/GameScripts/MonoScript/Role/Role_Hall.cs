@@ -24,6 +24,10 @@ public partial class Role_Hall : MonoBehaviour {
         PlayAnim(AnimaNames.Anim_Idle02);
     }
 
+    private void OnDestroy() {
+        ReleaseCollider();
+    }
+
     private void OnEnable() {
         JoystickUGUI.OnMoveCallBack += OnJoyStick;
     }
@@ -46,8 +50,7 @@ public partial class Role_Hall : MonoBehaviour {
 
     private void UpdatePos() {
         Vector3 targetPos = transform.position + _inputDir;
-        transform.position =  Vector3.Lerp(transform.position, targetPos, Time.deltaTime * smoothSpeed);
-        
+        transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * smoothSpeed);
     }
 
     private void UpdateDir() {

@@ -36,16 +36,20 @@ namespace ZMGC.Hall {
             GameObject goRole = _roleAssetRequest.obj;
             goRole.SetActive(true);
             goRole.ChangeGoLayer(LayerMask.NameToLayer("World"));
-            goRole.transform.ReSetParent(HallWorld.GetExitsLogicCtrl<MapLogicCtrl>().CurMap.trRoleInitPos);
             goRole.name = rolePrefabName;
-            goRole.transform.localScale = Vector3.one * 0.6f;
             Role_Hall roleHall = goRole.GetComponent<Role_Hall>();
             if (roleHall == null) {
                 roleHall = goRole.AddComponent<Role_Hall>();
             }
-            roleHall.InitCollider();
-            roleHall.enabled = true;
             CurRoleHall = roleHall;
+        }
+
+        public void InitRoleEnv(Vector3 initPos) {
+            CurRoleHall.InitCollider();
+            CurRoleHall.enabled = true;
+            CurRoleHall.transform.SetParentToSceneRoot();
+            CurRoleHall.transform.position = initPos;
+            CurRoleHall.transform.localScale = Vector3.one * 0.6f;
         }
 
         public void OnCreate() {

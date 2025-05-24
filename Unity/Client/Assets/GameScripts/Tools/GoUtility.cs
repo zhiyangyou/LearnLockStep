@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 
 public static class GameObjectEx {
+    public static void SetParentToSceneRoot(this Transform tr) {
+        tr.SetParent(null);
+    }
+
     public static void ChangeGoLayer(this GameObject go, int targetLayer) {
         if (go == null) return;
         // 深度遍历核心逻辑

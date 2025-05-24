@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using FixIntPhysics;
 using UnityEngine;
 using ZMGC.Hall;
@@ -17,7 +18,6 @@ public partial class Role_Hall {
     #region public
 
     public void InitCollider() {
-        _map = HallWorld.GetExitsLogicCtrl<MapLogicCtrl>().CurMap;
         if (_fixIntBoxCollider == null) {
             BoxColliderGizmo gizmo = GetComponent<BoxColliderGizmo>();
             if (gizmo) {
@@ -27,12 +27,10 @@ public partial class Role_Hall {
             _fixIntBoxCollider = new FixIntBoxCollider(gizmo.mSize, gizmo.mConter, needGizmos: false);
             _fixIntBoxCollider.SetBoxData(gizmo.mConter, gizmo.mSize);
             _fixIntBoxCollider.OnFixIntCollision_Enter += OnFixIntCollisionEnter;
-            _fixIntBoxCollider.OnFixIntCollision_Stay += OnFixIntCollisionStay;
-            _fixIntBoxCollider.OnFixIntCollision_Exit += OnFixIntCollisionExit;
         }
+        _map = HallWorld.GetExitsLogicCtrl<MapLogicCtrl>().CurMap;
         _map.AddEntryBoxCheckCollider(_fixIntBoxCollider);
     }
-
 
 
     public void UpdateCollider() {
@@ -52,19 +50,24 @@ public partial class Role_Hall {
 
     #region private
 
-    private void OnFixIntCollisionEnter(ColliderBehaviour other, MonoBehaviour otherMonoMayBeNull) {
-        Debug.LogError($"Enter碰撞{otherMonoMayBeNull?.gameObject.name}");
-    }
-
-    private void OnFixIntCollisionExit(ColliderBehaviour other, MonoBehaviour otherMonoMayBeNull) {
-        
-        Debug.LogError($"Exit碰撞{otherMonoMayBeNull?.gameObject.name}");
-    }
-
-
-    private void OnFixIntCollisionStay(ColliderBehaviour other, MonoBehaviour otherMonoMayBeNull) {
-        
-        Debug.LogError($"Stay碰撞{otherMonoMayBeNull?.gameObject.name}");
+    private async void OnFixIntCollisionEnter(ColliderBehaviour other, MonoBehaviour otherMonoMayBeNull) {
+        if (otherMonoMayBeNull == null) {
+            Debug.LogError("目标碰撞体上没有Mono组件");
+            return;
+        }
+        if (!otherMonoMayBeNull.gameObject.TryGetComponent<MapEntry>(out var mapEntry)) {
+            Debug.LogError("目标碰撞体上没有MapEntry组件");
+            return;
+        }
+        Debug.LogError($" 地图传送: {mapEntry.GotoMapType} {mapEntry.GotoDoorType}");
+        var mapCtrl = HallWorld.GetExitsLogicCtrl<MapLogicCtrl>();
+        var curMapType = mapCtrl.CurMap.MapType;
+        await mapCtrl.LoadMapAsync(mapEntry.GotoMapType, mapEntry.GotoDoorType);
+        Vector3? roleInitPos = mapCtrl.GetMapEntryPos(curMapType);
+        if (roleInitPos == null) {
+            Debug.LogError($"找不到map{curMapType} 对应门的位置");
+        }
+        HallWorld.GetExitsLogicCtrl<HallRoleLogicCtrl>().InitRoleEnv(roleInitPos == null ? Vector3.zero : roleInitPos.Value);
     }
 
     #endregion

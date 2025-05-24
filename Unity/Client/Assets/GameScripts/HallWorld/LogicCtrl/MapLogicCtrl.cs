@@ -8,6 +8,7 @@
 ----------------------------------------------------------------------------------------*/
 
 using System.Threading.Tasks;
+using Sirenix.OdinInspector.Editor;
 using UnityEngine;
 using ZM.ZMAsset;
 
@@ -35,30 +36,47 @@ namespace ZMGC.Hall {
 
         #endregion
 
+        public Vector3? GetMapEntryPos(MapType originMapType) {
+            foreach (var entry in CurMap._ListAllMapEntry) {
+                if ((int)entry.GotoMapType == (int)originMapType) {
+                    return entry.DoorPos;
+                }
+            }
+            return null;
+        }
+
+        public async Task LoadMapAsync(MapType mapType, DoorType doorType) {
+            if (CurMap.MapType == mapType) {
+                Debug.LogError($"地图:{mapType} 已经加载");
+                return;
+            }
+            var lastMapAssetRequest = _homeMapAssetRequest;
+            await LoadMap(mapType.ToString());
+            ReleaseMapAsset(lastMapAssetRequest);
+        }
 
         #region private
 
         private async Task LoadMap(string mapName) {
             mapName = mapName.EndsWith(".prefab") ? mapName : $"{mapName}.prefab";
-            _homeMapAssetRequest = await ZMAsset.InstantiateAsync($"{AssetsPathConfig.Hall_Map_Prefabs}{mapName}");
+            var path = $"{AssetsPathConfig.Hall_Map_Prefabs}{mapName}";
+            // Debug.LogError($"load path {path}");
+            _homeMapAssetRequest = await ZMAsset.InstantiateAsync(path);
             GameObject goMap = _homeMapAssetRequest.obj;
+            goMap.transform.SetParentToSceneRoot();
             CurMap = goMap.GetComponent<Map>();
             CurMap.Init();
         }
 
-
-        private void InitMapRoleEnv() {
-            
-        }
-        private void ReleaseMapAsset() {
-            if (_homeMapAssetRequest != null) {
-                _homeMapAssetRequest.Release();
-                _homeMapAssetRequest = null;
+        private void ReleaseMapAsset(AssetsRequest _curAssetRequest) {
+            if (_curAssetRequest != null) {
+                _curAssetRequest.Release();
+                _curAssetRequest = null;
             }
         }
 
         private void OnRelease() {
-            ReleaseMapAsset();
+            ReleaseMapAsset(_homeMapAssetRequest);
         }
 
         #endregion
