@@ -50,7 +50,7 @@ public partial class Role_Hall {
                 _lastInput = _inputDir;
             }
             else {
-                Debug.LogError("状态没有变化,那么不同步");
+                // Debug.LogError("状态没有变化,那么不同步");
             }
         }
     }
