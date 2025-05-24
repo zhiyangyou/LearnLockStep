@@ -59,13 +59,14 @@ public partial class Role_Hall {
             Debug.LogError("目标碰撞体上没有MapEntry组件");
             return;
         }
-        Debug.LogError($" 地图传送: {mapEntry.GotoMapType} {mapEntry.GotoDoorType}");
+        Debug.LogError($" 地图传送: from: {mapEntry.GotoMapType} to: {mapEntry.GotoDoorType}");
         var mapCtrl = HallWorld.GetExitsLogicCtrl<MapLogicCtrl>();
-        var curMapType = mapCtrl.CurMap.MapType;
-        await mapCtrl.LoadMapAsync(mapEntry.GotoMapType, mapEntry.GotoDoorType);
-        Vector3? roleInitPos = mapCtrl.GetMapEntryPos(curMapType);
+        var originMapType = mapCtrl.CurMap.MapType;
+        var gotoMapType = mapEntry.GotoMapType;
+        await mapCtrl.LoadMapAsync(gotoMapType, mapEntry.GotoDoorType);
+        Vector3? roleInitPos = mapCtrl.GetMapEntryPos(originMapType);
         if (roleInitPos == null) {
-            Debug.LogError($"找不到map{curMapType} 对应门的位置");
+            Debug.LogError($"找不到  from:{originMapType} to:{gotoMapType} 对应门的位置");
         }
         HallWorld.GetExitsLogicCtrl<HallRoleLogicCtrl>().InitRoleEnv(roleInitPos == null ? Vector3.zero : roleInitPos.Value);
     }
