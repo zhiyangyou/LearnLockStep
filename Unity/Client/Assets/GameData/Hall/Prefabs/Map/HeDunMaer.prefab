@@ -219,7 +219,9 @@ MonoBehaviour:
   trRoleInitPos: {fileID: 0}
   MapType: 2
   _listAllEntryEventBox: []
-  _ListAllMapEntry: []
+  _ListAllMapEntry:
+  - {fileID: 8458704446781215701}
+  - {fileID: 6198278841967947563}
 --- !u!1 &154332
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,7 +29,7 @@ public class Map : MonoBehaviour {
     [SerializeField] [Header("所有入口碰撞体Box(自动赋值)")] [DisableInEditorMode]
     private List<FixIntBoxColliderEventMono> _listAllEntryEventBox;
 
-    [SerializeField] [Header("所有入口MapEntry(自动赋值)")] [DisableInEditorMode]
+    [SerializeField] [Header("所有入口MapEntry(手动赋值)")]
     public List<MapEntry> _ListAllMapEntry;
 
     public void AddEntryBoxCheckCollider(FixIntBoxCollider boxCollider) {
@@ -53,6 +53,5 @@ public class Map : MonoBehaviour {
     public void Init() {
         this.transform.position = mapInitPos;
         _listAllEntryEventBox.AddRange(GetComponentsInChildren<FixIntBoxColliderEventMono>());
-        _ListAllMapEntry.AddRange(GetComponentsInChildren<MapEntry>());
     }
 }

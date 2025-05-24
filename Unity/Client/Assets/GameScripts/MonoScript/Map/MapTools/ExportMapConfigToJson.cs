@@ -9,6 +9,27 @@ using UnityEditor;
 using UnityEngine;
 
 public class ExportMapConfigToJson {
+    static string ClientConfigDataDir {
+        get {
+            var clientDir = Path.Combine(Application.dataPath, "Editor/MapConfig/");
+            return clientDir;
+        }
+    }
+    
+    static string ClientSourceCodeDir {
+        get {
+            var clientDir = Path.Combine(Application.dataPath, "GameScripts/MonoScript/Map/MapTools");
+            return clientDir;
+        }
+    }
+
+    static string ServerConfigDir {
+        get {
+            var serverDir = Path.Combine(new DirectoryInfo(Application.dataPath).Parent.Parent.Parent.FullName, "Server/Fantasy/examples/Server/Hotfix/MapConfig/ConfigData");
+            return serverDir;
+        }
+    }
+
     [MenuItem("Tools/导出地图配置")]
     public static void ExportMapConfig() {
         string mapCfgPath = Path.Combine(Application.dataPath, "GameData/Hall/Prefabs/Map");
@@ -35,14 +56,35 @@ public class ExportMapConfigToJson {
         }
         string json = JsonConvert.SerializeObject(mapConfigs, Formatting.Indented);
         Debug.Log(json);
-        var dir = Path.Combine(Application.dataPath, "Editor/MapConfig/");
-        if (!Directory.Exists(dir)) {
-            Directory.CreateDirectory(dir);
+        var clientDir = ClientConfigDataDir;
+
+        if (!Directory.Exists(clientDir)) {
+            Directory.CreateDirectory(clientDir);
         }
-        var savePath = Path.Combine(dir, "MapConfig.json");
-        File.WriteAllText(savePath, json);
-        Debug.Log("MapConfig Generate Success Path:" + savePath);
+        var saveClientPath = Path.Combine(clientDir, "MapConfig.json");
+        File.WriteAllText(saveClientPath, json);
+        Debug.Log("MapConfig Generate Success Path:" + saveClientPath);
         AssetDatabase.Refresh();
+        CopyCodeAndConfigToServer();
+    }
+
+    private static void CopyCodeAndConfigToServer() {
+
+        CopyDir(ClientConfigDataDir);
+        CopyDir(ClientSourceCodeDir);
+        void CopyDir(string sourceDir) {
+            var dirInfo = new DirectoryInfo(sourceDir);
+            foreach (var fileInfo in dirInfo.GetFiles()) {
+                if (fileInfo.FullName.EndsWith(".cs")
+                    || fileInfo.FullName.EndsWith(".json")
+                   ) {
+                    var copyFileFullPath = Path.Combine(ServerConfigDir, fileInfo.Name);
+                    File.Copy(fileInfo.FullName, copyFileFullPath, true);
+                    Debug.LogError($"拷贝文件:{copyFileFullPath}");
+                }
+            }
+        }
+
     }
 
     public static CSVector3 ToCSVector3(Vector3 ve3) {
