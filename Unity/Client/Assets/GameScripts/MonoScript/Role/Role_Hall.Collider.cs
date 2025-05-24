@@ -59,7 +59,7 @@ public partial class Role_Hall {
             Debug.LogError("目标碰撞体上没有MapEntry组件");
             return;
         }
-        Debug.LogError($" 地图传送: from: {mapEntry.GotoMapType} to: {mapEntry.GotoDoorType}");
+        // Debug.LogError($" 地图传送: from: {mapEntry.GotoMapType} to: {mapEntry.GotoDoorType}");
         var mapCtrl = HallWorld.GetExitsLogicCtrl<MapLogicCtrl>();
         var originMapType = mapCtrl.CurMap.MapType;
         var gotoMapType = mapEntry.GotoMapType;

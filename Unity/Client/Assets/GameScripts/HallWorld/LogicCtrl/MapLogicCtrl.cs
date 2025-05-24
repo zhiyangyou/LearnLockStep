@@ -58,6 +58,7 @@ namespace ZMGC.Hall {
         #region private
 
         private async Task LoadMap(string mapName) {
+            UIEventControl.DispensEvent(UIEventEnum.BlackScreen, BlackScreenType.Show);
             mapName = mapName.EndsWith(".prefab") ? mapName : $"{mapName}.prefab";
             var path = $"{AssetsPathConfig.Hall_Map_Prefabs}{mapName}";
             // Debug.LogError($"load path {path}");
@@ -66,6 +67,8 @@ namespace ZMGC.Hall {
             goMap.transform.SetParentToSceneRoot();
             CurMap = goMap.GetComponent<Map>();
             CurMap.Init();
+
+            UIEventControl.DispensEvent(UIEventEnum.BlackScreen, BlackScreenType.Hide);
         }
 
         private void ReleaseMapAsset(AssetsRequest _curAssetRequest) {
