@@ -2,6 +2,7 @@
 using FixIntPhysics;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Map : MonoBehaviour {
     /// <summary>
@@ -19,11 +20,13 @@ public class Map : MonoBehaviour {
     /// </summary>
     public Vector3 roleMoveMaxPos;
 
+    public float cameraInitY = 0f;
+
     public Transform trRoleInitPos;
 
     public MapType MapType;
 
-    [SerializeField] [Header("所有入口碰撞体Box(自动赋值)")][DisableInEditorMode]
+    [SerializeField] [Header("所有入口碰撞体Box(自动赋值)")] [DisableInEditorMode]
     private List<FixIntBoxColliderEventMono> _listAllEntryEventBox;
 
     [SerializeField] [Header("所有入口MapEntry(自动赋值)")] [DisableInEditorMode]

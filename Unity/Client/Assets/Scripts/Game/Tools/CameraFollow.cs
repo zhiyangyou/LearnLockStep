@@ -4,6 +4,8 @@ using UnityEngine;
 
 [RequireComponent(typeof(Camera))]
 public class CameraFollow : MonoBehaviour {
+    #region 属性和字段
+
     [NonSerialized] public Transform trFollowTarget;
 
     [SerializeField] Vector2 minPos;
@@ -19,6 +21,26 @@ public class CameraFollow : MonoBehaviour {
 
     // private bool isFollowing = false;
 
+    #endregion
+
+
+    #region public
+
+    public void Init(Transform trFollowTarget, Vector2 minPos, Vector2 maxPos, float smoothSpeed, float cameraInitY) {
+        this.trFollowTarget = trFollowTarget;
+        this.minPos = minPos;
+        this.maxPos = maxPos;
+        this.SmoothSpeed = smoothSpeed;
+        var newPos = this.transform.position;
+        newPos.y = cameraInitY;
+        newPos.x = trFollowTarget.position.x;
+        this.transform.position = newPos;
+    }
+
+    #endregion
+
+
+    #region private
 
     private void LateUpdate() {
         if (trFollowTarget != null) {
@@ -33,10 +55,13 @@ public class CameraFollow : MonoBehaviour {
             targetPos.x = Mathf.Clamp(targetPos.x, minPos.x, maxPos.x);
             // Vector3.SmoothDamp(,);
             // transform.position =  targetPos;
-            if (isFollowTarget) { // 这个写法有问题的
+            if (isFollowTarget) {
+                // 这个写法有问题的
                 // Debug.LogError("do follow");
                 transform.position = Vector3.Lerp(transform.position, targetPos, SmoothSpeed * Time.deltaTime);
             }
         }
     }
+
+    #endregion
 }

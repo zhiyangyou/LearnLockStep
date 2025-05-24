@@ -213,8 +213,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapInitPos: {x: 0, y: 0, z: 0}
-  roleMoveMinPos: {x: 0, y: 0, z: 0}
-  roleMoveMaxPos: {x: 0, y: 0, z: 0}
+  roleMoveMinPos: {x: -10, y: 0, z: 0}
+  roleMoveMaxPos: {x: 10, y: 0, z: 0}
+  cameraInitY: 2.5
   trRoleInitPos: {fileID: 0}
   MapType: 2
   _listAllEntryEventBox: []

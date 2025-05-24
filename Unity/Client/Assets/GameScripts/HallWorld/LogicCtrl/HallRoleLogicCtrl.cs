@@ -50,6 +50,15 @@ namespace ZMGC.Hall {
             CurRoleHall.transform.SetParentToSceneRoot();
             CurRoleHall.transform.position = initPos;
             CurRoleHall.transform.localScale = Vector3.one * 0.6f;
+
+            var goMainCam = GameObject.Find("Main Camera");
+
+            if (goMainCam != null) {
+                var follow = goMainCam.GetComponent<CameraFollow>();
+                var mapCtrl = HallWorld.GetExitsLogicCtrl<MapLogicCtrl>();
+                var map = mapCtrl.CurMap;
+                follow.Init(CurRoleHall.transform, map.roleMoveMinPos, map.roleMoveMaxPos, 6f, map.cameraInitY);
+            }
         }
 
         public void OnCreate() {
