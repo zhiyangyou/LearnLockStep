@@ -12,14 +12,16 @@ using UnityEngine;
 using ZM.ZMAsset;
 
 namespace ZMGC.Hall {
-    public class HallRoleLogicCtrl : ILogicBehaviour {
+    public partial class HallRoleLogicCtrl : ILogicBehaviour {
         #region 属性字段
 
         private AssetsRequest _roleAssetRequest = null;
 
         private UserDataMgr _userDataMgr = null;
 
-        public Role_Hall CurRoleHall { get; private set; }
+        private MapLogicCtrl _mapLogicCtrl = null;
+        private Role_Hall CurRoleHall { get; set; }
+        
 
         #endregion
 
@@ -42,10 +44,12 @@ namespace ZMGC.Hall {
                 roleHall = goRole.AddComponent<Role_Hall>();
             }
             CurRoleHall = roleHall;
+
+            _mapLogicCtrl = HallWorld.GetExitsLogicCtrl<MapLogicCtrl>();
         }
 
         public void InitRoleEnv(Vector3 initPos) {
-            CurRoleHall.InitCollider();
+            CurRoleHall.Init();
             CurRoleHall.enabled = true;
             CurRoleHall.transform.SetParentToSceneRoot();
             CurRoleHall.transform.position = initPos;

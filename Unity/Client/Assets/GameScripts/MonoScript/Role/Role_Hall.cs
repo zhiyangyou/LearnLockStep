@@ -49,13 +49,13 @@ public partial class Role_Hall : MonoBehaviour {
     }
 
     private void UpdatePos() {
-        Vector3 targetPos = transform.position + _inputDir;
-        transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * smoothSpeed);
+        // Vector3 targetPos = transform.position + _inputDir;
+        transform.position = Vector3.Lerp(transform.position, _syncTargetPos, Time.deltaTime * smoothSpeed);
     }
 
     private void UpdateDir() {
-        if (_inputDir.x != 0) {
-            _renderDir.y = _inputDir.x > 0f ? 0f : 180f;
+        if (_syncDir.x != 0) {
+            _renderDir.y = _syncDir.x > 0f ? 0f : 180f;
             transform.localEulerAngles = _renderDir;
         }
     }

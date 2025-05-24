@@ -17,7 +17,7 @@ public partial class Role_Hall {
 
     #region public
 
-    public void InitCollider() {
+    public void Init() {
         if (_fixIntBoxCollider == null) {
             BoxColliderGizmo gizmo = GetComponent<BoxColliderGizmo>();
             if (gizmo) {
@@ -30,6 +30,7 @@ public partial class Role_Hall {
         }
         _map = HallWorld.GetExitsLogicCtrl<MapLogicCtrl>().CurMap;
         _map.AddEntryBoxCheckCollider(_fixIntBoxCollider);
+        _hallRoleLogicCtrl = HallWorld.GetExitsLogicCtrl<HallRoleLogicCtrl>();
     }
 
 
