@@ -1,10 +1,10 @@
 /*------------------------------------------------------------------
 *
-* Title: 毕业级日志系统 
+* Title: 锟斤拷业锟斤拷锟斤拷志系统 
 *
-* Description: 支持本地文件写入、自定义颜色日志、FPS实时显示、手机日志运行时查看、日志代码编译剔除、ProtoBuff转Json
+* Description: 支锟街憋拷锟斤拷锟侥硷拷写锟诫、锟皆讹拷锟斤拷锟斤拷色锟斤拷志锟斤拷FPS实时锟斤拷示锟斤拷锟街伙拷锟斤拷志锟斤拷锟斤拷时锟介看锟斤拷锟斤拷志锟斤拷锟斤拷锟斤拷锟斤拷蕹锟斤拷锟絇rotoBuff转Json
 * 
-* Author: 腾讯课堂 铸梦xy
+* Author: 锟斤拷讯锟斤拷锟斤拷 锟斤拷锟斤拷xy
 *
 * Date: 2023.8.13
 *
@@ -14,19 +14,10 @@ using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-/// <summary>
-/// Protobuff 转为Josn 字符串，并进行打印
-/// </summary>
+ 
 public class ProtoBuffConvert 
-{
-    /// <summary>
-    /// Protobuff 转为Josn 字符串
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="proto"></param>
-    public static void ToJson<T>(T proto)
-    {
-        Debuger.Log(JsonConvert.SerializeObject(proto));
+{ 
+    public static string ToJson<T>(T proto) {
+        return (JsonConvert.SerializeObject(proto));
     }
 }
