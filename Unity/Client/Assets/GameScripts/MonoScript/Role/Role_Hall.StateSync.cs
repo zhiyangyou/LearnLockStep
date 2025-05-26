@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Numerics;
 using Fantasy;
+using ServerShareToClient;
 using UnityEngine;
 using ZMGC.Hall;
 using Vector3 = UnityEngine.Vector3;
@@ -34,7 +35,7 @@ public partial class Role_Hall {
 
     private void FixedUpdate() {
         _syncStateCount++;
-        if (_syncStateCount == StateSyncConfig.MaxSyncStateCount) {
+        if (_syncStateCount == GameConstConfig.MaxSyncStateCount) {
             _syncStateCount = 0;
 
             _syncPackID++;

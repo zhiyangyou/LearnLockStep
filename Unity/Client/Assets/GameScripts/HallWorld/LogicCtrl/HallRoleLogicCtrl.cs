@@ -21,7 +21,6 @@ namespace ZMGC.Hall {
 
         private MapLogicCtrl _mapLogicCtrl = null;
         private Role_Hall CurRoleHall { get; set; }
-        
 
         #endregion
 
@@ -54,6 +53,8 @@ namespace ZMGC.Hall {
             CurRoleHall.transform.SetParentToSceneRoot();
             CurRoleHall.transform.position = initPos;
             CurRoleHall.transform.localScale = Vector3.one * 0.6f;
+
+            CurRoleHall.SyncPosition(initPos.ToCSVector3(), Vector3.zero.ToCSVector3());
 
             var goMainCam = GameObject.Find("Main Camera");
 

@@ -26,6 +26,8 @@ namespace ZMGC.Hall {
 
         MapType _curMapType;
 
+        public Vector3 CurMapInitPos { get; private set; }
+        
         #endregion
 
         #region public
@@ -62,7 +64,7 @@ namespace ZMGC.Hall {
             Rcv_EnterMap enterResp = await _mapMsgMgr.SendEnterMap(
                 HallWorld.GetExitsDataMgr<UserDataMgr>().account_id,
                 _curMapType, gotoMapType);
-
+            CurMapInitPos = enterResp.role_init_pos.ToVector3();
             if (enterResp.ErrorCode == 0) {
                 var lastMapAssetRequest = _homeMapAssetRequest;
                 await _LoadMap(gotoMapType.ToString());

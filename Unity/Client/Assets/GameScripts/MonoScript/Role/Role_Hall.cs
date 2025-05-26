@@ -11,7 +11,7 @@ public partial class Role_Hall : MonoBehaviour {
 
     private Vector3 _renderDir;
 
-    public float smoothSpeed = 2f;
+    public float smoothSpeed = 8f;
 
     public float zMoveSpeedAdjust = 2.5f;
 

@@ -16,8 +16,7 @@ namespace ZMGC.Hall {
             var resp = await NetworkManager.Instance.SendCallMessage<Rcv_StateSync>(send);
 
             // 同步角色状态
-            CurRoleHall.SyncPosition(resp.role_sync_data.position
-                , resp.role_sync_data.input_dir);
+            CurRoleHall.SyncPosition(resp.role_sync_data.position, resp.role_sync_data.input_dir);
         }
     }
 }
