@@ -64,7 +64,7 @@ public partial class Role_Hall {
         var mapCtrl = HallWorld.GetExitsLogicCtrl<MapLogicCtrl>();
         var originMapType = mapCtrl.CurMap.MapType;
         var gotoMapType = mapEntry.GotoMapType;
-        await mapCtrl.LoadMapAsync(gotoMapType, mapEntry.GotoDoorType);
+        await mapCtrl.LoadMapAsync(gotoMapType);
         Vector3? roleInitPos = mapCtrl.GetMapEntryPos(originMapType);
         if (roleInitPos == null) {
             Debug.LogError($"找不到  from:{originMapType} to:{gotoMapType} 对应门的位置");

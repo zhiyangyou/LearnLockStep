@@ -8,6 +8,7 @@
 ----------------------------------------------------------------------------------------*/
 
 using System.Threading.Tasks;
+using Fantasy;
 using Hotfix;
 using Sirenix.OdinInspector.Editor;
 using UnityEngine;
@@ -17,22 +18,29 @@ namespace ZMGC.Hall {
     public class MapLogicCtrl : ILogicBehaviour {
         #region 属性字段
 
+        private MapMsgMgr _mapMsgMgr = null;
+
         private AssetsRequest _homeMapAssetRequest;
 
         public Map CurMap { get; private set; }
+
+        MapType _curMapType;
 
         #endregion
 
         #region public
 
-        public void OnCreate() { }
+        public void OnCreate() {
+            _mapMsgMgr = HallWorld.GetExitsMsgMgr<MapMsgMgr>();
+            _curMapType = MapType.None;
+        }
 
         public void OnDestroy() {
             OnRelease();
         }
 
         public async Task Init() {
-            await LoadMap("Home");
+            await LoadMapAsync(MapType.Home);
         }
 
         #endregion
@@ -46,19 +54,28 @@ namespace ZMGC.Hall {
             return null;
         }
 
-        public async Task LoadMapAsync(MapType mapType, DoorType doorType) {
-            if (CurMap.MapType == mapType) {
-                Debug.LogError($"地图:{mapType} 已经加载");
+        public async Task LoadMapAsync(MapType gotoMapType) {
+            if (CurMap != null && CurMap.MapType == gotoMapType) {
+                Debug.LogError($"地图:{gotoMapType} 已经加载");
                 return;
             }
-            var lastMapAssetRequest = _homeMapAssetRequest;
-            await LoadMap(mapType.ToString());
-            ReleaseMapAsset(lastMapAssetRequest);
+            Rcv_EnterMap enterResp = await _mapMsgMgr.SendEnterMap(
+                HallWorld.GetExitsDataMgr<UserDataMgr>().account_id,
+                _curMapType, gotoMapType);
+
+            if (enterResp.ErrorCode == 0) {
+                var lastMapAssetRequest = _homeMapAssetRequest;
+                await _LoadMap(gotoMapType.ToString());
+                ReleaseMapAsset(lastMapAssetRequest);
+            }
+            else {
+                ToastManager.ShowToast($"进入地图失败 code:{enterResp.ErrorCode}");
+            }
         }
 
         #region private
 
-        private async Task LoadMap(string mapName) { 
+        private async Task _LoadMap(string mapName) {
             UIEventControl.DispensEvent(UIEventEnum.BlackScreen, BlackScreenType.Show);
             mapName = mapName.EndsWith(".prefab") ? mapName : $"{mapName}.prefab";
             var path = $"{AssetsPathConfig.Hall_Map_Prefabs}{mapName}";
