@@ -40,7 +40,7 @@ public partial class Role_Hall : MonoBehaviour {
     
 
     private void OnEnable() {
-        if (roleSource == RoleSource.OtherPlayer) {
+        if (roleSource == RoleSource.Self) {
             JoystickUGUI.OnMoveCallBack += OnJoyStick;
         }
     }

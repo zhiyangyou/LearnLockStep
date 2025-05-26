@@ -58,7 +58,7 @@ namespace ZMGC.Hall {
         #region public
 
         public static void EnterHallWorld() {
-            LoadSceneManager.Instance.LoadSceneAsync("Hall", async () => {
+            LoadSceneManager.Instance.LoadSceneAsync($"{AssetsPathConfig.Scene_Path}Hall", async () => {
                 UIModule.Instance.DestroyAllWindow();
                 UIModule.Instance.PopUpWindow<HallWindow>();
                 await GetExitsLogicCtrl<MapLogicCtrl>().Init();

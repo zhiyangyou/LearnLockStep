@@ -15,4 +15,6 @@
     public static readonly string Buff_Data_Path = $"{Game}SkillSystem/BuffData/";
     public static readonly string Game_Audio_Path = $"{Game}Sound/";
     public static readonly string Game_Texture_Path = $"{Game}Textures/";
+    
+    public static readonly string Scene_Path = $"Scenes/";
 }

@@ -17,7 +17,8 @@ namespace ZMGC.Hall {
         /// <summary>
         /// 鉴权服务地址
         /// </summary>
-        private const string kStr_AuthenticationAddr = "127.0.0.1:20001";
+        // private const string kStr_AuthenticationAddr = "127.0.0.1:20001";
+        private const string kStr_AuthenticationAddr = "192.168.5.150:20001";
 
         public void RegisterAccount(string account, string password, Action<int> onResult) {
             if (string.IsNullOrEmpty(account)
@@ -27,6 +28,7 @@ namespace ZMGC.Hall {
                 onResult?.Invoke(ErrorCode.Code_InvalidInput);
                 return;
             }
+
             NetworkManager.Instance.Connect(kStr_AuthenticationAddr, NetworkProtocolType.TCP, async () => {
                     Send_RegisterAccount register = new Send_RegisterAccount() {
                         pass_word = password,
