@@ -1,113 +1,302 @@
 fileFormatVersion: 2
 guid: b0e0514a66b9b2843906b671b73c4b6c
-timeCreated: 1498206442
-licenseType: Pro
 ModelImporter:
-  serializedVersion: 19
-  fileIDToRecycleName:
-    100000: //RootNode
-    100002: H_Town_Hedunmaer_back
-    100004: H_Town_Hedunmaer_frount03
-    100006: H_Town_Hedunmaer_ground001
-    100008: H_Town_Hedunmaer_guidepost
-    100010: H_Town_Hedunmaer_lamp01
-    100012: Hedunmaer_cp
-    100014: Hedunmaerout_back01
-    100016: Hedunmaerout_back01_a
-    100018: Hedunmaerout_back02
-    100020: Hedunmaerout_boat01
-    100022: Hedunmaerout_frount01
-    100024: Hedunmaerout_frount01 1
-    100026: Hedunmaerout_house01
-    100028: Hedunmaerout_house01_a
-    100030: Hedunmaerout_lg01
-    100032: Hedunmaerout_taijie
-    100034: N_Hedunmaerout_door01
-    100036: shibei01
-    400000: //RootNode
-    400002: H_Town_Hedunmaer_back
-    400004: H_Town_Hedunmaer_frount03
-    400006: H_Town_Hedunmaer_ground001
-    400008: H_Town_Hedunmaer_guidepost
-    400010: H_Town_Hedunmaer_lamp01
-    400012: Hedunmaer_cp
-    400014: Hedunmaerout_back01
-    400016: Hedunmaerout_back01_a
-    400018: Hedunmaerout_back02
-    400020: Hedunmaerout_boat01
-    400022: Hedunmaerout_frount01
-    400024: Hedunmaerout_frount01 1
-    400026: Hedunmaerout_house01
-    400028: Hedunmaerout_house01_a
-    400030: Hedunmaerout_lg01
-    400032: Hedunmaerout_taijie
-    400034: N_Hedunmaerout_door01
-    400036: shibei01
-    2300000: //RootNode
-    2300002: H_Town_Hedunmaer_back
-    2300004: H_Town_Hedunmaer_frount03
-    2300006: H_Town_Hedunmaer_ground001
-    2300008: H_Town_Hedunmaer_guidepost
-    2300010: H_Town_Hedunmaer_lamp01
-    2300012: Hedunmaer_cp
-    2300014: Hedunmaerout_back01
-    2300016: Hedunmaerout_back01_a
-    2300018: Hedunmaerout_back02
-    2300020: Hedunmaerout_boat01
-    2300022: Hedunmaerout_frount01
-    2300024: Hedunmaerout_frount01 1
-    2300026: Hedunmaerout_house01
-    2300028: Hedunmaerout_house01_a
-    2300030: Hedunmaerout_lg01
-    2300032: Hedunmaerout_taijie
-    2300034: N_Hedunmaerout_door01
-    2300036: shibei01
-    3300000: //RootNode
-    3300002: H_Town_Hedunmaer_back
-    3300004: H_Town_Hedunmaer_frount03
-    3300006: H_Town_Hedunmaer_ground001
-    3300008: H_Town_Hedunmaer_guidepost
-    3300010: H_Town_Hedunmaer_lamp01
-    3300012: Hedunmaer_cp
-    3300014: Hedunmaerout_back01
-    3300016: Hedunmaerout_back01_a
-    3300018: Hedunmaerout_back02
-    3300020: Hedunmaerout_boat01
-    3300022: Hedunmaerout_frount01
-    3300024: Hedunmaerout_frount01 1
-    3300026: Hedunmaerout_house01
-    3300028: Hedunmaerout_house01_a
-    3300030: Hedunmaerout_lg01
-    3300032: Hedunmaerout_taijie
-    3300034: N_Hedunmaerout_door01
-    3300036: shibei01
-    4300000: Hedunmaerout_boat01
-    4300002: H_Town_Hedunmaer_ground001
-    4300004: Hedunmaerout_frount01
-    4300006: H_Town_Hedunmaer_lamp01
-    4300008: Hedunmaer_cp
-    4300010: shibei01
-    4300012: Hedunmaerout_frount01
-    4300014: Hedunmaerout_house01
-    4300016: Hedunmaerout_house01_a
-    4300018: N_Hedunmaerout_door01
-    4300020: H_Town_Hedunmaer_guidepost
-    4300022: H_Town_Hedunmaer_frount03
-    4300024: Hedunmaerout_taijie
-    4300026: Hedunmaerout_lg01
-    4300028: H_Town_Hedunmaer_back
-    4300030: Hedunmaerout_back02
-    4300032: Hedunmaerout_back01
-    4300034: Hedunmaerout_back01_a
+  serializedVersion: 22200
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: //RootNode
+  - first:
+      1: 100002
+    second: H_Town_Hedunmaer_back
+  - first:
+      1: 100004
+    second: H_Town_Hedunmaer_frount03
+  - first:
+      1: 100006
+    second: H_Town_Hedunmaer_ground001
+  - first:
+      1: 100008
+    second: H_Town_Hedunmaer_guidepost
+  - first:
+      1: 100010
+    second: H_Town_Hedunmaer_lamp01
+  - first:
+      1: 100012
+    second: Hedunmaer_cp
+  - first:
+      1: 100014
+    second: Hedunmaerout_back01
+  - first:
+      1: 100016
+    second: Hedunmaerout_back01_a
+  - first:
+      1: 100018
+    second: Hedunmaerout_back02
+  - first:
+      1: 100020
+    second: Hedunmaerout_boat01
+  - first:
+      1: 100022
+    second: Hedunmaerout_frount01
+  - first:
+      1: 100024
+    second: Hedunmaerout_frount01 1
+  - first:
+      1: 100026
+    second: Hedunmaerout_house01
+  - first:
+      1: 100028
+    second: Hedunmaerout_house01_a
+  - first:
+      1: 100030
+    second: Hedunmaerout_lg01
+  - first:
+      1: 100032
+    second: Hedunmaerout_taijie
+  - first:
+      1: 100034
+    second: N_Hedunmaerout_door01
+  - first:
+      1: 100036
+    second: shibei01
+  - first:
+      4: 400000
+    second: //RootNode
+  - first:
+      4: 400002
+    second: H_Town_Hedunmaer_back
+  - first:
+      4: 400004
+    second: H_Town_Hedunmaer_frount03
+  - first:
+      4: 400006
+    second: H_Town_Hedunmaer_ground001
+  - first:
+      4: 400008
+    second: H_Town_Hedunmaer_guidepost
+  - first:
+      4: 400010
+    second: H_Town_Hedunmaer_lamp01
+  - first:
+      4: 400012
+    second: Hedunmaer_cp
+  - first:
+      4: 400014
+    second: Hedunmaerout_back01
+  - first:
+      4: 400016
+    second: Hedunmaerout_back01_a
+  - first:
+      4: 400018
+    second: Hedunmaerout_back02
+  - first:
+      4: 400020
+    second: Hedunmaerout_boat01
+  - first:
+      4: 400022
+    second: Hedunmaerout_frount01
+  - first:
+      4: 400024
+    second: Hedunmaerout_frount01 1
+  - first:
+      4: 400026
+    second: Hedunmaerout_house01
+  - first:
+      4: 400028
+    second: Hedunmaerout_house01_a
+  - first:
+      4: 400030
+    second: Hedunmaerout_lg01
+  - first:
+      4: 400032
+    second: Hedunmaerout_taijie
+  - first:
+      4: 400034
+    second: N_Hedunmaerout_door01
+  - first:
+      4: 400036
+    second: shibei01
+  - first:
+      23: 2300000
+    second: //RootNode
+  - first:
+      23: 2300002
+    second: H_Town_Hedunmaer_back
+  - first:
+      23: 2300004
+    second: H_Town_Hedunmaer_frount03
+  - first:
+      23: 2300006
+    second: H_Town_Hedunmaer_ground001
+  - first:
+      23: 2300008
+    second: H_Town_Hedunmaer_guidepost
+  - first:
+      23: 2300010
+    second: H_Town_Hedunmaer_lamp01
+  - first:
+      23: 2300012
+    second: Hedunmaer_cp
+  - first:
+      23: 2300014
+    second: Hedunmaerout_back01
+  - first:
+      23: 2300016
+    second: Hedunmaerout_back01_a
+  - first:
+      23: 2300018
+    second: Hedunmaerout_back02
+  - first:
+      23: 2300020
+    second: Hedunmaerout_boat01
+  - first:
+      23: 2300022
+    second: Hedunmaerout_frount01
+  - first:
+      23: 2300024
+    second: Hedunmaerout_frount01 1
+  - first:
+      23: 2300026
+    second: Hedunmaerout_house01
+  - first:
+      23: 2300028
+    second: Hedunmaerout_house01_a
+  - first:
+      23: 2300030
+    second: Hedunmaerout_lg01
+  - first:
+      23: 2300032
+    second: Hedunmaerout_taijie
+  - first:
+      23: 2300034
+    second: N_Hedunmaerout_door01
+  - first:
+      23: 2300036
+    second: shibei01
+  - first:
+      33: 3300000
+    second: //RootNode
+  - first:
+      33: 3300002
+    second: H_Town_Hedunmaer_back
+  - first:
+      33: 3300004
+    second: H_Town_Hedunmaer_frount03
+  - first:
+      33: 3300006
+    second: H_Town_Hedunmaer_ground001
+  - first:
+      33: 3300008
+    second: H_Town_Hedunmaer_guidepost
+  - first:
+      33: 3300010
+    second: H_Town_Hedunmaer_lamp01
+  - first:
+      33: 3300012
+    second: Hedunmaer_cp
+  - first:
+      33: 3300014
+    second: Hedunmaerout_back01
+  - first:
+      33: 3300016
+    second: Hedunmaerout_back01_a
+  - first:
+      33: 3300018
+    second: Hedunmaerout_back02
+  - first:
+      33: 3300020
+    second: Hedunmaerout_boat01
+  - first:
+      33: 3300022
+    second: Hedunmaerout_frount01
+  - first:
+      33: 3300024
+    second: Hedunmaerout_frount01 1
+  - first:
+      33: 3300026
+    second: Hedunmaerout_house01
+  - first:
+      33: 3300028
+    second: Hedunmaerout_house01_a
+  - first:
+      33: 3300030
+    second: Hedunmaerout_lg01
+  - first:
+      33: 3300032
+    second: Hedunmaerout_taijie
+  - first:
+      33: 3300034
+    second: N_Hedunmaerout_door01
+  - first:
+      33: 3300036
+    second: shibei01
+  - first:
+      43: 4300000
+    second: Hedunmaerout_boat01
+  - first:
+      43: 4300002
+    second: H_Town_Hedunmaer_ground001
+  - first:
+      43: 4300004
+    second: Hedunmaerout_frount01
+  - first:
+      43: 4300006
+    second: H_Town_Hedunmaer_lamp01
+  - first:
+      43: 4300008
+    second: Hedunmaer_cp
+  - first:
+      43: 4300010
+    second: shibei01
+  - first:
+      43: 4300012
+    second: Hedunmaerout_frount01
+  - first:
+      43: 4300014
+    second: Hedunmaerout_house01
+  - first:
+      43: 4300016
+    second: Hedunmaerout_house01_a
+  - first:
+      43: 4300018
+    second: N_Hedunmaerout_door01
+  - first:
+      43: 4300020
+    second: H_Town_Hedunmaer_guidepost
+  - first:
+      43: 4300022
+    second: H_Town_Hedunmaer_frount03
+  - first:
+      43: 4300024
+    second: Hedunmaerout_taijie
+  - first:
+      43: 4300026
+    second: Hedunmaerout_lg01
+  - first:
+      43: 4300028
+    second: H_Town_Hedunmaer_back
+  - first:
+      43: 4300030
+    second: Hedunmaerout_back02
+  - first:
+      43: 4300032
+    second: Hedunmaerout_back01
+  - first:
+      43: 4300034
+    second: Hedunmaerout_back01_a
+  externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -115,12 +304,15 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -128,26 +320,49 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 0
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -157,14 +372,19 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 0
   humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
