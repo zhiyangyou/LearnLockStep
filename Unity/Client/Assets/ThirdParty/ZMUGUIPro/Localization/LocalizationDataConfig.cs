@@ -3,11 +3,11 @@
 *
 * Description: TextPro ImagePro ButtonPro TextMesh Pro
 * 
-* Support Function: ¸ßÐÔÄÜÃè±ß¡¢±¾µØ¶àÓïÑÔÎÄ±¾¡¢Í¼Æ¬¡¢°´Å¥Ë«»÷Ä£Ê½¡¢³¤°´Ä£Ê½¡¢ÎÄ±¾¶¥µãÑÕÉ«½¥±ä¡¢Ë«É«½¥±ä¡¢ÈýÉ«½¥±ä
+* Support Function: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¡ï¿½ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½Å¥Ë«ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ä¡¢Ë«É«ï¿½ï¿½ï¿½ä¡¢ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½
 * 
-* Usage: ÓÒ¼ü-TextPro-ImagePro-ButtonPro-TextMeshPro
+* Usage: ï¿½Ò¼ï¿½-TextPro-ImagePro-ButtonPro-TextMeshPro
 * 
-* Author: ÖýÃÎ www.taikr.com/user/63798c7981862239d5b3da44d820a7171f0ce14d
+* Author: ï¿½ï¿½ï¿½ï¿½ www.taikr.com/user/63798c7981862239d5b3da44d820a7171f0ce14d
 *
 * Date: 2023.4.13
 *
@@ -38,15 +38,15 @@ namespace ZM.UGUIPro
     {
  
         /// <summary>
-        /// ¶àÓïÑÔÅäÖÃÎÄ¼þÂ·¾¶
+        /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½Â·ï¿½ï¿½
         /// </summary>
         public const string OUTPUTCONFIGPATH = "ZMUGUIPro/Localization/ExcelData/";
         /// <summary>
-        /// ÊÇ·ñÒì²½¼ÓÔØÖÐ
+        /// ï¿½Ç·ï¿½ï¿½ì²½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         /// </summary>
         private bool IsConfigLoading = false;
         /// <summary>
-        /// ¼ÓÔØ¶ÔÓ¦ÓïÑÔÅäÖÃ
+        /// ï¿½ï¿½ï¿½Ø¶ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         /// </summary>
         /// <param name="languageType"></param>
         /// <returns></returns>
@@ -83,7 +83,7 @@ namespace ZM.UGUIPro
         }
 
         /// <summary>
-        /// ¼ÓÔØ¶ÔÓ¦ÓïÑÔÅäÖÃ£¬Í¨¹ýEditorÄ£Ê½
+        /// ï¿½ï¿½ï¿½Ø¶ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½Í¨ï¿½ï¿½EditorÄ£Ê½
         /// </summary>
         /// <param name="languageType"></param>
         /// <returns></returns>
@@ -99,7 +99,7 @@ namespace ZM.UGUIPro
 #if UNITY_EDITOR
             TextAsset textAsset = AssetDatabase.LoadAssetAtPath<TextAsset>(configPath);
 #else
-            TextAsset textAsset = AssetsManager.Instance.LoadTextAsset(configPath);
+            TextAsset textAsset = ZMAsset.ZMAsset.LoadTextAsset(configPath);
 #endif
             if (textAsset != null && textAsset.text != null)
             {

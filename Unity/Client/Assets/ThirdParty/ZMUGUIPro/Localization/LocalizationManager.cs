@@ -137,6 +137,10 @@ namespace ZM.UGUIPro
                 m_LocalizationDataListDic.Add(m_LanguageType, dataList);
             }
         }
+
+        public void PreLoadConfig() {
+            Debug.LogError("尚未处理 PreLoadConfig");
+        }
         #region 多语言获取
         /// <summary>
         /// 获取多语言数据
@@ -151,7 +155,7 @@ namespace ZM.UGUIPro
 
             if (m_LocalizationDataList == null)
             {
-#if UNITY_EDITOR
+#if UNITY_EDITOR1
                 PreLoadConfigEidotr();
 #else
                 PreLoadConfig();

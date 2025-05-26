@@ -3,11 +3,11 @@
 *
 * Description: TextPro ImagePro ButtonPro TextMesh Pro
 * 
-* Support Function: ¸ßÐÔÄÜÃè±ß¡¢±¾µØ¶àÓïÑÔÎÄ±¾¡¢Í¼Æ¬¡¢°´Å¥Ë«»÷Ä£Ê½¡¢³¤°´Ä£Ê½¡¢ÎÄ±¾¶¥µãÑÕÉ«½¥±ä¡¢Ë«É«½¥±ä¡¢ÈýÉ«½¥±ä
+* Support Function: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¡ï¿½ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½Å¥Ë«ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ä¡¢Ë«É«ï¿½ï¿½ï¿½ä¡¢ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½
 * 
-* Usage: ÓÒ¼ü-TextPro-ImagePro-ButtonPro-TextMeshPro
+* Usage: ï¿½Ò¼ï¿½-TextPro-ImagePro-ButtonPro-TextMeshPro
 * 
-* Author: ÖýÃÎ www.taikr.com/user/63798c7981862239d5b3da44d820a7171f0ce14d
+* Author: ï¿½ï¿½ï¿½ï¿½ www.taikr.com/user/63798c7981862239d5b3da44d820a7171f0ce14d
 *
 * Date: 2023.4.13
 *
@@ -88,7 +88,7 @@ using UnityEngine;
 #if UNITY_EDITOR
 								m_ImagePro.sprite = AssetDatabase.LoadAssetAtPath<Sprite>(atlasPath + "/" + m_ImageName + ".png");
 #else
-								m_ImagePro.sprite = AssetsManager.Instance.LoadAtlasSprite(atlasPath, m_ImageName);
+								m_ImagePro.sprite = ZMAsset.ZMAsset.LoadAtlasSprite(atlasPath, m_ImageName);
 #endif
 								break;
 	                    }
