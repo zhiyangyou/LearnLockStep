@@ -1,5 +1,12 @@
 ﻿using System;
 using UnityEngine;
+using ZM.ZMAsset;
+
+
+public enum RoleSource {
+    Self,
+    OtherPlayer,
+}
 
 [RequireComponent(typeof(Animation))]
 public partial class Role_Hall : MonoBehaviour {
@@ -11,9 +18,15 @@ public partial class Role_Hall : MonoBehaviour {
 
     private Vector3 _renderDir;
 
+    private bool _moveActive = false;
+
     public float smoothSpeed = 8f;
 
     public float zMoveSpeedAdjust = 2.5f;
+
+    public RoleSource roleSource = RoleSource.OtherPlayer;
+
+    public int roleID { get; private set; }
 
     #endregion
 
@@ -24,24 +37,31 @@ public partial class Role_Hall : MonoBehaviour {
         PlayAnim(AnimaNames.Anim_Idle02);
     }
 
-    private void OnDestroy() {
-        ReleaseCollider();
-    }
+    
 
     private void OnEnable() {
-        JoystickUGUI.OnMoveCallBack += OnJoyStick;
+        if (roleSource == RoleSource.OtherPlayer) {
+            JoystickUGUI.OnMoveCallBack += OnJoyStick;
+        }
     }
 
     private void OnDisable() {
-        JoystickUGUI.OnMoveCallBack -= OnJoyStick;
+        if (roleSource == RoleSource.Self) {
+            JoystickUGUI.OnMoveCallBack -= OnJoyStick;
+        }
     }
 
     private void OnJoyStick(Vector3 inputDir) {
-        _inputDir = inputDir;
-        _inputDir.z *= zMoveSpeedAdjust;
+        if (roleSource == RoleSource.Self) {
+            _inputDir = inputDir;
+            _inputDir.z *= zMoveSpeedAdjust;
+        }
     }
 
     private void Update() {
+        if (!_moveActive) {
+            return;
+        }
         UpdatePos();
         UpdateDir();
         UpdateState();
@@ -74,8 +94,21 @@ public partial class Role_Hall : MonoBehaviour {
 
     #region public
 
+    public void OnRlease() {
+        ZMAsset.Release(gameObject);
+        ReleaseCollider();
+    }
+
+    public void ActiveMove(bool moveActive) {
+        if (!moveActive) { }
+        _moveActive = moveActive;
+        if (moveActive) {
+            PlayAnim(AnimaNames.Anim_Idle02);
+        }
+    }
+
     public void PlayAnim(string animName) {
-        _anim.CrossFade(animName, 0.2f);
+        _anim?.CrossFade(animName, 0.2f);
     }
 
     #endregion

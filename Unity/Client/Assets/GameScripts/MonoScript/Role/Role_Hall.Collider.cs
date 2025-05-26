@@ -17,7 +17,7 @@ public partial class Role_Hall {
 
     #region public
 
-    public void Init() {
+    public void Init(int roleID, RoleSource roleSource) {
         if (_fixIntBoxCollider == null) {
             BoxColliderGizmo gizmo = GetComponent<BoxColliderGizmo>();
             if (gizmo) {
@@ -30,6 +30,8 @@ public partial class Role_Hall {
         }
         _map = HallWorld.GetExitsLogicCtrl<MapLogicCtrl>().CurMap;
         _map.AddEntryBoxCheckCollider(_fixIntBoxCollider);
+        this.roleSource = roleSource;
+        this.roleID = roleID;
         _hallRoleLogicCtrl = HallWorld.GetExitsLogicCtrl<HallRoleLogicCtrl>();
     }
 
@@ -64,12 +66,13 @@ public partial class Role_Hall {
         var mapCtrl = HallWorld.GetExitsLogicCtrl<MapLogicCtrl>();
         var originMapType = mapCtrl.CurMap.MapType;
         var gotoMapType = mapEntry.GotoMapType;
+        ActiveMove(false);
         await mapCtrl.LoadMapAsync(gotoMapType);
         Vector3? roleInitPos = mapCtrl.GetMapEntryPos(originMapType);
         if (roleInitPos == null) {
             Debug.LogError($"找不到  from:{originMapType} to:{gotoMapType} 对应门的位置");
         }
-        HallWorld.GetExitsLogicCtrl<HallRoleLogicCtrl>().InitRoleEnv(roleInitPos == null ? Vector3.zero : roleInitPos.Value);
+        HallWorld.GetExitsLogicCtrl<HallRoleLogicCtrl>().InitRoleEnv(roleInitPos == null ? Vector3.zero : roleInitPos.Value, RoleSource.Self);
     }
 
     #endregion

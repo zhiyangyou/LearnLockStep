@@ -7,7 +7,9 @@
 * 注意:以下文件为自动生成，强制再次生成将会覆盖
 ----------------------------------------------------------------------------------------*/
 
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using ZM.ZMAsset;
 
@@ -15,12 +17,21 @@ namespace ZMGC.Hall {
     public partial class HallRoleLogicCtrl : ILogicBehaviour {
         #region 属性字段
 
-        private AssetsRequest _roleAssetRequest = null;
+        private AssetsRequest _selfRoleAssetRequest = null;
 
         private UserDataMgr _userDataMgr = null;
 
         private MapLogicCtrl _mapLogicCtrl = null;
-        private Role_Hall CurRoleHall { get; set; }
+
+        /// <summary>
+        /// 自己的大厅角色
+        /// </summary>
+        private Role_Hall SelfRoleHall { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private Dictionary<long, Role_Hall> _otherRoleHallDic = new();
 
         #endregion
 
@@ -32,29 +43,23 @@ namespace ZMGC.Hall {
             if (roleData == null) {
                 return;
             }
-            string rolePrefabName = $"Role_{roleData.role_id}.prefab";
-            _roleAssetRequest = await ZMAsset.InstantiateAsync($"{AssetsPathConfig.Hall_Role_Prefabs}{rolePrefabName}");
-            GameObject goRole = _roleAssetRequest.obj;
-            goRole.SetActive(true);
-            goRole.ChangeGoLayer(LayerMask.NameToLayer("World"));
-            goRole.name = rolePrefabName;
-            Role_Hall roleHall = goRole.GetComponent<Role_Hall>();
-            if (roleHall == null) {
-                roleHall = goRole.AddComponent<Role_Hall>();
-            }
-            CurRoleHall = roleHall;
-
+            var roleID = roleData.role_id;
+            _selfRoleAssetRequest = await ZMAsset.InstantiateAsync(GetRoleAssetPath(roleID));
+            var roleHall = InitRoleGameObject($"self_role_{roleID}", _selfRoleAssetRequest.obj);
+            SelfRoleHall = roleHall;
             _mapLogicCtrl = HallWorld.GetExitsLogicCtrl<MapLogicCtrl>();
         }
 
-        public void InitRoleEnv(Vector3 initPos) {
-            CurRoleHall.Init();
-            CurRoleHall.enabled = true;
-            CurRoleHall.transform.SetParentToSceneRoot();
-            CurRoleHall.transform.position = initPos;
-            CurRoleHall.transform.localScale = Vector3.one * 0.6f;
+        public void InitRoleEnv(Vector3 initPos, RoleSource roleSource) {
+            var roleID = HallWorld.GetExitsDataMgr<UserDataMgr>().CurSelectRoleID;
+            SelfRoleHall.ActiveMove(true);
+            SelfRoleHall.Init(roleID, roleSource);
+            SelfRoleHall.enabled = true;
+            SelfRoleHall.transform.SetParentToSceneRoot();
+            SelfRoleHall.transform.position = initPos;
+            SelfRoleHall.transform.localScale = Vector3.one * 0.6f;
 
-            CurRoleHall.SyncPosition(initPos.ToCSVector3(), Vector3.zero.ToCSVector3());
+            SelfRoleHall.SyncPosition(initPos.ToCSVector3(), Vector3.zero.ToCSVector3());
 
             var goMainCam = GameObject.Find("Main Camera");
 
@@ -62,30 +67,78 @@ namespace ZMGC.Hall {
                 var follow = goMainCam.GetComponent<CameraFollow>();
                 var mapCtrl = HallWorld.GetExitsLogicCtrl<MapLogicCtrl>();
                 var map = mapCtrl.CurMap;
-                follow.Init(CurRoleHall.transform, map.roleMoveMinPos, map.roleMoveMaxPos, 6f, map.cameraInitY);
+                follow.Init(SelfRoleHall.transform, map.roleMoveMinPos, map.roleMoveMaxPos, 6f, map.cameraInitY);
             }
         }
+
 
         public void OnCreate() {
             _userDataMgr = HallWorld.GetExitsDataMgr<UserDataMgr>();
         }
 
         public void OnDestroy() {
-            ReleaseRoleAsset();
+            ReleaseSelfRoleAsset();
         }
 
         #endregion
 
         #region private
 
-        private void ReleaseRoleAsset() {
-            if (_roleAssetRequest != null) {
-                var go = _roleAssetRequest.obj;
+        /// <summary>
+        /// 寻找一个玩家的Role_Hall组件, 如果不存在,那么就进行创建
+        /// </summary>
+        /// <returns></returns>
+        private Role_Hall GetOrCreateOtherRole(long account_id, int roleTypeID) {
+            Role_Hall otherRole = null;
+            if (_otherRoleHallDic.TryGetValue(account_id, out otherRole)) { }
+            else {
+                GameObject goRole = ZMAsset.Instantiate(GetRoleAssetPath(roleTypeID), null);
+                otherRole = InitRoleGameObject($"other_role_{roleTypeID}_{account_id}", goRole);
+                _otherRoleHallDic.Add(account_id, otherRole);
+                otherRole.Init(roleTypeID, RoleSource.OtherPlayer);
+            }
+            return otherRole;
+        }
+
+
+        private string GetRoleAssetPath(int roleID) {
+            return $"{AssetsPathConfig.Hall_Role_Prefabs}Role_{roleID}.prefab";
+        }
+
+        // ReSharper disable Unity.PerformanceAnalysis
+        private Role_Hall InitRoleGameObject(string goName, GameObject goRole) {
+            goRole.SetActive(true);
+            goRole.ChangeGoLayer(LayerMask.NameToLayer("World"));
+            goRole.name = goName;
+            Role_Hall roleHall = goRole.GetComponent<Role_Hall>();
+            if (roleHall == null) {
+                roleHall = goRole.AddComponent<Role_Hall>();
+            }
+            roleHall.ActiveMove(true);
+            return roleHall;
+        }
+
+        private void ReleaseOtherRoleAsset(long account_id) {
+            if (_otherRoleHallDic.TryGetValue(account_id, out var otherRole)) {
+                otherRole.OnRlease();
+                _otherRoleHallDic.Remove(account_id);
+            }
+        }
+
+
+        private void ReleaseSelfRoleAsset() {
+            if (_selfRoleAssetRequest != null) {
+                var go = _selfRoleAssetRequest.obj;
+                bool hasReleaseGo = false;
                 if (go != null && go.TryGetComponent<Role_Hall>(out var item)) {
                     item.enabled = false;
+                    item.OnRlease();
+                    hasReleaseGo = true;
                 }
-                _roleAssetRequest.Release();
-                _roleAssetRequest = null;
+                if (!hasReleaseGo) {
+                    _selfRoleAssetRequest.Release();
+                }
+                _selfRoleAssetRequest = null;
             }
         }
 

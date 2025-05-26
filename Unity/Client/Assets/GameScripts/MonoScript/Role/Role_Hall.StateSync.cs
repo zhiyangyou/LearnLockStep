@@ -34,6 +34,9 @@ public partial class Role_Hall {
     #region private
 
     private void FixedUpdate() {
+        if (!_moveActive) {
+            return;
+        }
         _syncStateCount++;
         if (_syncStateCount == GameConstConfig.MaxSyncStateCount) {
             _syncStateCount = 0;

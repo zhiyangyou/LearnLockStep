@@ -57,13 +57,14 @@ namespace ZMGC.Hall {
 
         #region public
 
-        public static void EnterBattleWorld() {
+        public static void EnterHallWorld() {
             LoadSceneManager.Instance.LoadSceneAsync("Hall", async () => {
                 UIModule.Instance.DestroyAllWindow();
                 UIModule.Instance.PopUpWindow<HallWindow>();
-                await HallWorld.GetExitsLogicCtrl<MapLogicCtrl>().Init();
-                await HallWorld.GetExitsLogicCtrl<HallRoleLogicCtrl>().Init();
-                HallWorld.GetExitsLogicCtrl<HallRoleLogicCtrl>().InitRoleEnv(HallWorld.GetExitsLogicCtrl<MapLogicCtrl>().CurMapInitPos);
+                await GetExitsLogicCtrl<MapLogicCtrl>().Init();
+                await GetExitsLogicCtrl<HallRoleLogicCtrl>().Init();
+                GetExitsLogicCtrl<HallRoleLogicCtrl>().InitRoleEnv(
+                    GetExitsLogicCtrl<MapLogicCtrl>().CurMapInitPos, RoleSource.Self);
             });
         }
 
