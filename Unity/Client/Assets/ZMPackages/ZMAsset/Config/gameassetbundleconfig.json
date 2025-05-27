@@ -16555,19 +16555,19 @@
       ]
     },
     {
-      "path": "Assets/GameData/Game/Data/HeroDataCfg.txt",
-      "crc": 3985343507,
+      "path": "Assets/GameData/Game/Data/HeroDataCfg.json",
+      "crc": 3925765471,
       "bundleName": "game_gamedatacfg.uab",
-      "assetName": "HeroDataCfg.txt",
+      "assetName": "HeroDataCfg.json",
       "bundleModule": "Game",
       "isAddressableAsset": false,
       "bundleDependce": []
     },
     {
-      "path": "Assets/GameData/Game/Data/MonsterCfg.txt",
-      "crc": 3423096109,
+      "path": "Assets/GameData/Game/Data/MonsterCfg.json",
+      "crc": 683602749,
       "bundleName": "game_gamedatacfg.uab",
-      "assetName": "MonsterCfg.txt",
+      "assetName": "MonsterCfg.json",
       "bundleModule": "Game",
       "isAddressableAsset": false,
       "bundleDependce": []

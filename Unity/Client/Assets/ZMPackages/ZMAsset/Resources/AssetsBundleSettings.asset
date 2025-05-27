@@ -18,7 +18,7 @@ MonoBehaviour:
     encryptKey: zhumengxy
   ABSUFFIX: .uab
   buildbundleOptions: 256
-  buildTarget: 13
+  buildTarget: 19
   bundleHotType: 0
   loadAssetType: 1
   MAX_THREAD_COUNT: 3
