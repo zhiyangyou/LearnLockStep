@@ -61,6 +61,7 @@ namespace ZMGC.Hall {
             LoadSceneManager.Instance.LoadSceneAsync($"{AssetsPathConfig.Scene_Path}Hall", async () => {
                 UIModule.Instance.DestroyAllWindow();
                 UIModule.Instance.PopUpWindow<HallWindow>();
+                UIModule.Instance.PopUpWindow<TeamWindow>(); // 组队弹窗
                 await GetExitsLogicCtrl<MapLogicCtrl>().Init();
                 UserDataMgr userData = HallWorld.GetExitsDataMgr<UserDataMgr>();
                 await GetExitsLogicCtrl<HallRoleLogicCtrl>().InitSelfRole(userData.CurSelectRoleID);

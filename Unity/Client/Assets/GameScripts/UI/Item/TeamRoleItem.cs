@@ -5,21 +5,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using ZM.ZMAsset;
 
-public class TeamRoleItem : MonoBehaviour
-{
+public class TeamRoleItem : MonoBehaviour {
     public Image headImage;
     public Text LevelText;
     public Text nickNameText;
-    
-    // public void SetItemData(C2G_Role role)
-    // {
-    //     headImage.sprite = ZMAsset.LoadSprite(AssetPathConfig.GAME_TEXTURES_PATH+ $"HeadIcon/{role.roleid}");
-    //     LevelText.text = "Lv."+role.level;
-    //     nickNameText.text = role.roleName;
-    // }
 
-    public void Release()
-    {
+    public void SetItemData(RoleData roleData) {
+        headImage.sprite = ZMAsset.LoadSprite(AssetsPathConfig.Game_Texture_Path + $"HeadIcon/{roleData.role_id}");
+        LevelText.text = "Lv." + roleData.level;
+        nickNameText.text = roleData.role_name;
+    }
+
+    public void Release() {
         ZMAsset.Release(gameObject);
     }
 }

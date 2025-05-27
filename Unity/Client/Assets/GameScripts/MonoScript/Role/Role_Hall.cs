@@ -115,7 +115,6 @@ public partial class Role_Hall : MonoBehaviour {
 
     public void PlayAnim(string animName) {
         if (_anim == null) {
-            Debug.LogError("anim is null ");
             return;
         }
         _anim?.CrossFade(animName, 0.2f);
