@@ -46,6 +46,7 @@ public partial class Role_Hall {
             // 状态没有变化,那么不同步
             bool inputDirHasChanged = !(_lastInput.Equals(Vector3.zero)
                                         && _inputDir.Equals(Vector3.zero));
+            // Debug.LogError($"inputDirHasChanged:{inputDirHasChanged} {_lastInput} {_inputDir}");
             if (inputDirHasChanged) {
                 StateSyncData syncData = new StateSyncData() {
                     input_dir = _inputDir.ToCSVector3(),

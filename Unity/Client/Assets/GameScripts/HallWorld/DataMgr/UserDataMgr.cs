@@ -34,7 +34,17 @@ namespace ZMGC.Hall {
 
         public string UserName;
 
-        public int CurSelectRoleID { get; set; }
+        /// <summary>
+        /// 创建角色的时候, 当前选择的角色ID
+        /// </summary>
+        public int CurSelectRoleID {
+            get {
+                if (CurSelectRoleIndex >= 0 && CurSelectRoleIndex < RoleDatas.Count) {
+                    return RoleDatas[CurSelectRoleIndex].role_id;
+                }
+                return -1;
+            }
+        }
 
         public int CurSelectRoleIndex = 0;
 

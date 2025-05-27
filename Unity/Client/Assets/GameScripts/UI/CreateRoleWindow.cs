@@ -36,8 +36,7 @@ public class CreateRoleWindow : WindowBase {
         base.OnAwake();
 
         _userDataMgr = HallWorld.GetExitsDataMgr<UserDataMgr>();
-        this._curSelectRoleID = _userDataMgr.RoleIDs.First();
-        HallWorld.GetExitsDataMgr<UserDataMgr>().CurSelectRoleID = _curSelectRoleID;
+        this._curSelectRoleID = _userDataMgr.RoleIDs.First(); 
 
         uiCompt.ItemRoleSelectGameObject.SetActive(false);
         uiCompt.CurSelectRoleIDText.text = $"ID: {this._curSelectRoleID}";
@@ -73,8 +72,7 @@ public class CreateRoleWindow : WindowBase {
     #region private
 
     private void OnClick_RoleItem(int roleID) {
-        this._curSelectRoleID = roleID;
-        HallWorld.GetExitsDataMgr<UserDataMgr>().CurSelectRoleID = _curSelectRoleID;
+        this._curSelectRoleID = roleID; 
         uiCompt.CurSelectRoleIDText.text = $"ID: {roleID}";
     }
 

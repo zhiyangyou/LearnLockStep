@@ -40,13 +40,15 @@ public partial class Role_Hall : MonoBehaviour {
     
 
     private void OnEnable() {
-        if (roleSource == RoleSource.Self) {
+        // if (roleSource == RoleSource.Self)
+        {
             JoystickUGUI.OnMoveCallBack += OnJoyStick;
         }
     }
 
     private void OnDisable() {
-        if (roleSource == RoleSource.Self) {
+        // if (roleSource == RoleSource.Self) 
+        {
             JoystickUGUI.OnMoveCallBack -= OnJoyStick;
         }
     }
@@ -59,6 +61,7 @@ public partial class Role_Hall : MonoBehaviour {
     }
 
     private void Update() {
+        // Debug.LogError($"move : {_moveActive}");
         if (!_moveActive) {
             return;
         }

@@ -62,9 +62,8 @@ namespace ZMGC.Hall {
                 UIModule.Instance.DestroyAllWindow();
                 UIModule.Instance.PopUpWindow<HallWindow>();
                 await GetExitsLogicCtrl<MapLogicCtrl>().Init();
-                await GetExitsLogicCtrl<HallRoleLogicCtrl>().Init();
-                GetExitsLogicCtrl<HallRoleLogicCtrl>().InitRoleEnv(
-                    GetExitsLogicCtrl<MapLogicCtrl>().CurMapInitPos, RoleSource.Self);
+                await GetExitsLogicCtrl<HallRoleLogicCtrl>().InitSelfRole();
+                
             });
         }
 

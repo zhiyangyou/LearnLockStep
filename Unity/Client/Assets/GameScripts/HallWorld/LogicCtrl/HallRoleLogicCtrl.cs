@@ -38,27 +38,23 @@ namespace ZMGC.Hall {
 
         #region public
 
-        public async Task Init() {
+        public async Task InitSelfRole() {
             var roleData = _userDataMgr.GetCurSelectRoleData();
             if (roleData == null) {
                 return;
             }
-            var roleID = roleData.role_id;
-            _selfRoleAssetRequest = await ZMAsset.InstantiateAsync(GetRoleAssetPath(roleID));
-            var roleHall = InitRoleGameObject($"self_role_{roleID}", _selfRoleAssetRequest.obj);
-            SelfRoleHall = roleHall;
+            _selfRoleAssetRequest = await ZMAsset.InstantiateAsync(GetRoleAssetPath(roleData.role_id));
             _mapLogicCtrl = HallWorld.GetExitsLogicCtrl<MapLogicCtrl>();
+            InitRoleEnv(_mapLogicCtrl.CurMapInitPos, RoleSource.Self);
         }
 
         public void InitRoleEnv(Vector3 initPos, RoleSource roleSource) {
             var roleID = HallWorld.GetExitsDataMgr<UserDataMgr>().CurSelectRoleID;
+            SelfRoleHall = InitRoleGameObject($"self_role_{roleID}", _selfRoleAssetRequest.obj);
             SelfRoleHall.ActiveMove(true);
             SelfRoleHall.Init(roleID, roleSource);
             SelfRoleHall.enabled = true;
-            SelfRoleHall.transform.SetParentToSceneRoot();
             SelfRoleHall.transform.position = initPos;
-            SelfRoleHall.transform.localScale = Vector3.one * 0.6f;
-
             SelfRoleHall.SyncPosition(initPos.ToCSVector3(), Vector3.zero.ToCSVector3());
 
             var goMainCam = GameObject.Find("Main Camera");
@@ -115,6 +111,9 @@ namespace ZMGC.Hall {
                 roleHall = goRole.AddComponent<Role_Hall>();
             }
             roleHall.ActiveMove(true);
+
+            goRole.transform.SetParentToSceneRoot();
+            goRole.transform.localScale = Vector3.one * 0.6f;
             return roleHall;
         }
 
