@@ -19,6 +19,7 @@ public class Main : MonoBehaviour {
     #region life-cycle
 
     private async Task Awake() {
+        InitScreenSettings();
         DontDestroyOnLoad(gameObject);
         InitLoadingStateCallback();
         await InitNetworkManager();
@@ -36,8 +37,6 @@ public class Main : MonoBehaviour {
 
     #region private
 
-    
-    
     private void InitAssetBundle() {
         HotUpdateManager.Instance.HotAndUnPackAssets(BundleModuleEnum.Game, OnUnPackAssetComplete);
     }
@@ -47,8 +46,12 @@ public class Main : MonoBehaviour {
         WorldManager.CreateWorld<HallWorld>();
     }
 
+    private void InitScreenSettings() {
+        Screen.SetResolution(1280, 720, FullScreenMode.Windowed);
+    }
+
     private void InitUnityDebugger() {
-        Debuger.InitLog(new LogConfig() { }); 
+        Debuger.InitLog(new LogConfig() { });
     }
 
     private async Task InitNetworkManager() {
