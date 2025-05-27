@@ -60,7 +60,7 @@ public class TeamWindow : WindowBase {
         //重新从对象池中进行创建
         foreach (var item in _teamDataMgr.RoleDatas)
         {
-            GameObject itemObj = ZMAsset.Instantiate(AssetsPathConfig.Hall_Prefabs_Item + "TeamRoleItem", dataCompt.TeamItemParentTransform);
+            GameObject itemObj = ZMAsset.Instantiate(AssetsPathConfig.Hall_Prefabs_Item + "TeamRoleItem.prefab", dataCompt.TeamItemParentTransform);
             itemObj.transform.ReSetParent(dataCompt.TeamItemParentTransform);
             TeamRoleItem itemScript = itemObj.GetComponent<TeamRoleItem>();
             itemScript.SetItemData(item);
