@@ -18,8 +18,8 @@ namespace ZMGC.Hall {
         /// <summary>
         /// 鉴权服务地址
         /// </summary>
-        // private const string kStr_AuthenticationAddr = "127.0.0.1:20001";
-        private const string kStr_AuthenticationAddr = "192.168.1.69:20001";
+        private const string kStr_AuthenticationAddr = "127.0.0.1:20001";
+        // private const string kStr_AuthenticationAddr = "192.168.1.69:20001";
 
         public void RegisterAccount(string account, string password, Action<int> onResult) {
             if (string.IsNullOrEmpty(account)
