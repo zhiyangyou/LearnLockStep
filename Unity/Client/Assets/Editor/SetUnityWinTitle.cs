@@ -48,6 +48,10 @@ public static class TitleBarPathDisplay
 #if UNITY_EDITOR_WIN
         FindEditorWindowHandle();
         _originalTitle = GetCurrentWindowTitle();
+        if (_originalTitle.Contains("[[")) {
+            var startIndex = _originalTitle.IndexOf("[[");  
+            _originalTitle = _originalTitle.Substring(0, startIndex-1);    
+        }
 #elif UNITY_EDITOR_OSX
         _originalTitle = GetMacWindowTitle();
 #endif
@@ -106,7 +110,7 @@ public static class TitleBarPathDisplay
     private static void UpdateWindowTitle()
     {
         string path = Application.dataPath.Replace("/Assets", "");
-        string newTitle = $"{_originalTitle} [{path}]";
+        string newTitle = $"{_originalTitle} [[{path}]]";
 
 #if UNITY_EDITOR_WIN
         if (_hwnd != IntPtr.Zero)
