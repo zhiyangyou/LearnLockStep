@@ -1,0 +1,1 @@
+"I:\__workSpace\_MongoDB\8.0\Install\bin\mongod.exe"  --dbpath "I:\__workSpace\_MongoDB\8.0\Data"
