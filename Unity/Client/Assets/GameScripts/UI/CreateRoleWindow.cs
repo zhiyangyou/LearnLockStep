@@ -36,7 +36,7 @@ public class CreateRoleWindow : WindowBase {
         base.OnAwake();
 
         _userDataMgr = HallWorld.GetExitsDataMgr<UserDataMgr>();
-        this._curSelectRoleID = _userDataMgr.RoleIDs.First(); 
+        this._curSelectRoleID = _userDataMgr.RoleIDs.First();
 
         uiCompt.ItemRoleSelectGameObject.SetActive(false);
         uiCompt.CurSelectRoleIDText.text = $"ID: {this._curSelectRoleID}";
@@ -72,7 +72,7 @@ public class CreateRoleWindow : WindowBase {
     #region private
 
     private void OnClick_RoleItem(int roleID) {
-        this._curSelectRoleID = roleID; 
+        this._curSelectRoleID = roleID;
         uiCompt.CurSelectRoleIDText.text = $"ID: {roleID}";
     }
 
@@ -118,7 +118,7 @@ public class CreateRoleWindow : WindowBase {
         }
         PopUpWindow<ReConnectWindow>();
         Rcv_CreateRole resultCreateRole = await NetworkManager.Instance.SendCallMessage<Rcv_CreateRole>(sendCreateRole);
-
+        UIModule.Instance.HideWindow<ReConnectWindow>();
         var code = resultCreateRole.ErrorCode;
         if (code != 0) {
             ToastManager.ShowToast($"创建角色失败 code:{code}");
@@ -128,8 +128,8 @@ public class CreateRoleWindow : WindowBase {
             ToastManager.ShowToast("创建角色成功");
             // TODO
             Debug.LogError("加载大厅, 并跳转  ");
+            await HallWorld.GetExitsLogicCtrl<LoginLogicCtrl>().EnterHallWithSelectRole();
         }
-        UIModule.Instance.HideWindow<ReConnectWindow>();
     }
 
     #endregion

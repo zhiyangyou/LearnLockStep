@@ -8,6 +8,7 @@
 ----------------------------------------------------------------------------------------*/
 
 using System;
+using System.Threading.Tasks;
 using Fantasy;
 using Fantasy.Network;
 using UnityEngine;
@@ -94,6 +95,35 @@ namespace ZMGC.Hall {
                 () => { onResult?.Invoke((ErrorCode.Code_NetConnectFailed, null)); }, null);
         }
 
+
+        public async Task EnterHallWithSelectRole() {
+            var userDataMgr = HallWorld.GetExitsDataMgr<UserDataMgr>();
+            var curSelectIndex = userDataMgr.CurSelectRoleIndex;
+            if (curSelectIndex < 0 && curSelectIndex >= userDataMgr.RoleDatas.Count) {
+                ToastManager.ShowToast("尚未选择角色");
+                return;
+            }
+            var roleData = userDataMgr.RoleDatas[curSelectIndex];
+            if (roleData == null) {
+                ToastManager.ShowToast("选择的index的数据是null");
+                return;
+            }
+            
+            Send_SelectRole request = new Send_SelectRole();
+            request.account_id = userDataMgr.account_id;
+            request.role_uid = roleData.uid;
+            UIModule.Instance.PopUpWindow<ReConnectWindow>();
+            var response = await NetworkManager.Instance.SendCallMessage<Rcv_SelectRole>(request);
+            var code = response.ErrorCode;
+            if (code == 0) {
+                ToastManager.ShowToast("成功! 进入游戏中...");
+                HallWorld.EnterHallWorld();
+            }
+            else {
+                ToastManager.ShowToast($"进入游戏失败 {code}");
+            }
+            UIModule.Instance.HideWindow<ReConnectWindow>();
+        }
 
         public void OnCreate() { }
 

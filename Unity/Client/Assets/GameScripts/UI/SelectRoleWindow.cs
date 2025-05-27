@@ -71,31 +71,7 @@ public class SelectRoleWindow : WindowBase {
     }
 
     public async void OnEnterGameButtonClick() {
-        var curSelectIndex = _userDataMgr.CurSelectRoleIndex;
-        if (curSelectIndex < 0 && curSelectIndex >= _userDataMgr.RoleDatas.Count) {
-            ToastManager.ShowToast("尚未选择角色");
-            return;
-        }
-        var roleData = _userDataMgr.RoleDatas[curSelectIndex];
-        if (roleData == null) {
-            ToastManager.ShowToast("选择的index的数据是null");
-            return;
-        }
-
-        Send_SelectRole request = new Send_SelectRole();
-        request.account_id = _userDataMgr.account_id;
-        request.role_uid = roleData.uid;
-        PopUpWindow<ReConnectWindow>();
-        var response = await NetworkManager.Instance.SendCallMessage<Rcv_SelectRole>(request);
-        var code = response.ErrorCode;
-        if (code == 0) {
-            ToastManager.ShowToast("成功! 进入游戏中...");
-            HallWorld.EnterHallWorld();
-        }
-        else {
-            ToastManager.ShowToast($"进入游戏失败 {code}");
-        }
-        UIModule.Instance.HideWindow<ReConnectWindow>();
+        await HallWorld.GetExitsLogicCtrl<LoginLogicCtrl>().EnterHallWithSelectRole();
     }
 
     public void OnCreateRoleButtonClick() {
