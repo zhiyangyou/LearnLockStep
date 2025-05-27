@@ -26,7 +26,7 @@ public partial class Role_Hall : MonoBehaviour {
 
     public RoleSource roleSource = RoleSource.OtherPlayer;
 
-    public int roleID { get; private set; }
+    private int _roleID { get; set; }
 
     #endregion
 
@@ -61,7 +61,7 @@ public partial class Role_Hall : MonoBehaviour {
     }
 
     private void Update() {
-        // Debug.LogError($"move : {_moveActive}");
+        // Debug.LogError($"{_roleID } move : {_moveActive} _inputDir:{_inputDir}");
         if (!_moveActive) {
             return;
         }
@@ -85,7 +85,10 @@ public partial class Role_Hall : MonoBehaviour {
 
 
     private void UpdateState() {
-        if (_inputDir == Vector3.zero) {
+       
+        var judgeDir = roleSource == RoleSource.OtherPlayer ? _syncDir : _inputDir;
+        
+        if (judgeDir == Vector3.zero ) {
             PlayAnim(AnimaNames.Anim_Idle02);
         }
         else {
@@ -111,6 +114,10 @@ public partial class Role_Hall : MonoBehaviour {
     }
 
     public void PlayAnim(string animName) {
+        if (_anim == null) {
+            Debug.LogError("anim is null ");
+            return;
+        }
         _anim?.CrossFade(animName, 0.2f);
     }
 

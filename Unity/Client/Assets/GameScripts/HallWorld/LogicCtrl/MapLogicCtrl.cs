@@ -67,6 +67,7 @@ namespace ZMGC.Hall {
                 var lastMapAssetRequest = _homeMapAssetRequest;
                 await _LoadMap(gotoMapType.ToString());
                 ReleaseMapAsset(lastMapAssetRequest);
+                _curMapType = gotoMapType;
             }
             else {
                 ToastManager.ShowToast($"进入地图失败 code:{enterResp.ErrorCode}");

@@ -2,11 +2,11 @@
 using Fantasy.Async;
 using Fantasy.Network;
 using Fantasy.Network.Interface;
+using UnityEngine;
 using ZMGC.Hall;
 
 public class Hanlder_OtherPlayerStateSync : Message<Msg_OtherPlayerStateSync> {
     protected override async FTask Run(Session session, Msg_OtherPlayerStateSync message) {
-        Debuger.LogError("sync other ... ");
         HallWorld.GetExitsLogicCtrl<HallRoleLogicCtrl>().SyncOtherRoleState(message);
     }
 }

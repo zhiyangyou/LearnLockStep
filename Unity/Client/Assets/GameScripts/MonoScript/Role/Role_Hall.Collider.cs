@@ -31,7 +31,7 @@ public partial class Role_Hall {
         _map = HallWorld.GetExitsLogicCtrl<MapLogicCtrl>().CurMap;
         _map.AddEntryBoxCheckCollider(_fixIntBoxCollider);
         this.roleSource = roleSource;
-        this.roleID = roleID;
+        this._roleID = roleID;
         _hallRoleLogicCtrl = HallWorld.GetExitsLogicCtrl<HallRoleLogicCtrl>();
     }
 
@@ -72,7 +72,8 @@ public partial class Role_Hall {
         if (roleInitPos == null) {
             Debug.LogError($"找不到  from:{originMapType} to:{gotoMapType} 对应门的位置");
         }
-        HallWorld.GetExitsLogicCtrl<HallRoleLogicCtrl>().InitRoleEnv(roleInitPos == null ? Vector3.zero : roleInitPos.Value, RoleSource.Self);
+        var roleID = HallWorld.GetExitsDataMgr<UserDataMgr>().CurSelectRoleID;
+        HallWorld.GetExitsLogicCtrl<HallRoleLogicCtrl>().InitRoleEnv(roleInitPos == null ? Vector3.zero : roleInitPos.Value, RoleSource.Self, roleID);
     }
 
     #endregion

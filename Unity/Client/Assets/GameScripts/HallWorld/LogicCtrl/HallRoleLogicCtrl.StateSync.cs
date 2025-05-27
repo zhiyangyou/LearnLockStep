@@ -3,6 +3,7 @@
 using System.Threading.Tasks;
 using Fantasy;
 using ServerShareToClient;
+using UnityEngine;
 
 namespace ZMGC.Hall {
     public partial class HallRoleLogicCtrl {
@@ -28,8 +29,10 @@ namespace ZMGC.Hall {
                 var otherRoleHall = GetOrCreateOtherRole(roleData.player_id, roleData.role_id);
                 // TODO 更新位置角度
                 otherRoleHall.SyncPosition(roleData.position, roleData.input_dir);
+                otherRoleHall.transform.position = roleData.position.ToVector3();
             }
             else if (mapStatus == (int)PlayerMapStatus.OutMap) {
+                Debug.LogError($"玩家离开了这个地图 {mapStatus}");
                 ReleaseOtherRoleAsset(roleData.player_id);
             }
         }

@@ -9,6 +9,7 @@
 
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Hotfix;
 using TMPro;
 using UnityEngine;
 using ZM.ZMAsset;
@@ -38,24 +39,23 @@ namespace ZMGC.Hall {
 
         #region public
 
-        public async Task InitSelfRole() {
+        public async Task InitSelfRole(int roleID) {
             var roleData = _userDataMgr.GetCurSelectRoleData();
             if (roleData == null) {
                 return;
             }
             _selfRoleAssetRequest = await ZMAsset.InstantiateAsync(GetRoleAssetPath(roleData.role_id));
             _mapLogicCtrl = HallWorld.GetExitsLogicCtrl<MapLogicCtrl>();
-            InitRoleEnv(_mapLogicCtrl.CurMapInitPos, RoleSource.Self);
+            InitRoleEnv(_mapLogicCtrl.CurMapInitPos, RoleSource.Self, roleID);
         }
 
-        public void InitRoleEnv(Vector3 initPos, RoleSource roleSource) {
-            var roleID = HallWorld.GetExitsDataMgr<UserDataMgr>().CurSelectRoleID;
+        public void InitRoleEnv(Vector3 initPos, RoleSource roleSource, int roleID) {
             SelfRoleHall = InitRoleGameObject($"self_role_{roleID}", _selfRoleAssetRequest.obj);
             SelfRoleHall.ActiveMove(true);
             SelfRoleHall.Init(roleID, roleSource);
             SelfRoleHall.enabled = true;
-            SelfRoleHall.transform.position = initPos;
             SelfRoleHall.SyncPosition(initPos.ToCSVector3(), Vector3.zero.ToCSVector3());
+            SelfRoleHall.transform.position = initPos;
 
             var goMainCam = GameObject.Find("Main Camera");
 
@@ -86,7 +86,8 @@ namespace ZMGC.Hall {
         /// <returns></returns>
         private Role_Hall GetOrCreateOtherRole(long account_id, int roleTypeID) {
             Role_Hall otherRole = null;
-            if (_otherRoleHallDic.TryGetValue(account_id, out otherRole)) { }
+            if (_otherRoleHallDic.TryGetValue(account_id, out otherRole)) {
+            }
             else {
                 GameObject goRole = ZMAsset.Instantiate(GetRoleAssetPath(roleTypeID), null);
                 otherRole = InitRoleGameObject($"other_role_{roleTypeID}_{account_id}", goRole);
