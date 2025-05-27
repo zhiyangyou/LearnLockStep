@@ -8,4 +8,7 @@ public enum UIEventEnum
     SceneLoadingProgress,
     SceneLoadingLoadComplete,
     BlackScreen,
+    RefreshTeamList,
+    DungeonProgress,
+    SceneProgressUpdate,
 }

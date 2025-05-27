@@ -10,14 +10,13 @@ using UnityEngine;
 using ZMUIFrameWork;
 using System.Collections.Generic;
 using Fantasy;
-using ZM.AssetFrameWork;
 using ZMGC.Hall;
 
 public class DungeonLoadingWindow : WindowBase
 {
 
     public DungeonLoadingWindowDataComponent dataCompt;
-    private DungeonsSelectMsgMgr mDungeonsMsgLayer;
+    // private DungeonsSelectMsgMgr mDungeonsMsgLayer;
     private TeamDataMgr mTeamDataLayer;
     /// <summary>
     /// 所有玩家进度item列表
@@ -27,26 +26,26 @@ public class DungeonLoadingWindow : WindowBase
     //调用机制与Mono Awake一致
     public override void OnAwake()
     {
-        dataCompt = gameObject.GetComponent<DungeonLoadingWindowDataComponent>();
-        dataCompt.InitComponent(this);
-        mDisableAnim = true;
-        base.OnAwake();
-        mDungeonsMsgLayer = HallWorld.GetExitsMsgMgr<DungeonsSelectMsgMgr>();
-        mTeamDataLayer= HallWorld.GetExitsDataMgr<TeamDataMgr>();
+        // dataCompt = gameObject.GetComponent<DungeonLoadingWindowDataComponent>();
+        // dataCompt.InitComponent(this);
+        // mDisableAnim = true;
+        // base.OnAwake();
+        // mDungeonsMsgLayer = HallWorld.GetExitsMsgMgr<DungeonsSelectMsgMgr>();
+        // mTeamDataLayer= HallWorld.GetExitsDataMgr<TeamDataMgr>();
     }
     //物体显示时执行
     public override void OnShow()
     {
         base.OnShow();
-        UIEventControl.AddEvent( UIEventEnum.SceneProgressUpdate, OnSceneProgressUpdate);
+        // UIEventControl.AddEvent( UIEventEnum.SceneProgressUpdate, OnSceneProgressUpdate);
     }
     //物体隐藏时执行
     public override void OnHide()
     {
-        base.OnHide();
-        UIEventControl.RemoveEvent(UIEventEnum.SceneProgressUpdate, OnSceneProgressUpdate);
-        foreach (DungeonLoadingItem item in mItemList)
-            item.OnRelease();
+        // base.OnHide();
+        // UIEventControl.RemoveEvent(UIEventEnum.SceneProgressUpdate, OnSceneProgressUpdate);
+        // foreach (DungeonLoadingItem item in mItemList)
+        //     item.OnRelease();
     }
     //物体销毁时执行
     public override void OnDestroy()
@@ -55,21 +54,21 @@ public class DungeonLoadingWindow : WindowBase
     }
     #endregion
     #region API Function
-    public void InitView(List<C2G_Role> roleInfoList)
-    {
-        foreach (var item in roleInfoList)
-        {
-            GameObject itemObj = ZMAsset.Instantiate(AssetPathConfig.HALL_PREFABS_ITEM_PATH + "DungeonLoadingItem", dataCompt.DownHorizationTransform);
-            DungeonLoadingItem itemScript = itemObj.GetComponent<DungeonLoadingItem>();
-            itemScript.SetItemData(item, 0);
-            mItemList.Add(itemScript);
-        }
-    }
-    public void OnSceneProgressUpdate(object data)
-    {
-        float curProgress = (float)data / 100;
-        mDungeonsMsgLayer.SendLoadDungeonsProgressMessage(mTeamDataLayer.TeamID,HallWorld.UserData.AccountId,curProgress);
-    }
+    // public void InitView(List<C2G_Role> roleInfoList)
+    // {
+    //     foreach (var item in roleInfoList)
+    //     {
+    //         GameObject itemObj = ZMAsset.Instantiate(AssetPathConfig.HALL_PREFABS_ITEM_PATH + "DungeonLoadingItem", dataCompt.DownHorizationTransform);
+    //         DungeonLoadingItem itemScript = itemObj.GetComponent<DungeonLoadingItem>();
+    //         itemScript.SetItemData(item, 0);
+    //         mItemList.Add(itemScript);
+    //     }
+    // }
+    // public void OnSceneProgressUpdate(object data)
+    // {
+    //     float curProgress = (float)data / 100;
+    //     mDungeonsMsgLayer.SendLoadDungeonsProgressMessage(mTeamDataLayer.TeamID,HallWorld.UserData.AccountId,curProgress);
+    // }
     #endregion
     #region UI组件事件
     public void OnCloseButtonClick()

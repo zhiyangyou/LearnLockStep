@@ -9,14 +9,14 @@ using UnityEngine.UI;
 using UnityEngine;
 using ZMUIFrameWork;
 using ZMGC.Hall;
-using ZM.AssetFrameWork;
+using ZM.ZMAsset;
 using System.Collections.Generic;
 
 public class TeamWindow : WindowBase
 {
 
     public TeamWindowDataComponent dataCompt;
-    private TeamLogicCtrl mTeamLogicLayer;
+    private TeamLogicCtrl _teamLogic;
     private TeamDataMgr mTeamDataLayer;
 
     private List<TeamRoleItem> mTeamItemList=new List<TeamRoleItem>();
@@ -28,7 +28,7 @@ public class TeamWindow : WindowBase
         dataCompt.InitComponent(this);
         base.OnAwake();
         mTeamDataLayer = HallWorld.GetExitsDataMgr<TeamDataMgr>();
-        mTeamLogicLayer = HallWorld.GetExitsLogicCtrl<TeamLogicCtrl>();
+        _teamLogic = HallWorld.GetExitsLogicCtrl<TeamLogicCtrl>();
     }
     //物体显示时执行
     public override void OnShow()
@@ -55,14 +55,14 @@ public class TeamWindow : WindowBase
         //释放历史Item对象
         ReleaseItemList();
         //重新从对象池中进行创建
-        foreach (var item in mTeamDataLayer.TeamRoleList)
-        {
-            GameObject itemObj = ZMAsset.Instantiate(AssetPathConfig.HALL_PREFABS_ITEM_PATH + "TeamRoleItem", dataCompt.TeamItemParentTransform);
-            itemObj.transform.ReSetParent(dataCompt.TeamItemParentTransform);
-            TeamRoleItem itemScript = itemObj.GetComponent<TeamRoleItem>();
-            itemScript.SetItemData(item);
-            mTeamItemList.Add(itemScript);
-        }
+        // foreach (var item in mTeamDataLayer.TeamRoleList)
+        // {
+        //     GameObject itemObj = ZMAsset.Instantiate(AssetPathConfig.HALL_PREFABS_ITEM_PATH + "TeamRoleItem", dataCompt.TeamItemParentTransform);
+        //     itemObj.transform.ReSetParent(dataCompt.TeamItemParentTransform);
+        //     TeamRoleItem itemScript = itemObj.GetComponent<TeamRoleItem>();
+        //     itemScript.SetItemData(item);
+        //     mTeamItemList.Add(itemScript);
+        // }
     }
 
     public void ReleaseItemList()
@@ -76,10 +76,10 @@ public class TeamWindow : WindowBase
 
     private void HideTeamButton()
     {
-        dataCompt.CreateTeamButton.SetVisible(false);
-        dataCompt.JoinTeamButton.SetVisible(false);
-        dataCompt.TeamIDInputField.text = "Teamid : " + HallWorld.GetExitsDataMgr<TeamDataMgr>().TeamID;
-        dataCompt.TeamIDInputField.enabled = false;
+        // dataCompt.CreateTeamButton.SetVisible(false);
+        // dataCompt.JoinTeamButton.SetVisible(false);
+        // dataCompt.TeamIDInputField.text = "Teamid : " + HallWorld.GetExitsDataMgr<TeamDataMgr>().TeamID;
+        // dataCompt.TeamIDInputField.enabled = false;
     }
     #endregion
     #region UI组件事件
@@ -93,25 +93,25 @@ public class TeamWindow : WindowBase
     }
     public async void OnCreateTeamButtonClick()
     {
-        dataCompt.CreateTeamButton.interactable = false;
-        bool isSuccess= await mTeamLogicLayer.CreateTeam();
-        //房主关闭加入和创建按钮
-        if (isSuccess)
-        {
-            HideTeamButton();
-        }
-        dataCompt.CreateTeamButton.interactable = true;
+        // dataCompt.CreateTeamButton.interactable = false;
+        // bool isSuccess= await _teamLogic.CreateTeam();
+        // //房主关闭加入和创建按钮
+        // if (isSuccess)
+        // {
+        //     HideTeamButton();
+        // }
+        // dataCompt.CreateTeamButton.interactable = true;
     }
     public async void OnJoinTeamButtonClick()
     {
-        dataCompt.JoinTeamButton.interactable = false;
-        bool isSuccess = await mTeamLogicLayer.JoinTeam(dataCompt.TeamIDInputField.text);
-        if (isSuccess)
-        {
-            HideTeamButton();
-        }
-        dataCompt.TeamIDInputField.text = "";
-        dataCompt.JoinTeamButton.interactable = true;
+        // dataCompt.JoinTeamButton.interactable = false;
+        // bool isSuccess = await _teamLogic.JoinTeam(dataCompt.TeamIDInputField.text);
+        // if (isSuccess)
+        // {
+        //     HideTeamButton();
+        // }
+        // dataCompt.TeamIDInputField.text = "";
+        // dataCompt.JoinTeamButton.interactable = true;
     }
     public void OnTeamIDInputChange(string text)
     {
