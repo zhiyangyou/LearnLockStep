@@ -74,9 +74,13 @@ namespace ZMGC.Hall {
 
         public static void EnterBattleWorld(List<RoleData> teamMembers) {
             UIModule.Instance.PopUpWindow<DungeonLoadingWindow>().InitView(teamMembers);
-            LoadSceneManager.Instance.LoadSceneAsync($"{AssetsPathConfig.Scene_Path}Battle", async () => {
-
-            });
+            LoadSceneManager.Instance.LoadSceneAsync($"{AssetsPathConfig.Scene_Path}Battle", async () => { },
+                (loadProgress) => {
+                    var userDataMgr = GetExitsDataMgr<UserDataMgr>();
+                    var teamDataMgr = GetExitsDataMgr<TeamDataMgr>();
+                    var _dungeonsSelectMsgMgr = GetExitsMsgMgr<DungeonsSelectMsgMgr>();
+                    _dungeonsSelectMsgMgr.SendMessage_LoadDungeonProgess(teamDataMgr.TeamID, userDataMgr.account_id, loadProgress);
+                });
         }
 
         #endregion

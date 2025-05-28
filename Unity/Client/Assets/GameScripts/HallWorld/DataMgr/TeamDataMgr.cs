@@ -42,7 +42,7 @@ namespace ZMGC.Hall {
             if (roleData != null) {
                 bool hasRepeate = false;
                 foreach (var data in this.RoleDatas) {
-                    if (data.role_id == roleData.role_id) {
+                    if (data.uid == roleData.uid) {
                         hasRepeate = true;
                         break;
                     }

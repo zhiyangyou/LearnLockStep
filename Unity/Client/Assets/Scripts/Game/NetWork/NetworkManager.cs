@@ -76,14 +76,16 @@ public class NetworkManager : Singleton<NetworkManager> {
     /// <returns></returns>
     public async FTask<T> SendCallMessage<T>(IRequest request, long routeID = 0) where T : IResponse {
         var strSend = ProtoBuffConvert.ToJson(request);
-        Debuger.LogGreen($"协议发送({typeof(T).Name}) {strSend}");
+        Debug.Log($"协议发送({typeof(T).Name}) {strSend}");
         var resp = (await _session.Call(request, routeID));
         var strRcv = ProtoBuffConvert.ToJson(resp);
-        Debuger.LogGreen($"协接回包({typeof(T).Name}) {strRcv}");
+        Debug.Log($"协接回包({typeof(T).Name}) {strRcv}");
         return (T)resp;
     }
 
     public void Send(IMessage message, uint rpcId = 0, long routeId = 0) {
+        var strSend = ProtoBuffConvert.ToJson(message);
+        Debug.Log($"协议发送({message.GetType().Name}) {strSend}");
         _session.Send(message, rpcId, routeId);
     }
 

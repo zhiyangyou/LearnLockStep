@@ -15,7 +15,7 @@ using ZM.ZMAsset;
 using ZMGC.Hall;
 
 public class DungeonLoadingWindow : WindowBase {
-    public DungeonLoadingWindowDataComponent dataCompt;
+    public DungeonLoadingWindowUIComponent dataCompt;
 
     private DungeonsSelectMsgMgr _dungeonsMsgLayer;
     private TeamDataMgr _teamDataLayer;
@@ -30,7 +30,7 @@ public class DungeonLoadingWindow : WindowBase {
 
     //调用机制与Mono Awake一致
     public override void OnAwake() {
-        dataCompt = gameObject.GetComponent<DungeonLoadingWindowDataComponent>();
+        dataCompt = new();
         dataCompt.InitComponent(this);
         mDisableAnim = true;
         base.OnAwake();
