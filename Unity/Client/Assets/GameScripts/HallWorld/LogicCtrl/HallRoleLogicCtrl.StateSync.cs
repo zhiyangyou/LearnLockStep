@@ -26,10 +26,10 @@ namespace ZMGC.Hall {
             var roleData = otherData.role_data;
             var mapStatus = roleData.player_map_status;
             if (mapStatus == (int)PlayerMapStatus.InMap) {
-                var otherRoleHall = GetOrCreateOtherRole(roleData.player_id, roleData.role_id);
+                var otherRoleHall = GetOrCreateOtherRole(roleData.player_id, roleData.role_id,roleData.position);
                 // TODO 更新位置角度
+                // otherRoleHall.transform.position = roleData.position.ToVector3();
                 otherRoleHall.SyncPosition(roleData.position, roleData.input_dir);
-                otherRoleHall.transform.position = roleData.position.ToVector3();
             }
             else if (mapStatus == (int)PlayerMapStatus.OutMap) {
                 Debug.LogError($"玩家离开了这个地图 {mapStatus}");

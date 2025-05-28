@@ -9,6 +9,7 @@
 
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Fantasy;
 using Hotfix;
 using TMPro;
 using UnityEngine;
@@ -84,13 +85,14 @@ namespace ZMGC.Hall {
         /// 寻找一个玩家的Role_Hall组件, 如果不存在,那么就进行创建
         /// </summary>
         /// <returns></returns>
-        private Role_Hall GetOrCreateOtherRole(long account_id, int roleTypeID) {
+        private Role_Hall GetOrCreateOtherRole(long account_id, int roleTypeID, CSVector3 initPos) {
             Role_Hall otherRole = null;
             if (_otherRoleHallDic.TryGetValue(account_id, out otherRole)) {
             }
             else {
                 GameObject goRole = ZMAsset.Instantiate(GetRoleAssetPath(roleTypeID), null);
                 otherRole = InitRoleGameObject($"other_role_{roleTypeID}_{account_id}", goRole);
+                otherRole.transform.position = initPos.ToVector3();
                 _otherRoleHallDic.Add(account_id, otherRole);
                 otherRole.Init(roleTypeID, RoleSource.OtherPlayer);
             }
