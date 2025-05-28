@@ -11,6 +11,7 @@ using Fantasy;
 using Fantasy.Async;
 using Fantasy.Network;
 using Fantasy.Network.Interface;
+using UnityEngine;
 using ZMGC.Battle;
 
 namespace ZMGC.Hall {
@@ -38,6 +39,7 @@ namespace ZMGC.Hall {
         }
 
         public void OnStartDungeon(Msg_StartDungeonBattle msg) {
+            Debug.LogError("开始地下城");
             UIModule.Instance.DestroyAllWindow();
             WorldManager.CreateWorld<BattleWorld>();
             UIModule.Instance.PopUpWindow<BattleWindow>();
