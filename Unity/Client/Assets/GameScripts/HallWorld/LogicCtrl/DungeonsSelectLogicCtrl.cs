@@ -11,6 +11,7 @@ using Fantasy;
 using Fantasy.Async;
 using Fantasy.Network;
 using Fantasy.Network.Interface;
+using ZMGC.Battle;
 
 namespace ZMGC.Hall {
     public class DungeonsSelectLogicCtrl : ILogicBehaviour {
@@ -24,10 +25,23 @@ namespace ZMGC.Hall {
 
         #region public
 
-        public void OnEnterDungeon(Msg_EnterDungeon msg) { }
+        public void OnEnterDungeon(Msg_EnterDungeon msg) {
+            if (msg.teamMembers == null || msg.teamMembers.Count == 0) {
+                ToastManager.ShowToast("进入地下城失败, 队伍不存在");
+            }
 
-        public void OnLoadDungeonProgress(Msg_LoadDungeonProgress msg) { }
-        public void OnStartDungeon(Msg_StartDungeonBattle msg) { }
+            HallWorld.EnterBattleWorld(msg.teamMembers);
+        }
+
+        public void OnLoadDungeonProgress(Msg_LoadDungeonProgress msg) {
+            UIEventControl.DispensEvent(UIEventEnum.DungeonProgress, msg);
+        }
+
+        public void OnStartDungeon(Msg_StartDungeonBattle msg) {
+            UIModule.Instance.DestroyAllWindow();
+            WorldManager.CreateWorld<BattleWorld>();
+            UIModule.Instance.PopUpWindow<BattleWindow>();
+        }
 
         #endregion
     }

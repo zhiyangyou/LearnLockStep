@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Fantasy;
 using GameScripts;
 using UnityEngine;
 using ZMGC.Battle;
@@ -58,6 +60,7 @@ namespace ZMGC.Hall {
         #region public
 
         public static void EnterHallWorld() {
+            UIModule.Instance.PopUpWindow<LoadingWindow>();
             LoadSceneManager.Instance.LoadSceneAsync($"{AssetsPathConfig.Scene_Path}Hall", async () => {
                 UIModule.Instance.DestroyAllWindow();
                 UIModule.Instance.PopUpWindow<HallWindow>();
@@ -65,6 +68,14 @@ namespace ZMGC.Hall {
                 await GetExitsLogicCtrl<MapLogicCtrl>().Init();
                 UserDataMgr userData = HallWorld.GetExitsDataMgr<UserDataMgr>();
                 await GetExitsLogicCtrl<HallRoleLogicCtrl>().InitSelfRole(userData.CurSelectRoleID);
+            });
+        }
+
+
+        public static void EnterBattleWorld(List<RoleData> teamMembers) {
+            UIModule.Instance.PopUpWindow<DungeonLoadingWindow>().InitView(teamMembers);
+            LoadSceneManager.Instance.LoadSceneAsync($"{AssetsPathConfig.Scene_Path}Battle", async () => {
+
             });
         }
 

@@ -11,7 +11,7 @@ namespace GameScripts
     {
         public void LoadSceneAsync(string sceneName, Action onLoadComplete)
         {
-            UIModule.Instance.PopUpWindow<LoadingWindow>();
+         
             StartCoroutine(AsyncLoadScene(sceneName, onLoadComplete));
         }
 

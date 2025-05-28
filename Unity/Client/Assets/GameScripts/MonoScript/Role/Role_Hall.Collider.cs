@@ -66,14 +66,19 @@ public partial class Role_Hall {
         var mapCtrl = HallWorld.GetExitsLogicCtrl<MapLogicCtrl>();
         var originMapType = mapCtrl.CurMap.MapType;
         var gotoMapType = mapEntry.GotoMapType;
-        ActiveMove(false);
-        await mapCtrl.LoadMapAsync(gotoMapType);
-        Vector3? roleInitPos = mapCtrl.GetMapEntryPos(originMapType);
-        if (roleInitPos == null) {
-            Debug.LogError($"找不到  from:{originMapType} to:{gotoMapType} 对应门的位置");
+        if (gotoMapType == MapType.Dungeons) {
+            HallWorld.GetExitsMsgMgr<DungeonsSelectMsgMgr>().SendMessage_EnterDungeon(HallWorld.GetExitsDataMgr<TeamDataMgr>().TeamID, DungeonType.Demo);
         }
-        var roleID = HallWorld.GetExitsDataMgr<UserDataMgr>().CurSelectRoleID;
-        HallWorld.GetExitsLogicCtrl<HallRoleLogicCtrl>().InitRoleEnv(roleInitPos == null ? Vector3.zero : roleInitPos.Value, RoleSource.Self, roleID);
+        else {
+            ActiveMove(false);
+            await mapCtrl.LoadMapAsync(gotoMapType);
+            Vector3? roleInitPos = mapCtrl.GetMapEntryPos(originMapType);
+            if (roleInitPos == null) {
+                Debug.LogError($"找不到  from:{originMapType} to:{gotoMapType} 对应门的位置");
+            }
+            var roleID = HallWorld.GetExitsDataMgr<UserDataMgr>().CurSelectRoleID;
+            HallWorld.GetExitsLogicCtrl<HallRoleLogicCtrl>().InitRoleEnv(roleInitPos == null ? Vector3.zero : roleInitPos.Value, RoleSource.Self, roleID);
+        }
     }
 
     #endregion
