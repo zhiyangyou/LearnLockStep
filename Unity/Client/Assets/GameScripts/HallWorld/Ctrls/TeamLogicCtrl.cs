@@ -7,8 +7,10 @@
 * 注意:以下文件为自动生成，强制再次生成将会覆盖
 ----------------------------------------------------------------------------------------*/
 
+using System;
 using Fantasy;
 using Fantasy.Async;
+using ServerShareToClient;
 using UnityEngine;
 
 namespace ZMGC.Hall {
@@ -22,6 +24,8 @@ namespace ZMGC.Hall {
             _teamDataMgr = HallWorld.GetExitsDataMgr<TeamDataMgr>();
             _userDataMgr = HallWorld.GetExitsDataMgr<UserDataMgr>();
         }
+
+        public void OnDestroy() { }
 
         public async FTask<bool> JoinTeam(string strTeamId) {
             if (string.IsNullOrEmpty(strTeamId) || strTeamId.Length < 5) {
@@ -59,6 +63,25 @@ namespace ZMGC.Hall {
             return success;
         }
 
-        public void OnDestroy() { }
+
+        public void OnTeamStateChanged(Msg_TeamStateChanged message) {
+            var status = (TeamOpStatus)message.team_state;
+            switch (status) {
+                case TeamOpStatus.None:
+                    break;
+                case TeamOpStatus.MemberJoined:
+                    _teamDataMgr.AddTeamRole(message.role_data);
+                    break;
+                case TeamOpStatus.MemberLeave:
+                    _teamDataMgr.RemoveTeamRole(message.role_data);
+                    break;
+                case TeamOpStatus.TeamDispose:
+                    _teamDataMgr.ClearTeam();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            UIEventControl.DispensEvent(UIEventEnum.RefreshTeamList);
+        }
     }
 }

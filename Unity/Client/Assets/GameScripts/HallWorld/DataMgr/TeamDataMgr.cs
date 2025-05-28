@@ -9,6 +9,7 @@
 
 using System.Collections.Generic;
 using Fantasy;
+using UnityEngine;
 
 namespace ZMGC.Hall {
     public class TeamDataMgr : IDataBehaviour {
@@ -16,9 +17,50 @@ namespace ZMGC.Hall {
         public List<RoleData> RoleDatas { get; private set; }
 
 
+        public void ClearTeam() {
+            TeamID = -1;
+            RoleDatas.Clear();
+        }
+
+        public void RemoveTeamRole(RoleData roleData) {
+            if (roleData == null) {
+                return;
+            }
+            else {
+                if (RoleDatas != null) {
+                    for (int i = RoleDatas.Count - 1; i >= 0; i--) {
+                        if (roleData.role_id == RoleDatas[i].role_id) {
+                            RoleDatas.RemoveAt(i);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        public void AddTeamRole(RoleData roleData) {
+            if (roleData != null) {
+                bool hasRepeate = false;
+                foreach (var data in this.RoleDatas) {
+                    if (data.role_id == roleData.role_id) {
+                        hasRepeate = true;
+                        break;
+                    }
+                }
+                if (!hasRepeate) {
+                    RoleDatas.Add(roleData);
+                }
+                else {
+                    Debug.LogError("添加缓存队友数据失败, 存在同名玩家");
+                }
+            }
+        }
+
         public void CacheTeamRole(RoleData roleData, int team_id) {
-            this.TeamID = team_id;
-            this.RoleDatas.Add(roleData);
+            if (team_id > 0) {
+                this.TeamID = team_id;
+                this.RoleDatas.Add(roleData);
+            }
         }
 
 
