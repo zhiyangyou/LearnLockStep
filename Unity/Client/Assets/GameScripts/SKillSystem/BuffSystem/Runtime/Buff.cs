@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ServerShareToClient;
 using UnityEngine;
 using ZM.ZMAsset;
 
@@ -93,7 +94,7 @@ public class Buff {
                     // 处理buff延迟逻辑
                     _buffLogic.BuffDelay();
                 }
-                _curLeftDelayMS -= LogicFrameConfig.LogicFrameIntervalMS;
+                _curLeftDelayMS -= GameConstConfig.LogicFrameIntervalMS;
                 if (_curLeftDelayMS <= 0) {
                     buffState = BuffState.Start;
                 }
@@ -205,7 +206,7 @@ public class Buff {
     }
 
     private void UpdateBuffLogic() {
-        int logicFrameIntervalMS = LogicFrameConfig.LogicFrameIntervalMS;
+        int logicFrameIntervalMS = GameConstConfig.LogicFrameIntervalMS;
         // 1. 处理buff间隔逻辑
         if (BuffConfigSo.intervalMS > 0) {
             _curRealRuntime += logicFrameIntervalMS;
@@ -219,7 +220,7 @@ public class Buff {
     }
 
     private void UpdateBuffDurationTime() {
-        _curAccRuntime += LogicFrameConfig.LogicFrameIntervalMS;
+        _curAccRuntime += GameConstConfig.LogicFrameIntervalMS;
         if (_curAccRuntime >= BuffConfigSo.DurationMS) {
             buffState = BuffState.End;
         }

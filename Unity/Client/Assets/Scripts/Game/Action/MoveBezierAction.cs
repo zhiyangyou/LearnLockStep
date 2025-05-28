@@ -1,5 +1,6 @@
 ﻿using System;
 using FixMath;
+using ServerShareToClient;
 using UnityEngine;
 
 public class MoveBezierAction : ActionBehaviour {
@@ -58,7 +59,7 @@ public class MoveBezierAction : ActionBehaviour {
     }
 
     public override void OnLogicFrameUpdate() {
-        _accRuntimeMS += LogicFrameConfig.LogicFrameIntervalMS;
+        _accRuntimeMS += GameConstConfig.LogicFrameIntervalMS;
         _curTimeProgress = _accRuntimeMS / _durationMS; // TODO 不理解
 
         if (_curTimeProgress >= 1) {

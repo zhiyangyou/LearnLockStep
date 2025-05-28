@@ -1,5 +1,6 @@
 ﻿using System;
 using FixMath;
+using ServerShareToClient;
 using UnityEngine;
 
 namespace ZMGC.Battle {
@@ -87,12 +88,12 @@ namespace ZMGC.Battle {
             // 
             while (_accLogicRealTime > _nextLogicFrameTime) {
                 OnLigicFrameUpdate();
-                _nextLogicFrameTime += LogicFrameConfig.LogicFrameInterval;
+                _nextLogicFrameTime += GameConstConfig.LogicFrameInterval;
                 // 逻辑帧ID 进行自增
                 LogicFrameConfig.LogicFrameID++;
             }
 
-            _logicDeltaTime = (_accLogicRealTime + LogicFrameConfig.LogicFrameInterval - _nextLogicFrameTime) / LogicFrameConfig.LogicFrameInterval;
+            _logicDeltaTime = (_accLogicRealTime + GameConstConfig.LogicFrameInterval - _nextLogicFrameTime) / GameConstConfig.LogicFrameInterval;
 
 
             // Debug.LogError($"{Time.frameCount}");

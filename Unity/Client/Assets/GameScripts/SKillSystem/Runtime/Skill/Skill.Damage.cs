@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using FixIntPhysics;
 using FixMath;
+using ServerShareToClient;
 using UnityEngine;
 using ZMGC.Battle;
 
@@ -164,7 +165,7 @@ public partial class Skill {
 
                 // 碰撞体的伤害检测
                 if (damageConfig.triggerIntervalMs != 0) {
-                    _listDamageAccTimeMS[i] += LogicFrameConfig.LogicFrameIntervalMS;
+                    _listDamageAccTimeMS[i] += GameConstConfig.LogicFrameIntervalMS;
                     if (_listDamageAccTimeMS[i] >= damageConfig.triggerIntervalMs) {
                         _listDamageAccTimeMS[i] = 0;
                         if (_dicColliders.TryGetValue(configHashCode, out var collider)) {

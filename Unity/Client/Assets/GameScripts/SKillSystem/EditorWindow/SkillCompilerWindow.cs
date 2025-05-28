@@ -1,6 +1,7 @@
 #if UNITY_EDITOR
 using System;
 using System.Collections.Generic;
+using ServerShareToClient;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using UnityEditor;
@@ -178,7 +179,7 @@ public class SkillCompilerWindow : OdinEditorWindow {
             OnLogicFrameUpdate();
 
             // 下一个逻辑帧的时间
-            _nextLogicTime += LogicFrameConfig.LogicFrameInterval;
+            _nextLogicTime += GameConstConfig.LogicFrameInterval;
         }
     }
 

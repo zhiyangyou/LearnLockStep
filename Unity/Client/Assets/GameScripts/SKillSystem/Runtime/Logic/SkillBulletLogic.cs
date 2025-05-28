@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using FixIntPhysics;
 using FixMath;
+using ServerShareToClient;
 using UnityEngine;
 using ZMGC.Battle;
 
@@ -66,11 +67,11 @@ public class SkillBulletLogic : LogicObject {
 
     public override void OnLogicFrameUpdate() {
         base.OnLogicFrameUpdate();
-        _curLogicFrameAccTime = _curLogicFrame * LogicFrameConfig.LogicFrameIntervalMS;
+        _curLogicFrameAccTime = _curLogicFrame * GameConstConfig.LogicFrameIntervalMS;
         _curLogicFrame++;
 
         // 位置更新
-        LogicPos += LogicDir * new FixInt(_bulletConfig.moveSpeed) * new FixInt(LogicFrameConfig.LogicFrameInterval);
+        LogicPos += LogicDir * new FixInt(_bulletConfig.moveSpeed) * new FixInt(GameConstConfig.LogicFrameInterval);
 
         var damageConfig = _bulletConfig.damageConfig;
 

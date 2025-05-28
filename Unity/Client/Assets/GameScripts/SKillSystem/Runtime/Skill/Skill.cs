@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using FixMath;
+using ServerShareToClient;
 using UnityEngine;
 using ZM.ZMAsset;
 
@@ -152,7 +153,7 @@ public partial class Skill {
             return;
         }
 
-        _curLogicFrameAccTimeMS = _curLogicFrame * LogicFrameConfig.LogicFrameIntervalMS;
+        _curLogicFrameAccTimeMS = _curLogicFrame * GameConstConfig.LogicFrameIntervalMS;
 
         // 尝试进入技能后摇
         if (skillState == SkillState.Before

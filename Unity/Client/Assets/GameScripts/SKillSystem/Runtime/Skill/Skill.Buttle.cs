@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using FixMath;
+using ServerShareToClient;
 using UnityEngine;
 
 public partial class Skill {
@@ -41,7 +42,7 @@ public partial class Skill {
         if (listBulletConfig != null && listBulletConfig.Count > 0) {
             for (int i = 0; i < listBulletConfig.Count; i++) {
                 var bulletConfig = listBulletConfig[i];
-                _listCurCreateBulletAccTimeMS[i] += LogicFrameConfig.LogicFrameIntervalMS;
+                _listCurCreateBulletAccTimeMS[i] += GameConstConfig.LogicFrameIntervalMS;
                 if (bulletConfig.triggerFrame == _curLogicFrame) {
                     // 创建子弹
                     CreateBullet(bulletConfig);

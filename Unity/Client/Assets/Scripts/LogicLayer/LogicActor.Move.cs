@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using FixMath;
+using ServerShareToClient;
 using UnityEngine;
 
 public partial class LogicActor {
@@ -20,7 +21,7 @@ public partial class LogicActor {
             return;
         }
         // 位置
-        LogicPos += _inputMoveDir * LogicMoveSpeed * ((FixInt)LogicFrameConfig.LogicFrameInterval);
+        LogicPos += _inputMoveDir * LogicMoveSpeed * ((FixInt)GameConstConfig.LogicFrameInterval);
 
         // 朝向
         if (LogicDir != _inputMoveDir) {

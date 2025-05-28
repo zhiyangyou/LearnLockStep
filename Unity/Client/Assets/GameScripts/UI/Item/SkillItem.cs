@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using FixMath;
+using ServerShareToClient;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -152,7 +153,7 @@ public class SkillItem : MonoBehaviour {
     private void EnterSkillCD() {
         _enterCDLogicFrame = LogicFrameConfig.LogicFrameID;
 
-        float _alreadyCDTimeS = (LogicFrameConfig.LogicFrameID - _enterCDLogicFrame) * LogicFrameConfig.LogicFrameInterval;
+        float _alreadyCDTimeS = (LogicFrameConfig.LogicFrameID - _enterCDLogicFrame) * GameConstConfig.LogicFrameInterval;
         float leftCDTimeS = _skillData.SkillCfgConfig.CDTimeS - _alreadyCDTimeS;
 
         _txtCD.gameObject.SetActive(true);
@@ -163,9 +164,9 @@ public class SkillItem : MonoBehaviour {
 
         float updateTime = 0.01f; // 每隔0.1秒更新UI
         LogicTimer timerCD = null;
-        timerCD = LogicTimerManager.Instance.DelayCall(LogicFrameConfig.LogicFrameInterval, () => {
+        timerCD = LogicTimerManager.Instance.DelayCall(GameConstConfig.LogicFrameInterval, () => {
             // Debug.LogError($"timer finish");
-            float _alreadyCDTimeS = (LogicFrameConfig.LogicFrameID - _enterCDLogicFrame) * LogicFrameConfig.LogicFrameInterval;
+            float _alreadyCDTimeS = (LogicFrameConfig.LogicFrameID - _enterCDLogicFrame) * GameConstConfig.LogicFrameInterval;
             float leftCDTimeS = _skillData.SkillCfgConfig.CDTimeS - _alreadyCDTimeS;
             _txtCD.text = $"{leftCDTimeS:F1}";
             // Debug.LogError($"_alreadyCDTimeS:{_alreadyCDTimeS}");

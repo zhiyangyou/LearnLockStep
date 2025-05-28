@@ -1,5 +1,6 @@
 ﻿using System;
 using FixMath;
+using ServerShareToClient;
 using UnityEngine;
 
 
@@ -84,7 +85,7 @@ public class MoveToAction : ActionBehaviour {
     /// 逻辑帧更新
     /// </summary>
     public override void OnLogicFrameUpdate() {
-        _accRuntimeMS += LogicFrameConfig.LogicFrameIntervalMS;
+        _accRuntimeMS += GameConstConfig.LogicFrameIntervalMS;
         _curTimeProgress = _accRuntimeMS / _durationMS; // TODO 不理解
 
         if (_curTimeProgress >= 1) {

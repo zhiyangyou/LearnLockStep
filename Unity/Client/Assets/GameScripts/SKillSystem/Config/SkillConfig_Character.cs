@@ -1,4 +1,5 @@
 ﻿using System;
+using ServerShareToClient;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -150,7 +151,7 @@ public class SkillConfig_Character {
             animProgress = (short)(Mathf.Clamp(curAniNormalizationValue * 100, 0, 100));
 
             // 计算逻辑帧
-            logicFrame = (int)(curRuntime / LogicFrameConfig.LogicFrameInterval);
+            logicFrame = (int)(curRuntime / GameConstConfig.LogicFrameInterval);
 
             // 采样动画
             _curPlayAnimation.clip.SampleAnimation(_goTempCharacter, (float)curRuntime);
@@ -197,7 +198,7 @@ public class SkillConfig_Character {
 
         // 根据当前动画进度进行采样
         float progress = (value / 100) * skillAnim.length;
-        logicFrame = (int)(progress / LogicFrameConfig.LogicFrameInterval);
+        logicFrame = (int)(progress / GameConstConfig.LogicFrameInterval);
         animation.clip.SampleAnimation(_goTempCharacter, progress);
     }
 

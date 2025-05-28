@@ -1,5 +1,6 @@
 ﻿using System;
 using FixMath;
+using ServerShareToClient;
 using UnityEngine;
 
 
@@ -36,7 +37,7 @@ public class LogicTimer : TimerBehaviour {
     /// 逻辑帧更新
     /// </summary>
     public override void OnLogicFrameUpdate() {
-        _accLogicFrameTimeS += LogicFrameConfig.LogicFrameInterval;
+        _accLogicFrameTimeS += GameConstConfig.LogicFrameInterval;
         if (_accLogicFrameTimeS >= _delayTimeS) {
             _onTimerFinish?.Invoke();
             _accLogicFrameTimeS -= _delayTimeS;
@@ -51,6 +52,7 @@ public class LogicTimer : TimerBehaviour {
     }
 
     public override void OnTimerFinish() { }
+
     public override void Complete() {
         timerFinish = true;
     }

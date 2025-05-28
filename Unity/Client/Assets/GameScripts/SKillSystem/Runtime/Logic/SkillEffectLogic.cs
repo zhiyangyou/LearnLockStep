@@ -1,5 +1,6 @@
 ﻿using FixIntPhysics;
 using FixMath;
+using ServerShareToClient;
 using UnityEngine;
 
 public class SkillEffectLogic : LogicObject {
@@ -96,7 +97,7 @@ public class SkillEffectLogic : LogicObject {
 
             // 间隔伤害
             if (_collider != null && damageConfig.triggerIntervalMs != 0) {
-                _accRuntime += LogicFrameConfig.LogicFrameIntervalMS;
+                _accRuntime += GameConstConfig.LogicFrameIntervalMS;
                 if (_accRuntime >= damageConfig.triggerIntervalMs) {
                     _accRuntime -= damageConfig.triggerIntervalMs;
                     skill.TriggerColliderDamage(_collider, damageConfig);

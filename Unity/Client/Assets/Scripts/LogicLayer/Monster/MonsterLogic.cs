@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using FixIntPhysics;
 using FixMath;
+using ServerShareToClient;
 using UnityEngine;
 using ZMGC.Battle;
 
@@ -106,7 +107,7 @@ public class MonsterLogic : LogicActor {
             if (ActionState == LogicObjectActionState.Idle
                 || ActionState == LogicObjectActionState.Move
                ) {
-                LogicPos += (dirToPlayer * LogicMoveSpeed * LogicFrameConfig.LogicFrameInterval);
+                LogicPos += (dirToPlayer * LogicMoveSpeed * GameConstConfig.LogicFrameInterval);
                 LogicAxis_X = dirToPlayer.x;
                 PlayAnim(AnimaNames.Anim_Walk);
             }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using FixMath;
+using ServerShareToClient;
 using UnityEngine;
 
 public partial class LogicActor {
@@ -24,7 +25,7 @@ public partial class LogicActor {
     public void OnLogicFrameUpdate_Gravity() {
         if (isAddForce) {
             // Debug.LogError($"velicity.y - gravity * _risingTime: {velicity.y - gravity * _risingTime}");
-            float logicFrameInterval = LogicFrameConfig.LogicFrameInterval;
+            float logicFrameInterval = GameConstConfig.LogicFrameInterval;
             FixInt gt = gravity * logicFrameInterval;
 
             //  就是 v0/g 求出上升时间
