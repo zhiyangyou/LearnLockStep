@@ -555,7 +555,7 @@ GameObject:
   - component: {fileID: 8401367817796418882}
   - component: {fileID: 6439023306572829980}
   m_Layer: 5
-  m_Name: JoyStickUGUI
+  m_Name: '[JoystickUGUI]Stick'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

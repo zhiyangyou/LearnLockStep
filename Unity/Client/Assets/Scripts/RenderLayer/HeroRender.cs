@@ -1,6 +1,7 @@
 ﻿using System;
 using FixMath;
 using UnityEngine;
+using ZMGC.Battle;
 
 public class HeroRender : RenderObject {
     #region 属性字段
@@ -13,6 +14,7 @@ public class HeroRender : RenderObject {
     private Vector3 _curInputDir = Vector3.zero;
     private GameObject _goGuideEffect; // 技能引导特效对象
 
+    private bool _hasInitJoyStick = false;
     // 角色动画
     private Animation _ani;
 
@@ -76,12 +78,14 @@ public class HeroRender : RenderObject {
         base.OnCreate();
         _ani = GetComponent<Animation>();
         if (_ani == null) Debug.LogError("Hero Render 没有Animation组件");
-        JoystickUGUI.OnMoveCallBack += OnJoyStickMove;
+        // UIModule.Instance.GetWindow<BattleWindow>().uiCompt.
+       
     }
 
+    
 
     public override void OnRelease() {
-        JoystickUGUI.OnMoveCallBack -= OnJoyStickMove;
+        UIModule.Instance.GetWindow<BattleWindow>().uiCompt.StickJoystickUGUI.OnMoveCallBack = null;
         base.OnRelease();
     }
 
@@ -89,6 +93,7 @@ public class HeroRender : RenderObject {
         if (heroLogic == null) {
             return;
         }
+        TryInitJoyStick();
         base.Update();
 
         // 判断有没有在技能释放, 有技能释放,播放技能动画的动画片段
@@ -141,6 +146,13 @@ public class HeroRender : RenderObject {
         }
     }
 
+    private void TryInitJoyStick() {
+        if (!_hasInitJoyStick) {
+            UIModule.Instance.GetWindow<BattleWindow>().uiCompt.StickJoystickUGUI.OnMoveCallBack = OnJoyStickMove;
+            _hasInitJoyStick = true;
+        }
+    }
+    
     private void InitSkillGuide(int skillID) {
         if (_goGuideEffect == null) {
             Skill skill = _heroLogic.GetSkill(skillID);

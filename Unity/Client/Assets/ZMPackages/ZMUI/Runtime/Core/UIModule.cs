@@ -249,7 +249,6 @@ public class UIModule
                 return (T)item;
             }
         }
-        Debug.LogError("该窗口没有获取到：" + type.Name);
         return null;
     }
 

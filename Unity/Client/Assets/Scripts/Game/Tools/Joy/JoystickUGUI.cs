@@ -3,17 +3,14 @@ using System;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 
-public class JoystickUGUI : MonoBehaviour
-{
+public class JoystickUGUI : MonoBehaviour {
 #if UNITY_EDITOR
     /// <summary>
     /// 在scene视图绘制线 方便查看可点击区域
     /// </summary>
-    void OnDrawGizmos()
-    {
+    void OnDrawGizmos() {
         //Debug.Log("OnDrawGizmos start...");
-        if (Application.isPlaying == false)
-        {
+        if (Application.isPlaying == false) {
             return;
         }
         // Gizmos.color = Color.red;
@@ -35,8 +32,7 @@ public class JoystickUGUI : MonoBehaviour
 #endif
 
 
-    public enum JoystickState
-    {
+    public enum JoystickState {
         /// <summary>
         /// 闲置
         /// </summary>
@@ -116,11 +112,10 @@ public class JoystickUGUI : MonoBehaviour
     /// </summary>
     private Vector3 _OffsetPosArrowWithCenter = Vector3.zero;
 
-    public static Action<Vector3> OnMoveCallBack = null;
+    public Action<Vector3> OnMoveCallBack = null;
 
     // Use this for initialization
-    void Start()
-    {
+    void Start() {
         DefoutTriggerPos = trTriggerArea.transform.localPosition;
 
         UIEventListener uiEventListener = transform.GetComponentInChildren<UIEventListener>();
@@ -139,21 +134,18 @@ public class JoystickUGUI : MonoBehaviour
     /// </summary>
     /// <param name="go"></param>
     /// <param name="varPress"></param>
-    void onPress(PointerEventData eventData)
-    {
+    void onPress(PointerEventData eventData) {
         //if (varPress == true)
         SwitchJoyStickState(JoystickState.TouchDown);
         //else
         //    SwitchJoyStickState(JoystickState.TouchUp);
     }
 
-    void OnUP(PointerEventData eventData)
-    {
+    void OnUP(PointerEventData eventData) {
         SwitchJoyStickState(JoystickState.TouchUp);
     }
 
-    void onDrag(PointerEventData eventData)
-    {
+    void onDrag(PointerEventData eventData) {
         Action();
     }
 
@@ -161,23 +153,19 @@ public class JoystickUGUI : MonoBehaviour
     /// 切换摇杆状态
     /// </summary>
     /// <param name="state"></param>
-    public void SwitchJoyStickState(JoystickState state)
-    {
+    public void SwitchJoyStickState(JoystickState state) {
         joystickState = state;
 
         Action();
     }
 
-    void Action()
-    {
+    void Action() {
         // Debug.Log("Action JoystickState:"+ joystickState);
-        if (joystickState == JoystickState.ldle)
-        {
+        if (joystickState == JoystickState.ldle) {
             return;
         }
 
-        switch (joystickState)
-        {
+        switch (joystickState) {
             case JoystickState.TouchUp:
                 InitState();
                 SwitchJoyStickState(JoystickState.ldle);
@@ -200,8 +188,7 @@ public class JoystickUGUI : MonoBehaviour
     /// 获取鼠标相对于对象的本地坐标
     /// </summary>
     /// <returns></returns>
-    Vector2 GetMouseLocalPosition(Transform transform)
-    {
+    Vector2 GetMouseLocalPosition(Transform transform) {
         //获取鼠标屏幕坐标
         Vector2 mousePosition;
         //转换为Canvas针对物体的局部坐标
@@ -212,8 +199,7 @@ public class JoystickUGUI : MonoBehaviour
     /// <summary>
     /// 抬起动作
     /// </summary>
-    void InitState()
-    {
+    void InitState() {
         trCenter.localPosition = Vector3.zero;
         trDirArrow?.gameObject.SetActive(false);
         //设置虚拟摇杆 抬起 触发区域
@@ -224,23 +210,20 @@ public class JoystickUGUI : MonoBehaviour
     /// <summary>
     /// 按下动作
     /// </summary>
-    void TouchState()
-    {
+    void TouchState() {
         touchPosition = GetMouseLocalPosition(transform);
     }
 
     /// <summary>
     /// 准备状态
     /// </summary>
-    void ReadyState()
-    {
+    void ReadyState() {
         Vector3 position = GetMouseLocalPosition(transform);
 
         float distance = Vector3.Distance(position, touchPosition);
 
         //点击屏幕拖动大于切换拖动状态最小距离 则切换到拖动状态
-        if (distance > switchMoveMin)
-        {
+        if (distance > switchMoveMin) {
             SwitchJoyStickState(JoystickState.Drag);
         }
     }
@@ -249,8 +232,7 @@ public class JoystickUGUI : MonoBehaviour
     /// <summary>
     /// 拖动状态
     /// </summary>
-    void DragState()
-    {
+    void DragState() {
         Vector3 mouseLocalPosition = GetMouseLocalPosition(trRoot);
 
         //鼠标与摇杆的距离
@@ -261,8 +243,7 @@ public class JoystickUGUI : MonoBehaviour
         Vector3 stickLocalPosition = mouseLocalPosition;
 
         //鼠标位置大于杆拖动的最大值
-        if (distance > stickMoveMax)
-        {
+        if (distance > stickMoveMax) {
             float proportion = stickMoveMax / distance;
 
             stickLocalPosition = (mouseLocalPosition - trBg.localPosition) * proportion;
@@ -274,8 +255,7 @@ public class JoystickUGUI : MonoBehaviour
         //设置指向位置
 
         //摇杆与鼠标的距离 大于 指向显示最小距离  则显示指向 
-        if (distance > showDirection)
-        {
+        if (distance > showDirection) {
             trDirArrow?.gameObject.SetActive(true);
 
             //获取鼠标位置与摇杆的角度
@@ -287,8 +267,7 @@ public class JoystickUGUI : MonoBehaviour
             joystickDirection = mouseLocalPosition - trBg.localPosition;
             joystickDirection.z = 0;
         }
-        else
-        {
+        else {
             trDirArrow?.gameObject.SetActive(true);
         }
         //设置虚拟摇杆 拖动 触发区域

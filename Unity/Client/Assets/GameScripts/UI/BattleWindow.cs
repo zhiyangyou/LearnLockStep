@@ -29,7 +29,7 @@ public class BattleWindow : WindowBase {
     // private float _lastShowBloodItemTime = 0f;
     // private MonsterBloodItem _curShowBloodItem = null;
 
-    public BattleWindowDataComponent uiCompt = null;
+    public BattleWindowUIComponent uiCompt = new();
 
     private Dictionary<int, MonsterBloodItem> _dicBloodItems = new();
 
@@ -40,7 +40,6 @@ public class BattleWindow : WindowBase {
 
     //调用机制与Mono Awake一致
     public override void OnAwake() {
-        uiCompt = transform.GetComponent<BattleWindowDataComponent>();
         uiCompt.InitComponent(this);
 
         foreach (var childObj in uiCompt.SkillRootTransform) {
@@ -125,7 +124,7 @@ public class BattleWindow : WindowBase {
                 Debug.LogError($"暂时不支持{monsterCfg.type}类型血条展示");
                 return;
             }
-            var goBlood = ZMAsset.Instantiate(prefabPath, uiCompt.BloodRoot);
+            var goBlood = ZMAsset.Instantiate(prefabPath, uiCompt.BloodRootTransform);
             goBlood.transform.localPosition = Vector3.zero;
             goBlood.transform.localScale = Vector3.one;
             goBlood.transform.localRotation = Quaternion.identity;

@@ -37,19 +37,21 @@ public partial class Role_Hall : MonoBehaviour {
         PlayAnim(AnimaNames.Anim_Idle02);
     }
 
-    
 
     private void OnEnable() {
         // if (roleSource == RoleSource.Self)
         {
-            JoystickUGUI.OnMoveCallBack += OnJoyStick;
+            UIModule.Instance.GetWindow<HallWindow>().uiCompt.RoleJoystickUGUI.OnMoveCallBack = OnJoyStick;
         }
     }
 
     private void OnDisable() {
         // if (roleSource == RoleSource.Self) 
         {
-            JoystickUGUI.OnMoveCallBack -= OnJoyStick;
+            var hallWindow = UIModule.Instance.GetWindow<HallWindow>();
+            if (hallWindow != null) {
+                hallWindow.uiCompt.RoleJoystickUGUI.OnMoveCallBack = null;
+            }
         }
     }
 
@@ -85,10 +87,9 @@ public partial class Role_Hall : MonoBehaviour {
 
 
     private void UpdateState() {
-       
         var judgeDir = roleSource == RoleSource.OtherPlayer ? _syncDir : _inputDir;
-        
-        if (judgeDir == Vector3.zero ) {
+
+        if (judgeDir == Vector3.zero) {
             PlayAnim(AnimaNames.Anim_Idle02);
         }
         else {
