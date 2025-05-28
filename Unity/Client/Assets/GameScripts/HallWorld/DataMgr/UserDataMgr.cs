@@ -15,6 +15,8 @@ namespace ZMGC.Hall {
     public class UserDataMgr : IDataBehaviour {
         #region 属性和字段
 
+        public static MapType TeamFightMapType = MapType.Dungeons; 
+        
         public long account_id;
 
         public long gold;

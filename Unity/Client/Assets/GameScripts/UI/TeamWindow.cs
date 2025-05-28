@@ -96,7 +96,7 @@ public class TeamWindow : WindowBase {
 
     public async void OnCreateTeamButtonClick() {
         dataCompt.CreateTeamButton.interactable = false;
-        bool isSuccess = await _teamLogicCtrl.CreateTeam(MapType.Dungeons, _userDataMgr.account_id);
+        bool isSuccess = await _teamLogicCtrl.CreateTeam(UserDataMgr.TeamFightMapType, _userDataMgr.account_id);
         //房主关闭加入和创建按钮
         if (isSuccess) {
             HideTeamButton();
@@ -105,14 +105,14 @@ public class TeamWindow : WindowBase {
     }
 
     public async void OnJoinTeamButtonClick() {
-        // dataCompt.JoinTeamButton.interactable = false;
-        // bool isSuccess = await _teamLogic.JoinTeam(dataCompt.TeamIDInputField.text);
-        // if (isSuccess)
-        // {
-        //     HideTeamButton();
-        // }
-        // dataCompt.TeamIDInputField.text = "";
-        // dataCompt.JoinTeamButton.interactable = true;
+        dataCompt.JoinTeamButton.interactable = false;
+        bool isSuccess = await _teamLogicCtrl.JoinTeam(dataCompt.TeamIDInputField.text);
+        if (isSuccess)
+        {
+            HideTeamButton();
+        }
+        dataCompt.TeamIDInputField.text = "";
+        dataCompt.JoinTeamButton.interactable = true;
     }
 
     public void OnTeamIDInputChange(string text) { }
