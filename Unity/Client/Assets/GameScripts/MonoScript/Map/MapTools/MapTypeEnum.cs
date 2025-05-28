@@ -11,3 +11,8 @@ public enum DoorType {
     HeDunMaer, // 赫顿玛尔
     Dungeons, // 地下城
 }
+
+
+public enum DungeonType {
+    Demo = 0,
+}
