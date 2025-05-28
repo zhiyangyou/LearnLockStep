@@ -42,6 +42,7 @@ namespace ZMGC.Hall {
                 foreach (var roleData in resp.team_role_list) {
                     _teamDataMgr.CacheTeamRole(roleData, resp.team_id);
                 }
+                UIEventControl.DispensEvent(UIEventEnum.RefreshTeamList);
             }
             return success;
         }
