@@ -13,14 +13,9 @@ namespace ZMGC.Battle {
         // public HeroLogic HeroLogic { get; private set; }
         private HeroDataMgr _heroDataMgr = null;
         private UserDataMgr _userDataMgr = null;
-
-        public List<HeroLogic> ListHeroLogics { get; private set; } = new();
-        public HeroLogic LocalHeroLogic { get; private set; }
-
-        /// <summary>
-        /// 被怪物跟踪的玩家
-        /// </summary>
-        public HeroLogic ChaseHeroLogic { get; private set; }
+        public List<HeroLogic> ListHeroLogics { get; private set; } = null; // 所有玩家
+        public HeroLogic LocalHeroLogic { get; private set; } = null; // 本地玩家
+        public HeroLogic ChaseHeroLogic { get; private set; } = null; // 被怪物跟踪的玩家
 
         #endregion
 
@@ -29,9 +24,15 @@ namespace ZMGC.Battle {
         public void OnCreate() {
             _heroDataMgr = BattleWorld.GetExitsDataMgr<HeroDataMgr>();
             _userDataMgr = BattleWorld.GetExitsDataMgr<UserDataMgr>();
+            ListHeroLogics = new();
         }
 
-        public void OnDestroy() { }
+        public void OnDestroy() {
+            ListHeroLogics.Clear();
+            ListHeroLogics = null;
+            LocalHeroLogic = null;
+            ChaseHeroLogic = null;
+        }
 
         #endregion
 
@@ -53,6 +54,7 @@ namespace ZMGC.Battle {
                 var heroRender = goHero.GetComponent<HeroRender>();
                 goHero.name = $"lockstep_player_{heroID}_{roleData.role_name}";
                 HeroLogic heroLogic = new HeroLogic(heroID, accountID, heroRender);
+                ListHeroLogics.Add(heroLogic);
                 heroRender.SetLogicObject(heroLogic);
                 heroRender.SetIsSelfPlayer(isSelfPlayer);
 
