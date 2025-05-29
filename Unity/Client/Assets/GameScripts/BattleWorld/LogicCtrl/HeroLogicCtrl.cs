@@ -55,7 +55,7 @@ namespace ZMGC.Battle {
                 var heroID = roleData.role_id;
                 var accountID = roleData.account_id;
                 bool isSelfPlayer = _userDataMgr.account_id == accountID;
-                bool isTeamLeader = _userDataMgr.account_id == _heroDataMgr.TeamLeader.account_id;
+                bool isTeamLeader = roleData.account_id == _heroDataMgr.TeamLeader.account_id;
                 var goHero = ZMAsset.Instantiate($"{AssetsPathConfig.Game_Hero_Prefabs}{heroID}.prefab", null);
                 var heroRender = goHero.GetComponent<HeroRender>();
                 goHero.name = $"lockstep_player_{heroID}_{roleData.role_name}";
@@ -72,6 +72,7 @@ namespace ZMGC.Battle {
                     LocalHeroLogic = heroLogic;
                 }
                 if (isTeamLeader) {
+                    Debug.LogError($"ChaseHeroLogic = heroLogic {heroLogic!=null}");
                     ChaseHeroLogic = heroLogic;
                 }
                 // HeroLogic = heroLogic;
