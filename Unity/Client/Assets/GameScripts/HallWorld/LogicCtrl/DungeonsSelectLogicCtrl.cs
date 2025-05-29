@@ -46,6 +46,7 @@ namespace ZMGC.Hall {
             });
             WorldManager.CreateWorld<BattleWorld>(() => { BattleWorld.GetExitsDataMgr<HeroDataMgr>().CacheBattleRoleList(msg.battle_role_datas, msg.team_leader); });
             UIModule.Instance.PopUpWindow<BattleWindow>();
+            UIModule.Instance.HideWindow<DungeonLoadingWindow>();
         }
 
         #endregion
