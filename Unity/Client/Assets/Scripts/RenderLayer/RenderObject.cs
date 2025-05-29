@@ -39,10 +39,6 @@ public class RenderObject : MonoBehaviour {
 
     #region public
 
-    public void SetIsSelfPlayer(bool isSelfPlayer) {
-        this._isSelfPlayer = isSelfPlayer;
-    }
-
     public void SetLogicObject(LogicObject logicObject, bool isUpdatePosAndDir = true) {
         this.LogicObject = logicObject;
         this._isUpdatePosAndDir = isUpdatePosAndDir;

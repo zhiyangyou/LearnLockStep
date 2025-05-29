@@ -11,6 +11,9 @@ public class HeroLogic : LogicActor {
 
     public long AccountID { get; private set; }
 
+
+    public bool IsSelfPlayer { get; private set; } = false;
+
     #endregion
 
     #region public
@@ -27,6 +30,10 @@ public class HeroLogic : LogicActor {
         InitAttribute();
     }
 
+    public void SetIsSelfPlayer(bool isSelfPlayer) {
+        isSelfPlayer = isSelfPlayer;
+    }
+    
     #endregion
 
     #region private
@@ -58,4 +65,6 @@ public class HeroLogic : LogicActor {
     }
 
     #endregion
+
+
 }

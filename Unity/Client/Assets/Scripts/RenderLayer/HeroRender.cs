@@ -155,7 +155,9 @@ public class HeroRender : RenderObject {
 
     private void TryInitJoyStick() {
         if (!_hasInitJoyStick) {
-            UIModule.Instance.GetWindow<BattleWindow>().uiCompt.StickJoystickUGUI.OnMoveCallBack = OnJoyStickMove;
+            if (heroLogic.IsSelfPlayer) {
+                UIModule.Instance.GetWindow<BattleWindow>().uiCompt.StickJoystickUGUI.OnMoveCallBack = OnJoyStickMove;
+            }
             _hasInitJoyStick = true;
         }
     }

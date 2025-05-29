@@ -38,20 +38,20 @@ public partial class Role_Hall : MonoBehaviour {
     }
 
 
-    private void OnEnable() {
-        // if (roleSource == RoleSource.Self)
-        {
-            UIModule.Instance.GetWindow<HallWindow>().uiCompt.RoleJoystickUGUI.OnMoveCallBack = OnJoyStick;
-        }
-    }
+    private void OnEnable() { }
 
     private void OnDisable() {
-        // if (roleSource == RoleSource.Self) 
-        {
+        if (roleSource == RoleSource.Self) {
             var hallWindow = UIModule.Instance.GetWindow<HallWindow>();
             if (hallWindow != null) {
                 hallWindow.uiCompt.RoleJoystickUGUI.OnMoveCallBack = null;
             }
+        }
+    }
+
+    private void InitJoyStickCallback(RoleSource roleType) {
+        if (roleSource == RoleSource.Self) {
+            UIModule.Instance.GetWindow<HallWindow>().uiCompt.RoleJoystickUGUI.OnMoveCallBack = OnJoyStick;
         }
     }
 

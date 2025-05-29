@@ -33,6 +33,7 @@ public partial class Role_Hall {
         this.roleSource = roleSource;
         this._roleID = roleID;
         _hallRoleLogicCtrl = HallWorld.GetExitsLogicCtrl<HallRoleLogicCtrl>();
+        InitJoyStickCallback(roleSource);
     }
 
 
