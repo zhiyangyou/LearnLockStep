@@ -1,5 +1,10 @@
+using System;
 using System.Collections.Generic;
+using Fantasy;
+using FixMath;
+using ServerShareToClient;
 using UnityEngine;
+using ZMGC.Hall;
 
 namespace ZMGC.Battle {
     /// <summary>
@@ -10,6 +15,10 @@ namespace ZMGC.Battle {
 
         private HeroLogicCtrl _heroLogicCtrl;
         private MonsterLogicCtrl _monsterLogicCtrl;
+        private BattleWorld _battleWorld;
+        private BattleDataMgr _battleDataMgr;
+        private BattleMsgMgr _battleMsgMgr;
+        private long _accountID = 0;
 
         #endregion
 
@@ -18,6 +27,13 @@ namespace ZMGC.Battle {
         public void OnCreate() {
             _heroLogicCtrl = BattleWorld.GetExitsLogicCtrl<HeroLogicCtrl>();
             _monsterLogicCtrl = BattleWorld.GetExitsLogicCtrl<MonsterLogicCtrl>();
+            _battleDataMgr = BattleWorld.GetExitsDataMgr<BattleDataMgr>();
+            _battleMsgMgr = BattleWorld.GetExitsMsgMgr<BattleMsgMgr>();
+            _battleWorld = WorldManager.DefaultGameWorld as BattleWorld;
+            _accountID = HallWorld.GetExitsDataMgr<UserDataMgr>().account_id;
+            if (_battleWorld == null) {
+                Debug.LogError("_battleWorld == null");
+            }
         }
 
         public void OnDestroy() { }
@@ -35,12 +51,78 @@ namespace ZMGC.Battle {
                 }
             }
             else if (selfType == LogicObjectType.Monster) {
-                listEnemy.AddRange(_heroLogicCtrl.ListHeroLogics);
+                listEnemy.AddRange(_heroLogicCtrl.ListHeroLogics.Values);
             }
             else {
                 Debug.LogError($"不支持的LogicType类型:{selfType}");
             }
             return listEnemy;
+        }
+
+        public void OnLogicFrameUpdateByServer(Msg_S2C_FrameOpEvent message) {
+            // 使用本地
+            if (LogicFrameConfig.UseLocalFrameUpdate) return;
+
+
+            LogicFrameConfig.ServerLogicFrameID = message.logic_frame_id;
+            _battleDataMgr.BattleState = BattleStateEnum.Start;
+            _battleDataMgr.BattleID = message.battle_id;
+
+            // 更新玩家输入
+            foreach (FrameOperateData frameOpData in message.frame_operate_datas) {
+                var accountID = frameOpData.account_id;
+                var heroLogic = _heroLogicCtrl.GetHeroLogic(accountID);
+                if (heroLogic != null) {
+                    heroLogic.LogicFrameEvent_NetInput(frameOpData);
+                    (heroLogic.RenderObject as HeroRender).CurInputDir = frameOpData.input_dir.ToFixIntVector3().ToVector3();
+                }
+            }
+
+            // 
+            _battleWorld.OnLigicFrameUpdate();
+        }
+
+
+        public void FrameOP_MoveDataInput(FixIntVector3 inputDir) {
+            SendFrameOpData(EBattlePlayerOpType.InputMove, inputDir, 0, FixIntVector3.zero, EBattleOperateSkillType.None);
+        }
+
+        #endregion
+
+        #region private
+
+        private void SendFrameOpData(
+            EBattlePlayerOpType opType,
+            FixIntVector3 inputDir,
+            int skillID,
+            FixIntVector3 skillPos,
+            EBattleOperateSkillType skillType) {
+            if (_battleDataMgr.BattleState != BattleStateEnum.Start) {
+                return;
+            }
+            FrameOperateData opData = new FrameOperateData();
+            opData.operate_type = (int)opType;
+            opData.account_id = _accountID;
+            switch (opType) {
+                case EBattlePlayerOpType.None:
+                    break;
+                case EBattlePlayerOpType.InputMove:
+                    opData.input_dir = inputDir.ToCSVector3();
+                    // Debug.LogError($"SendFrameOpData input_dir:{opData.input_dir.ToStr()} inputDir:{inputDir}"); // TODO 太高频了!!!
+                    break;
+                case EBattlePlayerOpType.ReleaseSkill:
+                    opData.skillId = skillID;
+                    opData.skillPos = skillPos.ToCSVector3();
+                    opData.skillType = (int)skillType;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(opType), opType, null);
+            }
+
+            // TODO ??? 不应该是一次性收集多个, 然后统一发送吗??
+            _battleDataMgr.AddFrameOpData(opData);
+            _battleMsgMgr.SendMsg_FrameOpEvent(_battleDataMgr.BattleID, _battleDataMgr.ListFrameOpDatas);
+            _battleDataMgr.ClearFrameOpData();
         }
 
         #endregion

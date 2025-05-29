@@ -13,27 +13,6 @@ using Fantasy.Network;
 using Fantasy.Network.Interface;
 
 namespace ZMGC.Hall {
-    public class Handler_StartDungeonBattle : Message<Msg_StartDungeonBattle> {
-        protected override async FTask Run(Session session, Msg_StartDungeonBattle message) {
-            HallWorld.GetExitsLogicCtrl<DungeonsSelectLogicCtrl>().OnStartDungeon(message);
-            await FTask.CompletedTask;
-        }
-    }
-
-    public class Handler_LoadDungeonProgress : Message<Msg_LoadDungeonProgress> {
-        protected override async FTask Run(Session session, Msg_LoadDungeonProgress message) {
-            HallWorld.GetExitsLogicCtrl<DungeonsSelectLogicCtrl>().OnLoadDungeonProgress(message);
-            await FTask.CompletedTask;
-        }
-    }
-
-    public class Handler_EnterDungeon : Message<Msg_EnterDungeon> {
-        protected override async FTask Run(Session session, Msg_EnterDungeon message) {
-            HallWorld.GetExitsLogicCtrl<DungeonsSelectLogicCtrl>().OnEnterDungeon(message);
-            await FTask.CompletedTask;
-        }
-    }
-
     public class DungeonsSelectMsgMgr : IMsgBehaviour {
         public void OnCreate() { }
 

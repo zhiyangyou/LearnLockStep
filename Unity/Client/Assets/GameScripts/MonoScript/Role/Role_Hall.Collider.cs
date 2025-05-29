@@ -67,6 +67,7 @@ public partial class Role_Hall {
         var originMapType = mapCtrl.CurMap.MapType;
         var gotoMapType = mapEntry.GotoMapType;
         if (gotoMapType == MapType.Dungeons) {
+            ActiveMove(false);
             HallWorld.GetExitsMsgMgr<DungeonsSelectMsgMgr>().SendMessage_EnterDungeon(HallWorld.GetExitsDataMgr<TeamDataMgr>().TeamID, DungeonType.Demo);
         }
         else {

@@ -13,7 +13,12 @@ namespace ZMGC.Battle {
         // public HeroLogic HeroLogic { get; private set; }
         private HeroDataMgr _heroDataMgr = null;
         private UserDataMgr _userDataMgr = null;
-        public List<HeroLogic> ListHeroLogics { get; private set; } = null; // 所有玩家
+
+        /// <summary>
+        /// key: account_ID
+        /// </summary>
+        public Dictionary<long, HeroLogic> ListHeroLogics { get; private set; } = null; // 所有玩家
+
         public HeroLogic LocalHeroLogic { get; private set; } = null; // 本地玩家
         public HeroLogic ChaseHeroLogic { get; private set; } = null; // 被怪物跟踪的玩家
 
@@ -39,7 +44,8 @@ namespace ZMGC.Battle {
         #region public接口
 
         public void OnLogicFrameUpdate() {
-            foreach (var singleHero in ListHeroLogics) {
+            foreach (var kv in ListHeroLogics) {
+                var singleHero = kv.Value;
                 singleHero.OnLogicFrameUpdate();
             }
         }
@@ -54,7 +60,7 @@ namespace ZMGC.Battle {
                 var heroRender = goHero.GetComponent<HeroRender>();
                 goHero.name = $"lockstep_player_{heroID}_{roleData.role_name}";
                 HeroLogic heroLogic = new HeroLogic(heroID, accountID, heroRender);
-                ListHeroLogics.Add(heroLogic);
+                ListHeroLogics.Add(accountID, heroLogic);
                 heroRender.SetLogicObject(heroLogic);
                 heroRender.SetIsSelfPlayer(isSelfPlayer);
 
@@ -81,6 +87,14 @@ namespace ZMGC.Battle {
             if (ChaseHeroLogic == null) {
                 Debug.LogError("错误,没有怪物仇恨 玩家");
             }
+        }
+
+        public HeroLogic GetHeroLogic(long accountID) {
+            if (ListHeroLogics.TryGetValue(accountID, out var value)) {
+                return value;
+            }
+            Debug.LogError($"找不到玩家:{accountID}");
+            return null;
         }
 
         #endregion

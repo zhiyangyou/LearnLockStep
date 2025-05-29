@@ -1,6 +1,7 @@
 ﻿using System;
 using FixMath;
 using UnityEngine;
+using UnityEngine.Serialization;
 using ZMGC.Battle;
 
 public class HeroRender : RenderObject {
@@ -11,10 +12,13 @@ public class HeroRender : RenderObject {
     private const string kStrAniName_Idle2 = "Anim_Idle02";
     private const string kStrAniName_Run = "Anim_Run";
     private HeroLogic _heroLogic;
-    private Vector3 _curInputDir = Vector3.zero;
     private GameObject _goGuideEffect; // 技能引导特效对象
 
     private bool _hasInitJoyStick = false;
+
+    [NonSerialized] public Vector3 CurInputDir = Vector3.zero;
+    private BattleLogicCtrl _battleLogicCtrl = null;
+
     // 角色动画
     private Animation _ani;
 
@@ -79,10 +83,9 @@ public class HeroRender : RenderObject {
         _ani = GetComponent<Animation>();
         if (_ani == null) Debug.LogError("Hero Render 没有Animation组件");
         // UIModule.Instance.GetWindow<BattleWindow>().uiCompt.
-       
+        _battleLogicCtrl = BattleWorld.GetExitsLogicCtrl<BattleLogicCtrl>();
     }
 
-    
 
     public override void OnRelease() {
         UIModule.Instance.GetWindow<BattleWindow>().uiCompt.StickJoystickUGUI.OnMoveCallBack = null;
@@ -99,7 +102,7 @@ public class HeroRender : RenderObject {
         // 判断有没有在技能释放, 有技能释放,播放技能动画的动画片段
         if (!heroLogic.HasReleasingSkill) {
             // 判断摇杆是否有输入值, 如果没有,播放待机动画, 如果有播放跑步动画
-            PlayAni(_curInputDir is { x: 0f, z: 0f } ? kStrAniName_Idle2 : kStrAniName_Run);
+            PlayAni(CurInputDir is { x: 0f, z: 0f } ? kStrAniName_Idle2 : kStrAniName_Run);
         }
     }
 
@@ -137,9 +140,13 @@ public class HeroRender : RenderObject {
             logicDir.y = pos.y;
             logicDir.z = pos.z;
         }
-        _curInputDir = pos;
         if (heroLogic != null) {
-            heroLogic.LogicFrameEvent_Input(logicDir);
+            if (LogicFrameConfig.UseLocalFrameUpdate) {
+                heroLogic.LogicFrameEvent_LocalMoveInput(logicDir);
+            }
+            else {
+                _battleLogicCtrl.FrameOP_MoveDataInput(logicDir); // TODO 不能在这里调用, 频率太高了!
+            }
         }
         else {
             Debug.LogError("HeroLogic is null");
@@ -152,7 +159,7 @@ public class HeroRender : RenderObject {
             _hasInitJoyStick = true;
         }
     }
-    
+
     private void InitSkillGuide(int skillID) {
         if (_goGuideEffect == null) {
             Skill skill = _heroLogic.GetSkill(skillID);

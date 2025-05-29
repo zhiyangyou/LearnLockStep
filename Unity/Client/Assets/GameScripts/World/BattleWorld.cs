@@ -71,8 +71,8 @@ namespace ZMGC.Battle {
             BuffSystem.Instance.OnCreate();
             _accLogicRealTime = 0f;
             _nextLogicFrameTime = 0f;
-            
-            AudioController.GetInstance().PlayMusicFade($"{AssetsPathConfig.Game_Audio_Path}BG/jizhou.mp3",2f);
+
+            AudioController.GetInstance().PlayMusicFade($"{AssetsPathConfig.Game_Audio_Path}BG/jizhou.mp3", 2f);
         }
 
 
@@ -81,23 +81,23 @@ namespace ZMGC.Battle {
         /// </summary>
         public override void OnUpdate() {
             base.OnUpdate();
+
+
+            if (!LogicFrameConfig.UseLocalFrameUpdate) {
+                return;
+            }
+
             _accLogicRealTime += Time.deltaTime;
 
             // 当前逻辑帧时间大于下一个逻辑帧时间, 需要更新逻辑帧
             // 另外作用: 追帧 && 保证所有设备的逻辑帧的帧数的一致性
-            // 
             while (_accLogicRealTime > _nextLogicFrameTime) {
                 OnLigicFrameUpdate();
                 _nextLogicFrameTime += GameConstConfig.LogicFrameInterval;
-                // 逻辑帧ID 进行自增
-                LogicFrameConfig.LogicFrameID++;
+                LogicFrameConfig.LocalLogicFrameID++;
             }
 
             _logicDeltaTime = (_accLogicRealTime + GameConstConfig.LogicFrameInterval - _nextLogicFrameTime) / GameConstConfig.LogicFrameInterval;
-
-
-            // Debug.LogError($"{Time.frameCount}");
-          
         }
 
 

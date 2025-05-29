@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Fantasy;
 using FixMath;
 using ServerShareToClient;
 using UnityEngine;
@@ -38,7 +39,27 @@ public partial class LogicActor {
         }
     }
 
-    public void LogicFrameEvent_Input(FixIntVector3 inputDir) {
+
+    /// <summary>
+    /// 本地驱动的移动
+    /// </summary>
+    /// <param name="inputDir"></param>
+    public  void LogicFrameEvent_LocalMoveInput(FixIntVector3 inputDir) {
         _inputMoveDir = inputDir;
+    }
+
+    /// <summary>
+    /// 帧同步网络驱动的移动
+    /// </summary>
+    /// <param name="frameOpData"></param>
+    public void LogicFrameEvent_NetInput(FrameOperateData frameOpData) {
+        var opType = (EBattlePlayerOpType)frameOpData.operate_type;
+        if (opType == (EBattlePlayerOpType.InputMove)) {
+            LogicFrameEvent_LocalMoveInput(frameOpData.input_dir.ToFixIntVector3());
+            // Debug.LogError($"LogicFrameEvent_LocalMoveInput:{frameOpData.input_dir.ToFixIntVector3()}");
+        }
+        else if (opType == EBattlePlayerOpType.ReleaseSkill) {
+            Debug.LogError("TODO");
+        }
     }
 }

@@ -34,9 +34,10 @@ public partial class Role_Hall {
     #region private
 
     private void FixedUpdate() {
-        if (!_moveActive) {
+        if (!_moveActive  ) {
             return;
         }
+        // Debug.LogError($"!gameObject.activeInHierarchy{gameObject.activeInHierarchy}"); // TODO 进入地下城
         _syncStateCount++;
         if (_syncStateCount == GameConstConfig.MaxSyncStateCount) {
             _syncStateCount = 0;
@@ -53,7 +54,6 @@ public partial class Role_Hall {
                     input_dir = _inputDir.ToCSVector3(),
                     role_id = _roleID,
                     player_id = accountID,
-                    
                 };
                 _hallRoleLogicCtrl.SyncRoleState(syncData, _syncPackID);
                 _lastInput = _inputDir;
