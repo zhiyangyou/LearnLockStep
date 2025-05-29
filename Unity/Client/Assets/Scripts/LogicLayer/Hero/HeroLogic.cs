@@ -31,9 +31,9 @@ public class HeroLogic : LogicActor {
     }
 
     public void SetIsSelfPlayer(bool isSelfPlayer) {
-        isSelfPlayer = isSelfPlayer;
+        this.IsSelfPlayer = isSelfPlayer;
     }
-    
+
     #endregion
 
     #region private
@@ -65,6 +65,4 @@ public class HeroLogic : LogicActor {
     }
 
     #endregion
-
-
 }

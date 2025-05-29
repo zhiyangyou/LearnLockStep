@@ -74,7 +74,7 @@ namespace ZMGC.Battle {
                 var heroLogic = _heroLogicCtrl.GetHeroLogic(accountID);
                 if (heroLogic != null) {
                     heroLogic.LogicFrameEvent_NetInput(frameOpData);
-                    (heroLogic.RenderObject as HeroRender).CurInputDir = frameOpData.input_dir.ToFixIntVector3().ToVector3();
+                  
                 }
             }
 
@@ -84,6 +84,7 @@ namespace ZMGC.Battle {
 
 
         public void FrameOP_MoveDataInput(FixIntVector3 inputDir) {
+            // Debug.LogError($"inputDir:{inputDir}");
             SendFrameOpData(EBattlePlayerOpType.InputMove, inputDir, 0, FixIntVector3.zero, EBattleOperateSkillType.None);
         }
 

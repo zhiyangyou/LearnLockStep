@@ -44,7 +44,7 @@ public partial class LogicActor {
     /// 本地驱动的移动
     /// </summary>
     /// <param name="inputDir"></param>
-    public  void LogicFrameEvent_LocalMoveInput(FixIntVector3 inputDir) {
+    public void LogicFrameEvent_LocalMoveInput(FixIntVector3 inputDir) {
         _inputMoveDir = inputDir;
     }
 
@@ -56,6 +56,7 @@ public partial class LogicActor {
         var opType = (EBattlePlayerOpType)frameOpData.operate_type;
         if (opType == (EBattlePlayerOpType.InputMove)) {
             LogicFrameEvent_LocalMoveInput(frameOpData.input_dir.ToFixIntVector3());
+            ((HeroRender)RenderObject).CurInputDir = frameOpData.input_dir.ToFixIntVector3().ToVector3();
             // Debug.LogError($"LogicFrameEvent_LocalMoveInput:{frameOpData.input_dir.ToFixIntVector3()}");
         }
         else if (opType == EBattlePlayerOpType.ReleaseSkill) {

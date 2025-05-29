@@ -72,7 +72,7 @@ namespace ZMGC.Battle {
                     LocalHeroLogic = heroLogic;
                 }
                 if (isTeamLeader) {
-                    Debug.LogError($"ChaseHeroLogic = heroLogic {heroLogic!=null}");
+                    ChaseHeroLogic = heroLogic;
                     ChaseHeroLogic = heroLogic;
                 }
                 // HeroLogic = heroLogic;
