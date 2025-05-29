@@ -6,14 +6,18 @@ using UnityEngine;
 public class HeroLogic : LogicActor {
     #region 属性和字段
 
-    public int HeroId { get; private set; }
+    public int RoleID { get; private set; }
+
+
+    public long AccountID { get; private set; }
 
     #endregion
 
     #region public
 
-    public HeroLogic(int heroId, RenderObject renderObject) {
-        HeroId = heroId;
+    public HeroLogic(int roleID, long accountID, RenderObject renderObject) {
+        this.AccountID = accountID;
+        RoleID = roleID;
         RenderObject = renderObject;
         this.ObjectType = LogicObjectType.Hero;
     }
@@ -31,9 +35,9 @@ public class HeroLogic : LogicActor {
     /// 初始化属性
     /// </summary>
     private void InitAttribute() {
-        HeroDataCfg heroDataCfg = ConfigCenter.Instance.GetHeroCfgById(HeroId);
+        HeroDataCfg heroDataCfg = ConfigCenter.Instance.GetHeroCfgById(RoleID);
         if (heroDataCfg == null) {
-            Debug.LogError($"配置是空 heroID:{HeroId}");
+            Debug.LogError($"配置是空 heroID:{RoleID}");
             return;
         }
         this.hp = heroDataCfg.hp;

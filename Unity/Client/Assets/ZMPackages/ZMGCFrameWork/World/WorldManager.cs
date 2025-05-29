@@ -50,7 +50,7 @@ public class WorldManager
     /// 构建一个游戏世界
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public static void CreateWorld<T>() where T : World, new()
+    public static void CreateWorld<T>(Action buildWorldComplete  = null) where T : World, new()
     {
         if (string.Equals(CurWorldEnum.ToString(), typeof(T).Name))
         {
@@ -66,6 +66,7 @@ public class WorldManager
         //初始化当前游戏世界的程序集脚本
         TypeManager.InitlizateWorldAssemblies(world);
         CurWorldEnum = world.WorldEnum;
+        buildWorldComplete?.Invoke();
         world.OnCreate();
         mWorldList.Add(world);
         OnCreateWorldSuccessListener?.Invoke(CurWorldEnum);

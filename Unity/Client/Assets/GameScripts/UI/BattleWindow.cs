@@ -20,7 +20,7 @@ using ZMUIFrameWork;
 public class BattleWindow : WindowBase {
     #region 属性和字段
 
-    private HeroLogic _heroLogicActor = null;
+    private HeroLogic _localHeroLogicActor = null;
 
     private List<Transform> _listSkillItemTr = new();
     private List<SkillItem> _listSkillItemCompt = new();
@@ -52,7 +52,7 @@ public class BattleWindow : WindowBase {
     //物体显示时执行
     public override void OnShow() {
         base.OnShow();
-        _heroLogicActor = BattleWorld.GetExitsLogicCtrl<HeroLogicCtrl>().HeroLogic;
+        _localHeroLogicActor = BattleWorld.GetExitsLogicCtrl<HeroLogicCtrl>().LocalHeroLogic;
 
         var heroID = HallWorld.GetExitsDataMgr<UserDataMgr>().CurSelectRoleID;
         // 遍历角色技能数组, 生成对应的技能按钮
@@ -63,7 +63,7 @@ public class BattleWindow : WindowBase {
                 Debug.LogError("技能数组越界, BattleWindow上没有准备那么多skill位置");
                 break;
             }
-            var skill = _heroLogicActor.GetSkill(skillID);
+            var skill = _localHeroLogicActor.GetSkill(skillID);
             if (skill == null) {
                 Debug.LogError($"错误的skill ID:{skillID} 技能系统中没有初始化这个实例");
                 continue;
@@ -74,7 +74,7 @@ public class BattleWindow : WindowBase {
             goSkillItem.transform.rotation = Quaternion.identity;
             var skillItemCompt = goSkillItem.GetComponent<SkillItem>();
             _listSkillItemCompt.Add(skillItemCompt);
-            skillItemCompt.SetItemSkillData(_heroLogicActor.GetSkill(skillID), _heroLogicActor);
+            skillItemCompt.SetItemSkillData(_localHeroLogicActor.GetSkill(skillID), _localHeroLogicActor);
         }
         // 获取角色id数组
     }
@@ -143,7 +143,7 @@ public class BattleWindow : WindowBase {
     #region UI组件事件
 
     public void OnNormalAttackButtonClick() {
-        _heroLogicActor.ReleaseNormalAttack(); //  普通攻击技能
+        _localHeroLogicActor.ReleaseNormalAttack(); //  普通攻击技能
     }
 
     #endregion

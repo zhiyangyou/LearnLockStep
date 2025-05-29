@@ -41,7 +41,7 @@ public class MonsterLogic : LogicActor {
     public override void OnCreate() {
         base.OnCreate();
         InitAttribute();
-        _chaseTarget = BattleWorld.GetExitsLogicCtrl<HeroLogicCtrl>().HeroLogic;
+        _chaseTarget = BattleWorld.GetExitsLogicCtrl<HeroLogicCtrl>().ChaseHeroLogic;
     }
 
     public override void OnHit(GameObject goEffect, int survialTimeMS, LogicObject sourceObj, FixInt logicAxisX) {

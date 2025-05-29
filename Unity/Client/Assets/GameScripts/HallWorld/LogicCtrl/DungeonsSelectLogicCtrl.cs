@@ -41,7 +41,7 @@ namespace ZMGC.Hall {
         public void OnStartDungeon(Msg_StartDungeonBattle msg) {
             Debug.LogError("开始地下城");
             UIModule.Instance.DestroyAllWindow();
-            WorldManager.CreateWorld<BattleWorld>();
+            WorldManager.CreateWorld<BattleWorld>(() => { BattleWorld.GetExitsDataMgr<HeroDataMgr>().CacheBattleRoleList(msg.battle_role_datas, msg.team_leader); });
             UIModule.Instance.PopUpWindow<BattleWindow>();
         }
 

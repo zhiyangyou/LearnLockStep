@@ -8,16 +8,20 @@
 ----------------------------------------------------------------------------------------*/
 
 using System.Collections.Generic;
+using Fantasy;
+using UnityEngine;
 
 namespace ZMGC.Battle {
     /// <summary>
     /// 英雄相关的数据
     /// </summary>
     public class HeroDataMgr : IDataBehaviour {
+        #region 属性和字段
+
         /// <summary>
         /// 普通攻击技能
         /// </summary>
-        public Dictionary<int, int[]> heroNormalSkillCfgDic = new Dictionary<int, int[]>() {
+        private Dictionary<int, int[]> heroNormalSkillCfgDic = new Dictionary<int, int[]>() {
             { HeroIDConfig.HeroID_鬼剑士, new int[] { 1001, 1002, 1003 } }, // 鬼剑士
             { HeroIDConfig.HeroID_神枪手, new int[] { 3001, 3002, 3003, 3004, } }, // 神枪手
         };
@@ -25,7 +29,7 @@ namespace ZMGC.Battle {
         /// <summary>
         /// 普通技能
         /// </summary>
-        public Dictionary<int, int[]> heroSkillCfgDic = new() {
+        private Dictionary<int, int[]> heroSkillCfgDic = new() {
             {
                 HeroIDConfig.HeroID_鬼剑士, new int[] {
                     1004, // 上挑
@@ -50,6 +54,19 @@ namespace ZMGC.Battle {
             }
         };
 
+        public List<RoleData> battleRoleDatas { get; private set; }
+        public RoleData TeamLeader { get; private set; }
+
+        #endregion
+
+
+        #region public
+
+        public void CacheBattleRoleList(List<RoleData> battleRoleDatas, RoleData teamLeader) {
+            this.battleRoleDatas = battleRoleDatas;
+            TeamLeader = teamLeader;
+        }
+
         public void OnCreate() { }
 
         public void OnDestroy() { }
@@ -72,5 +89,7 @@ namespace ZMGC.Battle {
         public int[] GetHeroSkillIDs(int heroID) {
             return heroSkillCfgDic[heroID];
         }
+
+        #endregion
     }
 }

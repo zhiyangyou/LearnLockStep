@@ -20,6 +20,11 @@ public class RenderObject : MonoBehaviour {
     protected Vector2 _renderDir = Vector2.zero;
     private bool _isUpdatePosAndDir = true;
 
+    /// <summary>
+    /// 是自己吗?
+    /// </summary>
+    private bool _isSelfPlayer = false;
+
     #endregion
 
     #region life-cycle
@@ -33,6 +38,10 @@ public class RenderObject : MonoBehaviour {
     #endregion
 
     #region public
+
+    public void SetIsSelfPlayer(bool isSelfPlayer) {
+        this._isSelfPlayer = isSelfPlayer;
+    }
 
     public void SetLogicObject(LogicObject logicObject, bool isUpdatePosAndDir = true) {
         this.LogicObject = logicObject;

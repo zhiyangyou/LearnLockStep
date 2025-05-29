@@ -41,7 +41,7 @@ public partial class Skill {
                     // 技能特效逻辑层
                     SkillEffectLogic skillEffectLogic = new SkillEffectLogic(
                         LogicObjectType.Effect, effectConfig, effectRender, _skillCreater, this);
-                    effectRender.SetLogicObject(skillEffectLogic, effectConfig.effectPosType != EffectPosType.Zero);
+                    effectRender.SetLogicObject(skillEffectLogic);
 
                     // 生命周期维护
                     _dicEffectLogics.Add(effectConfigHashCode, skillEffectLogic);

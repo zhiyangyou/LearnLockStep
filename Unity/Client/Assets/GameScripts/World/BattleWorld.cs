@@ -97,13 +97,7 @@ namespace ZMGC.Battle {
 
 
             // Debug.LogError($"{Time.frameCount}");
-            // 测试脚本
-            {
-                if (Input.GetKeyDown(KeyCode.Q)) {
-                    BattleWorld.GetExitsLogicCtrl<HeroLogicCtrl>().HeroLogic.velicity = FixIntVector3.up * 4;
-                    BattleWorld.GetExitsLogicCtrl<HeroLogicCtrl>().HeroLogic.isAddForce = true;
-                }
-            }
+          
         }
 
 

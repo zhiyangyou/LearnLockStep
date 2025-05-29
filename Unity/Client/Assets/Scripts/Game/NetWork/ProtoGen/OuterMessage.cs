@@ -563,6 +563,7 @@ namespace Fantasy
 		public override void Dispose()
 		{
 			battle_role_datas.Clear();
+			team_leader = default;
 #if FANTASY_NET || FANTASY_UNITY
 			GetScene().MessagePoolComponent.Return<Msg_StartDungeonBattle>(this);
 #endif
@@ -570,6 +571,8 @@ namespace Fantasy
 		public uint OpCode() { return OuterOpcode.Msg_StartDungeonBattle; }
 		[ProtoMember(1)]
 		public List<RoleData> battle_role_datas = new List<RoleData>();
+		[ProtoMember(2)]
+		public RoleData team_leader { get; set; }
 	}
 	[ProtoContract]
 	public partial class StateSyncData : AMessage, IProto
