@@ -7,6 +7,7 @@
 * 注意:以下文件为自动生成，强制再次生成将会覆盖
 ----------------------------------------------------------------------------------------*/
 
+using System.Collections.Generic;
 using Fantasy;
 using Fantasy.Async;
 using Fantasy.Network;
@@ -40,7 +41,9 @@ namespace ZMGC.Hall {
 
         public void OnStartDungeon(Msg_StartDungeonBattle msg) {
             Debug.LogError("开始地下城");
-            UIModule.Instance.DestroyAllWindow();
+            UIModule.Instance.DestroyAllWindow( new List<string>() {
+                nameof(DungeonLoadingWindow)
+            });
             WorldManager.CreateWorld<BattleWorld>(() => { BattleWorld.GetExitsDataMgr<HeroDataMgr>().CacheBattleRoleList(msg.battle_role_datas, msg.team_leader); });
             UIModule.Instance.PopUpWindow<BattleWindow>();
         }
