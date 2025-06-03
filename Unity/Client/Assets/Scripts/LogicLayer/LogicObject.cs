@@ -15,10 +15,14 @@ public abstract class LogicObject {
     private bool _isActive; // 是否激活
     private bool _isForceAllowMove; // 是否强制允许移动
     private bool _isForceNotAllowModifyDir; // 是否强制不允许修改位置
+    public bool hasNewLogicPos = false;
 
     public FixIntVector3 LogicPos {
         get { return _logicPos; }
-        set { _logicPos = value; }
+        set {
+            _logicPos = value;
+            hasNewLogicPos = true;
+        }
     }
 
     public FixIntVector3 LogicDir {

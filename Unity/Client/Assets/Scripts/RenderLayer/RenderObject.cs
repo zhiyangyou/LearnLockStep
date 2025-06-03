@@ -21,9 +21,19 @@ public class RenderObject : MonoBehaviour {
     private bool _isUpdatePosAndDir = true;
 
     /// <summary>
-    /// 是自己吗?
+    /// 是本地玩家吗?
     /// </summary>
-    private bool _isSelfPlayer = false;
+    private bool _isLocalPlayer = false;
+
+    /// <summary>
+    /// 预测的位置
+    /// </summary>
+    private Vector3 _preTargetPos;
+
+    /// <summary>
+    /// 预测的次数
+    /// </summary>
+    private int _curPreMoveCount = 0;
 
     #endregion
 
@@ -100,7 +110,30 @@ public class RenderObject : MonoBehaviour {
     /// 通用逻辑:更新位置
     /// </summary>
     public virtual void UpdatePosition() {
-        transform.position = Vector3.Lerp(transform.position, LogicObject.LogicPos.ToVector3(), Time.deltaTime * _smoothPosSpeed);
+        // 本地预测和回滚
+        if (_isLocalPlayer) {
+            if (_isUpdatePosAndDir) {
+                if (LogicObject.hasNewLogicPos) {
+                    _preTargetPos = LogicObject.LogicPos.ToVector3();
+                    LogicObject.hasNewLogicPos = false;
+                    _curPreMoveCount = 0; // 真正的逻辑位置从网络到达, 
+                }
+            }
+            else {
+                // 进行预测
+                if (_curPreMoveCount >= LogicFrameConfig.MaxPreMoveCount) {
+                    return;
+                }
+                // 计算预测位置的增量
+                Vector3 deltaPos = LogicObject.LogicDir.ToVector3() * LogicObject.LogicMoveSpeed.RawFloat * Time.deltaTime;
+                _preTargetPos += deltaPos;
+                _curPreMoveCount++;
+            }
+            transform.position = Vector3.Lerp(transform.position, _preTargetPos, Time.deltaTime * _smoothPosSpeed);
+        }
+        else {
+            transform.position = Vector3.Lerp(transform.position, LogicObject.LogicPos.ToVector3(), Time.deltaTime * _smoothPosSpeed);
+        }
     }
 
     /// <summary>
