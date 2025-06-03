@@ -21,18 +21,25 @@ public partial class LogicActor {
     private void HanlderNetInput_Skill(FrameOperateData frameOpData) {
         // 处理多种类型技能的释放
         var skillType = (EBattleOperateSkillType)frameOpData.skillType;
+        var releaseSkillContextID = frameOpData.frame_op_context_object_id;
+        var contextObj = _battleLogicCtrl.LoadContextObj(releaseSkillContextID);
+        OnReleaseSkillResult onReleaseSkillResult = contextObj as OnReleaseSkillResult;
         switch (skillType) {
-            case EBattleOperateSkillType.None:
-                break;
             case EBattleOperateSkillType.ClickSkill:
-                ReleaseSkill(frameOpData.skillId, null);
+                ReleaseSkill(frameOpData.skillId, onReleaseSkillResult);
                 break;
             case EBattleOperateSkillType.GuideSkill:
+                ReleaseSkill(frameOpData.skillId, onReleaseSkillResult, frameOpData.skillPos.ToFixIntVector3());
                 break;
-            case EBattleOperateSkillType.StockPileTriggerSkill:
+            case EBattleOperateSkillType.StockPileTriggerSkill_Begin:
+                TriggerStockPileSkill(frameOpData.skillId);
+                break;
+            case EBattleOperateSkillType.StockPileTriggerSkill_End:
+                ReleaseSkill(frameOpData.skillId, onReleaseSkillResult);
                 break;
             default:
-                throw new ArgumentOutOfRangeException();
+                Debug.LogError($"尚未被实现的技能类型:{skillType}");
+                break;
         }
     }
 

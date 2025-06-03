@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using FixMath;
 using ServerShareToClient;
 using UnityEngine;
@@ -6,6 +7,8 @@ using UnityEngine;
 namespace ZMGC.Battle {
     public class BattleWorld : World {
         #region 属性和字段
+
+
 
         /// <summary>
         /// 逻辑帧累计运行时间
@@ -58,7 +61,6 @@ namespace ZMGC.Battle {
         #endregion
 
         #region life-cycle
-
         public override void OnCreate() {
             Debug.Log("节约笔记本性能, 限制帧率60");
             Application.targetFrameRate = 60;

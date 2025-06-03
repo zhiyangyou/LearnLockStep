@@ -6,6 +6,7 @@ using ServerShareToClient;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using ZMGC.Battle;
 
 public class SkillItem : MonoBehaviour {
     #region 属性和字段
@@ -23,6 +24,8 @@ public class SkillItem : MonoBehaviour {
     private long _enterCDLogicFrame = 0;
     private float _cdTimeS = 0f;
 
+    private BattleLogicCtrl _battleLogicCtrl = null;
+
     #endregion
 
     #region life-cycle
@@ -39,6 +42,7 @@ public class SkillItem : MonoBehaviour {
     /// <param name="skillConfig"></param>
     /// <param name="skillCreater"></param>
     public void SetItemSkillData(Skill skillData, LogicActor skillCreater) {
+        _battleLogicCtrl = BattleWorld.GetExitsLogicCtrl<BattleLogicCtrl>();
         _skillCreater = skillCreater;
         _skillData = skillData;
         _heroRender = skillCreater.RenderObject as HeroRender;
@@ -101,7 +105,12 @@ public class SkillItem : MonoBehaviour {
         // Debug.LogError($"Skill Guide ... {skillguide}");
         if (skillguide == SKillGuideType.LongPress) {
             // Debug.LogError($"OnSkillGuide long press 触发{skillid} {Time.frameCount} ");
-            _skillCreater.ReleaseSkill(skillId, OnReleaseSkillResult);
+            if (LogicFrameConfig.UseLocalFrameUpdate) {
+                _skillCreater.ReleaseSkill(skillId, OnReleaseSkillResult);
+            }
+            else {
+                _battleLogicCtrl.ReleaseSkillInput(skillId, FixIntVector3.zero, EBattleOperateSkillType.StockPileTriggerSkill_End, OnReleaseSkillResult);
+            }
         }
         else if (skillguide == SKillGuideType.Position) {
             _heroRender.UpdateSkillGuide(SKillGuideType.Position, skillId, isPress, skillPos, skilldirdis);
@@ -119,27 +128,39 @@ public class SkillItem : MonoBehaviour {
         switch (skillguide) {
             case SKillGuideType.Click: {
                 // Debug.LogError($"触发 click 技能:{skillid}");
-                _skillCreater.ReleaseSkill(skillId, OnReleaseSkillResult);
+                if (LogicFrameConfig.UseLocalFrameUpdate) {
+                    _skillCreater.ReleaseSkill(skillId, OnReleaseSkillResult);
+                }
+                else {
+                    _battleLogicCtrl.ReleaseSkillInput(skillId, FixIntVector3.zero, EBattleOperateSkillType.ClickSkill, OnReleaseSkillResult);
+                }
             }
                 break;
             case SKillGuideType.LongPress: {
                 // Debug.LogError($"触发 蓄力技能:{skillid} {Time.frameCount} ");
-                _skillCreater.TriggerStockPileSkill(skillId);
+                if (LogicFrameConfig.UseLocalFrameUpdate) {
+                    _skillCreater.TriggerStockPileSkill(skillId);
+                }
+                else {
+                    _battleLogicCtrl.ReleaseSkillInput(skillId, FixIntVector3.zero, EBattleOperateSkillType.StockPileTriggerSkill_Begin, OnReleaseSkillResult);
+                }
             }
                 break;
             case SKillGuideType.Position: {
                 skillPos.y = 0; // 确保引导的位置在地面上
-                _skillCreater.ReleaseSkill(skillId, OnReleaseSkillResult, _skillCreater.LogicPos + new FixIntVector3(skillPos));
-                // Debug.LogError("TODO 引导位置技能 释放");
+                var guidePos = _skillCreater.LogicPos + new FixIntVector3(skillPos);
+                if (LogicFrameConfig.UseLocalFrameUpdate) {
+                    _skillCreater.ReleaseSkill(skillId, OnReleaseSkillResult, guidePos);
+                }
+                else {
+                    _battleLogicCtrl.ReleaseSkillInput(skillId, guidePos, EBattleOperateSkillType.GuideSkill, OnReleaseSkillResult);
+                }
                 _heroRender.OnGuideRelease();
             }
                 break;
-            case SKillGuideType.Dirction:
-                Debug.LogError("TODO 引导方向");
-                break;
             default:
-            case SKillGuideType.None:
-                throw new ArgumentOutOfRangeException(nameof(skillguide), skillguide, null);
+                Debug.LogError("尚未实现的技能类型");
+                break;
         }
     }
 

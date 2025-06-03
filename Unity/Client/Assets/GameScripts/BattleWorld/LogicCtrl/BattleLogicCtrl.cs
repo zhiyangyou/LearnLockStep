@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using Fantasy;
 using FixMath;
@@ -12,6 +13,20 @@ namespace ZMGC.Battle {
     /// </summary>
     public class BattleLogicCtrl : ILogicBehaviour {
         #region 属性字段
+
+        private object lockObjReleaseSkillUniqueID = new();
+        private long _GetUniqueID_FrameEventOpContextObj = 0;
+
+        public long GetUniqueID_FrameEventOpContext {
+            get {
+                lock (lockObjReleaseSkillUniqueID) {
+                    _GetUniqueID_FrameEventOpContextObj++;
+                }
+                return _GetUniqueID_FrameEventOpContextObj;
+            }
+        }
+
+        private ConcurrentDictionary<long, object> _dicAllContextObjs = new();
 
         private HeroLogicCtrl _heroLogicCtrl;
         private MonsterLogicCtrl _monsterLogicCtrl;
@@ -29,14 +44,16 @@ namespace ZMGC.Battle {
             _monsterLogicCtrl = BattleWorld.GetExitsLogicCtrl<MonsterLogicCtrl>();
             _battleDataMgr = BattleWorld.GetExitsDataMgr<BattleDataMgr>();
             _battleMsgMgr = BattleWorld.GetExitsMsgMgr<BattleMsgMgr>();
-            _battleWorld = WorldManager.DefaultGameWorld as BattleWorld;
             _accountID = HallWorld.GetExitsDataMgr<UserDataMgr>().account_id;
+            _battleWorld = WorldManager.DefaultGameWorld as BattleWorld;
             if (_battleWorld == null) {
                 Debug.LogError("_battleWorld == null");
             }
         }
 
-        public void OnDestroy() { }
+        public void OnDestroy() {
+            ResetContexts();
+        }
 
 
         /// <summary>
@@ -93,20 +110,39 @@ namespace ZMGC.Battle {
         /// </summary>
         /// <param name="skillID"></param>
         /// <param name="guidePos">引导位置</param>
-        public void ReleaseSkillInput(int skillID, FixIntVector3 guidePos, EBattleOperateSkillType skillType) {
-            SendFrameOpData(EBattlePlayerOpType.ReleaseSkill, FixIntVector3.zero, skillID, guidePos,skillType);
+        public void ReleaseSkillInput(int skillID, FixIntVector3 guidePos, EBattleOperateSkillType skillType, OnReleaseSkillResult followContextObj) {
+            var releaseSkillContextID = Save(followContextObj);
+            SendFrameOpData(EBattlePlayerOpType.ReleaseSkill, FixIntVector3.zero, skillID, guidePos, skillType, releaseSkillContextID);
         }
 
         #endregion
 
         #region private
 
+        public void ResetContexts() {
+            this._GetUniqueID_FrameEventOpContextObj = 0;
+            _dicAllContextObjs.Clear();
+        }
+
+        public long Save(object objContext) {
+            var uniqueID = GetUniqueID_FrameEventOpContext;
+            _dicAllContextObjs.TryAdd(uniqueID, objContext);
+            return uniqueID;
+        }
+
+        public object LoadContextObj(long uniqueID) {
+            _dicAllContextObjs.TryRemove(uniqueID, out var ret);
+            return ret;
+        }
+
         private void SendFrameOpData(
             EBattlePlayerOpType opType,
             FixIntVector3 inputDir,
             int skillID,
             FixIntVector3 skillPos,
-            EBattleOperateSkillType skillType) {
+            EBattleOperateSkillType skillType,
+            long releaseSkillContextID = 0
+        ) {
             if (_battleDataMgr.BattleState != BattleStateEnum.Start) {
                 return;
             }
@@ -124,6 +160,7 @@ namespace ZMGC.Battle {
                     opData.skillId = skillID;
                     opData.skillPos = skillPos.ToCSVector3();
                     opData.skillType = (int)skillType;
+                    opData.frame_op_context_object_id = releaseSkillContextID;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(opType), opType, null);

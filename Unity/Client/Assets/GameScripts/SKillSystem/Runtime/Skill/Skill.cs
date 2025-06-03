@@ -5,6 +5,7 @@ using FixMath;
 using ServerShareToClient;
 using UnityEngine;
 using ZM.ZMAsset;
+using ZMGC.Battle;
 
 
 public delegate void SkillCallback_OnAfter(Skill skill);
@@ -52,6 +53,8 @@ public partial class Skill {
 
     private int _curLogicFrameAccTimeMS = 0;
 
+    private BattleLogicCtrl _battleLogicCtrl = null;
+
     /// <summary>
     /// 预释放ID
     /// </summary>
@@ -77,6 +80,7 @@ public partial class Skill {
         var configPath = $"{AssetsPathConfig.Skill_Data_Path}{skillId}.asset";
         _skillConfigSo = ZMAsset.LoadScriptableObject<SkillConfigSO>(configPath);
         CheckNextIDMutex();
+        _battleLogicCtrl = BattleWorld.GetExitsLogicCtrl<BattleLogicCtrl>();
     }
 
     /// <summary>
@@ -284,7 +288,12 @@ public partial class Skill {
         }
         else {
             // Debug.LogError($"蓄力结束: 阶段id{stageData.skillId} skillid:{stageData.skillId}");
-            _skillCreater.ReleaseSkill(stageData.skillId, null);
+            if (LogicFrameConfig.UseLocalFrameUpdate) {
+                _skillCreater.ReleaseSkill(stageData.skillId, null);
+            }
+            else {
+                _battleLogicCtrl.ReleaseSkillInput(stageData.skillId, FixIntVector3.zero, EBattleOperateSkillType.StockPileTriggerSkill_End, null);
+            }
         }
     }
 

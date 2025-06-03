@@ -3,11 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using FixMath;
+using Palmmedia.ReportGenerator.Core.Reporting.Builders;
 using ServerShareToClient;
 using UnityEngine;
 using ZMGC.Battle;
 using ZMGC.Hall;
 
+
+public delegate void OnReleaseSkillResult(bool isSuccess);
 public partial class LogicActor {
     #region 属性和字段
 
@@ -69,7 +72,7 @@ public partial class LogicActor {
             ReleaseSkill(skillID, null);
         }
         else {
-            _battleLogicCtrl.ReleaseSkillInput(skillID, FixIntVector3.zero, EBattleOperateSkillType.ClickSkill); // 普通攻击是点击触发
+            _battleLogicCtrl.ReleaseSkillInput(skillID, FixIntVector3.zero, EBattleOperateSkillType.ClickSkill,null); // 普通攻击是点击触发
         }
     }
 
@@ -78,7 +81,7 @@ public partial class LogicActor {
         return _normalAttackSkillArr.Contains(skillID);
     }
 
-    public void ReleaseSkill(int skillID, Action<bool> onReleaseSkillResult, FixIntVector3 guidePos = default(FixIntVector3)) {
+    public void ReleaseSkill(int skillID, OnReleaseSkillResult onReleaseSkillResult, FixIntVector3 guidePos = default(FixIntVector3)) {
         var releasingSkill = _skillSystem.ReleaseSkill(skillID, guidePos,
             SkillCallback_OnAfter, (skill) => {
                 SkillCallback_OnEnd(skill);
