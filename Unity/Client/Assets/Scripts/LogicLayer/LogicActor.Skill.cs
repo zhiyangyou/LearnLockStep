@@ -149,7 +149,7 @@ public partial class LogicActor {
     /// 逻辑帧: 技能
     /// </summary>
     private void OnLogicFrameUpdate_Skill() {
-        _skillSystem.OnLogicFrameUpdate();
+        _skillSystem?.OnLogicFrameUpdate();
     }
 
     /// <summary>
