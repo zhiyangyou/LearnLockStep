@@ -31,7 +31,7 @@ namespace ZMGC.Hall {
             if (msg.teamMembers == null || msg.teamMembers.Count == 0) {
                 ToastManager.ShowToast("进入地下城失败, 队伍不存在");
             }
-
+            Debug.LogError($"进入地下城:{msg.teamMembers.Count}");
             HallWorld.EnterBattleWorld(msg.teamMembers);
         }
 

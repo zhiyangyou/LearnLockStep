@@ -51,6 +51,8 @@ public class DungeonLoadingWindow : WindowBase {
         UIEventControl.RemoveEvent(UIEventEnum.SceneProgressUpdate, OnSceneProgressUpdate);
         foreach (DungeonLoadingItem item in mItemList)
             item.OnRelease();
+        mItemList.Clear();
+        Debug.LogError($"hide loading  {mItemList.Count}");
     }
 
     //物体销毁时执行

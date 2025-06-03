@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 384806492106972740}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: OrignBuff
   m_TagString: Dummy
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099509217173116}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone28
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099512200980892}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone09
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099512058912700}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Orign
   m_TagString: Dummy
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099509129694738}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone34
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099510815234950}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099513102674720}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone42
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099511433957646}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: OverHead
   m_TagString: Dummy
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099510277154132}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,7 +297,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099517546220578}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,7 +329,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099510342366202}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_K_All
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -361,7 +361,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099511371328376}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone29
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -393,7 +393,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099509656263668}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,7 +425,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099512245921412}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone40
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -456,7 +456,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099510457841278}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone33
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -488,7 +488,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099510772081388}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone37
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -519,7 +519,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099511681557174}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -551,7 +551,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099509917878402}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone43
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -582,7 +582,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099509156792288}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone26
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -615,7 +615,7 @@ GameObject:
   m_Component:
   - component: {fileID: 381099509192252760}
   - component: {fileID: 333656465387814522}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Monster_Zhizhu_zhizhu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -735,7 +735,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099510965488204}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -767,7 +767,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099510147732780}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -798,7 +798,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099512205724862}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -830,7 +830,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099512411156958}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -862,7 +862,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099511437969186}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone38
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -893,7 +893,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099511532705848}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -925,7 +925,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099510811426460}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -957,7 +957,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099510215955554}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -989,7 +989,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099512368599260}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1021,7 +1021,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099510671867790}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone32
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1053,7 +1053,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099509208735268}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Dummy
   m_Icon: {fileID: 0}
@@ -1084,7 +1084,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099511936881218}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1119,7 +1119,7 @@ GameObject:
   - component: {fileID: 345684421706502810}
   - component: {fileID: 2462808623892496371}
   - component: {fileID: 495407042862513557}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 20006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1196,6 +1196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mConter: {x: 0, y: 0.6, z: 0}
   mSize: {x: 1.7, y: 1.3, z: 1.3}
+  needDraw: 1
 --- !u!114 &495407042862513557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1217,7 +1218,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099512103592344}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1250,7 +1251,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099510512486030}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone41
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1281,7 +1282,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099511098232120}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_BoneAll
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1313,7 +1314,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099509492957364}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1345,7 +1346,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099511495090924}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone39
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1376,7 +1377,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099510374120164}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1408,7 +1409,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099510161069896}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone36
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1440,7 +1441,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099510651509612}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1471,7 +1472,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099517243972114}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1511,7 +1512,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099509102087668}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1542,7 +1543,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381099512801995064}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zhizhu_Bone30
   m_TagString: Untagged
   m_Icon: {fileID: 0}

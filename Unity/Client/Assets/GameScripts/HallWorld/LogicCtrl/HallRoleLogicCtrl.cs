@@ -107,7 +107,7 @@ namespace ZMGC.Hall {
         // ReSharper disable Unity.PerformanceAnalysis
         private Role_Hall InitRoleGameObject(string goName, GameObject goRole) {
             goRole.SetActive(true);
-            goRole.ChangeGoLayer(LayerMask.NameToLayer("World"));
+            goRole.ChangeGoLayer(LayerMask.NameToLayer("Hall"));
             goRole.name = goName;
             Role_Hall roleHall = goRole.GetComponent<Role_Hall>();
             if (roleHall == null) {
