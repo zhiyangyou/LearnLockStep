@@ -90,6 +90,7 @@ namespace ZMGC.Battle {
                 var accountID = frameOpData.account_id;
                 var heroLogic = _heroLogicCtrl.GetHeroLogic(accountID);
                 if (heroLogic != null) {
+                    Debug.LogError($"accountID:{accountID}");
                     heroLogic.LogicFrameEvent_NetInput(frameOpData);
                 }
             }

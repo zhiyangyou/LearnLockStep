@@ -27,6 +27,7 @@ public class HeroLogic : LogicActor {
 
     public override void OnCreate() {
         base.OnCreate();
+        InitActorSkill(this.RoleID);
         InitAttribute();
     }
 

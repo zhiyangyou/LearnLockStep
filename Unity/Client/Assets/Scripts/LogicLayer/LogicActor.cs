@@ -9,7 +9,6 @@ public partial class LogicActor : LogicObject {
 
     public override void OnCreate() {
         base.OnCreate();
-        InitActorSkill();
         _battleLogicCtrl = BattleWorld.GetExitsLogicCtrl<BattleLogicCtrl>();
     }
 
