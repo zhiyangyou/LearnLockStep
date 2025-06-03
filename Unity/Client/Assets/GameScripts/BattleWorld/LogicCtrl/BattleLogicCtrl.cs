@@ -74,7 +74,6 @@ namespace ZMGC.Battle {
                 var heroLogic = _heroLogicCtrl.GetHeroLogic(accountID);
                 if (heroLogic != null) {
                     heroLogic.LogicFrameEvent_NetInput(frameOpData);
-                  
                 }
             }
 
@@ -86,6 +85,16 @@ namespace ZMGC.Battle {
         public void FrameOP_MoveDataInput(FixIntVector3 inputDir) {
             // Debug.LogError($"inputDir:{inputDir}");
             SendFrameOpData(EBattlePlayerOpType.InputMove, inputDir, 0, FixIntVector3.zero, EBattleOperateSkillType.None);
+        }
+
+
+        /// <summary>
+        /// 释放技能的输入
+        /// </summary>
+        /// <param name="skillID"></param>
+        /// <param name="guidePos">引导位置</param>
+        public void ReleaseSkillInput(int skillID, FixIntVector3 guidePos, EBattleOperateSkillType skillType) {
+            SendFrameOpData(EBattlePlayerOpType.ReleaseSkill, FixIntVector3.zero, skillID, guidePos,skillType);
         }
 
         #endregion

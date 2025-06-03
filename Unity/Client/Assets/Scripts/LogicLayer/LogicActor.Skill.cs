@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using FixMath;
+using ServerShareToClient;
 using UnityEngine;
 using ZMGC.Battle;
 using ZMGC.Hall;
@@ -10,12 +11,13 @@ using ZMGC.Hall;
 public partial class LogicActor {
     #region 属性和字段
 
-    private SkillSystem _skillSystem;
+    private SkillSystem _skillSystem = null;
+
+    private BattleLogicCtrl _battleLogicCtrl = null;
 
     // 普通攻击技能ID数组
     private int[] _normalAttackSkillArr = null;
     private int[] _normalSkillArr = null;
-
     private List<Skill> _listReleasingSkills = new();
 
     private List<Buff> _listBuff = new();
@@ -53,7 +55,6 @@ public partial class LogicActor {
     ///  初始化技能
     /// </summary>
     public void InitActorSkill() {
-        
         var heroID = HallWorld.GetExitsDataMgr<UserDataMgr>().CurSelectRoleID;
         _normalAttackSkillArr = BattleWorld.GetExitsDataMgr<HeroDataMgr>().GetHeroNormalSkillIDs(heroID);
         _normalSkillArr = BattleWorld.GetExitsDataMgr<HeroDataMgr>().GetHeroSkillIDs(heroID);
@@ -63,7 +64,13 @@ public partial class LogicActor {
     }
 
     public void ReleaseNormalAttack() {
-        ReleaseSkill(_normalAttackSkillArr[curNormalComboIndex], null);
+        var skillID = _normalAttackSkillArr[curNormalComboIndex];
+        if (LogicFrameConfig.UseLocalFrameUpdate) {
+            ReleaseSkill(skillID, null);
+        }
+        else {
+            _battleLogicCtrl.ReleaseSkillInput(skillID, FixIntVector3.zero, EBattleOperateSkillType.ClickSkill); // 普通攻击是点击触发
+        }
     }
 
 

@@ -48,19 +48,5 @@ public partial class LogicActor {
         _inputMoveDir = inputDir;
     }
 
-    /// <summary>
-    /// 帧同步网络驱动的移动
-    /// </summary>
-    /// <param name="frameOpData"></param>
-    public void LogicFrameEvent_NetInput(FrameOperateData frameOpData) {
-        var opType = (EBattlePlayerOpType)frameOpData.operate_type;
-        if (opType == (EBattlePlayerOpType.InputMove)) {
-            LogicFrameEvent_LocalMoveInput(frameOpData.input_dir.ToFixIntVector3());
-            ((HeroRender)RenderObject).CurInputDir = frameOpData.input_dir.ToFixIntVector3().ToVector3();
-            // Debug.LogError($"LogicFrameEvent_LocalMoveInput:{frameOpData.input_dir.ToFixIntVector3()}");
-        }
-        else if (opType == EBattlePlayerOpType.ReleaseSkill) {
-            Debug.LogError("TODO");
-        }
-    }
+
 }

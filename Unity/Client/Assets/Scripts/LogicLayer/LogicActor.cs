@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using FixMath;
 using UnityEngine;
+using ZMGC.Battle;
 
 public partial class LogicActor : LogicObject {
     #region life-cycle
@@ -9,6 +10,7 @@ public partial class LogicActor : LogicObject {
     public override void OnCreate() {
         base.OnCreate();
         InitActorSkill();
+        _battleLogicCtrl = BattleWorld.GetExitsLogicCtrl<BattleLogicCtrl>();
     }
 
     public override void OnLogicFrameUpdate() {
