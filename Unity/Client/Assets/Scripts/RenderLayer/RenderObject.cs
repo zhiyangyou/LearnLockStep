@@ -120,7 +120,7 @@ public class RenderObject : MonoBehaviour {
                 _preTargetPos = LogicObject.LogicPos.ToVector3();
                 LogicObject.hasNewLogicPos = false;
                 _curPreMoveCount = 0; // 真正的逻辑位置从网络到达, 
-                Debug.LogError($"后端逻辑位置抵达:{LogicObject.LogicPos.ToVector3()}");
+                // Debug.LogError($"后端逻辑位置抵达:{LogicObject.LogicPos.ToVector3()}");
             }
             else {
                 // 进行预测
