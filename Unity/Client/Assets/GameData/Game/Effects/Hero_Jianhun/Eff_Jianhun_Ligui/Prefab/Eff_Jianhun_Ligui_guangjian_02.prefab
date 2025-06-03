@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4002042891617060}
   - component: {fileID: 33705746410681964}
   - component: {fileID: 23535185792303332}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: plan01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4875573355772458}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Eff_Jianhun_Ligui_guangjian_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4667941973013114}
   - component: {fileID: 111543978373123736}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Eff_Jianhun_Ligui_guangjian_02_dh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 4177841438124836}
   - component: {fileID: 33061818330920680}
   - component: {fileID: 23207263413880016}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: shanbai
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 4087766447510582}
   - component: {fileID: 33093375408785036}
   - component: {fileID: 23705159005337568}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: plan01_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -346,7 +346,7 @@ GameObject:
   - component: {fileID: 4026613786561568}
   - component: {fileID: 33818786365287084}
   - component: {fileID: 23831866250346142}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: plan02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,7 +429,7 @@ GameObject:
   - component: {fileID: 4081924068396260}
   - component: {fileID: 33944767357897416}
   - component: {fileID: 23747292107862432}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: bai
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,7 +512,7 @@ GameObject:
   - component: {fileID: 4414793528008964}
   - component: {fileID: 33374151822002298}
   - component: {fileID: 23832054857327996}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -593,7 +593,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4983138548479427729}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}

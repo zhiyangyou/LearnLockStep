@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4754913230715358}
   - component: {fileID: 33738096095292638}
   - component: {fileID: 23519435330708508}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: plan0222
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4925248211612950}
   - component: {fileID: 33867533097787484}
   - component: {fileID: 23183910255877614}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: baozha
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4147303862343724}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Eff_jianhun_juexing_die
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4397124422012238}
   - component: {fileID: 111828061544771048}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Eff_jianhun_juexing_die_dh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 4402746028047448}
   - component: {fileID: 33216888632187590}
   - component: {fileID: 23586065730943564}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: plan0555
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 4305542716560244}
   - component: {fileID: 33688934804348106}
   - component: {fileID: 23265856882206422}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: plan02
   m_TagString: Untagged
   m_Icon: {fileID: 0}

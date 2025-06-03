@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 224120026521637800}
   - component: {fileID: 222730537550226878}
   - component: {fileID: 114209721919340130}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: zidan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,6 +28,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 224826644351496456}
   - {fileID: 224524755170502294}
@@ -41,7 +42,6 @@ RectTransform:
   - {fileID: 224127756124343530}
   - {fileID: 224817487244157652}
   m_Father: {fileID: 224666199703862782}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 222768303111838454}
   - component: {fileID: 114651569530506138}
   - component: {fileID: 114039295474457608}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: zidan01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,9 +115,9 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 224826644351496456}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 224581273630865276}
   - component: {fileID: 222999718575528288}
   - component: {fileID: 114024347108197540}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: zidan02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,9 +277,9 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 224524755170502294}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -337,7 +337,7 @@ GameObject:
   - component: {fileID: 114190102268603818}
   - component: {fileID: 114103176920452442}
   - component: {fileID: 114151011246023112}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,10 +354,10 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.9999985, y: 0.9999985, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 224976051187118188}
   m_Father: {fileID: 224120026521637800}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -607,7 +607,7 @@ GameObject:
   - component: {fileID: 114009849027647538}
   - component: {fileID: 114339041794202172}
   - component: {fileID: 114514826287534018}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: 9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -624,10 +624,10 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.9999985, y: 0.9999985, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 224861550514526848}
   m_Father: {fileID: 224120026521637800}
-  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -877,7 +877,7 @@ GameObject:
   - component: {fileID: 114387505548182006}
   - component: {fileID: 114356912442385320}
   - component: {fileID: 114008716811628848}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -894,10 +894,10 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.9999985, y: 0.9999985, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 224271981257886810}
   m_Father: {fileID: 224120026521637800}
-  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1147,7 +1147,7 @@ GameObject:
   - component: {fileID: 114565025641236746}
   - component: {fileID: 114886219174090070}
   - component: {fileID: 114177253472553758}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1164,10 +1164,10 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.9999985, y: 0.9999985, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 224370823050087668}
   m_Father: {fileID: 224120026521637800}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1417,7 +1417,7 @@ GameObject:
   - component: {fileID: 114051623061575672}
   - component: {fileID: 114255356518463166}
   - component: {fileID: 114686911783291064}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: zhujiemian
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1434,10 +1434,10 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3.8, y: 3.8, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 224219043978700080}
   m_Father: {fileID: 224666199703862782}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1689,7 +1689,7 @@ GameObject:
   - component: {fileID: 114651141556604022}
   - component: {fileID: 114359103436563172}
   - component: {fileID: 114214017866746560}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: zhunxing_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1706,9 +1706,9 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 224666199703862782}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2150,7 +2150,7 @@ GameObject:
   - component: {fileID: 114132497978825132}
   - component: {fileID: 114409688210665188}
   - component: {fileID: 114797475356889812}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2167,10 +2167,10 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.9999985, y: 0.9999985, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 224326714388680156}
   m_Father: {fileID: 224120026521637800}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2418,7 +2418,7 @@ GameObject:
   - component: {fileID: 224861550514526848}
   - component: {fileID: 222141810308368638}
   - component: {fileID: 114261800931104692}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: zidan09
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2435,9 +2435,9 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 224779494406738428}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2495,7 +2495,7 @@ GameObject:
   - component: {fileID: 114920155814057876}
   - component: {fileID: 114082783893249218}
   - component: {fileID: 114631084048878908}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: 10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2512,10 +2512,10 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.9999985, y: 0.9999985, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 224946458422612312}
   m_Father: {fileID: 224120026521637800}
-  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2765,7 +2765,7 @@ GameObject:
   - component: {fileID: 114650334824311310}
   - component: {fileID: 114277529466177588}
   - component: {fileID: 114587337072140104}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2782,10 +2782,10 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 224039698988546100}
   m_Father: {fileID: 224120026521637800}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3037,7 +3037,7 @@ GameObject:
   - component: {fileID: 114804806815071450}
   - component: {fileID: 114322355700282434}
   - component: {fileID: 114056568824333120}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: zhunxing_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3054,9 +3054,9 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 224666199703862782}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3498,7 +3498,7 @@ GameObject:
   - component: {fileID: 114461946119313250}
   - component: {fileID: 114546529820627052}
   - component: {fileID: 114215488814088872}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: lvsanjiao
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3515,9 +3515,9 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.2631579, y: 0.2631579, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 224913955263324160}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3853,7 +3853,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224666199703862782}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Hero_Qiangpao_juexing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3870,6 +3870,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 224584694878740078}
   - {fileID: 224926026768026218}
@@ -3877,7 +3878,6 @@ RectTransform:
   - {fileID: 224120026521637800}
   - {fileID: 224930780401282628}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3895,7 +3895,7 @@ GameObject:
   - component: {fileID: 224976051187118188}
   - component: {fileID: 222834917889595890}
   - component: {fileID: 114184948807103910}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: zidan03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3912,9 +3912,9 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 224144853126893250}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3972,7 +3972,7 @@ GameObject:
   - component: {fileID: 114145435695652490}
   - component: {fileID: 114847352929464928}
   - component: {fileID: 114460157588565684}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3989,10 +3989,10 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.9999985, y: 0.9999985, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 224279080217663394}
   m_Father: {fileID: 224120026521637800}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4242,7 +4242,7 @@ GameObject:
   - component: {fileID: 114582126530427610}
   - component: {fileID: 114984139755152258}
   - component: {fileID: 114648076255422616}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4259,10 +4259,10 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 224581273630865276}
   m_Father: {fileID: 224120026521637800}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4510,7 +4510,7 @@ GameObject:
   - component: {fileID: 224946458422612312}
   - component: {fileID: 222881824592654078}
   - component: {fileID: 114704884670763516}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: zidan10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4527,9 +4527,9 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 224127756124343530}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4587,7 +4587,7 @@ GameObject:
   - component: {fileID: 114264780149819132}
   - component: {fileID: 114530241567563072}
   - component: {fileID: 114769773206488512}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4604,10 +4604,10 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.9999985, y: 0.9999985, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 224545897469254958}
   m_Father: {fileID: 224120026521637800}
-  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4855,7 +4855,7 @@ GameObject:
   - component: {fileID: 224545897469254958}
   - component: {fileID: 222005796916891504}
   - component: {fileID: 114593315834484448}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: zidan08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4872,9 +4872,9 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 224897338970105092}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4930,7 +4930,7 @@ GameObject:
   - component: {fileID: 224370823050087668}
   - component: {fileID: 222885734928021286}
   - component: {fileID: 114750738017089608}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: zidan06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4947,9 +4947,9 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 224153912295818436}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5005,7 +5005,7 @@ GameObject:
   - component: {fileID: 224326714388680156}
   - component: {fileID: 222875668658262088}
   - component: {fileID: 114078762285635618}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: zidan04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5022,9 +5022,9 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 224870064191840730}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5083,7 +5083,7 @@ GameObject:
   - component: {fileID: 114706713130178390}
   - component: {fileID: 114145457010202526}
   - component: {fileID: 114793592992691060}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: lvquan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5100,9 +5100,9 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 224666199703862782}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5464,7 +5464,7 @@ GameObject:
   - component: {fileID: 224279080217663394}
   - component: {fileID: 222441369923609714}
   - component: {fileID: 114208962567341078}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: zidan05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5481,9 +5481,9 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 224324367957399424}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5539,7 +5539,7 @@ GameObject:
   - component: {fileID: 224271981257886810}
   - component: {fileID: 222843191784397264}
   - component: {fileID: 114126599744805152}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: zidan07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5556,9 +5556,9 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 224191871494625456}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5617,7 +5617,7 @@ GameObject:
   - component: {fileID: 114067277831015518}
   - component: {fileID: 114956053026115100}
   - component: {fileID: 114496671645129882}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: danke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5634,9 +5634,9 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 224120026521637800}
-  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

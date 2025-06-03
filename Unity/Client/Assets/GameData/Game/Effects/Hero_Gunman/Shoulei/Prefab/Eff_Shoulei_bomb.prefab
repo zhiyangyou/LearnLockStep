@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4742452759060578}
   - component: {fileID: 198979140062174060}
   - component: {fileID: 199180530621229792}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: lizi_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4857,7 +4857,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4451960971920378}
   - component: {fileID: 111230536151253462}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Eff_Shoulei_bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4910,7 +4910,7 @@ GameObject:
   - component: {fileID: 4557175416788298}
   - component: {fileID: 198513946877590322}
   - component: {fileID: 199987358475933376}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: lizi_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9773,7 +9773,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4214467651746226}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Eff_Shoulei_bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9807,7 +9807,7 @@ GameObject:
   - component: {fileID: 4411872800950444}
   - component: {fileID: 198260786780005808}
   - component: {fileID: 199206658299113660}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: lizi_07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14672,7 +14672,7 @@ GameObject:
   - component: {fileID: 4739426876761712}
   - component: {fileID: 198083276520317948}
   - component: {fileID: 199748942404321248}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: lizi_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19544,7 +19544,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4860795598835374}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Eff_Shoulei_bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}

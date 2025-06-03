@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4291704830252968}
   - component: {fileID: 33427074115201364}
   - component: {fileID: 23427409795034264}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tuowei03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,12 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1015122629371590}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.31616732, z: -0, w: 0.94870347}
   m_LocalPosition: {x: 1.1, y: 0.59, z: -0.15}
   m_LocalScale: {x: 48.383217, y: 11.95225, z: 10}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4216861413083958}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 36.863003, z: 0}
 --- !u!33 &33427074115201364
 MeshFilter:
@@ -51,6 +52,7 @@ MeshRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 2
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -90,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4443246728402700}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Eff_jianhun_juexing_canying05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,9 +106,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1023361020935418}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7603537, z: -0, w: -0.6495093}
   m_LocalPosition: {x: -6.3, y: 0, z: -7.0964646}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4575123697296364}
   - {fileID: 4590780181001468}
@@ -114,7 +118,6 @@ Transform:
   - {fileID: 4919753193350464}
   - {fileID: 4863837123083028}
   m_Father: {fileID: 4550315721334558}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 458.991, z: 0}
 --- !u!1 &1042824056991468
 GameObject:
@@ -127,7 +130,7 @@ GameObject:
   - component: {fileID: 4282075980375968}
   - component: {fileID: 33567648855253906}
   - component: {fileID: 23681802525784244}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero_Swordman_Swordman_Pant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,12 +144,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1042824056991468}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4894488476813458}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33567648855253906
 MeshFilter:
@@ -167,6 +171,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -208,7 +213,7 @@ GameObject:
   - component: {fileID: 4965605353407932}
   - component: {fileID: 33431098593196164}
   - component: {fileID: 23243373145565662}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero_Swordman_Swordman_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,12 +227,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1101272240220008}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4863004702791796}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33431098593196164
 MeshFilter:
@@ -248,6 +254,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -289,7 +296,7 @@ GameObject:
   - component: {fileID: 4758896458447758}
   - component: {fileID: 33488769574676232}
   - component: {fileID: 23960704377588656}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tuowei04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -303,12 +310,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1109444094819860}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.6499178, z: -0, w: 0.7600045}
   m_LocalPosition: {x: 0.42, y: 0.59, z: 1.27}
   m_LocalScale: {x: 69.26255, y: 11.95225, z: 10.000011}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4598287174143240}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: -81.07101, z: 0}
 --- !u!33 &33488769574676232
 MeshFilter:
@@ -329,6 +337,7 @@ MeshRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 2
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -370,7 +379,7 @@ GameObject:
   - component: {fileID: 4970547046043662}
   - component: {fileID: 33623266128623710}
   - component: {fileID: 23234829872620532}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero_Swordman_Swordman_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -384,12 +393,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1125242532279992}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4894488476813458}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33623266128623710
 MeshFilter:
@@ -410,6 +420,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -451,7 +462,7 @@ GameObject:
   - component: {fileID: 4919753193350464}
   - component: {fileID: 33827081597126416}
   - component: {fileID: 23903687284108120}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero_Swordman_weapon_katana_17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -465,12 +476,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1143008575464622}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.03316075, y: 0.72267133, z: -0.6896871, w: -0.031276617}
   m_LocalPosition: {x: 0.10236764, y: 1.1804376, z: 0.57186514}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4443246728402700}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33827081597126416
 MeshFilter:
@@ -491,6 +503,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -532,7 +545,7 @@ GameObject:
   - component: {fileID: 4741907326472168}
   - component: {fileID: 33330603764589338}
   - component: {fileID: 23585356954515350}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero_Swordman_weapon_katana_17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -546,12 +559,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1155542069487660}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.354572, y: -0.29799074, z: 0.0055484776, w: 0.88625586}
   m_LocalPosition: {x: 0.90133977, y: 0.42679718, z: 0.41399997}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4894488476813458}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33330603764589338
 MeshFilter:
@@ -572,6 +586,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -613,7 +628,7 @@ GameObject:
   - component: {fileID: 4184083166927770}
   - component: {fileID: 33706609947481622}
   - component: {fileID: 23411200677399712}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tuowei06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -627,12 +642,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1229965426394808}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.324773, z: -0, w: 0.945792}
   m_LocalPosition: {x: 0.95, y: 0.59, z: 0.35}
   m_LocalScale: {x: 50.17343, y: 11.95225, z: 10.000025}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4894488476813458}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: -97.744, z: 0}
 --- !u!33 &33706609947481622
 MeshFilter:
@@ -653,6 +669,7 @@ MeshRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 2
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -694,7 +711,7 @@ GameObject:
   - component: {fileID: 4693053632702948}
   - component: {fileID: 33204397189517294}
   - component: {fileID: 23901139746633992}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero_Swordman_Swordman_Pant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -708,12 +725,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1251159155491332}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4863004702791796}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33204397189517294
 MeshFilter:
@@ -734,6 +752,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -775,7 +794,7 @@ GameObject:
   - component: {fileID: 4857587389501734}
   - component: {fileID: 198553755783714186}
   - component: {fileID: 199056254357591564}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: canying
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -789,12 +808,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1257807562590392}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4925593984059412}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -21, z: 0}
 --- !u!198 &198553755783714186
 ParticleSystem:
@@ -803,19 +823,19 @@ ParticleSystem:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1257807562590392}
-  serializedVersion: 7
+  serializedVersion: 8
   lengthInSec: 5
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 1
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
+  emitterVelocityMode: 0
   looping: 1
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
-  useRigidbodyForVelocity: 1
   startDelay:
     serializedVersion: 2
     minMaxState: 0
@@ -1014,6 +1034,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -1043,6 +1064,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     startSize:
@@ -1364,7 +1386,9 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 35
+    customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 1
     gravityModifier:
@@ -2101,6 +2125,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 3
       minGradient:
@@ -2130,6 +2155,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   UVModule:
@@ -4350,6 +4376,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -4379,6 +4406,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
@@ -4768,6 +4796,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -4810,6 +4839,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -4839,6 +4869,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     widthOverTrail:
@@ -4926,6 +4957,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -4955,6 +4987,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   CustomDataModule:
@@ -4993,6 +5026,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -5022,6 +5056,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     colorLabel0: Color
@@ -5275,6 +5310,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -5304,6 +5340,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     colorLabel1: Color
@@ -5535,6 +5572,7 @@ ParticleSystemRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -5566,6 +5604,7 @@ ParticleSystemRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_RenderMode: 4
+  m_MeshDistribution: 0
   m_SortMode: 0
   m_MinParticleSize: 0
   m_MaxParticleSize: 1
@@ -5578,17 +5617,23 @@ ParticleSystemRenderer:
   m_RenderAlignment: 2
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
-  m_UseCustomVertexStreams: 0
   m_EnableGPUInstancing: 0
   m_ApplyActiveColorSpace: 0
   m_AllowRoll: 1
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
+  m_UseCustomVertexStreams: 0
   m_VertexStreams: 00010304
+  m_UseCustomTrailVertexStreams: 0
+  m_TrailVertexStreams: 00010304
   m_Mesh: {fileID: 4300000, guid: 93cf9e4a3385dad42a378b73dfa195ef, type: 3}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
+  m_MeshWeighting: 1
+  m_MeshWeighting1: 1
+  m_MeshWeighting2: 1
+  m_MeshWeighting3: 1
   m_MaskInteraction: 0
 --- !u!1 &1262709513283986
 GameObject:
@@ -5601,7 +5646,7 @@ GameObject:
   - component: {fileID: 4575123697296364}
   - component: {fileID: 33478080999681356}
   - component: {fileID: 23795427536035866}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero_Swordman_Swordman_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5615,12 +5660,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1262709513283986}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4443246728402700}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33478080999681356
 MeshFilter:
@@ -5641,6 +5687,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -5682,7 +5729,7 @@ GameObject:
   - component: {fileID: 4936718303128852}
   - component: {fileID: 33872393260882576}
   - component: {fileID: 23126293979530628}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero_Swordman_weapon_katana_17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5696,12 +5743,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1274324558830592}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.033160754, y: 0.72267145, z: -0.689687, w: -0.03127663}
   m_LocalPosition: {x: 0.1023676, y: 1.1804376, z: 0.57186556}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4216861413083958}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33872393260882576
 MeshFilter:
@@ -5722,6 +5770,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -5761,7 +5810,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4598287174143240}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Eff_jianhun_juexing_canying04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5775,9 +5824,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1276247293885900}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.31154022, z: -0, w: -0.95023304}
   m_LocalPosition: {x: 4.617657, y: 0, z: 5.2167687}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4950502408047940}
   - {fileID: 4026870959149496}
@@ -5785,7 +5836,6 @@ Transform:
   - {fileID: 4058415543107664}
   - {fileID: 4758896458447758}
   m_Father: {fileID: 4550315721334558}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 396.30402, z: 0}
 --- !u!1 &1307603014178222
 GameObject:
@@ -5798,7 +5848,7 @@ GameObject:
   - component: {fileID: 4726452139483980}
   - component: {fileID: 33881137957958072}
   - component: {fileID: 23640509239343966}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tuowei01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5812,12 +5862,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1307603014178222}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.27861267, z: -0, w: 0.96040356}
   m_LocalPosition: {x: 0.99, y: 0.55, z: 0.33}
   m_LocalScale: {x: 48.383244, y: 11.952252, z: 10}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4990249640119760}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: -32.355003, z: 0}
 --- !u!33 &33881137957958072
 MeshFilter:
@@ -5838,6 +5889,7 @@ MeshRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 2
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -5879,7 +5931,7 @@ GameObject:
   - component: {fileID: 4435138538191250}
   - component: {fileID: 33107477280664796}
   - component: {fileID: 23547062365157126}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero_Swordman_Swordman_Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5893,12 +5945,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1324647256355756}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4894488476813458}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33107477280664796
 MeshFilter:
@@ -5919,6 +5972,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -5960,7 +6014,7 @@ GameObject:
   - component: {fileID: 4706388256647478}
   - component: {fileID: 33526760308239452}
   - component: {fileID: 23165033857020744}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero_Swordman_Swordman_Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5974,12 +6028,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1416307453611720}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4990249640119760}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33526760308239452
 MeshFilter:
@@ -6000,6 +6055,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -6041,7 +6097,7 @@ GameObject:
   - component: {fileID: 4929705762676350}
   - component: {fileID: 33166737925452714}
   - component: {fileID: 23102411596688618}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero_Swordman_weapon_katana_17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6055,12 +6111,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1506166409260408}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.35457197, y: -0.29799077, z: 0.005548485, w: 0.88625586}
   m_LocalPosition: {x: 0.9013391, y: 0.42679718, z: 0.41399962}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4863004702791796}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33166737925452714
 MeshFilter:
@@ -6081,6 +6138,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -6120,7 +6178,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4216861413083958}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Eff_jianhun_juexing_canying03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6134,9 +6192,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1511368518455986}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.9997066, z: -0, w: -0.02422294}
   m_LocalPosition: {x: -5.26, y: 0, z: 5.16}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4468421942091890}
   - {fileID: 4570069833749932}
@@ -6144,7 +6204,6 @@ Transform:
   - {fileID: 4936718303128852}
   - {fileID: 4291704830252968}
   m_Father: {fileID: 4550315721334558}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 182.77599, z: 0}
 --- !u!1 &1521092606410276
 GameObject:
@@ -6157,7 +6216,7 @@ GameObject:
   - component: {fileID: 4590780181001468}
   - component: {fileID: 33331062630932016}
   - component: {fileID: 23327695850601264}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero_Swordman_Swordman_Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6171,12 +6230,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1521092606410276}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4443246728402700}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33331062630932016
 MeshFilter:
@@ -6197,6 +6257,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -6236,7 +6297,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4990249640119760}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Eff_jianhun_juexing_canying01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6250,9 +6311,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1526534886324280}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.78566754, z: -0, w: 0.61864895}
   m_LocalPosition: {x: 3.25, y: 0, z: -6.98}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4770859234700474}
   - {fileID: 4706388256647478}
@@ -6260,7 +6323,6 @@ Transform:
   - {fileID: 4654259723128520}
   - {fileID: 4726452139483980}
   m_Father: {fileID: 4550315721334558}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 103.565, z: 0}
 --- !u!1 &1566138784187436
 GameObject:
@@ -6273,7 +6335,7 @@ GameObject:
   - component: {fileID: 4770859234700474}
   - component: {fileID: 33209085190855064}
   - component: {fileID: 23009714374522392}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero_Swordman_Swordman_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6287,12 +6349,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1566138784187436}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4990249640119760}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33209085190855064
 MeshFilter:
@@ -6313,6 +6376,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -6354,7 +6418,7 @@ GameObject:
   - component: {fileID: 4058415543107664}
   - component: {fileID: 33784639051640248}
   - component: {fileID: 23155454042587682}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero_Swordman_weapon_katana_17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6368,12 +6432,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1666988229844582}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.03316074, y: 0.72267145, z: -0.689687, w: -0.031276625}
   m_LocalPosition: {x: 0.10236773, y: 1.1804376, z: 0.5718653}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4598287174143240}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33784639051640248
 MeshFilter:
@@ -6394,6 +6459,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -6435,7 +6501,7 @@ GameObject:
   - component: {fileID: 4265245333561422}
   - component: {fileID: 33648425292919512}
   - component: {fileID: 23803488015163434}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero_Swordman_Swordman_Pant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6449,12 +6515,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1682470842883130}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4598287174143240}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33648425292919512
 MeshFilter:
@@ -6475,6 +6542,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -6516,7 +6584,7 @@ GameObject:
   - component: {fileID: 4252584700646516}
   - component: {fileID: 33456516544716082}
   - component: {fileID: 23786864616773690}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tuowei02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6530,12 +6598,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1721174574701342}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.23553477, z: -0, w: 0.97186595}
   m_LocalPosition: {x: 1, y: 0.55, z: 0.31}
   m_LocalScale: {x: 48.383247, y: 11.95225, z: 10}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4863004702791796}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: -27.246002, z: 0}
 --- !u!33 &33456516544716082
 MeshFilter:
@@ -6556,6 +6625,7 @@ MeshRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 2
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -6597,7 +6667,7 @@ GameObject:
   - component: {fileID: 4980429695227908}
   - component: {fileID: 33638424303727384}
   - component: {fileID: 23694502463325782}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero_Swordman_Swordman_Pant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6611,12 +6681,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1747493237513706}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4990249640119760}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33638424303727384
 MeshFilter:
@@ -6637,6 +6708,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -6676,7 +6748,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4894488476813458}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Eff_jianhun_juexing_canying06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6690,9 +6762,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1772984540788604}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.3350426, z: -0, w: -0.942203}
   m_LocalPosition: {x: 7.47, y: 0, z: -0.1195192}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4970547046043662}
   - {fileID: 4435138538191250}
@@ -6700,7 +6774,6 @@ Transform:
   - {fileID: 4741907326472168}
   - {fileID: 4184083166927770}
   m_Father: {fileID: 4550315721334558}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 399.15, z: 0}
 --- !u!1 &1811629667057744
 GameObject:
@@ -6711,7 +6784,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4925593984059412}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Eff_jianhun_juexing_canying
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6725,14 +6798,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1811629667057744}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4550315721334558}
   - {fileID: 4857587389501734}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1823449783195178
 GameObject:
@@ -6745,7 +6819,7 @@ GameObject:
   - component: {fileID: 4654259723128520}
   - component: {fileID: 33976921108335862}
   - component: {fileID: 23555058740762652}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero_Swordman_weapon_katana_17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6759,12 +6833,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823449783195178}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.35457203, y: -0.2979907, z: 0.0055484925, w: 0.8862559}
   m_LocalPosition: {x: 0.9013397, y: 0.42679718, z: 0.41399968}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4990249640119760}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33976921108335862
 MeshFilter:
@@ -6785,6 +6860,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -6826,7 +6902,7 @@ GameObject:
   - component: {fileID: 4828152635430754}
   - component: {fileID: 33308965796156664}
   - component: {fileID: 23049029632923890}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero_Swordman_Swordman_Pant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6840,12 +6916,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1878782028029856}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4443246728402700}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33308965796156664
 MeshFilter:
@@ -6866,6 +6943,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -6907,7 +6985,7 @@ GameObject:
   - component: {fileID: 4950502408047940}
   - component: {fileID: 33608410849660800}
   - component: {fileID: 23933125652144832}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero_Swordman_Swordman_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6921,12 +6999,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1888813955364046}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4598287174143240}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33608410849660800
 MeshFilter:
@@ -6947,6 +7026,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -6988,7 +7068,7 @@ GameObject:
   - component: {fileID: 4570069833749932}
   - component: {fileID: 33005400140401390}
   - component: {fileID: 23675422961483092}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero_Swordman_Swordman_Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7002,12 +7082,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1891024915615040}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4216861413083958}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33005400140401390
 MeshFilter:
@@ -7028,6 +7109,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -7069,7 +7151,7 @@ GameObject:
   - component: {fileID: 4468421942091890}
   - component: {fileID: 33048584644582100}
   - component: {fileID: 23961347125476146}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero_Swordman_Swordman_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7083,12 +7165,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1892886478073918}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4216861413083958}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33048584644582100
 MeshFilter:
@@ -7109,6 +7192,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -7149,7 +7233,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4550315721334558}
   - component: {fileID: 111648031027680474}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Eff_jianhun_juexing_canying_dh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7163,9 +7247,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1900156375050690}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.18223555, z: 0, w: 0.9832549}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.35, y: 1, z: 1.35}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4990249640119760}
   - {fileID: 4863004702791796}
@@ -7174,7 +7260,6 @@ Transform:
   - {fileID: 4443246728402700}
   - {fileID: 4894488476813458}
   m_Father: {fileID: 4925593984059412}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 21, z: 0}
 --- !u!111 &111648031027680474
 Animation:
@@ -7203,7 +7288,7 @@ GameObject:
   - component: {fileID: 4715786916274456}
   - component: {fileID: 33265867981927736}
   - component: {fileID: 23192870118969182}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero_Swordman_Swordman_Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7217,12 +7302,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1955905753726736}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4863004702791796}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33265867981927736
 MeshFilter:
@@ -7243,6 +7329,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -7284,7 +7371,7 @@ GameObject:
   - component: {fileID: 4863837123083028}
   - component: {fileID: 33056614242729152}
   - component: {fileID: 23510365276623450}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tuowei05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7298,12 +7385,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1978575135792002}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.000000004128282, y: 0.26346126, z: 0.000000002056817, w: 0.96467}
   m_LocalPosition: {x: 1.33, y: 0.59, z: -0.16}
   m_LocalScale: {x: 59.93982, y: 11.95225, z: 10.000018}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4443246728402700}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 90.392006, z: 0}
 --- !u!33 &33056614242729152
 MeshFilter:
@@ -7324,6 +7412,7 @@ MeshRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 2
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -7365,7 +7454,7 @@ GameObject:
   - component: {fileID: 4904366670214826}
   - component: {fileID: 33070820452038914}
   - component: {fileID: 23253044947215778}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero_Swordman_Swordman_Pant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7379,12 +7468,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1983673458885840}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4216861413083958}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33070820452038914
 MeshFilter:
@@ -7405,6 +7495,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -7446,7 +7537,7 @@ GameObject:
   - component: {fileID: 4026870959149496}
   - component: {fileID: 33981473635982084}
   - component: {fileID: 23395747972585484}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero_Swordman_Swordman_Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7460,12 +7551,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1987190464613640}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4598287174143240}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33981473635982084
 MeshFilter:
@@ -7486,6 +7578,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -7525,7 +7618,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4863004702791796}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Eff_jianhun_juexing_canying02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7539,9 +7632,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1999139868626844}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.9721527, z: -0, w: -0.23434843}
   m_LocalPosition: {x: -8.02, y: 0, z: -0.4757678}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4965605353407932}
   - {fileID: 4715786916274456}
@@ -7549,5 +7644,4 @@ Transform:
   - {fileID: 4929705762676350}
   - {fileID: 4252584700646516}
   m_Father: {fileID: 4550315721334558}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 207.10599, z: 0}

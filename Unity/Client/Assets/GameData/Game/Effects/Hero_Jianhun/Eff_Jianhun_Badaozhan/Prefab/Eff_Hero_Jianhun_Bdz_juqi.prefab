@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4842520220489686}
   - component: {fileID: 198895712490585770}
   - component: {fileID: 199782857131136174}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: heidan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4909,7 +4909,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4566224707305050}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Eff_Hero_Jianhun_Bdz_juqi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4943,7 +4943,7 @@ GameObject:
   - component: {fileID: 4608600337543108}
   - component: {fileID: 198047325793084238}
   - component: {fileID: 199920765768769000}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: xishou
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9843,7 +9843,7 @@ GameObject:
   - component: {fileID: 4499388419789516}
   - component: {fileID: 198223361785845718}
   - component: {fileID: 199980630552098402}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: xian02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14685,7 +14685,7 @@ GameObject:
   - component: {fileID: 4987258514479032}
   - component: {fileID: 198706268003334470}
   - component: {fileID: 199799258884154166}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: dan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19585,7 +19585,7 @@ GameObject:
   - component: {fileID: 4547423017524276}
   - component: {fileID: 198272233617712774}
   - component: {fileID: 199058120315051874}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: guangyun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24483,7 +24483,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5220525067295942253}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4564339633527926}
   - component: {fileID: 198168771019726794}
   - component: {fileID: 199621818620047534}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: huohua
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4858,7 +4858,7 @@ GameObject:
   - component: {fileID: 4517232340998912}
   - component: {fileID: 33537615741130024}
   - component: {fileID: 23185376943330796}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: flare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4940,7 +4940,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4104511159093828}
   - component: {fileID: 111770720082881730}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Eff_Jujiaopenhuoqi_hit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4991,7 +4991,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4721065867675630}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Eff_Jujiaopenhuoqi_hit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5025,7 +5025,7 @@ GameObject:
   - component: {fileID: 4435876708206094}
   - component: {fileID: 33719345793290810}
   - component: {fileID: 23566519959317258}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: lizi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5108,7 +5108,7 @@ GameObject:
   - component: {fileID: 4607928406655504}
   - component: {fileID: 33710722976860464}
   - component: {fileID: 23628011820634686}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

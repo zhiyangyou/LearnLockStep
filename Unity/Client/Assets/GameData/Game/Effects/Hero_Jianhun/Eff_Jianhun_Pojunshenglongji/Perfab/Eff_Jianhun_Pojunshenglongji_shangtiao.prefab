@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4998628987856072}
   - component: {fileID: 33214313547864172}
   - component: {fileID: 23836124544234654}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 666
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4460933993715310}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Eff_Jianhun_Pojunshenglongji_shangtiao
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 4251655575408560}
   - component: {fileID: 33841644781243398}
   - component: {fileID: 23652861396258082}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: xiantiao
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 4119422959400078}
   - component: {fileID: 33919928565965744}
   - component: {fileID: 23790675231885724}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: light_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4756851396915276}
   - component: {fileID: 111285939877038204}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Eff_Jianhun_Pojunshenglongji_shangtiao_dh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -346,7 +346,7 @@ GameObject:
   - component: {fileID: 4056654289471144}
   - component: {fileID: 33404499502516838}
   - component: {fileID: 23870899477824472}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: daoguang_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,7 +429,7 @@ GameObject:
   - component: {fileID: 4670334537913052}
   - component: {fileID: 33164422864425218}
   - component: {fileID: 23600125190003716}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: hongbaiqian
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,7 +512,7 @@ GameObject:
   - component: {fileID: 4686269207554784}
   - component: {fileID: 33188226028252370}
   - component: {fileID: 23581519135875186}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: dao_02_1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
