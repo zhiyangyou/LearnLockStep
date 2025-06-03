@@ -60,7 +60,7 @@ namespace ZMGC.Battle {
                 var heroRender = goHero.GetComponent<HeroRender>();
                 goHero.name = $"lockstep_player_{heroID}_{roleData.role_name}";
                 HeroLogic heroLogic = new HeroLogic(heroID, accountID, heroRender);
-                heroLogic.SetIsSelfPlayer(isSelfPlayer);
+                heroLogic.SetIsLocalPlayer(isSelfPlayer);
                 ListHeroLogics.Add(accountID, heroLogic);
                 heroRender.SetLogicObject(heroLogic);
 

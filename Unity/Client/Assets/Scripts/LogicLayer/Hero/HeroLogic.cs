@@ -30,8 +30,9 @@ public class HeroLogic : LogicActor {
         InitAttribute();
     }
 
-    public void SetIsSelfPlayer(bool isSelfPlayer) {
-        this.IsSelfPlayer = isSelfPlayer;
+    public void SetIsLocalPlayer(bool v) {
+        this.IsSelfPlayer = v;
+        this.RenderObject.SetIsLocalPlayer(v);
     }
 
     #endregion
