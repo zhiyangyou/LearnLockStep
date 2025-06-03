@@ -94,7 +94,6 @@ namespace ZMGC.Battle {
             while (_accLogicRealTime > _nextLogicFrameTime) {
                 OnLigicFrameUpdate();
                 _nextLogicFrameTime += GameConstConfig.LogicFrameInterval;
-                LogicFrameConfig.LocalLogicFrameID++;
             }
 
             _logicDeltaTime = (_accLogicRealTime + GameConstConfig.LogicFrameInterval - _nextLogicFrameTime) / GameConstConfig.LogicFrameInterval;
@@ -115,6 +114,7 @@ namespace ZMGC.Battle {
             LogicActionController.Instance.OnLogicFrameUpdate();
             BuffSystem.Instance.OnLogicFrameUpdate();
             LogicTimerManager.Instance.OnLogicFrameUpdate();
+            LogicFrameConfig.LocalLogicFrameID++;
         }
 
         public override void OnDestroy() {
