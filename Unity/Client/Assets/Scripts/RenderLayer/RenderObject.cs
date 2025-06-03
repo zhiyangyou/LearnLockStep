@@ -116,6 +116,7 @@ public class RenderObject : MonoBehaviour {
     public virtual void UpdatePosition() {
         // 本地预测和回滚
         if (_isLocalPlayer) {
+        // if (false) { // 不进行预测
             if (LogicObject.hasNewLogicPos) {
                 _preTargetPos = LogicObject.LogicPos.ToVector3();
                 LogicObject.hasNewLogicPos = false;

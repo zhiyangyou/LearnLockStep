@@ -8,8 +8,6 @@ namespace ZMGC.Battle {
     public class BattleWorld : World {
         #region 属性和字段
 
-
-
         /// <summary>
         /// 逻辑帧累计运行时间
         /// </summary>
@@ -61,6 +59,7 @@ namespace ZMGC.Battle {
         #endregion
 
         #region life-cycle
+
         public override void OnCreate() {
             Debug.Log("节约笔记本性能, 限制帧率60");
             Application.targetFrameRate = 60;
@@ -95,6 +94,7 @@ namespace ZMGC.Battle {
             // 另外作用: 追帧 && 保证所有设备的逻辑帧的帧数的一致性
             while (_accLogicRealTime > _nextLogicFrameTime) {
                 OnLigicFrameUpdate();
+                LogicFrameConfig.LogicFrameID++;
                 _nextLogicFrameTime += GameConstConfig.LogicFrameInterval;
             }
 
@@ -116,7 +116,6 @@ namespace ZMGC.Battle {
             LogicActionController.Instance.OnLogicFrameUpdate();
             BuffSystem.Instance.OnLogicFrameUpdate();
             LogicTimerManager.Instance.OnLogicFrameUpdate();
-            LogicFrameConfig.LocalLogicFrameID++;
         }
 
         public override void OnDestroy() {

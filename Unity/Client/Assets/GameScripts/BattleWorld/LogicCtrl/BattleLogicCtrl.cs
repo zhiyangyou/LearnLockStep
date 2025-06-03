@@ -81,18 +81,13 @@ namespace ZMGC.Battle {
             if (LogicFrameConfig.UseLocalFrameUpdate) return;
 
 
-            LogicFrameConfig.ServerLogicFrameID = message.logic_frame_id;
+            LogicFrameConfig.LogicFrameID = message.logic_frame_id;
             _battleDataMgr.BattleState = BattleStateEnum.Start;
             _battleDataMgr.BattleID = message.battle_id;
 
             // 更新玩家输入
             foreach (FrameOperateData frameOpData in message.frame_operate_datas) {
-                var accountID = frameOpData.account_id;
-                var heroLogic = _heroLogicCtrl.GetHeroLogic(accountID);
-                if (heroLogic != null) {
-                    Debug.LogError($"accountID:{accountID}");
-                    heroLogic.LogicFrameEvent_NetInput(frameOpData);
-                }
+                _heroLogicCtrl.GetHeroLogic(frameOpData.account_id)?.LogicFrameEvent_NetInput(frameOpData);
             }
 
             // 
